@@ -4,7 +4,7 @@
   <div align="left">
     <h3>Course Content</h3>
     <ul>
-      <li>Part 0: Fundamentals of Web apps</li>
+      <li>[X] Part 0: Fundamentals of Web apps</li>
       <li>Part 1: Introduction to React</li>
       <li>Part 2: Communicating with server</li>
       <li>Part 3: Programming a server with NodeJS and Express</li>
