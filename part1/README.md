@@ -36,4 +36,10 @@
 
 
 - [Responding to Events](https://react.dev/learn/responding-to-events) | React Docs
+  |passing a function (correct) |calling a function (incorrect)|
+  |-----|--------|
+  |`<button onClick={handleClick}>`|`<button onClick={handleClick()}>`|
+  |`<button onClick={() => alert('...')}>`|`<button onClick={alert('...')}>`|
+
+  Passing a function tells React to remember it and only call your function when the user clicks the button. The second example fires the function immediately during rendering, without any clicks. This is because JavaScript inside the JSX executes right away.
 - [Sharing State](https://react.dev/learn/sharing-state-between-components) | React Docs
