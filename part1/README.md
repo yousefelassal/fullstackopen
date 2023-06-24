@@ -9,3 +9,4 @@
 ### c Component state, event handlers
 - [State](https://react.dev/learn/state-a-components-memory) | React Docs
 - [Responding to Events](https://react.dev/learn/responding-to-events) | React Docs
+- [Sharing State](https://react.dev/learn/sharing-state-between-components) | React Docs
