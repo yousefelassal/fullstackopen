@@ -1,5 +1,6 @@
 # Resources
 ### a Introduction to React
+- [JSX](https://react.dev/learn/writing-markup-with-jsx) | React Docs
 - [Passing Props](https://react.dev/learn/passing-props-to-a-component) | React Docs
 
 ### b JavaScript 
