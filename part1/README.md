@@ -43,4 +43,12 @@
   |`<button onClick={() => alert('...')}>`|`<button onClick={alert('...')}>`|
 
   Passing a function tells React to remember it and only call your function when the user clicks the button. The second example fires the function immediately during rendering, without any clicks. This is because JavaScript inside the JSX executes right away.
-- [Sharing State](https://react.dev/learn/sharing-state-between-components) | React Docs
+- [Sharing State Between Components](https://react.dev/learn/sharing-state-between-components) | React Docs
+  
+  _Often, several components need to reflect the same changing data. We recommend lifting the shared state up to their closest common ancestor._
+
+  To coordinate two components, we need to “lift their state up” to a parent component in three steps:
+  1. Remove state from the child components.
+  2. Pass hardcoded data from the common parent.
+  3. Add state to the common parent and pass it down together with the event handlers.
+  
