@@ -62,3 +62,6 @@
   }
   ```
   `...obj` creates a new object that has copies of all of the properties of that object. When we specify a particular property and do _some changes_ the value of that property only in the new object will change.
+- [DO NOT CHANGE/MUTATE THE STATE DIRECTLY](https://stackoverflow.com/a/40309023) | Stackoverflow
+
+  Changing state has to always be done by setting the state to a new object. If properties from the previous state object are not changed, they need to simply be copied, which is done by copying those properties into a new object and setting that as the new state.
