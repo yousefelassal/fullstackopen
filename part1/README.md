@@ -52,3 +52,5 @@
   2. Pass hardcoded data from the common parent.
   3. Add state to the common parent and pass it down together with the event handlers.
   
+### d A more complex state, debugging React apps
+- 
