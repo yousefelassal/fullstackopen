@@ -53,4 +53,12 @@
   3. Add state to the common parent and pass it down together with the event handlers.
   
 ### d A more complex state, debugging React apps
-- 
+- [Spread syntax (...)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) | MDN Docs
+  
+  ```js
+  const newObj = { 
+    ...obj,
+    aProperty: // some changes
+  }
+  ```
+  `...obj` creates a new object that has copies of all of the properties of that object. When we specify a particular property and do _some changes_ the value of that property only in the new object will change.
