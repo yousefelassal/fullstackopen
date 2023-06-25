@@ -53,4 +53,4 @@
   3. Add state to the common parent and pass it down together with the event handlers.
   
 ### d A more complex state, debugging React apps
-- 
+- [Spread](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) | MDN Docs
