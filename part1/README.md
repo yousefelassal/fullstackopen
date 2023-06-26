@@ -79,4 +79,13 @@
   <img src="https://github.com/yousefelassal/fullstackopen/assets/76617202/ed757eb3-853e-449f-9241-df3b9225c413" width="375px" height="auto" title="React">
 
   React waits until all code in the event handlers has run before processing state updates.
+  ```js
+  setSomething(s => !s);
+  setSomething(s => s + 1);
+  setSomethingAfterSettingTheOtherSomething(sastos => sastos * 2)
+  ```
+  When we pass an **updater function** to a state setter:
+
+  1. React queues this function to be processed after all the other code in the event handler has run.
+  2. During the next render, React goes through the queue and gives us the final updated state.
 
