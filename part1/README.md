@@ -71,4 +71,6 @@
   3. Avoid redundant state.
   4. Avoid duplication in state.
   5. Avoid deeply nested state.
+- [Array.prototype.concat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) | MDN Docs
 
+  The `concat` method does not mutate the existing array but rather returns a _new copy of the array_ with the item added to it.
