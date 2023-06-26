@@ -66,3 +66,9 @@
 
   Changing state has to always be done by setting the state to a new object. If properties from the previous state object are not changed, they need to simply be copied, which is done by copying those properties into a new object and setting that as the new state.
 - [Choosing State Structure](https://react.dev/learn/choosing-the-state-structure) | React Docs
+  1. Group related state.
+  2. Avoid contradictions in state.
+  3. Avoid redundant state.
+  4. Avoid duplication in state.
+  5. Avoid deeply nested state.
+
