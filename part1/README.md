@@ -75,3 +75,8 @@
 
   The `concat` method does not mutate the existing array but rather returns a _new copy of the array_ with the item added to it.
 - [Queueing a Series of State Updates](https://react.dev/learn/queueing-a-series-of-state-updates) | React Docs
+  
+  <img src="https://github.com/yousefelassal/fullstackopen/assets/76617202/ed757eb3-853e-449f-9241-df3b9225c413" width="375px" height="auto" title="React">
+
+  React waits until all code in the event handlers has run before processing state updates.
+
