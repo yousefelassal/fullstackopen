@@ -6,8 +6,12 @@ const Button = ({ handleClick, text }) => (
   </button>
 )
 
-//1.8 already a component
-//1.9 already only display if feedback has been gathered
+const StatisticsLine = ({text, value}) => {
+  return (
+    <p>{text}: {value}</p>
+  )
+}
+
 const Statistics = ({all, good, neutral, bad}) => {
   
   const calcAverage = () => {
@@ -23,12 +27,12 @@ const Statistics = ({all, good, neutral, bad}) => {
       {all === 0 ? 
           <p>No feedback given</p> : 
           <>
-            <p>Good: {good}</p>
-            <p>Neutral: {neutral}</p>
-            <p>Bad: {bad}</p>
-            <p>All: {all}</p>
-            <p>Average: {calcAverage()}</p>
-            <p>Positive: {calcPositive()}%</p>
+           <StatisticsLine text="Good" value={good} />
+           <StatisticsLine text="Neutral" value={neutral} />
+           <StatisticsLine text="Bad" value={bad} />
+           <StatisticsLine text="All" value={all} />
+           <StatisticsLine text="Average" value={calcAverage()} />
+           <StatisticsLine text="Positive" value={calcPositive() + ` %`} />
           </>
         }
     </div>
