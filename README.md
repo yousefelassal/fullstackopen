@@ -5,7 +5,7 @@
     <h3>Course Content</h3>
     <ul>
       <li>[X] Part 0: Fundamentals of Web apps</li>
-      <li>Part 1: Introduction to React</li>
+      <li>[X] Part 1: Introduction to React</li>
       <li>Part 2: Communicating with server</li>
       <li>Part 3: Programming a server with NodeJS and Express</li>
       <li>Part 4: Testing Express Servers, user administration</li>
