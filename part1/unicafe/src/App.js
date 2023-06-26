@@ -6,6 +6,7 @@ const Button = ({ handleClick, text }) => (
   </button>
 )
 
+//1.8 already a component
 const Statistics = ({all, good, neutral, bad}) => {
   
   const calcAverage = () => {
