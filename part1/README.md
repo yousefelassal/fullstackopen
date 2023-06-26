@@ -71,4 +71,12 @@
   3. Avoid redundant state.
   4. Avoid duplication in state.
   5. Avoid deeply nested state.
+- [Array.prototype.concat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) | MDN Docs
+
+  The `concat` method does not mutate the existing array but rather returns a _new copy of the array_ with the item added to it.
+- [Queueing a Series of State Updates](https://react.dev/learn/queueing-a-series-of-state-updates) | React Docs
+  
+  <img src="https://github.com/yousefelassal/fullstackopen/assets/76617202/ed757eb3-853e-449f-9241-df3b9225c413" width="375px" height="auto" title="React">
+
+  React waits until all code in the event handlers has run before processing state updates.
 
