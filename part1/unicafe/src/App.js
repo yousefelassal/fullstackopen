@@ -7,6 +7,7 @@ const Button = ({ handleClick, text }) => (
 )
 
 //1.8 already a component
+//1.9 already only display if feedback has been gathered
 const Statistics = ({all, good, neutral, bad}) => {
   
   const calcAverage = () => {
