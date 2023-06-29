@@ -26,6 +26,7 @@ const Content = ({parts}) => {
   )
 }
 
+//already used reduce in part 2.2
 const Total = ({parts}) => {
   return (
     <>
