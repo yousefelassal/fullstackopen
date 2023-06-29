@@ -16,3 +16,12 @@
     />
   );
   ```
+- [Object Equality](https://www.joshbritz.co/posts/why-its-so-hard-to-check-object-equality/) | some donny called josh
+  ```js
+  const a = { name: 'simple object' };
+  const b = a;
+  console.log(a === b); // -> true
+  const c = { name: 'simple object' };
+  console.log(a === c); // -> false
+  ```
+   (`===`) doesn’t check that both objects have the same property keys and values. Instead, it checks that the two objects occupy the same place in memory. Hence, when we declare a it is given a place in memory.
