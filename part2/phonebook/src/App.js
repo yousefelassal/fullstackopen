@@ -96,7 +96,7 @@ const App = () => {
         addPhone={addPhone} 
       />
       <h2>Numbers</h2>
-      {personsToShow.length === 0 && <div>No matches found</div>}
+      {personsToShow.length === 0 && <div>no matches found</div>}
       <Persons personsToShow={personsToShow} />
     </div>
   )
