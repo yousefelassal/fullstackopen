@@ -42,3 +42,4 @@
     ```js
     _.isEqual(a, b); // => true
     ```
+    (external package which needs to be installed)
