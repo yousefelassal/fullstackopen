@@ -32,6 +32,12 @@
     console.log(JSON.stringify(a) === JSON.stringify(b)); // -> true
     ```
     all the keys and values must be in the same order, otherwise, it will see the two objects as unequal.
+  - [Array.prototype.some()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) | MDN Docs
+    ```js
+    const arr = [a, b];
+    arr.some(obj => a.name === b.name) // => true 
+    ```
+    if we're dealing with an array of objects we can use the `some` method which returns true if, in the array, it finds an element for which the provided function returns true; otherwise it returns false.
   - [_.isEqual()](https://lodash.com/docs/4.17.15#isEqual) | Lodash
     ```js
     _.isEqual(a, b); // => true
