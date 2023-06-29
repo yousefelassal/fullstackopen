@@ -25,3 +25,14 @@
   console.log(a === c); // -> false
   ```
    (`===`) doesn’t check that both objects have the same property keys and values. Instead, it checks that the two objects occupy the same place in memory. Hence, when we declare a it is given a place in memory.
+  
+  Solutions:
+  - [JSON.stringify()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) | MDN Docs
+    ```js
+    console.log(JSON.stringify(a) === JSON.stringify(b)); // -> true
+    ```
+    all the keys and values must be in the same order, otherwise, it will see the two objects as unequal.
+  - [_.isEqual()](https://lodash.com/docs/4.17.15#isEqual) | Lodash
+    ```js
+    _.isEqual(a, b); // => true
+    ```
