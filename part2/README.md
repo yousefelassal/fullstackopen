@@ -8,11 +8,11 @@
 - [Controlling input with state variables](https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable) | React Docs
 
   ```js
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(''); // Declare a state variable...
   return (
     <input
-      value={value}
-      onChange={e => setValue(e.target.value)}
+      value={value} // ...force the input's value to match the state variable...
+      onChange={e => setValue(e.target.value)} // ... and update the state variable on any edits!
     />
   );
   ```
