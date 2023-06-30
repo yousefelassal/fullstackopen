@@ -46,3 +46,4 @@
 
 ### c Getting data from server
 - [What the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ) | YouTube Video
+- [Effect Hooks](https://react.dev/reference/react#effect-hooks) | React Docs
