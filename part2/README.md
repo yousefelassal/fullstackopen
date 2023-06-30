@@ -43,3 +43,6 @@
     _.isEqual(a, b); // => true
     ```
     (external package which needs to be installed)
+
+### c Getting data from server
+- [What the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ) | YouTube Video
