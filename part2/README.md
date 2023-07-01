@@ -45,6 +45,22 @@
     (external package which needs to be installed)
 
 ### c Getting data from server
+[axios](https://axios-http.com/docs/intro) `GET` request
+```js
+// Make a request
+axios.get('/user?ID=12345')
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .finally(function () {
+    // always executed
+  });
+```
 - [What the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ) | YouTube Video
 - [Effect Hooks](https://react.dev/reference/react#effect-hooks) | React Docs
 - [Conditionally firing an effect](https://legacy.reactjs.org/docs/hooks-reference.html#conditionally-firing-an-effect) | Legacy React Docs
