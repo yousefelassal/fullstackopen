@@ -18,8 +18,7 @@ const update = (id, personObject) => {
 }
 
 const deletePerson = id => {
-    const request = axios.delete(`${baseUrl}/${id}`)
-    return request.then(response => response.data)
+    return axios.delete(`${baseUrl}/${id}`)
 }
 
 const phonebookService = { getAll, create, update, deletePerson }
