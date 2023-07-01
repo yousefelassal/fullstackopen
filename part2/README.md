@@ -107,3 +107,5 @@ Data stored in the backend can be modified in two different ways by making HTTP 
 axios.delete(`url/id`)
 ```
 No data is sent with the request.
+### e Adding styles to React app
+- [Applying CSS Styles](https://react.dev/reference/react-dom/components/common#applying-css-styles) | React Docs
