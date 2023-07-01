@@ -101,3 +101,9 @@ axios.post('/user', {
 Data stored in the backend can be modified in two different ways by making HTTP requests to the object's unique URL:
 1. `HTTP PUT` request: replace the entire object.
 2. `HTTP PATCH` request: only change some of the object's properties.
+
+[axios](https://axios-http.com/docs/api_intro) `DELETE` request
+```js
+axios.delete(`url/id`)
+```
+No data is sent with the request.
