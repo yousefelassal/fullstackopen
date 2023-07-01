@@ -117,6 +117,15 @@ const App = () => {
               setNotification({ message: null, type: null })
             }, 5000)
           })
+          .catch(error => {
+            setNotification({ type: 'error', message: `Information of ${person.name} has already been removed from server` })
+            setTimeout(() => {
+              setNotification({ message: null, type: null })
+            }, 5000)
+            setPersons(persons.filter(p => p.id !== person.id))
+            setNewName('')
+            setNewNumber('')
+        })
       }
       return
     }
@@ -147,6 +156,14 @@ const App = () => {
         .then(() => {
           setPersons(persons.filter(p => p.id !== id))
         })
+        .catch(error => {
+          setNotification({ type: 'error', message: `Information of ${person.name} has already been removed from server` })
+          setTimeout(() => {
+            setNotification({ message: null, type: null })
+          }, 5000)
+          setPersons(persons.filter(p => p.id !== id))
+        }
+      )
     }
   }
 
