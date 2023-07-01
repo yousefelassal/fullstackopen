@@ -54,3 +54,6 @@
   If we don’t need to run the effect on every update, pass a second argument to `useEffect` that is an array of values that the effect depends on.
   
   If you want to run an effect and clean it up only once, you can pass an empty array (`[]`) as a second argument. This tells React that your effect doesn’t depend on any values from props or state, so it never needs to re-run.
+
+### d Altering data in server
+- 
