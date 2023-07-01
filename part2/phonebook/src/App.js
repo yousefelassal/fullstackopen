@@ -34,19 +34,24 @@ const PersonForm = ({ newName, setNewName, newNumber, setNewNumber, addPhone }) 
   )
 }
 
-const Person = ({ person }) => {
+const Person = ({ person, handleDelete }) => {
   return (
     <div>
-      {person.name} {person.number}
+      {person.name} {person.number} 
+      <button onClick={handleDelete}>delete</button>
     </div>
   )
 }
 
-const Persons = ({ personsToShow }) => {
+const Persons = ({ personsToShow, handleDelete }) => {
   return (
     <div>
       {personsToShow.map(person =>
-        <Person key={person.name} person={person} />
+        <Person 
+          key={person.name} 
+          person={person}
+          handleDelete={() => handleDelete(person.id)}
+        />
       )}
     </div>
   )
@@ -92,6 +97,17 @@ const App = () => {
     )
   }
 
+  const handleDelete = (id) => {
+    const person = persons.find(p => p.id === id)
+    if(window.confirm(`Delete ${person.name}?`)) {
+      phonebookService
+        .deletePerson(id)
+        .then(() => {
+          setPersons(persons.filter(p => p.id !== id))
+        })
+    }
+  }
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -106,7 +122,7 @@ const App = () => {
       />
       <h2>Numbers</h2>
       {personsToShow.length === 0 && <div>no matches found</div>}
-      <Persons personsToShow={personsToShow} />
+      <Persons personsToShow={personsToShow} handleDelete={handleDelete} />
     </div>
   )
 }
