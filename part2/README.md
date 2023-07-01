@@ -47,3 +47,13 @@
 ### c Getting data from server
 - [What the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ) | YouTube Video
 - [Effect Hooks](https://react.dev/reference/react#effect-hooks) | React Docs
+- [Conditionally firing an effect](https://legacy.reactjs.org/docs/hooks-reference.html#conditionally-firing-an-effect) | Legacy React Docs
+
+  _By default, effects run after every completed render, but you can choose to fire it only when certain values have changed._
+
+  If we don’t need to run the effect on every update, pass a second argument to `useEffect` that is an array of values that the effect depends on.
+  
+  If you want to run an effect and clean it up only once, you can pass an empty array (`[]`) as a second argument. This tells React that your effect doesn’t depend on any values from props or state, so it never needs to re-run.
+
+### d Altering data in server
+- 
