@@ -57,11 +57,35 @@ const Persons = ({ personsToShow, handleDelete }) => {
   )
 }
 
+const Notification = ({ notification }) => {
+
+  const notificationStyle = {
+    color: notification.type === 'success' ? 'green' : 'red',
+    background: 'lightgrey',
+    borderStyle: 'solid',
+    borderRadius: 5,
+    borderColor: notification.type === 'success' ? 'green' : 'red',
+    fontSize: 20,
+    padding: 10,
+    marginBottom: 10
+  }
+
+  if(notification.message === null) {
+    return null
+  }
+  return (
+    <div style={notificationStyle}>
+      {notification.message}
+    </div>
+  )
+}
+
 const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
+  const [notification, setNotification] = useState({message: null, type: null})  
 
   useEffect(() => {
     phonebookService
@@ -88,6 +112,10 @@ const App = () => {
             setPersons(persons.map(p => p.id !== person.id ? p : returnedPhone))
             setNewName('')
             setNewNumber('')
+            setNotification({ type: 'success', message: `Updated ${returnedPhone.name}` })
+            setTimeout(() => {
+              setNotification({ message: null, type: null })
+            }, 5000)
           })
       }
       return
@@ -103,6 +131,10 @@ const App = () => {
         setPersons(persons.concat(returnedPhone))
         setNewName('')
         setNewNumber('')
+        setNotification({ type: 'success', message: `Added ${returnedPhone.name}` })
+        setTimeout(() => {
+          setNotification({ message: null, type: null })
+        }, 5000)
       }
     )
   }
@@ -121,6 +153,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification notification={notification} />
       <Filter filter={filter} setFilter={setFilter} />
       <h2>add a new</h2>
       <PersonForm 
