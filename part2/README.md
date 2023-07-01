@@ -109,3 +109,20 @@ axios.delete(`url/id`)
 No data is sent with the request.
 ### e Adding styles to React app
 - [Applying CSS Styles](https://react.dev/reference/react-dom/components/common#applying-css-styles) | React Docs
+
+  CSS rules are defined slightly differently in JavaScript than in normal CSS files. Let's say that we wanted to give some element the color green and italic font that's 16 pixels in size. In CSS, it would look like this:
+  ```css
+  {
+    color: green;
+    font-style: italic;
+    font-size: 16px;
+  }
+  ```
+  But as a React inline-style object it would look like this:
+  ```js
+  {
+    color: 'green',
+    fontStyle: 'italic',
+    fontSize: 16
+  }
+  ```
