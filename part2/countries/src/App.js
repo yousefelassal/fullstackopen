@@ -9,16 +9,27 @@ const Search = ({search, handleSearch}) => {
   );
 }
 
-const Country = ({country}) => {
+const Country = ({country, setCountry, setSearch}) => {
   if (country.length > 10) {
     return (
       <div>Too many matches, specify another filter</div>
     );
   }
+
+  const handleClick = (country) => {
+    setCountry([country]);
+    setSearch('');
+  }
+
   if(country.length > 1) {
     return (
       <div>
-        {country.map(country => <div key={country.name.common}>{country.name.common}</div>)}
+        {country.map(country =>
+          <div key={country.name.common}>
+            {country.name.common}
+            <button onClick={() => handleClick(country)}>show</button>
+          </div>
+        )}
       </div>
     )
   }
@@ -26,7 +37,7 @@ const Country = ({country}) => {
     const languages = Object.values(country[0].languages);
     return (
       <div>
-        <h2>{country[0].name.common} ({country[0].fifa})</h2>
+        <h2>{country[0].name.common} ({country[0].cioc})</h2>
         <div>capital {country[0].capital}</div>
         <div>population {country[0].population}</div>
         <div>area {country[0].area} </div>
@@ -76,7 +87,7 @@ const App = () => {
   return (
     <div>
       <Search search={search} handleSearch={handleSearch} />
-      <Country country={country} />
+      <Country country={country} setCountry={setCountry} setSearch={setSearch}/>
     </div>
   );
 }
