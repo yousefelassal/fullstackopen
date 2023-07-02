@@ -1,56 +1,84 @@
-import { useState } from 'react'
-import Note from './Components/Note'
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 
-const App = (props) => {
-  const [notes, setNotes] = useState(props.notes)
-  const [newNote, setNewNote] = useState('a new note...')
-  const [showAll, setShowAll] = useState(true)
+const Search = ({search, handleSearch}) => {
+  return (
+    <div>
+      find countries <input value={search} onChange={handleSearch} />
+    </div>
+  );
+}
 
-  const notesToShow = showAll 
-    ? notes
-    : notes.filter(note => note.important)
+const Country = ({country}) => {
+  if (country.length > 10) {
+    return (
+      <div>Too many matches, specify another filter</div>
+    );
+  }
+  if(country.length > 1) {
+    return (
+      <div>
+        {country.map(country => <div key={country.name.common}>{country.name.common}</div>)}
+      </div>
+    )
+  }
+  if(country.length === 1) {
+    const languages = Object.values(country[0].languages);
+    return (
+      <div>
+        <h2>{country[0].name.common} ({country[0].fifa})</h2>
+        <div>capital {country[0].capital}</div>
+        <div>population {country[0].population}</div>
+        <div>area {country[0].area} </div>
+        <div>{country[0].subregion}, {country[0].region}</div>
 
+        <h3>languages</h3>
+        <ul>
+          {languages.map(language => <li key={language}>{language}</li>)}
+        </ul>
 
-  const addNote = (event) => {
-    event.preventDefault()
-    const noteObject = {
-      content: newNote,
-      important: Math.random() < 0.5,
-      id: notes.length + 1,
+        <img src={country[0].flags.png} alt={country[0].flags.alt} width="250" />
+        <img src={country[0].coatOfArms.png} alt="coat of arm" width="250" />
+      </div>
+    );
+  }
+  return (
+    <div>Search any valid country!</div>
+  );
+}
+
+const App = () => {
+  const [search, setSearch] = useState(null);
+  const [country, setCountry] = useState([]);
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('https://studies.cs.helsinki.fi/restcountries/api/all')
+      .then(response => {
+        setCountries(response.data);
+      });
+  }, []);
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  }
+
+  useEffect(() => {
+    if (search) {
+      const result = countries.filter(country => country.name.common.toLowerCase().includes(search.toLowerCase())) 
+      setCountry(result)
+      console.log(result)
     }
-  
-    setNotes(notes.concat(noteObject))
-    setNewNote('')
-  }
+  }, [search, countries]);
 
-  const handleNoteChange = (event) => {
-    console.log(event.target.value)
-    setNewNote(event.target.value)
-  }
 
   return (
     <div>
-      <h1>Notes</h1>
-      <div>
-        <button onClick={() => setShowAll(!showAll)}>
-          show {showAll ? 'important' : 'all' }
-        </button>
-      </div>
-      <ul>
-        {notesToShow.map(note => 
-          <Note key={note.id} note={note} />
-        )}
-      </ul>
-
-      <form onSubmit={addNote}>
-        <input 
-          value={newNote} 
-          onChange={handleNoteChange}
-        />
-        <button type="submit">save</button>
-      </form>   
+      <Search search={search} handleSearch={handleSearch} />
+      <Country country={country} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
