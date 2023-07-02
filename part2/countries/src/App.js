@@ -50,6 +50,8 @@ const Country = ({country, setCountry, setSearch}) => {
 
         <img src={country[0].flags.png} alt={country[0].flags.alt} width="250" />
         <img src={country[0].coatOfArms.png} alt="coat of arm" width="250" />
+
+        <Weather country={country[0]} />
       </div>
     );
   }
@@ -57,6 +59,35 @@ const Country = ({country, setCountry, setSearch}) => {
     <div>Search any valid country!</div>
   );
 }
+
+const Weather = ({country}) => {
+  const api_key = process.env.REACT_APP_API_KEY;
+  const [weather, setWeather] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`https://api.openweathermap.org/data/2.5/weather?q=${country.capital}&appid=${api_key}&units=metric`)
+      .then(response => {
+        setWeather(response.data);
+      });
+  }, [country, api_key]);
+
+  if (weather.length === 0) {
+    return (
+      <div>Weather data not available</div>
+    );
+  }
+  return (
+    <div>
+      <h3>Weather in {country.capital}</h3>
+      <div>temperature: {weather.main.temp} Celsius</div>
+      <img src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt={weather.weather[0].description} width="100px" />
+      <div>wind: {weather.wind.speed} m/s</div>
+    </div>
+  );
+}
+
+
 
 const App = () => {
   const [search, setSearch] = useState(null);
