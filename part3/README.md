@@ -18,6 +18,14 @@
     res.status(500).send({ error: 'something blew up' })
     ```
     it automatically assigns the Content-Length HTTP response header field
+  - [res.status](https://expressjs.com/en/4x/api.html#res.status)
+ 
+    ```js
+    res.status(403).end()
+    res.status(400).send('Bad Request')
+    res.status(404).sendFile('/absolute/path/to/404.png')
+    ```
+    
 - [routing](https://expressjs.com/en/guide/routing.html) | Express Docs
 
   for fetching a single resource
