@@ -54,3 +54,12 @@
       res.send(req.params)
     })
     ```
+- [Spread syntax (...)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) | MDN Docs
+
+  ```js
+  const numbers = [1, 2, 3];
+
+  console.log(sum(...numbers));
+  // Expected output: 6
+  ```
+  The array is transformed into individual numbers by using the "three dot" _spread syntax_ as `numbers` is an array so it can't directly be given as a parameter to sum.
