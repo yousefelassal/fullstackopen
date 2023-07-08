@@ -33,6 +33,7 @@ app.get('/', (request, response) => {
     if(note){
         response.json(note)
     } else {
+        response.statusMessage = "ay haga"
         response.status(404).end()
     }
     })
