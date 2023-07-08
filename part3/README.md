@@ -5,3 +5,15 @@
 - [req](https://expressjs.com/en/4x/api.html#req) | Express Docs
 
   contains all of the information of the HTTP request
+- [res](https://expressjs.com/en/4x/api.html#res) | Express Docs
+
+  used to define how the request is responded to
+  - [res.send](https://expressjs.com/en/4x/api.html#res.send) | Express Docs
+
+    ```js
+    res.send({ some: 'json' })
+    res.send('<p>some html</p>')
+    res.status(404).send('Sorry, we cannot find that!')
+    res.status(500).send({ error: 'something blew up' })
+    ```
+    it automatically assigns the Content-Length HTTP response header field
