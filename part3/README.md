@@ -17,3 +17,19 @@
     res.status(500).send({ error: 'something blew up' })
     ```
     it automatically assigns the Content-Length HTTP response header field
+- [routing](https://expressjs.com/en/guide/routing.html) | Express Docs
+
+  for fetching a single resource
+  - [route parameters](https://expressjs.com/en/guide/routing.html#route-parameters) | Express Docs
+
+    ```
+    Route path: /users/:userId/books/:bookId
+    Request URL: http://localhost:3000/users/34/books/8989
+    req.params: { "userId": "34", "bookId": "8989" }
+    ```
+    
+    ```js
+    app.get('/users/:userId/books/:bookId', (req, res) => {
+      res.send(req.params)
+    })
+    ```
