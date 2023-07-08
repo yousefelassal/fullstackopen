@@ -27,17 +27,23 @@ app.get('/', (request, response) => {
     response.json(notes)
   })
 
-  app.get('/api/notes/:id', (request, response) => {
+app.get('/api/notes/:id', (request, response) => {
+const id = Number(request.params.id)
+const note = notes.find(note => note.id === id)
+if(note){
+    response.json(note)
+} else {
+    response.statusMessage = "ay haga"
+    response.status(404).end()
+}
+})
+
+app.delete('/api/notes/:id', (request, response) => {
     const id = Number(request.params.id)
-    const note = notes.find(note => note.id === id)
-    if(note){
-        response.json(note)
-    } else {
-        response.statusMessage = "ay haga"
-        response.status(404).end()
-    }
-    })
-  
+    notes = notes.filter(note => note.id !== id)
+    response.status(204).end()
+})
+
   const PORT = 3001
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
