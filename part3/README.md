@@ -90,3 +90,9 @@
   ```
   fly deploy
   ```
+- [static](https://expressjs.com/en/starter/static-files.html) | Express Docs
+
+  To serve static files from the production build (`npm run build`)
+  ```js
+  app.use(express.static('build'))
+  ```
