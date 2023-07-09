@@ -86,3 +86,7 @@
     internal_port = 8080 
     processes = ["app"]
   ```
+  Deploy app
+  ```
+  fly deploy
+  ```
