@@ -86,6 +86,11 @@
     internal_port = 8080 
     processes = ["app"]
   ```
+
+  use the port defined in the environment variable `PORT` or port 3001 if the environment variable `PORT` is undefined. 
+  ```js
+  const PORT = process.env.PORT || 3001
+  ```
   Deploy app
   ```
   fly deploy
