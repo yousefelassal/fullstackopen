@@ -67,3 +67,22 @@
 ### b Deploying app to internet
 - [Same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) | MDN Docs
 - [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) | MDN Docs
+- [Launch app](https://fly.io/docs/hands-on/launch-app/) | Fly.io Docs
+
+  Initialize app
+  ```
+  fly launch
+  ```
+  updating _fly.toml_ configs
+  ```
+  [env]
+  PORT = "8080" # add this
+  
+  [experimental]
+    auto_rollback = true
+  
+  [[services]]
+    http_checks = []
+    internal_port = 8080 
+    processes = ["app"]
+  ```
