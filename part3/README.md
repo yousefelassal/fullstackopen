@@ -110,3 +110,17 @@
     }
   }
   ```
+- [proxy](https://create-react-app.dev/docs/proxying-api-requests-in-development/) | Create React App Docs
+  
+  ```
+  {
+    "dependencies": {
+      // ...
+    },
+    "scripts": {
+      // ...
+    },
+  
+    "proxy": "http://localhost:3001"
+  }
+  ```
