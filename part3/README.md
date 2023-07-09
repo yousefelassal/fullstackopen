@@ -97,6 +97,8 @@
   app.use(express.static('build'))
   ```
 - Fly.io scrpit
+
+  use bash
   ```
   {
     "scripts": {
