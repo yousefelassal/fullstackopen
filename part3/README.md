@@ -63,3 +63,5 @@
   // Expected output: 6
   ```
   The array is transformed into individual numbers by using the "three dot" _spread syntax_ as `numbers` is an array so it can't directly be given as a parameter to sum.
+
+### b Deploying app to internet
