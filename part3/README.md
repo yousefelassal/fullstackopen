@@ -96,3 +96,15 @@
   ```js
   app.use(express.static('build'))
   ```
+- Fly.io scrpit
+  ```
+  {
+    "scripts": {
+      // ...
+      "build:ui": "rm -rf build && cd ../dev/ && npm run build && cp -r build ../prod",
+      "deploy": "fly deploy",
+      "deploy:full": "npm run build:ui && npm run deploy",    
+      "logs:prod": "fly logs"
+    }
+  }
+  ```
