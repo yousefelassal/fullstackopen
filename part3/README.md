@@ -86,3 +86,27 @@
     internal_port = 8080 
     processes = ["app"]
   ```
+  Deploy app
+  ```
+  fly deploy
+  ```
+- [static](https://expressjs.com/en/starter/static-files.html) | Express Docs
+
+  To serve static files from the production build (`npm run build`)
+  ```js
+  app.use(express.static('build'))
+  ```
+- Fly.io scrpit
+
+  use bash
+  ```
+  {
+    "scripts": {
+      // ...
+      "build:ui": "rm -rf build && cd ../dev/ && npm run build && cp -r build ../prod",
+      "deploy": "fly deploy",
+      "deploy:full": "npm run build:ui && npm run deploy",    
+      "logs:prod": "fly logs"
+    }
+  }
+  ```
