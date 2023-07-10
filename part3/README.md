@@ -132,3 +132,50 @@
 ### c Saving data to MongoDB
 MongoDB stores data records as [documents](https://www.mongodb.com/docs/manual/core/document/) which are gathered together in [collections](https://www.mongodb.com/docs/manual/core/databases-and-collections/#collections).
 ![crud-annotated-collection bakedsvg](https://github.com/yousefelassal/fullstackopen/assets/76617202/32c2dca0-5828-4075-91c8-bf03da911f65)
+
+- [Schema](https://mongoosejs.com/docs/guide.html) | Mongoose Docs
+
+  Schema tells Mongoose how objects are to be stored in the database.
+- [model](https://mongoosejs.com/docs/models.html) | Mongoose Docs
+
+  Models are fancy constructors compiled from `Schema` definitions. An instance of a model is called a document. Models are responsible for creating and reading documents from the underlying MongoDB database.
+  ```js
+  const schema = new mongoose.Schema({ name: String, size: String });
+  const Tank = mongoose.model('Tank', schema);
+  ```
+  - [Model.find()](https://mongoosejs.com/docs/api/model.html#Model.find()) | Mongoose Docs
+
+    The parameter of the method is an object expressing search conditions
+    ```js
+        // find all documents
+    await MyModel.find({});
+    
+    // find all documents named john and at least 18
+    await MyModel.find({ name: 'john', age: { $gte: 18 } }).exec();
+    
+    // executes, name LIKE john and only selecting the "name" and "friends" fields
+    await MyModel.find({ name: /john/i }, 'name friends').exec();
+    
+    // passing options
+    await MyModel.find({ name: /john/i }, null, { skip: 10 }).exec();
+    ```
+    The search conditions adhere to the Mongo search query [syntax](https://www.mongodb.com/docs/manual/reference/operator/query/).
+- [process.argv](https://nodejs.org/docs/latest-v8.x/api/process.html#process_process_argv) | Node.js Docs
+
+   returns an array containing the command line arguments passed when the Node.js process was launched.
+  ```
+  node mongo.js <password>
+  ```
+  `<Array>` will have `mongo.js` in index [1]
+- [transform](https://mongoosejs.com/docs/api/document.html#transform) | Mongoose Docs
+  
+  ```js
+  noteSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+      returnedObject.id = returnedObject._id.toString()
+      delete returnedObject._id
+      delete returnedObject.__v
+    }
+  })
+  ```
+  The toJSON method transforms the __id_ object to a string
