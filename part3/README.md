@@ -133,6 +133,13 @@
 MongoDB stores data records as [documents](https://www.mongodb.com/docs/manual/core/document/) which are gathered together in [collections](https://www.mongodb.com/docs/manual/core/databases-and-collections/#collections).
 ![crud-annotated-collection bakedsvg](https://github.com/yousefelassal/fullstackopen/assets/76617202/32c2dca0-5828-4075-91c8-bf03da911f65)
 
-- [schema](https://mongoosejs.com/docs/guide.html) | Mongoose Docs
+- [Schema](https://mongoosejs.com/docs/guide.html) | Mongoose Docs
 
-  schema tells Mongoose how objects are to be stored in the database.
+  Schema tells Mongoose how objects are to be stored in the database.
+- [model](https://mongoosejs.com/docs/models.html) | Mongoose Docs
+
+  Models are fancy constructors compiled from `Schema` definitions. An instance of a model is called a document. Models are responsible for creating and reading documents from the underlying MongoDB database.
+  ```js
+  const schema = new mongoose.Schema({ name: String, size: String });
+  const Tank = mongoose.model('Tank', schema);
+  ```
