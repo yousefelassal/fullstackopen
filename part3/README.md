@@ -143,3 +143,10 @@ MongoDB stores data records as [documents](https://www.mongodb.com/docs/manual/c
   const schema = new mongoose.Schema({ name: String, size: String });
   const Tank = mongoose.model('Tank', schema);
   ```
+- [process.argv](https://nodejs.org/docs/latest-v8.x/api/process.html#process_process_argv) | Node.js Docs
+
+   returns an array containing the command line arguments passed when the Node.js process was launched.
+  ```
+  node mongo.js <password>
+  ```
+  `<Array>` will have `mongo.js` in index [1] 
