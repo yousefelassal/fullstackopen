@@ -179,3 +179,9 @@ MongoDB stores data records as [documents](https://www.mongodb.com/docs/manual/c
   })
   ```
   The toJSON method transforms the __id_ object to a string
+- Set env values to fly.io
+  
+  prevent .env from being copied to fly.io by creating `.dockerignore` in the root, then set the env value from the command line with the command:
+  ```
+  fly secrets set ay_haga='ay haga`
+  ```
