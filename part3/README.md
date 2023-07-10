@@ -143,6 +143,23 @@ MongoDB stores data records as [documents](https://www.mongodb.com/docs/manual/c
   const schema = new mongoose.Schema({ name: String, size: String });
   const Tank = mongoose.model('Tank', schema);
   ```
+  - [Model.find()](https://mongoosejs.com/docs/api/model.html#Model.find()) | Mongoose Docs
+
+    The parameter of the method is an object expressing search conditions
+    ```js
+        // find all documents
+    await MyModel.find({});
+    
+    // find all documents named john and at least 18
+    await MyModel.find({ name: 'john', age: { $gte: 18 } }).exec();
+    
+    // executes, name LIKE john and only selecting the "name" and "friends" fields
+    await MyModel.find({ name: /john/i }, 'name friends').exec();
+    
+    // passing options
+    await MyModel.find({ name: /john/i }, null, { skip: 10 }).exec();
+    ```
+    The search conditions adhere to the Mongo search query [syntax](https://www.mongodb.com/docs/manual/reference/operator/query/).
 - [process.argv](https://nodejs.org/docs/latest-v8.x/api/process.html#process_process_argv) | Node.js Docs
 
    returns an array containing the command line arguments passed when the Node.js process was launched.
