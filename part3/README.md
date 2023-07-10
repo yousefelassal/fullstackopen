@@ -166,4 +166,16 @@ MongoDB stores data records as [documents](https://www.mongodb.com/docs/manual/c
   ```
   node mongo.js <password>
   ```
-  `<Array>` will have `mongo.js` in index [1] 
+  `<Array>` will have `mongo.js` in index [1]
+- [transform](https://mongoosejs.com/docs/api/document.html#transform) | Mongoose Docs
+  
+  ```js
+  noteSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+      returnedObject.id = returnedObject._id.toString()
+      delete returnedObject._id
+      delete returnedObject.__v
+    }
+  })
+  ```
+  The toJSON method transforms the __id_ object to a string
