@@ -201,3 +201,21 @@ MongoDB stores data records as [documents](https://www.mongodb.com/docs/manual/c
     _The server has fulfilled the request but does not need to return an entity-body._
 
 ### d Validation and ESLint
+- [validation](https://mongoosejs.com/docs/validation.html) | Mongoose Docs
+
+  ```js
+  const breakfastSchema = new Schema({
+    eggs: {
+      type: Number,
+      min: [6, 'Must be at least 6, got {VALUE}'],
+      max: 12
+    },
+    drink: {
+      type: String,
+      enum: {
+        values: ['Coffee', 'Tea'],
+        message: '{VALUE} is not supported'
+      }
+    }
+  });
+  ```
