@@ -35,9 +35,20 @@ let notes = [
   }
 ]
 
-app.get('/', (request, response) => {
-    response.send('<h1>Hello World awy!</h1>')
-  })
+app.put('/api/notes/:id', (request, response, next) => {
+  const body = request.body
+
+  const note = {
+    content: body.content,
+    important: body.important,
+  }
+
+  Note.findByIdAndUpdate(request.params.id, note, { new: true })
+    .then(updatedNote => {
+      response.json(updatedNote)
+    })
+    .catch(error => next(error))
+})
   
   app.get('/api/notes', (request, response) => {
     Note.find({}).then(notes => {
