@@ -212,6 +212,7 @@ MongoDB stores data records as [documents](https://www.mongodb.com/docs/manual/c
     },
     drink: {
       type: String,
+      required: true,
       enum: {
         values: ['Coffee', 'Tea'],
         message: '{VALUE} is not supported'
@@ -219,3 +220,4 @@ MongoDB stores data records as [documents](https://www.mongodb.com/docs/manual/c
     }
   });
   ```
+  The _min_ and _required_ validators are [built-in](https://mongoosejs.com/docs/validation.html#built-in-validators) and provided by Mongoose. The Mongoose [custom validator](https://mongoosejs.com/docs/validation.html#custom-validators) functionality allows us to create new validators if none of the built-in ones cover our needs.
