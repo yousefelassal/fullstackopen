@@ -118,10 +118,17 @@ const App = () => {
             }, 5000)
           })
           .catch(error => {
-            setNotification({ type: 'error', message: `Information of ${person.name} has already been removed from server` })
-            setTimeout(() => {
-              setNotification({ message: null, type: null })
-            }, 5000)
+            if(error.response.status === 404) {
+              setNotification({ type: 'error', message: `Information of ${person.name} has already been removed from server` })
+              setTimeout(() => {
+                setNotification({ message: null, type: null })
+              }, 5000)
+            } else if (error.response.status === 400) {
+              setNotification({ type: 'error', message: error.response.data.error })
+              setTimeout(() => {
+                setNotification({ message: null, type: null })
+              }, 5000)
+            }
             setPersons(persons.filter(p => p.id !== person.id))
             setNewName('')
             setNewNumber('')
@@ -146,6 +153,12 @@ const App = () => {
         }, 5000)
       }
     )
+    .catch(error => {
+      setNotification({ type: 'error', message: error.response.data.error })
+      setTimeout(() => {
+        setNotification({ message: null, type: null })
+      }, 5000)
+    })
   }
 
   const handleDelete = (id) => {
