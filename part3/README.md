@@ -160,6 +160,11 @@ MongoDB stores data records as [documents](https://www.mongodb.com/docs/manual/c
     await MyModel.find({ name: /john/i }, null, { skip: 10 }).exec();
     ```
     The search conditions adhere to the Mongo search query [syntax](https://www.mongodb.com/docs/manual/reference/operator/query/).
+
+    **Other methods:**
+    - [Model.findById()](https://mongoosejs.com/docs/api/model.html#Model.findById())
+    - [Model.findByIdAndRemove()](https://mongoosejs.com/docs/api/model.html#Model.findByIdAndRemove())
+    - [Model.findByIdAndUpdate()](https://mongoosejs.com/docs/api/model.html#Model.findByIdAndUpdate())
 - [process.argv](https://nodejs.org/docs/latest-v8.x/api/process.html#process_process_argv) | Node.js Docs
 
    returns an array containing the command line arguments passed when the Node.js process was launched.
