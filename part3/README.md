@@ -186,3 +186,7 @@ MongoDB stores data records as [documents](https://www.mongodb.com/docs/manual/c
   fly secrets set ay_haga='ay haga`
   ```
 - [Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) | W3.org
+
+  **400 Bad Request**
+
+  _The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modifications._
