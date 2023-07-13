@@ -37,3 +37,13 @@
   app.use('/api/notes', notesRouter)
   ```
   The router we defined earlier is used _if_ the URL of the request starts with _/api/notes_. For this reason, the notesRouter object must only define the relative parts of the routes, i.e. the empty path _/_ or just the parameter _/:id_.
+- [Expect](https://jestjs.io/docs/expect#expectvalue) | Jest Docs
+
+  ```js
+  test('the best flavor is grapefruit', () => {
+    expect(bestLaCroixFlavor()).toBe('grapefruit');
+  });
+  ```
+  The first parameter of the function is the test description as a string. The second parameter is a function, that defines the functionality for the test case.
+  - [.toBe()](https://jestjs.io/docs/expect#tobevalue) | Jest Docs
+    
