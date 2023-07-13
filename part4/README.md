@@ -45,3 +45,5 @@
   });
   ```
   The first parameter of the function is the test description as a string. The second parameter is a function, that defines the functionality for the test case.
+  - [.toBe()](https://jestjs.io/docs/expect#tobevalue) | Jest Docs
+    
