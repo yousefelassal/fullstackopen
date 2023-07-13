@@ -61,3 +61,10 @@
   });
   ```
   Only the "it is raining" test will run in that test file, since it is run with `test.only`.
+- [cli](https://jestjs.io/docs/cli) | Jest Docs
+
+  **-t**
+  Run tests that match this spec name (match against the name in describe or test).
+  ```
+  jest -t name-of-spec
+  ```
