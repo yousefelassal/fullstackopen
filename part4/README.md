@@ -47,3 +47,24 @@
   The first parameter of the function is the test description as a string. The second parameter is a function, that defines the functionality for the test case.
   - [.toBe()](https://jestjs.io/docs/expect#tobevalue) | Jest Docs
     
+- [test.only()](https://jestjs.io/docs/api#testonlyname-fn-timeout) | Jest Docs
+
+  When you are debugging a large test file, you will often only want to run a subset of tests. You can use .only to specify which tests are the only ones you want to run in that test file.
+  
+  ```js
+  test.only('it is raining', () => {
+    expect(inchesOfRain()).toBeGreaterThan(0);
+  });
+  
+  test('it is not snowing', () => {
+    expect(inchesOfSnow()).toBe(0);
+  });
+  ```
+  Only the "it is raining" test will run in that test file, since it is run with `test.only`.
+- [cli](https://jestjs.io/docs/cli) | Jest Docs
+
+  **-t**
+  Run tests that match this spec name (match against the name in describe or test).
+  ```
+  jest -t name-of-spec
+  ```
