@@ -33,22 +33,17 @@ test('notes are returned as json', async () => {
 }, 100000)
 
 test('all notes are returned', async () => {
-    const response = await api.get('/api/notes')
-  
-  
-    expect(response.body).toHaveLength(initialNotes.length)
-  })
-  
-  
-  test('a specific note is within the returned notes', async () => {
-    const response = await api.get('/api/notes')
-  
-  
-    const contents = response.body.map(r => r.content)
-    expect(contents).toContain(
-      'Browser can execute only JavaScript'
-    )
-  })
+  const response = await api.get('/api/notes')
+  expect(response.body).toHaveLength(initialNotes.length)
+})
+
+test('a specific note is within the returned notes', async () => {
+  const response = await api.get('/api/notes')
+  const contents = response.body.map(r => r.content)
+  expect(contents).toContain(
+    'Browser can execute only JavaScript'
+  )
+})
 
 afterAll(async () => {
   await mongoose.connection.close()
