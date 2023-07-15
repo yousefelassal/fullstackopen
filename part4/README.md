@@ -77,4 +77,9 @@
   })
   ```
   closes the connection to the database after the tests are finished executing
-    
+- [cli](https://jestjs.io/docs/cli) | Jest Docs
+
+  The following command only runs the tests found in the tests/note_api.test.js file:
+  ```
+  npm test -- tests/note_api.test.js
+  ```
