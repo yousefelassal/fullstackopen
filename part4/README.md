@@ -83,3 +83,8 @@
   ```
   npm test -- tests/note_api.test.js
   ```
+- [Promises Chaining](https://javascript.info/promise-chaining) | Javascript.info
+
+  If a `.then` (or `catch/finally`, doesn’t matter) handler returns a promise, the rest of the chain waits until it settles. When it does, its result (or error) is passed further.
+  
+  <img width="550" alt="promises" src="https://github.com/yousefelassal/fullstackopen/assets/76617202/cb72924d-8140-4901-9c45-01fee10ddbad">
