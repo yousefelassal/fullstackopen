@@ -167,3 +167,11 @@ In stark contrast to the conventions of relational databases, _references are no
   
   module.exports = usersRouter
   ```
+- [populate](https://mongoosejs.com/docs/populate.html) | Mongoose Docs
+
+  lets you reference documents in other collections
+  ```js
+  .find({}).populate('notes', { content: 1, important: 1 })
+  ```
+
+  - [Return specified fileds](https://www.mongodb.com/docs/manual/tutorial/project-fields-from-query-results/#return-the-specified-fields-and-the-id-field-only) | MongoDB Docs
