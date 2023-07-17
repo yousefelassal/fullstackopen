@@ -90,3 +90,11 @@
   <img width="550" alt="promises" src="https://github.com/yousefelassal/fullstackopen/assets/76617202/cb72924d-8140-4901-9c45-01fee10ddbad">
 
 ### c User administration
+
+The ids of the data are stored within the user document as an array of Mongo ids. The definition is as follows:
+```js
+{
+  type: mongoose.Schema.Types.ObjectId,
+  ref: 'elReference'
+}
+```
