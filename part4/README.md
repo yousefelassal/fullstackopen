@@ -126,10 +126,17 @@ Document databases do not demand the foreign key to be stored in the _whateverDa
 ```
 In stark contrast to the conventions of relational databases, _references are now stored in both documents_: the _whateverData_ references the user who created it, and the user has an array of references to all of the _whateverData_ created by them.
 
-The ids of the data are stored within the user document as an array of Mongo ids. The definition is as follows:
-```js
-{
-  type: mongoose.Schema.Types.ObjectId,
-  ref: 'elReference'
-}
-```
+- User Schema
+
+  The ids of the data are stored within the user document as an array of Mongo ids. The definition is as follows:
+  ```js
+  const userSchema = new mongoose.Schema({
+    // ...
+    data: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'elReference'
+      }
+    ],
+  })
+  ```
