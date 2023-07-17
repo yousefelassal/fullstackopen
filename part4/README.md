@@ -140,3 +140,38 @@ In stark contrast to the conventions of relational databases, _references are no
     ],
   })
   ```
+- [How To Safely Store A Password](https://codahale.com/how-to-safely-store-a-password/)
+
+  Use **bycrypt** [saltRounds](https://github.com/kelektiv/node.bcrypt.js/#a-note-on-rounds)
+  ```js
+  const bcrypt = require('bcrypt')
+  const usersRouter = require('express').Router()
+  const User = require('../models/user')
+  
+  usersRouter.post('/', async (request, response) => {
+    const { username, name, password } = request.body
+  
+    const saltRounds = 10
+    const passwordHash = await bcrypt.hash(password, saltRounds)
+  
+    const user = new User({
+      username,
+      name,
+      passwordHash,
+    })
+  
+    const savedUser = await user.save()
+  
+    response.status(201).json(savedUser)
+  })
+  
+  module.exports = usersRouter
+  ```
+- [populate](https://mongoosejs.com/docs/populate.html) | Mongoose Docs
+
+  lets you reference documents in other collections
+  ```js
+  .find({}).populate('notes', { content: 1, important: 1 })
+  ```
+
+  - [Return specified fileds](https://www.mongodb.com/docs/manual/tutorial/project-fields-from-query-results/#return-the-specified-fields-and-the-id-field-only) | MongoDB Docs
