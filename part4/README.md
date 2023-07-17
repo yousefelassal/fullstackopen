@@ -91,6 +91,23 @@
 
 ### c User administration
 
+The _whateverData_ collection contains a user field that references a user in the users collection:
+```js
+[
+  {
+    content: 'HTML is easy',
+    important: false,
+    _id: 221212,
+    user: 123456,
+  },
+  {
+    content: 'The most important operations of HTTP protocol are GET and POST',
+    important: true,
+    _id: 221255,
+    user: 123456,
+  },
+]
+```
 Document databases do not demand the foreign key to be stored in the _whateverData_ resources, it could also be stored in the users collection, or even both:
 
 ```js
