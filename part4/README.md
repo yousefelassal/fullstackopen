@@ -140,3 +140,30 @@ In stark contrast to the conventions of relational databases, _references are no
     ],
   })
   ```
+- [How To Safely Store A Password](https://codahale.com/how-to-safely-store-a-password/)
+
+  Use **bycrypt** [saltRounds](https://github.com/kelektiv/node.bcrypt.js/#a-note-on-rounds)
+  ```js
+  const bcrypt = require('bcrypt')
+  const usersRouter = require('express').Router()
+  const User = require('../models/user')
+  
+  usersRouter.post('/', async (request, response) => {
+    const { username, name, password } = request.body
+  
+    const saltRounds = 10
+    const passwordHash = await bcrypt.hash(password, saltRounds)
+  
+    const user = new User({
+      username,
+      name,
+      passwordHash,
+    })
+  
+    const savedUser = await user.save()
+  
+    response.status(201).json(savedUser)
+  })
+  
+  module.exports = usersRouter
+  ```
