@@ -91,7 +91,22 @@
 
 ### c User administration
 
+Document databases do not demand the foreign key to be stored in the _whateverData_ resources, it could also be stored in the users collection, or even both:
 
+```js
+[
+  {
+    username: 'mluukkai',
+    _id: 123456,
+    whateverData: [221212, 221255],
+  },
+  {
+    username: 'sha3ban',
+    _id: 141414,
+    whateverData: [221244],
+  },
+]
+```
 In stark contrast to the conventions of relational databases, _references are now stored in both documents_: the _whateverData_ references the user who created it, and the user has an array of references to all of the _whateverData_ created by them.
 
 The ids of the data are stored within the user document as an array of Mongo ids. The definition is as follows:
