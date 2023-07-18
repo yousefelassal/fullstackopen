@@ -177,3 +177,5 @@ In stark contrast to the conventions of relational databases, _references are no
   - [Return specified fileds](https://www.mongodb.com/docs/manual/tutorial/project-fields-from-query-results/#return-the-specified-fields-and-the-id-field-only) | MongoDB Docs
 
 ### d Token authentication
+
+![16new](https://github.com/yousefelassal/fullstackopen/assets/76617202/527070fc-bf00-4eab-ba99-e9bc3ce8ae18)
