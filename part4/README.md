@@ -207,3 +207,9 @@ In stark contrast to the conventions of relational databases, _references are no
   
   const token = jwt.sign(userForToken, process.env.SECRET)
   ```
+- jwt.verify
+
+  The validity of the token is checked with `jwt.verify`. The method also decodes the token, or returns the Object which the token was based on.
+  ```js
+  const decodedToken = jwt.verify(token, process.env.SECRET)
+  ```
