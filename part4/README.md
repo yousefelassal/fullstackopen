@@ -187,3 +187,11 @@ In stark contrast to the conventions of relational databases, _references are no
   3. Application provides a signed token to the client
   4. Client stores that token and sends it along with every request
   5. Server verifies token and responds with data
+
+- bycrypt.compare
+
+  the `bcrypt.compare` method is used to check if the password is correct:
+  ```js
+  await bcrypt.compare(body.password, user.passwordHash)copy
+  ```
+  If the user is not found, or the password is incorrect, the request is responded to with the status code [401 unauthorized](https://www.rfc-editor.org/rfc/rfc9110.html#name-401-unauthorized)https://www.rfc-editor.org/rfc/rfc9110.html#name-401-unauthorized.
