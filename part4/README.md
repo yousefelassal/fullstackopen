@@ -195,3 +195,15 @@ In stark contrast to the conventions of relational databases, _references are no
   await bcrypt.compare(body.password, user.passwordHash)copy
   ```
   If the user is not found, or the password is incorrect, the request is responded to with the status code [401 unauthorized](https://www.rfc-editor.org/rfc/rfc9110.html#name-401-unauthorized).
+
+- jwt.sign
+  
+  If the password is correct, a token is created with the method `jwt.sign`. The token contains the username and the user id in a digitally signed form.
+  ```js
+  const userForToken = {
+    username: user.username,
+    id: user._id,
+  }
+  
+  const token = jwt.sign(userForToken, process.env.SECRET)
+  ```
