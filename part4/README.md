@@ -175,3 +175,35 @@ In stark contrast to the conventions of relational databases, _references are no
   ```
 
   - [Return specified fileds](https://www.mongodb.com/docs/manual/tutorial/project-fields-from-query-results/#return-the-specified-fields-and-the-id-field-only) | MongoDB Docs
+
+### d Token authentication
+
+![16new](https://github.com/yousefelassal/fullstackopen/assets/76617202/527070fc-bf00-4eab-ba99-e9bc3ce8ae18)
+
+- [How Token-Based Works](https://www.digitalocean.com/community/tutorials/the-ins-and-outs-of-token-based-authentication#how-token-based-works) | DigitalOcean
+
+  1. User Requests Access with Username / Password
+  2. Application validates credentials
+  3. Application provides a signed token to the client
+  4. Client stores that token and sends it along with every request
+  5. Server verifies token and responds with data
+
+- bycrypt.compare
+
+  the `bcrypt.compare` method is used to check if the password is correct:
+  ```js
+  await bcrypt.compare(body.password, user.passwordHash)copy
+  ```
+  If the user is not found, or the password is incorrect, the request is responded to with the status code [401 unauthorized](https://www.rfc-editor.org/rfc/rfc9110.html#name-401-unauthorized).
+
+- jwt.sign
+  
+  If the password is correct, a token is created with the method `jwt.sign`. The token contains the username and the user id in a digitally signed form.
+  ```js
+  const userForToken = {
+    username: user.username,
+    id: user._id,
+  }
+  
+  const token = jwt.sign(userForToken, process.env.SECRET)
+  ```
