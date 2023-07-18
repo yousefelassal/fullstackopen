@@ -179,3 +179,11 @@ In stark contrast to the conventions of relational databases, _references are no
 ### d Token authentication
 
 ![16new](https://github.com/yousefelassal/fullstackopen/assets/76617202/527070fc-bf00-4eab-ba99-e9bc3ce8ae18)
+
+- [How Token-Based Works](https://www.digitalocean.com/community/tutorials/the-ins-and-outs-of-token-based-authentication#how-token-based-works) | DigitalOcean
+
+  1. User Requests Access with Username / Password
+  2. Application validates credentials
+  3. Application provides a signed token to the client
+  4. Client stores that token and sends it along with every request
+  5. Server verifies token and responds with data
