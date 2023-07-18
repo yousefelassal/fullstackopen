@@ -194,4 +194,4 @@ In stark contrast to the conventions of relational databases, _references are no
   ```js
   await bcrypt.compare(body.password, user.passwordHash)copy
   ```
-  If the user is not found, or the password is incorrect, the request is responded to with the status code [401 unauthorized](https://www.rfc-editor.org/rfc/rfc9110.html#name-401-unauthorized)https://www.rfc-editor.org/rfc/rfc9110.html#name-401-unauthorized.
+  If the user is not found, or the password is incorrect, the request is responded to with the status code [401 unauthorized](https://www.rfc-editor.org/rfc/rfc9110.html#name-401-unauthorized).
