@@ -81,13 +81,7 @@ const App = () => {
     ? notes
     : notes.filter(note => note.important)
 
-  return (
-    <div>
-      <h1>Notes</h1>
-
-      <Notification message={errorMessage} />
-
-      <h2>Login</h2>
+    const loginForm = () => (
       <form onSubmit={handleLogin}>
         <div>
           username
@@ -108,29 +102,43 @@ const App = () => {
           />
         </div>
         <button type="submit">login</button>
-      </form>
-
-      <div>
-        <button onClick={() => setShowAll(!showAll)}>
-          show {showAll ? 'important' : 'all' }
-        </button>
-      </div>      
-      <ul>
-        {notesToShow.map(note => 
-          <Note
-            key={note.id}
-            note={note}
-            toggleImportance={() => toggleImportanceOf(note.id)}
-          />
-        )}
-      </ul>
+      </form>      
+    )
+  
+    const noteForm = () => (
       <form onSubmit={addNote}>
-      <input
+        <input
           value={newNote}
           onChange={handleNoteChange}
         />
         <button type="submit">save</button>
-      </form>
+      </form>  
+    )
+
+  return (
+    <div>
+      <h1>Notes</h1>
+
+      <Notification message={errorMessage} />
+
+      {user === null && loginForm()}
+      {user !== null && noteForm()}
+
+      <div>
+        <button onClick={() => setShowAll(!showAll)}>
+          show {showAll ? 'important' : 'all'}
+        </button>
+      </div>
+      <ul>
+        {notesToShow.map((note, i) => 
+          <Note
+            key={i}
+            note={note} 
+            toggleImportance={() => toggleImportanceOf(note.id)}
+          />
+        )}
+      </ul>
+
       <Footer />
     </div>
   )
