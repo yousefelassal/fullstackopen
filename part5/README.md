@@ -30,6 +30,8 @@
   
   Local Storage is a key-value database in the browser.
 
+  Values in the local storage are persisted even when the page is re-rendered. The storage is [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin)-specific so each web application has its own storage.
+
    - [setItem](https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem) | MDN Docs
      
      A _value_ corresponding to a certain _key_ is saved to the database.
