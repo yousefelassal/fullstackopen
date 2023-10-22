@@ -27,3 +27,25 @@
   ```
   The module contains a private variable `token`. Its value can be changed with a function `setToken`, which is exported by the module. `create`, now with async/await syntax, sets the token to the _Authorization_ header. The header is given to axios as the third parameter of the _post_ method.
 - [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) | MDN Docs
+  
+  Local Storage is a key-value database in the browser.
+
+   - [setItem](https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem) | MDN Docs
+     
+     A _value_ corresponding to a certain _key_ is saved to the database.
+      ```js
+      window.localStorage.setItem('name', 'juha tauriainen')
+      ```
+  
+  - [getItem](https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem) | MDN Docs
+    
+    The value of a key can be found with this method.
+    ```js
+    window.localStorage.getItem('name')
+    ```
+   - [removeItem](https://developer.mozilla.org/en-US/docs/Web/API/Storage/removeItem) | MDN Docs
+     
+     removes a key.
+     ```js
+     window.localStorage.removeItem('name')
+     ```
