@@ -56,4 +56,16 @@
       window.localStorage.setItem(
         'loggedNoteappUser', JSON.stringify(user)
       )
-  ``` 
+  ```
+
+  check if user details of a logged-in user can already be found on the local storage:
+  ```js
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem('loggedNoteappUser')
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON)
+      setUser(user)
+      noteService.setToken(user.token)
+    }
+  }, [])
+  ```
