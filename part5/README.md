@@ -51,3 +51,9 @@
      ```js
      window.localStorage.removeItem('name')
      ```
+  Values saved to the storage are [DOMstrings](https://docs.w3cub.com/dom/domstring), so we cannot save a JavaScript object as it is. The object has to be parsed to JSON first, with the method `JSON.stringify`. Correspondingly, when a JSON object is read from the local storage, it has to be parsed back to JavaScript with `JSON.parse`.
+  ```js
+      window.localStorage.setItem(
+        'loggedNoteappUser', JSON.stringify(user)
+      )
+  ``` 
