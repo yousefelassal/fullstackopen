@@ -71,3 +71,6 @@
   ```
 
 ### b props.children and proptypes
+  - [props.children](https://react.dev/learn/passing-props-to-a-component#passing-jsx-as-children) | React Docs
+    
+    <img alt="i_children-prop" height="auto" width="650px" src="https://github.com/yousefelassal/fullstackopen/assets/76617202/fb629610-c73d-4d63-a9a5-d42cc10db654" />
