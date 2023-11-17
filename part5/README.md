@@ -74,3 +74,7 @@
   - [props.children](https://react.dev/learn/passing-props-to-a-component#passing-jsx-as-children) | React Docs
     
     <img alt="i_children-prop" height="auto" width="650px" src="https://github.com/yousefelassal/fullstackopen/assets/76617202/fb629610-c73d-4d63-a9a5-d42cc10db654" />
+    
+  - [Sharing State](https://react.dev/learn/sharing-state-between-components) | React Docs
+
+    > Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as lifting state up, and it’s one of the most common things you will do writing React code.
