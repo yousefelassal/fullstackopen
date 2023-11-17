@@ -36,18 +36,11 @@ const App = () => {
     }
   }, [])
 
-  const addNote = (event) => {
-    event.preventDefault()
-    const noteObject = {
-      content: newNote,
-      important: Math.random() > 0.5,
-    }
-  
+  const addNote = (noteObject) => {
     noteService
       .create(noteObject)
-        .then(returnedNote => {
+      .then(returnedNote => {
         setNotes(notes.concat(returnedNote))
-        setNewNote('')
       })
   }
 
@@ -73,7 +66,7 @@ const App = () => {
   const handleNoteChange = (event) => {
     setNewNote(event.target.value)
   }
-  
+
   const handleLogin = async (event) => {
     event.preventDefault()
     try {
@@ -117,12 +110,8 @@ const App = () => {
     )
 
     const noteForm = () => (
-      <Togglable buttonLabel="new note">
-        <NoteForm
-          onSubmit={addNote}
-          value={newNote}
-          handleChange={handleNoteChange}
-        />
+      <Togglable buttonLabel='new note'>
+        <NoteForm createNote={addNote} />
       </Togglable>
     )
   
