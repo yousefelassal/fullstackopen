@@ -70,4 +70,4 @@
   }, [])
   ```
 
-  ### b props.children and proptypes
+### b props.children and proptypes
