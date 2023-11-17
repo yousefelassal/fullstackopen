@@ -4,6 +4,7 @@ import Note from './components/Note'
 import Notification from './components/Notification'
 import Footer from './components/Footer'
 import LoginForm from './components/LoginForm'
+import Togglable from './components/Togglable'
 
 import noteService from './services/notes'
 import loginService from './services/login'
@@ -103,38 +104,33 @@ const App = () => {
     ? notes
     : notes.filter(note => note.important)
 
-    const loginForm = () => {
-      const hideWhenVisible = { display: loginVisible ? 'none' : '' }
-      const showWhenVisible = { display: loginVisible ? '' : 'none' }
+    const loginForm = () => (
+      <Togglable buttonLabel='login'>
+        <LoginForm
+          username={username}
+          password={password}
+          handleUsernameChange={({ target }) => setUsername(target.value)}
+          handlePasswordChange={({ target }) => setPassword(target.value)}
+          handleSubmit={handleLogin}
+        />
+      </Togglable>
+      )
   
+    const NoteForm = ({ onSubmit, handleChange, value}) => {
       return (
         <div>
-          <div style={hideWhenVisible}>
-            <button onClick={() => setLoginVisible(true)}>log in</button>
-          </div>
-          <div style={showWhenVisible}>
-            <LoginForm
-              username={username}
-              password={password}
-              handleUsernameChange={({ target }) => setUsername(target.value)}
-              handlePasswordChange={({ target }) => setPassword(target.value)}
-              handleSubmit={handleLogin}
+          <h2>Create a new note</h2>
+    
+          <form onSubmit={onSubmit}>
+            <input
+              value={value}
+              onChange={handleChange}
             />
-            <button onClick={() => setLoginVisible(false)}>cancel</button>
-          </div>
+            <button type="submit">save</button>
+          </form>
         </div>
       )
     }
-  
-    const noteForm = () => (
-      <form onSubmit={addNote}>
-        <input
-          value={newNote}
-          onChange={handleNoteChange}
-        />
-        <button type="submit">save</button>
-      </form>  
-    )
 
   return (
     <div>
@@ -147,7 +143,13 @@ const App = () => {
         <div>
           <p>{user.name} logged in</p>
           <button onClick={logout}>logout</button>
-            {noteForm()}
+          <Togglable buttonLabel="new note">
+            <NoteForm
+              onSubmit={addNote}
+              handleChange={handleNoteChange}
+              value={newNote}
+            />
+          </Togglable>
         </div>
       }
 
