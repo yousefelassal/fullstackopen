@@ -80,3 +80,10 @@
     > Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as lifting state up, and it’s one of the most common things you will do writing React code.
 
   - [ref](https://react.dev/learn/referencing-values-with-refs) | React Docs
+  
+    | **refs**	 | **state** |
+    | ----- | ----- |
+    | `useRef(initialValue)` returns `{ current: initialValue }` |	`useState(initialValue)` returns the current value of a state variable and a state setter function ( `[value, setValue]`) |
+    | Doesn’t trigger re-render when you change it. |	Triggers re-render when you change it. |
+    | Mutable—you can modify and update `current`’s value outside of the rendering process. |	“Immutable”—you must use the state setting function to modify state variables to queue a re-render. |
+    | You shouldn’t read (or write) the `current` value during rendering. |	You can read state at any time. However, each render has its own snapshot of state which does not change. |
