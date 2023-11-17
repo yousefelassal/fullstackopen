@@ -69,3 +69,5 @@
     }
   }, [])
   ```
+
+  ### b props.children and proptypes
