@@ -9,7 +9,7 @@
       <li>[X] Part 2: Communicating with server</li>
       <li>[X] Part 3: Programming a server with NodeJS and Express</li>
       <li>[X] Part 4: Testing Express Servers, user administration</li>
-      <li>Part 5: Testing React apps</li>
+      <li>[X] Part 5: Testing React apps</li>
       <li>Part 6: Advanced state management</li>
       <li>Part 7: React router, custom hooks, styling apps with CSS and webpack</li>
       <li>Part 8: GraphQL</li>
