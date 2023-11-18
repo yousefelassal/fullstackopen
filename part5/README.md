@@ -163,4 +163,17 @@
 
   - [Introduction to Cypress](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress#Cypress-Can-Be-Simple-Sometimes) | Cypress Docs
 
+    ```js
+    describe('Note app', function() {
+      beforeEach(function() {
+        cy.visit('http://localhost:5173')
+      })
     
+      it('user can login', function () {
+        cy.contains('login').click()
+        cy.get('#username').type('admin')
+        cy.get('#password').type('admin')
+        cy.get('#login-button').click()
+      })  
+    })
+    ```
