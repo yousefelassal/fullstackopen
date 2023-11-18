@@ -198,4 +198,24 @@
     - [Assertions](https://docs.cypress.io/guides/references/assertions#Common-Assertions)
     - [.and](https://docs.cypress.io/api/commands/and)
 
-  - [Bypassing Ui](https://docs.cypress.io/guides/end-to-end-testing/testing-your-app#Bypassing-your-UI)
+  - [Bypassing UI](https://docs.cypress.io/guides/end-to-end-testing/testing-your-app#Bypassing-your-UI) | Cypress Docs
+
+    ```js
+    describe('when logged in', function() {
+      beforeEach(function() {
+        cy.request('POST', 'http://localhost:3001/api/login', {
+          username: 'admin', password: 'admin'
+        }).then(response => {
+          localStorage.setItem('loggedNoteappUser', JSON.stringify(response.body))
+          cy.visit('http://localhost:5173')
+        })
+      })
+    
+      it('a new note can be created', function() {
+        // ...
+      })
+    
+      // ...
+    })
+    ```
+    
