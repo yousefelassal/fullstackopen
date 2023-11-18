@@ -95,7 +95,7 @@
       ```js
       const MyInput = forwardRef(function MyInput(props, ref) {
         // ...
-        return <input {...otherProps} ref={ref} />
+        return <input {...props} ref={ref} />
       });
       ```
     This lets the parent Form component access the `<input> DOM node` exposed by `MyInput`:
