@@ -14,7 +14,10 @@ describe('Note app', function() {
 
   it('user can login', function () {
     cy.contains('login').click()
-    cy.get('input:first').type('admin')
-    cy.get('input:last').type('admin')
+    cy.get('#username').type('admin')
+    cy.get('#password').type('admin')
+    cy.get('#login-button').click()
+
+    cy.contains('admin logged in')
   })  
 })
