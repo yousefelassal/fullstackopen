@@ -218,4 +218,4 @@
       // ...
     })
     ```
-    
+    - [cy.request](https://docs.cypress.io/api/commands/request)
