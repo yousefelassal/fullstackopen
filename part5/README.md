@@ -87,3 +87,50 @@
     | Doesn’t trigger re-render when you change it. |	Triggers re-render when you change it. |
     | Mutable—you can modify and update `current`’s value outside of the rendering process. |	“Immutable”—you must use the state setting function to modify state variables to queue a re-render. |
     | You shouldn’t read (or write) the `current` value during rendering. |	You can read state at any time. However, each render has its own snapshot of state which does not change. |
+
+  - [forwardRef](https://react.dev/reference/react/forwardRef) | React Docs
+
+    expose a DOM node to parent component with a ref.
+
+    You will receive a ref as the second argument after props. Pass it to the DOM node that you want to expose:
+      ```js
+      const MyInput = forwardRef(function MyInput(props, ref) {
+        // ...
+        return <input {...props} ref={ref} />
+      });
+      ```
+    This lets the parent Form component access the `<input> DOM node` exposed by `MyInput`:
+      ```js
+      function Form() {
+        const ref = useRef(null);
+      
+        function handleClick() {
+          ref.current.focus();
+        }
+      
+        return (
+          <form>
+            <MyInput label="Enter your name:" ref={ref} />
+            <button type="button" onClick={handleClick}>
+              Edit
+            </button>
+          </form>
+        );
+      }
+      ```
+  - [useImperativeHandle](https://react.dev/reference/react/useImperativeHandle) | React Docs
+
+    With the code above, a ref to `MyInput` will receive the `<input> DOM node`. However, you can expose a custom value instead. To customize the exposed handle, call `useImperativeHandle` at the top level of your component:
+    
+    ```js
+    const MyInput = forwardRef(function MyInput(props, ref) {
+      useImperativeHandle(ref, () => {
+        return {
+          // ... your methods ...
+        };
+      }, []);
+    
+      return <input {...props} />;
+    });
+    ```
+    Note that in the code above, the `ref` is no longer forwarded to the `<input>`.
