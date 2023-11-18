@@ -159,3 +159,8 @@
         )
       }
       ```
+### d End to end testing
+
+  - [Introduction to Cypress](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress#Cypress-Can-Be-Simple-Sometimes) | Cypress Docs
+
+    
