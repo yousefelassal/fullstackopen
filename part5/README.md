@@ -197,3 +197,5 @@
     ```
     - [Assertions](https://docs.cypress.io/guides/references/assertions#Common-Assertions)
     - [.and](https://docs.cypress.io/api/commands/and)
+
+  - [Bypassing Ui](https://docs.cypress.io/guides/end-to-end-testing/testing-your-app#Bypassing-your-UI)
