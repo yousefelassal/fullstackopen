@@ -98,3 +98,22 @@
         return <input {...otherProps} ref={ref} />
       });
       ```
+    This lets the parent Form component access the `<input> DOM node` exposed by `MyInput`:
+      ```js
+      function Form() {
+        const ref = useRef(null);
+      
+        function handleClick() {
+          ref.current.focus();
+        }
+      
+        return (
+          <form>
+            <MyInput label="Enter your name:" ref={ref} />
+            <button type="button" onClick={handleClick}>
+              Edit
+            </button>
+          </form>
+        );
+      }
+      ```
