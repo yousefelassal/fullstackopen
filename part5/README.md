@@ -182,3 +182,69 @@
     - [cy.click](https://docs.cypress.io/api/commands/click#Syntax)
     - [cy.get](https://docs.cypress.io/api/commands/get#Syntax)
     - [cy.type](https://docs.cypress.io/api/commands/type#Syntax)
+
+    <br />
+
+    ```js
+    it('login fails with wrong password', function() {
+      // ...
+    
+      cy.get('.error')
+        .should('contain', 'wrong credentials')
+        .and('have.css', 'color', 'rgb(255, 0, 0)')
+        .and('have.css', 'border-style', 'solid')
+    })
+    ```
+    - [Assertions](https://docs.cypress.io/guides/references/assertions#Common-Assertions)
+    - [.and](https://docs.cypress.io/api/commands/and)
+
+  - [Bypassing UI](https://docs.cypress.io/guides/end-to-end-testing/testing-your-app#Bypassing-your-UI) | Cypress Docs
+
+    ```js
+    describe('when logged in', function() {
+      beforeEach(function() {
+        cy.request('POST', 'http://localhost:3001/api/login', {
+          username: 'admin', password: 'admin'
+        }).then(response => {
+          localStorage.setItem('loggedNoteappUser', JSON.stringify(response.body))
+          cy.visit('http://localhost:5173')
+        })
+      })
+    
+      it('a new note can be created', function() {
+        // ...
+      })
+    
+      // ...
+    })
+    ```
+    - [cy.request](https://docs.cypress.io/api/commands/request)
+
+  - [Custom Commands](https://docs.cypress.io/api/cypress-api/custom-commands) | Cypress Docs
+
+    Custom commands are declared in `cypress/support/commands.js`. The code for logging in is as follows:
+    ```js
+    Cypress.Commands.add('login', ({ username, password }) => {
+      cy.request('POST', 'http://localhost:3001/api/login', {
+        username, password
+      }).then(({ body }) => {
+        localStorage.setItem('loggedNoteappUser', JSON.stringify(body))
+        cy.visit('http://localhost:5173')
+      })
+    })
+    ```
+    
+    Using our custom command is easy, and our test becomes cleaner:
+    ```js
+    describe('when logged in', function() {
+      beforeEach(function() {
+        cy.login({ username: 'admin', password: 'admin' })
+      })
+    
+      it('a new note can be created', function() {
+        // ...
+      })
+    
+      // ...
+    })
+    ```
