@@ -118,3 +118,18 @@
       }
       ```
   - useImperativeHandle | React Docs
+
+    With the code above, a ref to MyInput will receive the <input> DOM node. However, you can expose a custom value instead. To customize the exposed handle, call useImperativeHandle at the top level of your component:
+    
+    ```js
+    const MyInput = forwardRef(function MyInput(props, ref) {
+      useImperativeHandle(ref, () => {
+        return {
+          // ... your methods ...
+        };
+      }, []);
+    
+      return <input {...props} />;
+    });
+    ```
+    Note that in the code above, the `ref` is no longer forwarded to the `<input>`.
