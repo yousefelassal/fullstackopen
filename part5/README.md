@@ -219,3 +219,19 @@
     })
     ```
     - [cy.request](https://docs.cypress.io/api/commands/request)
+
+  - [Custom Commands](https://docs.cypress.io/api/cypress-api/custom-commands) | Cypress Docs
+
+    Custom commands are declared in `cypress/support/commands.js`. The code for logging in is as follows:
+    ```js
+    Cypress.Commands.add('login', ({ username, password }) => {
+      cy.request('POST', 'http://localhost:3001/api/login', {
+        username, password
+      }).then(({ body }) => {
+        localStorage.setItem('loggedNoteappUser', JSON.stringify(body))
+        cy.visit('http://localhost:5173')
+      })
+    })
+    ```
+    
+    
