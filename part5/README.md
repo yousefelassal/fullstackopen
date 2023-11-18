@@ -195,4 +195,5 @@
         .and('have.css', 'border-style', 'solid')
     })
     ```
-   
+    - [Assertions](https://docs.cypress.io/guides/references/assertions#Common-Assertions)
+    - [.and](https://docs.cypress.io/api/commands/and)
