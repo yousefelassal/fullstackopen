@@ -182,3 +182,17 @@
     - [cy.click](https://docs.cypress.io/api/commands/click#Syntax)
     - [cy.get](https://docs.cypress.io/api/commands/get#Syntax)
     - [cy.type](https://docs.cypress.io/api/commands/type#Syntax)
+
+    <br />
+
+    ```js
+    it('login fails with wrong password', function() {
+      // ...
+    
+      cy.get('.error')
+        .should('contain', 'wrong credentials')
+        .and('have.css', 'color', 'rgb(255, 0, 0)')
+        .and('have.css', 'border-style', 'solid')
+    })
+    ```
+   
