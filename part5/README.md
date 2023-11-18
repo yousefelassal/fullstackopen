@@ -234,4 +234,17 @@
     })
     ```
     
+    Using our custom command is easy, and our test becomes cleaner:
+    ```js
+    describe('when logged in', function() {
+      beforeEach(function() {
+        cy.login({ username: 'mluukkai', password: 'salainen' })
+      })
     
+      it('a new note can be created', function() {
+        // ...
+      })
+    
+      // ...
+    })
+    ```
