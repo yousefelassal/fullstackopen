@@ -177,3 +177,8 @@
       })  
     })
     ```
+    - [cy.visit](https://docs.cypress.io/api/commands/visit)
+    - [cy.contains](https://docs.cypress.io/api/commands/contains)
+    - [cy.click](https://docs.cypress.io/api/commands/click#Syntax)
+    - [cy.get](https://docs.cypress.io/api/commands/get#Syntax)
+    - [cy.type](https://docs.cypress.io/api/commands/type#Syntax)
