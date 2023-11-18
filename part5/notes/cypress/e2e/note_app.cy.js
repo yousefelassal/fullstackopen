@@ -23,10 +23,12 @@ describe('Note app', function() {
 
   describe('when logged in', function() {
     beforeEach(function() {
-      cy.contains('login').click()
-      cy.get('input:first').type('admin')
-      cy.get('input:last').type('admin')
-      cy.get('#login-button').click()
+      cy.request('POST', 'http://localhost:3001/api/login', {
+      username: 'admin', password: 'admin'
+    }).then(response => {
+      localStorage.setItem('loggedNoteappUser', JSON.stringify(response.body))
+      cy.visit('http://localhost:5173')
+    })
     })
 
 
