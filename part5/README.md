@@ -81,7 +81,7 @@
 
   - [ref](https://react.dev/learn/referencing-values-with-refs) | React Docs
   
-    | **refs**	 | **state** |
+    | **refs** ([useRef](https://react.dev/reference/react/useRef))	 | **state** |
     | ----- | ----- |
     | `useRef(initialValue)` returns `{ current: initialValue }` |	`useState(initialValue)` returns the current value of a state variable and a state setter function ( `[value, setValue]`) |
     | Doesn’t trigger re-render when you change it. |	Triggers re-render when you change it. |
