@@ -238,7 +238,7 @@
     ```js
     describe('when logged in', function() {
       beforeEach(function() {
-        cy.login({ username: 'mluukkai', password: 'salainen' })
+        cy.login({ username: 'admin', password: 'admin' })
       })
     
       it('a new note can be created', function() {
