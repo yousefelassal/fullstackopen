@@ -134,3 +134,28 @@
     });
     ```
     Note that in the code above, the `ref` is no longer forwarded to the `<input>`.
+
+  - [Manipulating the DOM with Refs](https://react.dev/learn/manipulating-the-dom-with-refs) | React Docs
+
+    Scrolling to an element
+      ```js
+      export default function Component(){
+        ref = useRef(null)
+  
+        function handleScrolling(){
+          ref.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center'
+          })
+        }
+  
+        return(
+          <>
+            <button onClick={handleScrolling}>Scroll To View</button>
+            // ...
+            <img ref={ref} src="..." alt="..." />
+          </>
+        )
+      }
+      ```
