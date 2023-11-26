@@ -1,6 +1,6 @@
 ### a Flux-architecture and Redux
 
-- [Flux Overview](https://facebookarchive.github.io/flux/docs/in-depth-overview/) | Facebook Archive
+- [Flux-architecture Overview](https://facebookarchive.github.io/flux/docs/in-depth-overview/) | Facebook Archive
 
   Data in a Flux application flows in a single direction. The views may cause a new action to be propagated through the system in response to user interactions
   
