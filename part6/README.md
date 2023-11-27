@@ -40,3 +40,21 @@
   A **reducer** is a function that receives the current `state` and an `action` object, decides how to update the state if necessary, and returns the new state: `(state, action) => newState`. You can think of a reducer as an event listener which handles events based on the received action (event) type.
   
   > "Reducer" functions get their name because they're similar to the kind of callback function you pass to the [`Array.reduce()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method.
+  ```js
+  const initialState = { value: 0 }
+  
+  function counterReducer(state = initialState, action) {
+    // Check to see if the reducer cares about this action
+    if (action.type === 'counter/increment') {
+      // If so, make a copy of `state`
+      return {
+        ...state,
+        // and update the copy with the new value
+        value: state.value + 1
+      }
+    }
+    // otherwise return the existing state unchanged
+    return state
+  }
+  ```
+  Reducers can use any kind of logic inside to decide what the new state should be: `if/else`, `switch`, loops, and so on.
