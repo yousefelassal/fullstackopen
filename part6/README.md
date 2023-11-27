@@ -79,6 +79,10 @@
   console.log(store.getState())
   // {value: 1}
   ```
+  Here's what that data flow looks like visually:
+  
+  ![ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26](https://github.com/yousefelassal/fullstackopen/assets/76617202/b9bef274-a8bc-4533-8663-fb362bfcb9c0)
+  
 - [Redux Store](https://redux.js.org/tutorials/fundamentals/part-4-store#redux-store) | Redux Docs
 
   The Redux store brings together the state, actions, and reducers that make up your app. The store has several responsibilities:
