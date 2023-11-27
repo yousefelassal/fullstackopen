@@ -26,4 +26,14 @@
     payload: 'Buy milk'
   }
   ```
+  #### Action Creators
+  An **action creator** is a function that creates and returns an action object. We typically use these so we don't have to write the action object by hand every time:
+  ```js
+  const addTodo = text => {
+    return {
+      type: 'todos/todoAdded',
+      payload: text
+    }
+  }
+  ```
   
