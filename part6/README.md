@@ -71,7 +71,14 @@
   console.log(store.getState())
   // {value: 0}
   ```
+  #### Dispatch
+  The Redux store has a method called dispatch. The only way to update the state is to call `store.dispatch()` and pass in an action object. The store will run its reducer function and save the new state value inside, and we can call `getState()` to retrieve the updated value:
+  ```js
+  store.dispatch({ type: 'counter/increment' })
   
+  console.log(store.getState())
+  // {value: 1}
+  ```
 - [Redux Store](https://redux.js.org/tutorials/fundamentals/part-4-store#redux-store) | Redux Docs
 
   The Redux store brings together the state, actions, and reducers that make up your app. The store has several responsibilities:
