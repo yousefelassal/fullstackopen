@@ -113,3 +113,23 @@
     </Provider>
   )
   ```
+- [`useDispatch()`](https://react-redux.js.org/api/hooks#usedispatch) | React Redux Docs
+
+  This hook returns a reference to the `dispatch` function from the Redux store. You may use it to dispatch actions as needed.
+
+  ```js
+  import { useDispatch } from 'react-redux'
+
+  export const CounterComponent = ({ value }) => {
+    const dispatch = useDispatch()
+  
+    return (
+      <div>
+        <span>{value}</span>
+        <button onClick={() => dispatch({ type: 'increment-counter' })}>
+          Increment counter
+        </button>
+      </div>
+    )
+  }
+  ```
