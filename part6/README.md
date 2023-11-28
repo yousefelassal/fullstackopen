@@ -89,3 +89,12 @@
   - Allows state to be updated via `store.dispatch(action)`;
   - Registers listener callbacks via `store.subscribe(listener)`;
   - Handles unregistering of listeners via the unsubscribe function returned by `store.subscribe(listener)`.
+
+- [Controlled vs uncontrolled inputs](https://goshacmd.com/controlled-vs-uncontrolled-inputs-react/)
+  | Element |	Value property | Change callback |	New value in the callback |
+  |---------|---------|---------|---------|
+  | `<input type="text" />` |	`value="string"`|	`onChange`|	`event.target.value`|
+  | `<input type="checkbox" />` |	`checked={boolean}`	|`onChange`|	`event.target.checked`|
+  | `<input type="radio" />` |	`checked={boolean}`	|`onChange`|	`event.target.checked`|
+  | `<textarea />` |	`value="string"`	|`onChange`	|`event.target.value`|
+  | `<select />` | `value="option value"`	|`onChange`|	`event.target.value`|
