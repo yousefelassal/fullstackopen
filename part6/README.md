@@ -89,3 +89,5 @@
   - Allows state to be updated via `store.dispatch(action)`;
   - Registers listener callbacks via `store.subscribe(listener)`;
   - Handles unregistering of listeners via the unsubscribe function returned by `store.subscribe(listener)`.
+
+- [Controlled vs uncontrolled inputs](https://goshacmd.com/controlled-vs-uncontrolled-inputs-react/)
