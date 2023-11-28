@@ -133,3 +133,15 @@
     )
   }
   ```
+- [`useSelector()`](https://react-redux.js.org/api/hooks#useselector) | React Redux Docs
+
+  receives a function as a parameter. The function either searches for or selects data from the Redux store.
+
+  return the whole state:
+  ```js
+  const notes = useSelector(state => state)
+  ```
+  return only selected parts of the contents of the Redux store:
+  ```js
+  const importantNotes = useSelector(state => state.filter(note => note.important))
+  ```
