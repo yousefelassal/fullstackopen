@@ -40,6 +40,7 @@ const reducer = (state = initialState, action) => {
   return state
 }
 
+//already defined in the reducer
 export const vote = (id) => {
   return {
     type: 'VOTE',
@@ -47,6 +48,7 @@ export const vote = (id) => {
   }
 }
 
+//already defined in the reducer
 export const newAnecdote = (content) => {
   return {
     type: 'NEW_ANECDOTE',
