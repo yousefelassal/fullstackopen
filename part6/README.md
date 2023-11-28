@@ -147,3 +147,4 @@
     ```js
     const importantNotes = useSelector(state => state.filter(note => note.important))
     ```
+### b Many reducers
