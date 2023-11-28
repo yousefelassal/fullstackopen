@@ -98,3 +98,18 @@
   | `<input type="radio" />` |	`checked={boolean}`	|`onChange`|	`event.target.checked`|
   | `<textarea />` |	`value="string"`	|`onChange`	|`event.target.value`|
   | `<select />` | `value="option value"`	|`onChange`|	`event.target.value`|
+
+- [`<Provider>`](https://react-redux.js.org/api/provider) | React Redux Docs
+
+  makes the Redux store available to any nested components that need to access the Redux store.
+
+  ```js
+  const store = createStore()
+
+  const root = ReactDOM.createRoot(document.getElementById('root'))
+  root.render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  )
+  ```
