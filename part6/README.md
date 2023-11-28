@@ -113,3 +113,37 @@
     </Provider>
   )
   ```
+- [`useDispatch()`](https://react-redux.js.org/api/hooks#usedispatch) | React Redux Docs
+
+  This hook returns a reference to the `dispatch` function from the Redux store. You may use it to dispatch actions as needed.
+
+  ```js
+  import { useDispatch } from 'react-redux'
+
+  export const CounterComponent = ({ value }) => {
+    const dispatch = useDispatch()
+  
+    return (
+      <div>
+        <span>{value}</span>
+        <button onClick={() => dispatch({ type: 'increment-counter' })}>
+          Increment counter
+        </button>
+      </div>
+    )
+  }
+  ```
+- [`useSelector()`](https://react-redux.js.org/api/hooks#useselector) | React Redux Docs
+
+  receives a function as a parameter. The function either searches for or selects data from the Redux store.
+
+  - return the whole state:
+    
+    ```js
+    const notes = useSelector(state => state)
+    ```
+  - return only selected parts of the contents of the Redux store:
+    
+    ```js
+    const importantNotes = useSelector(state => state.filter(note => note.important))
+    ```
