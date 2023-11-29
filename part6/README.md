@@ -203,3 +203,18 @@
   export const { increment, decrement, incrementByAmount } = counterSlice.actions
   export default counterSlice.reducer
   ```
+- [Immer](https://immerjs.github.io/immer/) | Immer Docs
+
+  Redux Toolkit utilizes this library which is a tiny package that allows you to work with immutable state in a more convenient way.
+
+  ```js
+  import {produce} from "immer"
+
+  const nextState = produce(baseState, draft => {
+    draft[1].done = true
+    draft.push({title: "Tweet about it"})
+  })
+  ```
+    ![immer-4002b3fd2cfd3aa66c62ecc525663c0d](https://github.com/yousefelassal/fullstackopen/assets/76617202/e1fdcfe8-bcfb-4010-bd13-a08987761351)
+
+  
