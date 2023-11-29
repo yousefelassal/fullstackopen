@@ -104,6 +104,8 @@
   makes the Redux store available to any nested components that need to access the Redux store.
 
   ```js
+  import { Provider } from 'react-redux'
+  
   const store = createStore()
 
   const root = ReactDOM.createRoot(document.getElementById('root'))
