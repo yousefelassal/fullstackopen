@@ -147,9 +147,9 @@
     ```js
     const importantNotes = useSelector(state => state.filter(note => note.important))
     ```
-### b Many reducers | Redux Docs
+### b Many reducers
 
-- [`combineReducers(reducers)`](https://redux.js.org/api/combinereducers)
+- [`combineReducers(reducers)`](https://redux.js.org/api/combinereducers) | Redux Docs
 
   turns an object whose values are different "slice reducer" functions into a single combined reducer function you can pass to Redux Toolkit's `configureStore` (or the legacy `createStore` method)
 
