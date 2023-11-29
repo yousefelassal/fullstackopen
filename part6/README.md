@@ -217,4 +217,9 @@
   ```
     ![immer-4002b3fd2cfd3aa66c62ecc525663c0d](https://github.com/yousefelassal/fullstackopen/assets/76617202/e1fdcfe8-bcfb-4010-bd13-a08987761351)
 
-  
+  - console logging inside Immer
+    
+    status can be converted to a human-readable format, e.g. by converting it to a string and back to a JavaScript object as follows:
+    ```js
+    console.log(JSON.parse(JSON.stringify(state)))
+    ```
