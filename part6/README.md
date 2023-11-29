@@ -175,3 +175,31 @@
     }
   })
   ```
+- [`createSlice`](https://redux-toolkit.js.org/api/createSlice) | Redux Toolkit Docs
+  
+  A function that accepts an initial state, an object of reducer functions, and a "slice name", and automatically generates action creators and action types that correspond to the reducers and state.
+
+  ```js
+  import { createSlice } from '@reduxjs/toolkit'
+  
+  const initialState = { value: 0 }
+  
+  const counterSlice = createSlice({
+    name: 'counter',
+    initialState,
+    reducers: {
+      increment(state) {
+        state.value++
+      },
+      decrement(state) {
+        state.value--
+      },
+      incrementByAmount(state, action) {
+        state.value += action.payload
+      },
+    },
+  })
+  
+  export const { increment, decrement, incrementByAmount } = counterSlice.actions
+  export default counterSlice.reducer
+  ```
