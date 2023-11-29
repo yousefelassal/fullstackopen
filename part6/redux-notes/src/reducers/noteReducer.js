@@ -35,6 +35,7 @@ const noteSlice = createSlice({
         ...noteToChange, 
         important: !noteToChange.important 
       }
+      console.log(JSON.parse(JSON.stringify(state)))
       return state.map(note =>
         note.id !== id ? note : changedNote 
       )     
