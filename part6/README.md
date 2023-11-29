@@ -147,7 +147,7 @@
     ```js
     const importantNotes = useSelector(state => state.filter(note => note.important))
     ```
-### b Many reducers
+### b Many reducers | Redux Docs
 
 - [`combineReducers(reducers)`](https://redux.js.org/api/combinereducers)
 
