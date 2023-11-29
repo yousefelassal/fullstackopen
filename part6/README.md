@@ -223,3 +223,4 @@
     ```js
     console.log(JSON.parse(JSON.stringify(state)))
     ```
+### c Communicating with server in a redux application
