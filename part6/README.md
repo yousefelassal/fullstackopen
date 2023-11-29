@@ -159,3 +159,17 @@
     comments: commentsReducer
   })
   ```
+- [`configureStore`](https://redux-toolkit.js.org/api/configureStore) | Redux Toolkit Docs
+
+  The standard method for creating a Redux store. It uses the low-level Redux core createStore method internally, but wraps that to provide good defaults to the store setup for a better development experience.
+
+  ```js
+  import { configureStore } from '@reduxjs/toolkit'
+  
+  const store = configureStore({
+    reducer: {
+      notes: noteReducer,
+      filter: filterReducer
+    }
+  })
+  ```
