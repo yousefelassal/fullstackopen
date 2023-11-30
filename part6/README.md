@@ -249,3 +249,5 @@
   }
   ```
   - [redux-thunk](https://github.com/reduxjs/redux-thunk) | GitHub repo
+
+### d React Query, useReducer and the context
