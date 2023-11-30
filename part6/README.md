@@ -224,3 +224,28 @@
     console.log(JSON.parse(JSON.stringify(state)))
     ```
 ### c Communicating with server in a redux application
+
+- [Writing Logic Thunks](https://redux.js.org/usage/writing-logic-thunks) | Redux Docs
+
+  "thunks" are a pattern of writing functions with logic inside that can interact with a Redux store's dispatch and getState methods.
+
+  _Thunk action creators and thunk functions_
+  ```js
+  // fetchTodoById is the "thunk action creator"
+  export function fetchTodoById(todoId) {
+    // fetchTodoByIdThunk is the "thunk function"
+    return async function fetchTodoByIdThunk(dispatch, getState) {
+      const response = await client.get(`/fakeApi/todo/${todoId}`)
+      dispatch(todosLoaded(response.todos))
+    }
+  }
+  ```
+
+  _Writing thunks using arrow functions_
+  ```js
+  export const fetchTodoById = todoId => async dispatch => {
+    const response = await client.get(`/fakeApi/todo/${todoId}`)
+    dispatch(todosLoaded(response.todos))
+  }
+  ```
+  - [redux-thunk](https://github.com/reduxjs/redux-thunk) | GitHub repo
