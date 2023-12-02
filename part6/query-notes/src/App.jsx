@@ -40,7 +40,7 @@ const App = () => {
           <strong> {note.important ? 'important' : ''}</strong>
         </li>
       )}
-
+      <li>{newNoteMutation.isPending && 'Adding note...'}</li>
     </div>
   )
 }
