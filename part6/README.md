@@ -380,3 +380,86 @@
       </button>
     )
     ```
+
+  - [Infinite Scroll](https://tanstack.com/query/latest/docs/react/examples/react/load-more-infinite-scroll)
+
+    ```js
+    import { useInView } from 'react-intersection-observer'
+    import {
+      useInfiniteQuery,
+      ...
+    } from '@tanstack/react-query'
+
+    const { ref, inView } = useInView()
+  
+    const {
+      status,
+      data,
+      error,
+      isFetching,
+      isFetchingNextPage,
+      isFetchingPreviousPage,
+      fetchNextPage,
+      fetchPreviousPage,
+      hasNextPage,
+      hasPreviousPage,
+    } = useInfiniteQuery({
+      queryKey: ['projects'],
+      queryFn: async ({ pageParam }) => {
+        const res = await axios.get('/api/projects?cursor=' + pageParam)
+        return res.data
+      },
+      initialPageParam: 0,
+      getPreviousPageParam: (firstPage) => firstPage.previousId ?? undefined,
+      getNextPageParam: (lastPage) => lastPage.nextId ?? undefined,
+    })
+  
+    React.useEffect(() => {
+      if (inView) {
+        fetchNextPage()
+      }
+    }, [fetchNextPage, inView])
+
+    return (
+      {data.pages.map((page) => (
+        //nextId is provided from the api in relation to the cursor 
+        <React.Fragment key={page.nextId}>
+          {page.data.map((project) => (
+            <p
+              style={{
+                border: '1px solid gray',
+                borderRadius: '5px',
+                padding: '10rem 1rem',
+                background: `hsla(${project.id * 30}, 60%, 80%, 1)`,
+              }}
+              key={project.id}
+            >
+              {project.name}
+            </p>
+          ))}
+        </React.Fragment>
+      ))}
+      {isFetchingNextPage
+        ? 'Loading more...'
+        : hasNextPage
+          ? 'Load Newer'
+          : 'Nothing more to load'}
+    )
+    ```
+- [useQuery](https://tanstack.com/query/latest/docs/react/reference/useQuery) | TanStack Query Docs
+- [Queries](https://tanstack.com/query/latest/docs/react/guides/queries) | TanStack Query Docs
+
+  A query is a declarative dependency on an asynchronous source of data that is tied to a unique key
+  ```js
+  const result = useQuery({ queryKey: ['todos'], queryFn: fetchTodoList })
+  ```
+- [Query Keys](https://tanstack.com/query/latest/docs/react/guides/query-keys) | TanStack Query Docs
+
+  TanStack Query manages query caching based on query keys. Query keys have to be an Array at the top level, and can be as simple as an Array with a single string, or as complex as an array of many strings and nested objects. The unique key provided is used internally for refetching, caching, and sharing queries throughout the application.
+  ```js
+  // A list of todos
+  useQuery({ queryKey: ['todos'], ... })
+  
+  // Something else, whatever!
+  useQuery({ queryKey: ['something', 'special'], ... })
+  ```
