@@ -463,3 +463,7 @@
   // Something else, whatever!
   useQuery({ queryKey: ['something', 'special'], ... })
   ```
+
+- [Mutations](https://tanstack.com/query/latest/docs/react/guides/mutations) | TanStack Query Docs
+
+  Unlike queries, mutations are typically used to create/update/delete data or perform server side-effects.
