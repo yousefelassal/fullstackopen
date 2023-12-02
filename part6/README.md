@@ -515,3 +515,19 @@
     },
   })
   ```
+- [Manually Updating Query State](https://tanstack.com/query/latest/docs/react/guides/updates-from-mutation-responses) | TanStack Query Docs
+
+  When dealing with mutations that update objects on the server, it's common for the new object to be automatically returned in the response of the mutation. Instead of refetching any queries for that item and wasting a network call for data we already have, we can take advantage of the object returned by the mutation function and update the existing query with the new data immediately using the Query Client's `setQueryData` method:
+  ```js
+  const useMutateTodo = () => {
+    const queryClient = useQueryClient()
+  
+    return useMutation({
+      mutationFn: editTodo,
+      // Notice the second argument is the variables object that the `mutate` function receives
+      onSuccess: (data, variables) => {
+        queryClient.setQueryData(['todo', { id: variables.id }], data)
+      },
+    })
+  }
+  ```
