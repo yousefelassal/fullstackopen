@@ -24,6 +24,11 @@
       "content": "hola",
       "important": true,
       "id": 5
+    },
+    {
+      "content": "mucha gracias aficion",
+      "important": true,
+      "id": 6
     }
   ]
 }
