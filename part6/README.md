@@ -253,3 +253,19 @@
 ### d React Query, useReducer and the context
 
 - [React Query](https://tanstack.com/query/latest) | TanStack Docs
+  
+  - [Auto Refetching](https://tanstack.com/query/latest/docs/react/examples/react/auto-refetching)
+
+    ```js
+    const intervalMs = 1000;
+    
+    const { status, data, error, isFetching } = useQuery({
+      queryKey: ['todos'],
+      queryFn: async () => {
+        const res = await axios.get('/api/data')
+        return res.data
+      },
+      // Refetch the data every second
+      refetchInterval: intervalMs,
+    })
+    ```
