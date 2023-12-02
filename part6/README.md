@@ -326,3 +326,57 @@
       </>
     )
     ```
+
+  - [Pagination](https://tanstack.com/query/latest/docs/react/examples/react/pagination)
+
+    ```js
+    import {
+      ...,
+      keepPreviousData
+    } from '@tanstack/react-query'
+    
+    //state could be saved in url a7san
+    const [page, setPage] = React.useState(0)
+
+    const { status, data, error, isFetching, isPlaceholderData } = useQuery({
+      queryKey: ['projects', page],
+      queryFn: () => fetchProjects(page),
+      placeholderData: keepPreviousData,
+      staleTime: 5000,
+    })
+  
+    // Prefetch the next page!
+    React.useEffect(() => {
+      if (!isPlaceholderData && data?.hasMore) {
+        queryClient.prefetchQuery({
+          queryKey: ['projects', page + 1],
+          queryFn: () => fetchProjects(page + 1),
+        })
+      }
+    }, [data, isPlaceholderData, page, queryClient])
+
+    return (
+      // `data` will either resolve to the latest page's data
+      // or if fetching a new page, the last successful page's data
+      <div>
+        {data.projects.map((project) => (
+          <p key={project.id}>{project.name}</p>
+        ))}
+      </div>
+      <div>Current Page: {page + 1}</div>
+      <button
+        onClick={() => setPage((old) => Math.max(old - 1, 0))}
+        disabled={page === 0}
+      >
+        Previous Page
+      </button>{' '}
+      <button
+        onClick={() => {
+          setPage((old) => (data?.hasMore ? old + 1 : old))
+        }}
+        disabled={isPlaceholderData || !data?.hasMore}
+      >
+        Next Page
+      </button>
+    )
+    ```
