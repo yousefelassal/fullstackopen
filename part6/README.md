@@ -453,3 +453,13 @@
   ```js
   const result = useQuery({ queryKey: ['todos'], queryFn: fetchTodoList })
   ```
+- [Query Keys](https://tanstack.com/query/latest/docs/react/guides/query-keys) | TanStack Query Docs
+
+  TanStack Query manages query caching based on query keys. Query keys have to be an Array at the top level, and can be as simple as an Array with a single string, or as complex as an array of many strings and nested objects. The unique key provided is used internally for refetching, caching, and sharing queries throughout the application.
+  ```js
+  // A list of todos
+  useQuery({ queryKey: ['todos'], ... })
+  
+  // Something else, whatever!
+  useQuery({ queryKey: ['something', 'special'], ... })
+  ```
