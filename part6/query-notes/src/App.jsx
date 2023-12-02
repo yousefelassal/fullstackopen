@@ -1,12 +1,14 @@
-import { useQuery } from "@tanstack/react-query"
-import { getNotes } from "./requests"
+import { useQuery, useMutation } from "@tanstack/react-query"
+import { getNotes, createNote } from "./requests"
 
 const App = () => {
+  const newNoteMutation = useMutation({ mutationFn: createNote })
+
   const addNote = async (event) => {
     event.preventDefault()
     const content = event.target.note.value
     event.target.note.value = ''
-    console.log(content)
+    newNoteMutation.mutate({ content, important: true })
   }
 
   const toggleImportance = (note) => {
@@ -38,6 +40,7 @@ const App = () => {
           <strong> {note.important ? 'important' : ''}</strong>
         </li>
       )}
+
     </div>
   )
 }
