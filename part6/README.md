@@ -446,3 +446,10 @@
           : 'Nothing more to load'}
     )
     ```
+- [useQuery](https://tanstack.com/query/latest/docs/react/reference/useQuery) | TanStack Query Docs
+- [Queries](https://tanstack.com/query/latest/docs/react/guides/queries) | TanStack Query Docs
+
+  A query is a declarative dependency on an asynchronous source of data that is tied to a unique key
+  ```js
+  const result = useQuery({ queryKey: ['todos'], queryFn: fetchTodoList })
+  ```
