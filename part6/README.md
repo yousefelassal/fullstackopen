@@ -380,3 +380,69 @@
       </button>
     )
     ```
+
+  - [Infinite Scroll](https://tanstack.com/query/latest/docs/react/examples/react/load-more-infinite-scroll)
+
+    ```js
+    import { useInView } from 'react-intersection-observer'
+    import {
+      useInfiniteQuery,
+      ...
+    } from '@tanstack/react-query'
+
+    const { ref, inView } = useInView()
+  
+    const {
+      status,
+      data,
+      error,
+      isFetching,
+      isFetchingNextPage,
+      isFetchingPreviousPage,
+      fetchNextPage,
+      fetchPreviousPage,
+      hasNextPage,
+      hasPreviousPage,
+    } = useInfiniteQuery({
+      queryKey: ['projects'],
+      queryFn: async ({ pageParam }) => {
+        const res = await axios.get('/api/projects?cursor=' + pageParam)
+        return res.data
+      },
+      initialPageParam: 0,
+      getPreviousPageParam: (firstPage) => firstPage.previousId ?? undefined,
+      getNextPageParam: (lastPage) => lastPage.nextId ?? undefined,
+    })
+  
+    React.useEffect(() => {
+      if (inView) {
+        fetchNextPage()
+      }
+    }, [fetchNextPage, inView])
+
+    return (
+      {data.pages.map((page) => (
+        //nextId is provided from the api in relation to the cursor 
+        <React.Fragment key={page.nextId}>
+          {page.data.map((project) => (
+            <p
+              style={{
+                border: '1px solid gray',
+                borderRadius: '5px',
+                padding: '10rem 1rem',
+                background: `hsla(${project.id * 30}, 60%, 80%, 1)`,
+              }}
+              key={project.id}
+            >
+              {project.name}
+            </p>
+          ))}
+        </React.Fragment>
+      ))}
+      {isFetchingNextPage
+        ? 'Loading more...'
+        : hasNextPage
+          ? 'Load Newer'
+          : 'Nothing more to load'}
+    )
+    ```
