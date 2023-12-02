@@ -498,3 +498,20 @@
     </div>
   )
   ```
+- [Invalidations](https://tanstack.com/query/latest/docs/react/guides/invalidations-from-mutations) | TanStack Query Docs
+
+  Usually when a mutation in your app succeeds, it's VERY likely that there are related queries in your application that need to be invalidated and possibly refetched to account for the new changes from your mutation.
+  ```js
+  import { useMutation, useQueryClient } from '@tanstack/react-query'
+
+  const queryClient = useQueryClient()
+  
+  // When this mutation succeeds, invalidate any queries with the `todos` or `reminders` query key
+  const mutation = useMutation({
+    mutationFn: addTodo,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['todos'] })
+      queryClient.invalidateQueries({ queryKey: ['reminders'] })
+    },
+  })
+  ```
