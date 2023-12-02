@@ -1,12 +1,14 @@
-[
-    {
-        "id": 1,
-        "content": "react query simplifies the communication with backend",
-        "important": true
-    },
-    {
-        "id": 2,
-        "content": "useReducer with context is an alternative way for data management",
-        "important": false
-    }
-]
+{
+    "notes": [
+        {
+            "id": 1,
+            "content": "react query simplifies the communication with backend",
+            "important": true
+        },
+        {
+            "id": 2,
+            "content": "useReducer with context is an alternative way for data management",
+            "important": false
+        }
+    ]
+}
