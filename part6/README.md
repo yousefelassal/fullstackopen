@@ -467,3 +467,34 @@
 - [Mutations](https://tanstack.com/query/latest/docs/react/guides/mutations) | TanStack Query Docs
 
   Unlike queries, mutations are typically used to create/update/delete data or perform server side-effects.
+  ```js
+  const mutation = useMutation({
+    mutationFn: (newTodo) => {
+      return axios.post('/todos', newTodo)
+    },
+  })
+
+  return (
+    <div>
+      {mutation.isPending ? (
+        'Adding todo...'
+      ) : (
+        <>
+          {mutation.isError ? (
+            <div>An error occurred: {mutation.error.message}</div>
+          ) : null}
+
+          {mutation.isSuccess ? <div>Todo added!</div> : null}
+
+          <button
+            onClick={() => {
+              mutation.mutate({ id: new Date(), title: 'Do Laundry' })
+            }}
+          >
+            Create Todo
+          </button>
+        </>
+      )}
+    </div>
+  )
+  ```
