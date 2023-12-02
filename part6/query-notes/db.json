@@ -3,7 +3,7 @@
     {
       "id": 1,
       "content": "react query simplifies the communication with backend",
-      "important": true
+      "important": false
     },
     {
       "id": 2,
@@ -17,18 +17,28 @@
     },
     {
       "content": "ba2olk",
-      "important": true,
+      "important": false,
       "id": 4
     },
     {
       "content": "hola",
-      "important": true,
+      "important": false,
       "id": 5
     },
     {
       "content": "mucha gracias aficion",
-      "important": true,
+      "important": false,
       "id": 6
+    },
+    {
+      "content": "yasta",
+      "important": true,
+      "id": 7
+    },
+    {
+      "content": "msh 3aref",
+      "important": true,
+      "id": 8
     }
   ]
 }
