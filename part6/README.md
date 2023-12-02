@@ -251,3 +251,5 @@
   - [redux-thunk](https://github.com/reduxjs/redux-thunk) | GitHub repo
 
 ### d React Query, useReducer and the context
+
+- [React Query](https://tanstack.com/query/latest) | TanStack Docs
