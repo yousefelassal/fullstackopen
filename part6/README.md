@@ -538,3 +538,18 @@
   - React Query is a server-state library, responsible for managing asynchronous operations between your server and client
   - Redux, etc. are client-state libraries that can be used to store asynchronous data, albeit inefficiently when compared to a tool like React Query
   - TanStack Query replaces the boilerplate code and related wiring used to manage cache data in your client-state and replaces it with just a few lines of code.
+
+- [useReducer](https://react.dev/reference/react/useReducer) | React Docs
+
+  Redux-like state management mechanism provided by React
+  ```js
+  import { useReducer } from 'react';
+
+  function reducer(state, action) {
+    // ...
+  }
+  
+  function MyComponent() {
+    const [state, dispatch] = useReducer(reducer, { age: 42 });
+    // ...
+  ```
