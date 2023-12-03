@@ -553,3 +553,8 @@
     const [state, dispatch] = useReducer(reducer, { age: 42 });
     // ...
   ```
+- [Passing Data Deeply with Context](https://react.dev/learn/passing-data-deeply-with-context) | React Docs
+
+  | Using context in close children | Using context in distant children |
+  | ---- | ---- |
+  | ![e04zukwh](https://github.com/yousefelassal/fullstackopen/assets/76617202/1986b6a7-031d-4e0f-9c2f-30ff7ffeba1d) | ![g9igv9tj](https://github.com/yousefelassal/fullstackopen/assets/76617202/be34baca-2920-4f43-be60-d60fc14faf8e) |
