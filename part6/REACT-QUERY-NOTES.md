@@ -23,3 +23,9 @@
       queryFn: () => fetchTodos(state),
     })
   ```
+- #### Create custom hooks
+  Even if it's only for wrapping one `useQuery` call, creating a custom hook usually pays off because:
+
+  - You can keep the actual data fetching out of the ui, but co-located with your `useQuery` call.
+  - You can keep all usages of one query key (and potentially type definitions) in one file.
+  - If you need to tweak some settings or add some data transformation, you can do that in one place.
