@@ -558,3 +558,24 @@
   | Using context in close children | Using context in distant children |
   | ---- | ---- |
   | ![e04zukwh](https://github.com/yousefelassal/fullstackopen/assets/76617202/1986b6a7-031d-4e0f-9c2f-30ff7ffeba1d) | ![g9igv9tj](https://github.com/yousefelassal/fullstackopen/assets/76617202/be34baca-2920-4f43-be60-d60fc14faf8e) |
+
+- [createContext](https://react.dev/reference/react/createContext) | React Docs
+
+  create a context that components can provide or read.
+  ```js
+  const SomeContext = createContext(defaultValue)
+  ```
+  **SomeContext.Provider**
+  
+  Wrap your components into a context provider to specify the value of this context for all components inside:
+  ```js
+  function App() {
+    const [theme, setTheme] = useState('light');
+    // ...
+    return (
+      <ThemeContext.Provider value={theme}>
+        <Page />
+      </ThemeContext.Provider>
+    );
+  }
+  ```
