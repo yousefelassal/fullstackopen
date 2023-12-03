@@ -579,3 +579,10 @@
     );
   }
   ```
+
+- [useContext](https://react.dev/reference/react/useContext) | React Docs
+
+  read and subscribe to context from your component.
+  ```js
+  const value = useContext(SomeContext)
+  ```
