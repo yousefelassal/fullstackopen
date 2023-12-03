@@ -23,6 +23,25 @@
       queryFn: () => fetchTodos(state),
     })
   ```
+- #### A new cache entry
+
+  pre-fill the newly created cache entry with initialData so it does not result in a hard loading state.
+  ```ts
+  useQuery({
+  // ...
+    initialData: () => {
+        const allTodos = queryClient.getQueryData<Todos>([
+          'todos',
+          'all',
+        ])
+        const filteredData =
+          allTodos?.filter((todo) => todo.state === state) ?? []
+  
+        return filteredData.length > 0 ? filteredData : undefined
+      }
+  })
+  ```
+  
 - #### Create custom hooks
   Even if it's only for wrapping one `useQuery` call, creating a custom hook usually pays off because:
 
