@@ -14,3 +14,26 @@
     </BrowserRouter>
   );
   ```
+- [Link](https://reactrouter.com/en/main/components/link) | React Router Docs
+
+  an element that lets the user navigate to another page by clicking or tapping on it.
+  ```js
+  <Link to="/aymakan">aymakan</Link>
+  ```
+  A relative `<Link to>` value (that does not begin with `/`) resolves relative to the parent route
+
+- [Route](https://reactrouter.com/en/main/route/route) | React Router Docs
+
+  couple URL segments to components
+  ```js
+  <Route path="/ayhaga" element={<AyHaga />} />
+  ```
+- [Routes](https://reactrouter.com/en/main/components/routes) | React Router Docs
+
+  match a set of child routes from the current location
+  ```js
+  <Routes>
+    <Route path="/ayhaga" element={<AyHaga />} />
+    <Route path="/" element={<Home />} />
+  </Routes>
+  ```
