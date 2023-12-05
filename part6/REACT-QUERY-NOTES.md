@@ -55,3 +55,21 @@
 
   If you are in control of the backend and have an endpoint that returns data for your exact use-case, prefer to deliver the data the way you expect it.
 
+- #### using the select option
+
+  a redux like `useSelector` API.
+
+  ```js
+  export const useTodosQuery = (select) =>
+    useQuery({
+      queryKey: ['todos'],
+      queryFn: fetchTodos,
+      select,
+    })
+  
+  export const useTodosCount = () =>
+    useTodosQuery((data) => data.length)
+  export const useTodo = (id) =>
+    useTodosQuery((data) => data.find((todo) => todo.id === id))
+  ```
+  The custom hooks still works like before, as `select` will be `undefined` if you don't pass it, so the whole state will be returned. But if you pass a selector, you are now only subscribed to the result of the selector function.
