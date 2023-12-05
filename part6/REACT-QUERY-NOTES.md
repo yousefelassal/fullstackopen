@@ -48,3 +48,10 @@
   - You can keep the actual data fetching out of the ui, but co-located with your `useQuery` call.
   - You can keep all usages of one query key (and potentially type definitions) in one file.
   - If you need to tweak some settings or add some data transformation, you can do that in one place.
+
+### [#2: React Query Data Transformation](https://tkdodo.eu/blog/react-query-data-transformations)
+
+- #### on the backend
+
+  If you are in control of the backend and have an endpoint that returns data for your exact use-case, prefer to deliver the data the way you expect it.
+
