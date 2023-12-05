@@ -21,3 +21,10 @@
   <Link to="/aymakan">aymakan</Link>
   ```
   A relative `<Link to>` value (that does not begin with `/`) resolves relative to the parent route
+
+- [Route](https://reactrouter.com/en/main/route/route) | React Router Docs
+
+  couple URL segments to components
+  ```js
+  <Route path="/ayhaga" element={<AyHaga />} />
+  ```
