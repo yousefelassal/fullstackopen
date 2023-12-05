@@ -28,3 +28,12 @@
   ```js
   <Route path="/ayhaga" element={<AyHaga />} />
   ```
+- [Routes](https://reactrouter.com/en/main/components/routes) | React Router Docs
+
+  match a set of child routes from the current location
+  ```js
+  <Routes>
+    <Route path="/ayhaga" element={<AyHaga />} />
+    <Route path="/" element={<Home />} />
+  </Routes>
+  ```
