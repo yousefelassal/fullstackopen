@@ -70,3 +70,23 @@
     }, [userIsInactive]);
   }
   ```
+
+- [Navigate](https://reactrouter.com/en/main/components/navigate) | React Router Docs
+
+  changes the current location when it is rendered.
+
+  ```js
+  <Navigate replace to="/login" />
+  ```
+
+  could be used to redirect conditionally within a route
+  ```js
+  <Route path="/users" element={user ? <Users /> : <Navigate replace to="/login" />} />
+  ```
+
+  or within a page
+  ```jsx
+  {user && (
+    <Navigate to="/dashboard" replace={true} />
+  )}
+  ```
