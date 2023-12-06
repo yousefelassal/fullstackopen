@@ -77,3 +77,5 @@
 ### [#3: React Query Render Optimizations](https://tkdodo.eu/blog/react-query-render-optimizations)
 
 - [Fix the slow render before you fix the re-render](https://kentcdodds.com/blog/fix-the-slow-render-before-you-fix-the-re-render)
+  
+### [#4: Status Checks in React Query](https://tkdodo.eu/blog/status-checks-in-react-query)
