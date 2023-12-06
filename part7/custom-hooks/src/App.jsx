@@ -1,32 +1,7 @@
-import { useState } from 'react'
-
-const useCounter = () => {
-  const [value, setValue] = useState(0)
-
-  const increase = () => {
-    setValue(value + 1)
-  }
-
-  const decrease = () => {
-    setValue(value - 1)
-  }
-
-  const zero = () => {
-    setValue(0)
-  }
-
-  return {
-    value, 
-    increase,
-    decrease,
-    zero
-  }
-}
+import useCounter from "./use-counter"
 
 const App = () => {
   const counter = useCounter()
-  const left = useCounter()
-  const right = useCounter()
 
   return (
     <div>
@@ -40,16 +15,6 @@ const App = () => {
       <button onClick={counter.zero}>
         zero
       </button>
-      <div>
-      {left.value}
-      <button onClick={left.increase}>
-        left
-      </button>
-      <button onClick={right.increase}>
-        right
-      </button>
-      {right.value}
-    </div>
     </div>
   )
 }
