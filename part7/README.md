@@ -90,3 +90,16 @@
     <Navigate to="/dashboard" replace={true} />
   )}
   ```
+- [useMatch](https://reactrouter.com/en/v6.3.0/api#usematch) | React Router Docs
+
+  Returns match data about a route at the given path relative to the current location.
+
+  ```js
+  const match = useMatch('/notes/:id')
+  const notes = match ? notes.find(note => note.id === Number(match.params.id)) : null
+
+  <Routes>
+    // ...
+    <Route path="/notes/:id" element={<Note note={note} />} />
+  </Routes>
+  ```
