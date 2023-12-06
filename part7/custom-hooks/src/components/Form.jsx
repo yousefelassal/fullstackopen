@@ -1,7 +1,7 @@
 import useField from "../use-field"
 
 const Form = () => {
-    const name = useField('text')
+  const name = useField('text')
   const born = useField('date')
   const height = useField('number')
 
