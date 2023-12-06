@@ -118,3 +118,48 @@
     Don’t call Hooks from regular JavaScript functions.
 
 - [Reusing Logic with Custom Hooks](https://react.dev/learn/reusing-logic-with-custom-hooks) | React Docs
+
+  extract the repetitive logic into a custom Hook
+  ```jsx
+  import { useState } from 'react';
+
+  export function useFormInput(initialValue) {
+    const [value, setValue] = useState(initialValue);
+  
+    function handleChange(e) {
+      setValue(e.target.value);
+    }
+  
+    const inputProps = {
+      value: value,
+      onChange: handleChange
+    };
+  
+    return inputProps;
+  }
+  ```
+
+  which could be used as following:
+  ```jsx
+  import { useFormInput } from './useFormInput.js';
+
+  export default function Form() {
+    const firstNameProps = useFormInput('Mary');
+    const lastNameProps = useFormInput('Poppins');
+  
+    return (
+      <>
+        <label>
+          First name:
+          <input {...firstNameProps} />
+        </label>
+        <label>
+          Last name:
+          <input {...lastNameProps} />
+        </label>
+        <p><b>Good morning, {firstNameProps.value} {lastNameProps.value}.</b></p>
+      </>
+    );
+  }
+  ```
+  Custom Hooks let you share stateful logic but not state itself. Each call to a Hook is completely independent from every other call to the same Hook.
