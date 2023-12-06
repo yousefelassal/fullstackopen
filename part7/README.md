@@ -49,3 +49,23 @@
   // Get the userId param from the URL.
   let { userId } = useParams();
   ```
+- [useNavigate](https://reactrouter.com/en/main/hooks/use-navigate) | React Router Docs
+
+  - Either pass a To value (same type as `<Link to>`)
+  - Pass the delta you want to go in the history stack. For example, `navigate(-1)` is equivalent to hitting the back button
+
+  ```js
+  import { useNavigate } from "react-router-dom";
+
+  function useLogoutTimer() {
+    const userIsInactive = useFakeInactiveUser();
+    const navigate = useNavigate();
+  
+    useEffect(() => {
+      if (userIsInactive) {
+        fake.logout();
+        navigate("/session-timed-out");
+      }
+    }, [userIsInactive]);
+  }
+  ```
