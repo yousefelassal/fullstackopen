@@ -1,20 +1,9 @@
-import useCounter from "./use-counter"
+import Counter from "./components/Counter"
 
 const App = () => {
-  const counter = useCounter()
-
   return (
     <div>
-      <div>{counter.value}</div>
-      <button onClick={counter.increase}>
-        plus
-      </button>
-      <button onClick={counter.decrease}>
-        minus
-      </button>      
-      <button onClick={counter.zero}>
-        zero
-      </button>
+      <Counter />
     </div>
   )
 }
