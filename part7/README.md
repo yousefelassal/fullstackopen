@@ -28,6 +28,11 @@
   ```js
   <Route path="/ayhaga" element={<AyHaga />} />
   ```
+
+  dynamic route
+  ```js
+  <Route path="/ayhaga/:id" element={<AyHaga 7agat={7agat} />} />
+  ```
 - [Routes](https://reactrouter.com/en/main/components/routes) | React Router Docs
 
   match a set of child routes from the current location
