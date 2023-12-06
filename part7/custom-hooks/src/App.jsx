@@ -25,6 +25,8 @@ const useCounter = () => {
 
 const App = () => {
   const counter = useCounter()
+  const left = useCounter()
+  const right = useCounter()
 
   return (
     <div>
@@ -38,6 +40,16 @@ const App = () => {
       <button onClick={counter.zero}>
         zero
       </button>
+      <div>
+      {left.value}
+      <button onClick={left.increase}>
+        left
+      </button>
+      <button onClick={right.increase}>
+        right
+      </button>
+      {right.value}
+    </div>
     </div>
   )
 }
