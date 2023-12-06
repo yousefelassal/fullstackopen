@@ -73,3 +73,5 @@
     useTodosQuery((data) => data.find((todo) => todo.id === id))
   ```
   The custom hooks still works like before, as `select` will be `undefined` if you don't pass it, so the whole state will be returned. But if you pass a selector, you are now only subscribed to the result of the selector function.
+
+### [#3: React Query Render Optimizations](https://tkdodo.eu/blog/react-query-render-optimizations)
