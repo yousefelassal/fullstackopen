@@ -28,6 +28,11 @@
   ```js
   <Route path="/ayhaga" element={<AyHaga />} />
   ```
+
+  dynamic route
+  ```js
+  <Route path="/ayhaga/:id" element={<AyHaga 7agat={7agat} />} />
+  ```
 - [Routes](https://reactrouter.com/en/main/components/routes) | React Router Docs
 
   match a set of child routes from the current location
@@ -36,4 +41,52 @@
     <Route path="/ayhaga" element={<AyHaga />} />
     <Route path="/" element={<Home />} />
   </Routes>
+  ```
+- [useParams](https://reactrouter.com/en/main/hooks/use-params) | React Router Docs
+
+  returns an object of key/value pairs of the dynamic params from the current URL
+  ```js
+  // Get the userId param from the URL.
+  let { userId } = useParams();
+  ```
+- [useNavigate](https://reactrouter.com/en/main/hooks/use-navigate) | React Router Docs
+
+  - Either pass a To value (same type as `<Link to>`)
+  - Pass the delta you want to go in the history stack. For example, `navigate(-1)` is equivalent to hitting the back button
+
+
+  ```js
+  import { useNavigate } from "react-router-dom";
+
+  function useLogoutTimer() {
+    const userIsInactive = useFakeInactiveUser();
+    const navigate = useNavigate();
+  
+    useEffect(() => {
+      if (userIsInactive) {
+        fake.logout();
+        navigate("/session-timed-out");
+      }
+    }, [userIsInactive]);
+  }
+  ```
+
+- [Navigate](https://reactrouter.com/en/main/components/navigate) | React Router Docs
+
+  changes the current location when it is rendered.
+
+  ```js
+  <Navigate replace to="/login" />
+  ```
+
+  could be used to redirect conditionally within a route
+  ```js
+  <Route path="/users" element={user ? <Users /> : <Navigate replace to="/login" />} />
+  ```
+
+  or within a page
+  ```jsx
+  {user && (
+    <Navigate to="/dashboard" replace={true} />
+  )}
   ```
