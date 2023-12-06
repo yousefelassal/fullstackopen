@@ -75,3 +75,5 @@
   The custom hooks still works like before, as `select` will be `undefined` if you don't pass it, so the whole state will be returned. But if you pass a selector, you are now only subscribed to the result of the selector function.
 
 ### [#3: React Query Render Optimizations](https://tkdodo.eu/blog/react-query-render-optimizations)
+
+- [Fix the slow render before you fix the re-render](https://kentcdodds.com/blog/fix-the-slow-render-before-you-fix-the-re-render)
