@@ -54,6 +54,7 @@
   - Either pass a To value (same type as `<Link to>`)
   - Pass the delta you want to go in the history stack. For example, `navigate(-1)` is equivalent to hitting the back button
 
+
   ```js
   import { useNavigate } from "react-router-dom";
 
