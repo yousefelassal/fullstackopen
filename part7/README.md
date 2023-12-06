@@ -42,3 +42,10 @@
     <Route path="/" element={<Home />} />
   </Routes>
   ```
+- [useParams](https://reactrouter.com/en/main/hooks/use-params) | React Router Docs
+
+  returns an object of key/value pairs of the dynamic params from the current URL
+  ```js
+  // Get the userId param from the URL.
+  let { userId } = useParams();
+  ```
