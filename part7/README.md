@@ -94,12 +94,14 @@
 
   Returns match data about a route at the given path relative to the current location.
 
-  ```js
+  ```jsx
   const match = useMatch('/notes/:id')
   const notes = match ? notes.find(note => note.id === Number(match.params.id)) : null
-
-  <Routes>
-    // ...
-    <Route path="/notes/:id" element={<Note note={note} />} />
-  </Routes>
+  
+  return (
+    <Routes>
+      <Route path="/notes/:id" element={<Note note={note} />} />
+      // ...
+    </Routes>
+  )
   ```
