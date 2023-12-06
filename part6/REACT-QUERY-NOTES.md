@@ -79,3 +79,19 @@
 - [Fix the slow render before you fix the re-render](https://kentcdodds.com/blog/fix-the-slow-render-before-you-fix-the-re-render)
   
 ### [#4: Status Checks in React Query](https://tkdodo.eu/blog/status-checks-in-react-query)
+
+- #### Background errors
+
+  check for data-availability first, so if a background refetch fails, it could be silently ignored.
+  ```jsx
+  const todos = useTodos()
+  
+  if (todos.data) {
+    return <div>{todos.data.map(renderTodo)}</div>
+  }
+  if (todos.error) {
+    return 'An error has occurred: ' + todos.error.message
+  }
+  
+  return 'Loading...'
+  ```
