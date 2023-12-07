@@ -10,7 +10,7 @@ import {
   useMatch
 } from "react-router-dom"
 
-import { Table, Form, Button } from 'react-bootstrap'
+import { Table, Form, Button, Alert } from 'react-bootstrap'
 
 const Home = () => (
   <div>
@@ -120,9 +120,14 @@ const App = () => {
   ])
 
   const [user, setUser] = useState(null)
+  const [message, setMessage] = useState(null)
 
   const login = (user) => {
     setUser(user)
+    setMessage(`welcome ${user}`)
+    setTimeout(() => {
+      setMessage(null)
+    }, 10000)
   }
 
   const padding = {
@@ -136,6 +141,11 @@ const App = () => {
 
   return (
     <div className="container">
+      {(message &&
+        <Alert variant="success">
+          {message}
+        </Alert>
+      )}
         <div>
           <Link style={padding} to="/">home</Link>
           <Link style={padding} to="/notes">notes</Link>
