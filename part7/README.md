@@ -288,3 +288,4 @@
       home
     </Button>
     ```
+    the `Button` component is rendered so that its root component is react-router-dom's `Link` which receives its path as the prop field `to`.
