@@ -95,3 +95,5 @@
   
   return 'Loading...'
   ```
+### [#5: Testing React Query](https://tkdodo.eu/blog/testing-react-query)
+- Use [mock service worker](https://mswjs.io/)
