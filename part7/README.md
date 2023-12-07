@@ -278,3 +278,13 @@
       </Toolbar>
     </AppBar>
     ```
+
+  - [Component prop](https://mui.com/material-ui/guides/composition/#component-prop) | MUI Docs
+
+    Material UI allows you to change the root element that will be rendered via a prop called `component`.
+
+    ```js
+    <Button color="inherit" component={Link} to="/">
+      home
+    </Button>
+    ```
