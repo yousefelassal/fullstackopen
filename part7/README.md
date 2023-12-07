@@ -163,3 +163,17 @@
   }
   ```
   **Custom Hooks let you share stateful logic but not state itself. Each call to a Hook is completely independent from every other call to the same Hook.**
+
+- [Copying objects with spread syntax](https://react.dev/learn/updating-objects-in-state#copying-objects-with-the-spread-syntax) | React Docs
+
+  we can pass the props to the element using the spread syntax
+  ```js
+  <Greeting firstName='Arto' lastName='Hellas' />
+  
+  const person = {
+    firstName: 'Arto',
+    lastName: 'Hellas'
+  }
+  
+  <Greeting {...person} />
+  ```
