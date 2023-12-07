@@ -212,3 +212,5 @@
       <button onSubmit={ayhaga.reset()} >reset</button>
     </>
   )
+
+### c More about styles
