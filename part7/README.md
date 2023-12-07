@@ -259,3 +259,8 @@
 - [MaterialUI](https://mui.com/) | MUI Docs
 
   implements the [Material Design](https://material.io/) visual language developed by Google
+
+  - [Container](https://mui.com/material-ui/react-container/) | MUI Docs
+
+    The container centers your content horizontally. It's the most basic layout element.
+    
