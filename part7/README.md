@@ -263,4 +263,18 @@
   - [Container](https://mui.com/material-ui/react-container/) | MUI Docs
 
     The container centers your content horizontally. It's the most basic layout element.
-    
+
+  - [AppBar](https://mui.com/material-ui/react-app-bar/) | MUI Docs
+
+    ```js
+    <AppBar position="static">
+      <Toolbar>
+        <IconButton edge="start" color="inherit" aria-label="menu">
+        </IconButton>
+        <Button color="inherit">
+          <Link to="/">home</Link>
+        </Button>
+        // ...               
+      </Toolbar>
+    </AppBar>
+    ```
