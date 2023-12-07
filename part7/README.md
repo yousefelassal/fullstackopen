@@ -215,6 +215,6 @@
 
 ### c More about styles
 
-- [React Bootstrap](https://react-bootstrap.github.io/) | React Bootstrap Docs
+- [Bootstrap](https://getbootstrap.com/) | Bootstrap Docs
 
-  - [link stylesheet](https://react-bootstrap.github.io/docs/getting-started/introduction/#stylesheets)
+  - [link stylesheet](https://react-bootstrap.github.io/docs/getting-started/introduction/#stylesheets) | React Bootstrap Docs
