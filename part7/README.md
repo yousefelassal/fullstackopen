@@ -214,3 +214,12 @@
   )
 
 ### c More about styles
+
+- [Bootstrap](https://getbootstrap.com/) | Bootstrap Docs
+
+  - [link stylesheet](https://react-bootstrap.github.io/docs/getting-started/introduction/#stylesheets) | React Bootstrap Docs
+  - [Containers](https://getbootstrap.com/docs/4.1/layout/overview/#containers) | Bootstrap v4 Docs
+
+    required when using the default grid system.
+
+    `.container-fluid` for a full width container, spanning the entire width of the viewport.
