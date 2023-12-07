@@ -1,5 +1,4 @@
 import { useState } from 'react'
-
 import {
   Routes,
   Route,
@@ -10,6 +9,7 @@ import {
   useMatch
 } from "react-router-dom"
 
+import { Container } from '@mui/material'
 
 const Home = () => (
   <div>
@@ -115,7 +115,7 @@ const App = () => {
     : null
 
   return (
-    <div>
+    <Container>
         <div>
           <Link style={padding} to="/">home</Link>
           <Link style={padding} to="/notes">notes</Link>
@@ -137,7 +137,7 @@ const App = () => {
         <br />
         <em>Note app, Department of Computer Science 2023</em>
       </div>
-    </div>
+    </Container>
   )
 }
 
