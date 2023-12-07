@@ -18,7 +18,8 @@ import {
   TableRow,
   Paper,
   Button,
-  TextField
+  TextField,
+  Alert
 } from '@mui/material'
 
 const Home = () => (
@@ -124,9 +125,14 @@ const App = () => {
   ])
 
   const [user, setUser] = useState(null)
+  const [message, setMessage] = useState(null)
 
   const login = (user) => {
     setUser(user)
+    setMessage(`welcome ${user}`)
+    setTimeout(() => {
+      setMessage(null)
+    }, 10000)
   }
 
   const padding = {
@@ -140,6 +146,11 @@ const App = () => {
 
   return (
     <Container>
+      {(message &&
+        <Alert severity="success">
+          {message}
+        </Alert>
+      )}
         <div>
           <Link style={padding} to="/">home</Link>
           <Link style={padding} to="/notes">notes</Link>
