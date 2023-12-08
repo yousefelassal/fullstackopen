@@ -278,3 +278,26 @@
       </Toolbar>
     </AppBar>
     ```
+
+  - [Component prop](https://mui.com/material-ui/guides/composition/#component-prop) | MUI Docs
+
+    Material UI allows you to change the root element that will be rendered via a prop called `component`.
+
+    ```js
+    <Button color="inherit" component={Link} to="/">
+      home
+    </Button>
+    ```
+    the `Button` component is rendered so that its root component is react-router-dom's `Link` which receives its path as the prop field `to`.
+
+- UI Frameworks
+  - https://mantine.dev/
+  - https://www.radix-ui.com/
+  - https://react-spectrum.adobe.com/react-aria/index.html
+  - https://master.co/
+  - https://www.radix-ui.com/
+  - https://nextui.org/
+  - https://daisyui.com/
+  - https://ui.shadcn.com/
+  - https://www.tremor.so/
+  - https://headlessui.com/
