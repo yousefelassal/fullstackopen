@@ -420,5 +420,12 @@
   provides you with a rudimentary web server and the ability to use live reloading.
 
   ```js
-  
+  module.exports = {
+    // ...
+    devServer: {
+      static: path.resolve(__dirname, 'build'),
+      compress: true,
+      port: 3000,
+    },
+  }
   ```
