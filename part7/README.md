@@ -429,3 +429,21 @@
     },
   }
   ```
+- [Devtool](https://webpack.js.org/configuration/devtool/) | Webpack Docs
+
+  This option controls if and how source maps are generated.
+
+  ```js
+  const config = {
+    entry: './src/index.js',
+    output: {
+      // ...
+    },
+    devServer: {
+      // ...
+    },
+  
+    devtool: 'source-map',
+    // ..
+  };
+  ```
