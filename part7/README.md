@@ -480,3 +480,8 @@
   
   module.exports = config
   ```
+
+  We can inspect the bundled production version of the application locally by executing the following command in the build directory:
+  ```
+  npx static-server
+  ```
