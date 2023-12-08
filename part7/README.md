@@ -381,3 +381,21 @@
 - [Loaders](https://webpack.js.org/concepts/loaders/) | Webpack Docs
 
   transformations that are applied to the source code of a module. They allow you to pre-process files as you `import` or “load” them.
+
+  ```js
+  module.exports = {
+    // ...
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react'],
+          },
+        },
+      ],
+    },
+  }
+  ```
+  The _test_ property specifies that the loader is for files that have names ending with .js. The _loader_ property specifies that the processing for those files will be done with [babel-loader](https://github.com/babel/babel-loader). The _options_ property is used for specifying parameters for the loader, which configure its functionality.
