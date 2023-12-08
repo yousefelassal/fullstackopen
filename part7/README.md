@@ -353,3 +353,13 @@
   );
   ```
 ### d Webpack
+
+- [entry](https://webpack.js.org/concepts/#entry) | Webpack Docs
+
+  indicates which module webpack should use to begin building out its internal dependency graph. Webpack will figure out which other modules and libraries that entry point depends on (directly and indirectly).
+
+  ```js
+  module.exports = {
+    entry: './path/to/my/entry/file.js',
+  };
+  ```
