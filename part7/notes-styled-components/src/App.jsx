@@ -10,6 +10,36 @@ import {
   useMatch
 } from "react-router-dom"
 
+import styled from 'styled-components'
+
+const Button = styled.button`
+  background: Bisque;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid Chocolate;
+  border-radius: 3px;
+`
+
+const Input = styled.input`
+  margin: 0.25em;
+`
+
+const Page = styled.div`
+  padding: 1em;
+  background: papayawhip;
+`
+
+const Navigation = styled.div`
+  background: BurlyWood;
+  padding: 1em;
+`
+
+const Footer = styled.div`
+  background: Chocolate;
+  padding: 1em;
+  margin-top: 1em;
+`
 
 const Home = () => (
   <div>
@@ -66,12 +96,14 @@ const Login = (props) => {
       <h2>login</h2>
       <form onSubmit={onSubmit}>
         <div>
-          username: <input />
+          username:
+          <Input />
         </div>
         <div>
-          password: <input type='password' />
+          password:
+          <Input type='password' />
         </div>
-        <button type="submit">login</button>
+        <Button type="submit" primary=''>login</Button>
       </form>
     </div>
   )
@@ -115,8 +147,8 @@ const App = () => {
     : null
 
   return (
-    <div>
-        <div>
+    <Page>
+        <Navigation>
           <Link style={padding} to="/">home</Link>
           <Link style={padding} to="/notes">notes</Link>
           <Link style={padding} to="/users">users</Link>
@@ -124,7 +156,7 @@ const App = () => {
             ? <em>{user} logged in</em>
             : <Link style={padding} to="/login">login</Link>
           }
-        </div>
+        </Navigation>
 
         <Routes>
           <Route path="/notes/:id" element={<Note note={note} />} />
@@ -133,11 +165,11 @@ const App = () => {
           <Route path="/login" element={<Login onLogin={login} />} />
           <Route path="/" element={<Home />} />
         </Routes>
-      <div>
+      <Footer>
         <br />
         <em>Note app, Department of Computer Science 2023</em>
-      </div>
-    </div>
+      </Footer>
+    </Page>
   )
 }
 
