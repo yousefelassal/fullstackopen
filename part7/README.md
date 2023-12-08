@@ -363,3 +363,18 @@
     entry: './path/to/my/entry/file.js',
   };
   ```
+- [output](https://webpack.js.org/concepts/#output) | Webpack Docs
+
+  tells webpack where to emit the _bundles_ it creates and how to name these files. It defaults to `./dist/main.js` for the main output file and to the `./dist` folder for any other generated file.
+
+  ```js
+  const path = require('path');
+
+  module.exports = {
+    entry: './path/to/my/entry/file.js',
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'my-first-webpack.bundle.js',
+    },
+  };
+  ```
