@@ -447,3 +447,36 @@
     // ..
   };
   ```
+
+- [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) | Webpack Docs
+
+  replaces variables in your code with other values or expressions at `compile` time. This can be useful for allowing different behavior between development builds and production builds.
+
+  ```js
+  const path = require('path')
+  const webpack = require('webpack')
+  
+  const config = (env, argv) => {
+  
+    const backend_url = argv.mode === 'production'
+      ? 'https://production.link/api/notes'
+      : 'http://localhost:3001/notes'
+  
+    return {
+      entry: './src/index.js',
+      output: {
+       // ...
+      },
+      module: {
+        // ...
+      },
+      plugins: [
+        new webpack.DefinePlugin({
+          BACKEND_URL: JSON.stringify(backend_url)
+        })
+      ]
+    }
+  }
+  
+  module.exports = config
+  ```
