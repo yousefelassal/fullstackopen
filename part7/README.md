@@ -378,3 +378,6 @@
     },
   };
   ```
+- [Loaders](https://webpack.js.org/concepts/loaders/) | Webpack Docs
+
+  transformations that are applied to the source code of a module. They allow you to pre-process files as you `import` or “load” them.
