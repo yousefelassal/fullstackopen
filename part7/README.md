@@ -574,3 +574,14 @@
 
   - [Writing a WebSocket server in JavaScript (Deno)](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_a_WebSocket_server_in_JavaScript_Deno) | MDN Docs
   - [Getting started with Socket.IO](https://socket.io/docs/v4/tutorial/introduction) | Socket.io Docs
+
+- security
+
+  - [Cyber Security Base](https://cybersecuritybase.mooc.fi/) | University of Helsinki Course
+  - [The Open Web Application Security Project](https://www.owasp.org/) | OWASP
+  - SQL Injection
+
+    Using parameterized queries user input isn't mixed with the SQL query, but the database itself inserts the input values at placeholders in the query (usually `?`).
+  ```sql
+  execute("SELECT * FROM Users WHERE name = ?", [userName])
+  ```
