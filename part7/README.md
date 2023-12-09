@@ -589,3 +589,13 @@
   - Cross-site scripting (XSS)
 
     an attack where it is possible to inject malicious JavaScript code into a legitimate web application.
+  - Update libraries if there are security updates
+
+    You can check how up-to-date your dependencies are using the command
+      ```
+      npm outdated --depth 0
+      ```
+    The dependencies can be brought up to date by updating the file `package.json`. The best way to do that is by using a tool called `npm-check-updates`. It can be installed globally by running the command
+      ```
+      npm install -g npm-check-updates
+      ```
