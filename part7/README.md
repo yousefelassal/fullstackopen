@@ -540,3 +540,33 @@
     // ...
   }
   ```
+- [`setState(nextState, callback?)`](https://react.dev/reference/react/Component#setstate) | React Docs
+
+  update the state of your React component.
+  ```js
+  class Form extends Component {
+    state = {
+      name: 'Taylor',
+    };
+  
+    handleNameChange = (e) => {
+      const newName = e.target.value;
+      this.setState({
+        name: newName
+      });
+    }
+  
+    // ...
+  }
+  ```
+
+  You can also pass a function to `setState`. It lets you update state based on the previous state:
+  ```js
+  handleIncreaseAge = () => {
+    this.setState(prevState => {
+      return {
+        age: prevState.age + 1
+      };
+    });
+  }
+  ```
