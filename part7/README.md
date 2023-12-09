@@ -485,3 +485,4 @@
   ```
   npx static-server
   ```
+- [HTML5 Cross Browser Polyfills](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills) | Modernizr Wiki GitHub
