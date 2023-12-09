@@ -489,7 +489,7 @@
 
 ### e Class components, Miscellaneous
 
-- [constructor](https://react.dev/reference/react/Component#constructor) | React Docs
+- [`constructor(props)`](https://react.dev/reference/react/Component#constructor) | React Docs
 
   The [constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor) runs before your class component mounts (gets added to the screen). Typically, a constructor is only used for two purposes in React. It lets you declare state and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) your class methods to the class instance:
   ```js
@@ -503,4 +503,16 @@
     handleClick() {
       // ...
     }
+  ```
+- [`render()`](https://react.dev/reference/react/Component#render) | React Docs
+
+  specify what you want to appear on the screen, for example:
+  ```js
+  import { Component } from 'react';
+  
+  class Greeting extends Component {
+    render() {
+      return <h1>Hello, {this.props.name}!</h1>;
+    }
+  }
   ```
