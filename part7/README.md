@@ -586,3 +586,6 @@
     execute("SELECT * FROM Users WHERE name = ?", [userName])
     ```
     Injection attacks are also possible in NoSQL databases. However, mongoose prevents them by [sanitizing](https://zanon.io/posts/nosql-injection-in-mongodb) the queries.
+  - Cross-site scripting (XSS)
+
+    an attack where it is possible to inject malicious JavaScript code into a legitimate web application.
