@@ -570,3 +570,7 @@
     });
   }
   ```
+- [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) | MDN Docs
+
+  - [Writing a WebSocket server in JavaScript (Deno)](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_a_WebSocket_server_in_JavaScript_Deno) | MDN Docs
+  - [Getting started with Socket.IO](https://socket.io/docs/v4/tutorial/introduction) | Socket.io Docs
