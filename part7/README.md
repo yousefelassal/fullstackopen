@@ -516,3 +516,27 @@
     }
   }
   ```
+- [Adding lifecycle methods to a class component](https://react.dev/reference/react/Component#adding-lifecycle-methods-to-a-class-component) | React Docs
+  
+  There are a few special methods you can define on your class.
+  
+  If you define the [`componentDidMount`](https://react.dev/reference/react/Component#componentdidmount) method, React will call it when your component is added (mounted) to the screen. React will call [`componentDidUpdate`](https://react.dev/reference/react/Component#componentdidupdate) after your component re-renders due to changed props or state. React will call [`componentWillUnmount`](https://react.dev/reference/react/Component#componentwillunmount) after your component has been removed (unmounted) from the screen.
+
+  ```js
+  class App extends React.Component {
+    constructor(props) {
+      super(props)
+      this.state = {
+        data: []
+      }
+    }
+
+    componentDidMount = () => {
+      axios.get('http://server.link/api').then(response => {
+        this.setState({ data: response.data })
+      })
+    }
+  
+    // ...
+  }
+  ```
