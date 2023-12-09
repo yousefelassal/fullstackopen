@@ -486,3 +486,21 @@
   npx static-server
   ```
 - [HTML5 Cross Browser Polyfills](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills) | Modernizr Wiki GitHub
+
+### e Class components, Miscellaneous
+
+- [constructor](https://react.dev/reference/react/Component#constructor) | React Docs
+
+  The [constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor) runs before your class component mounts (gets added to the screen). Typically, a constructor is only used for two purposes in React. It lets you declare state and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) your class methods to the class instance:
+  ```js
+  class Counter extends Component {
+    constructor(props) {
+      super(props);
+      this.state = { counter: 0 };
+      this.handleClick = this.handleClick.bind(this);
+    }
+  
+    handleClick() {
+      // ...
+    }
+  ```
