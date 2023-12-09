@@ -582,6 +582,6 @@
   - SQL Injection
 
     Using parameterized queries user input isn't mixed with the SQL query, but the database itself inserts the input values at placeholders in the query (usually `?`).
-  ```sql
-  execute("SELECT * FROM Users WHERE name = ?", [userName])
-  ```
+    ```sql
+    execute("SELECT * FROM Users WHERE name = ?", [userName])
+    ```
