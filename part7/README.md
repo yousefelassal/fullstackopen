@@ -599,6 +599,6 @@
       ```
       npm install -g npm-check-updates
       ```
-  - [Website Security](https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Website_security) | MDN Docs
+  - [Website Security Guide](https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Website_security) | MDN Docs
 
     > The single most important lesson you can learn about website security is to **never trust data from the browser**. This includes, but is not limited to data in URL parameters of `GET` requests, `POST` requests, HTTP headers and cookies, and user-uploaded files. Always check and sanitize all incoming data. Always assume the worst.
