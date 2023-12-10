@@ -621,5 +621,5 @@
   - [Microservice architecture](https://martinfowler.com/articles/microservices.html) | Article by Martin Fowler
 
     ![h1uop35t](https://github.com/yousefelassal/fullstackopen/assets/76617202/01330363-49f2-4658-89bc-00806b100b59)
-
+    - [API Gateway](https://microservices.io/patterns/apigateway) | Microservices.io
     
