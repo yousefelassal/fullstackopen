@@ -622,4 +622,8 @@
 
     ![h1uop35t](https://github.com/yousefelassal/fullstackopen/assets/76617202/01330363-49f2-4658-89bc-00806b100b59)
     - [API Gateway](https://microservices.io/patterns/apigateway) | Microservices.io
-    
+  - Serverless
+    - [lambda](https://aws.amazon.com/lambda/) | Amazon AWS
+    - [Cloud functions](https://cloud.google.com/functions/) | Google Cloud
+    - [Azure functions](https://azure.microsoft.com/en-us/services/functions/) | Microsoft Azure
+    - [Serverless](https://serverless.com/) | Serverless Docs
