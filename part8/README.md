@@ -54,3 +54,16 @@
     ```
 
      `String` type is marked as _Non-Null_ by adding an exclamation mark, `!` after the type name. This means that our server always expects to return a non-null value for this field, and if it ends up getting a null value that will actually trigger a GraphQL execution error, letting the client know that something has gone wrong.
+
+- [Apollo Server](https://www.apollographql.com/docs/apollo-server/api/apollo-server/) | Apollo Docs
+
+  The `ApolloServer` class creates an instance of Apollo Server that you can then pass to a web framework integration function (e.g., `startStandaloneServer` or `expressMiddleware`).
+
+  ```js
+  import { ApolloServer } from '@apollo/server';
+
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+  });
+  ```
