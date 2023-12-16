@@ -67,3 +67,17 @@
     resolvers,
   });
   ```
+- [Resolvers](https://www.apollographql.com/docs/apollo-server/data/resolvers/) | Apollo Docs
+
+  **A resolver is a function that's responsible for populating the data for a single field in your schema.** It can populate that data in any way you define, such as by fetching data from a back-end database or a third-party API.
+
+  ```js
+  const resolvers = {
+    Query: {
+      personCount: () => persons.length,
+      allPersons: () => persons,
+      findPerson: (root, args) =>
+        persons.find(p => p.name === args.name)
+    }
+  }
+  ```
