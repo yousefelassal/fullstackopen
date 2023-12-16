@@ -81,3 +81,41 @@
     }
   }
   ```
+
+- [Mutations](https://graphql.org/learn/queries/#mutations) | GraphQL Docs
+
+  Just like in queries, if the mutation field returns an object type, you can ask for nested fields. This can be useful for fetching the new state of an object after an update.
+
+  Let's look at a simple example mutation:
+  ```js
+  mutation CreateReviewForEpisode($ep: Episode!, $review: ReviewInput!) {
+    createReview(episode: $ep, review: $review) {
+      stars
+      commentary
+    }
+  }
+  ```
+
+  variables:
+  ```js
+  {
+    "ep": "JEDI",
+    "review": {
+      "stars": 5,
+      "commentary": "This is a great movie!"
+    }
+  }
+  ```
+
+  result:
+  ```js
+  {
+    "data": {
+      "createReview": {
+        "stars": 5,
+        "commentary": "This is a great movie!"
+      }
+    }
+  }
+  ```
+  
