@@ -119,3 +119,29 @@
   }
   ```
   
+- [`GraphQLErro`](https://www.apollographql.com/docs/apollo-server/data/errors/#custom-errors) | Apollo Docs
+
+  ```js
+  import { GraphQLError } from 'graphql';
+
+  throw new GraphQLError(message, {
+    extensions: { code: 'YOUR_ERROR_CODE', myCustomExtensions },
+  });
+  ```
+
+  Custom errors can provide additional context, enabling your clients to understand why an error is happening. We recommend making clear errors for common cases, for example, when a user isn't logged in (`UNAUTHENTICATED`), or someone is forbidden from performing an action:
+  ```js
+  import { GraphQLError } from 'graphql';
+  
+  throw new GraphQLError('You are not authorized to perform this action.', {
+    extensions: {
+      code: 'FORBIDDEN',
+    },
+  });
+  ```
+
+- [Built-in error codes](https://www.apollographql.com/docs/apollo-server/data/errors/#built-in-error-codes)
+
+  | code | description |
+  |------|-------------|
+  | `BAD_USER_INPUT` | The GraphQL operation includes an invalid value for a field argument |
