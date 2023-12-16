@@ -5,7 +5,7 @@
   GraphQL query language is basically about selecting fields on objects
 
   So, for example, in the following query:
-  ```js
+  ```gql
   {
     hero {
       name
