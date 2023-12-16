@@ -145,3 +145,20 @@
   | code | description |
   |------|-------------|
   | `BAD_USER_INPUT` | The GraphQL operation includes an invalid value for a field argument |
+
+- [Enums](https://graphql.org/learn/schema/#enumeration-types) | GraphQL Docs
+
+  enumeration types are a special kind of scalar that is restricted to a particular set of allowed values. This allows you to:
+  
+  1. Validate that any arguments of this type are one of the allowed values
+  2. Communicate through the type system that a field will always be one of a finite set of values
+  
+  Here's what an enum definition might look like in the GraphQL schema language:
+  ```gql
+  enum Episode {
+    NEWHOPE
+    EMPIRE
+    JEDI
+  }
+  ```
+  This means that wherever we use the type Episode in our schema, we expect it to be exactly one of `NEWHOPE`, `EMPIRE`, or `JEDI`.
