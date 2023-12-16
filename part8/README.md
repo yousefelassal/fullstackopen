@@ -43,3 +43,14 @@
   3. `String`: A UTF‐8 character sequence.
   4. `Boolean`: true or false.
   5. `ID`: The ID scalar type represents a unique identifier, often used to refetch an object or as the key for a cache. The ID type is serialized in the same way as a String; however, defining it as an `ID` signifies that it is not intended to be human‐readable.
+
+  - [Lists and Non-Nulls](https://graphql.org/learn/schema/#lists-and-non-null)
+
+    ```js
+    type Character {
+      name: String!
+      appearsIn: [Episode]!
+    }
+    ```
+
+     `String` type is marked as _Non-Null_ by adding an exclamation mark, `!` after the type name. This means that our server always expects to return a non-null value for this field, and if it ends up getting a null value that will actually trigger a GraphQL execution error, letting the client know that something has gone wrong.
