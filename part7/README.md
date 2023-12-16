@@ -570,3 +570,60 @@
     });
   }
   ```
+- [WebSocket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) | MDN Docs
+
+  - [Writing a WebSocket server in JavaScript (Deno)](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_a_WebSocket_server_in_JavaScript_Deno) | MDN Docs
+  - [Getting started with Socket.IO](https://socket.io/docs/v4/tutorial/introduction) | Socket.io Docs
+
+- Security
+
+  - [Cyber Security Base](https://cybersecuritybase.mooc.fi/) | University of Helsinki Course
+  - [The Open Web Application Security Project](https://www.owasp.org/) | OWASP
+  - SQL Injection
+
+    Using parameterized queries user input isn't mixed with the SQL query, but the database itself inserts the input values at placeholders in the query (usually `?`).
+    ```sql
+    execute("SELECT * FROM Users WHERE name = ?", [userName])
+    ```
+    Injection attacks are also possible in NoSQL databases. However, mongoose prevents them by [sanitizing](https://zanon.io/posts/nosql-injection-in-mongodb) the queries.
+  - Cross-site scripting (XSS)
+
+    an attack where it is possible to inject malicious JavaScript code into a legitimate web application.
+  - Update libraries if there are security updates
+
+    You can check how up-to-date your dependencies are using the command
+      ```
+      npm outdated --depth 0
+      ```
+    The dependencies can be brought up to date by updating the file `package.json`. The best way to do that is by using a tool called `npm-check-updates`. It can be installed globally by running the command
+      ```
+      npm install -g npm-check-updates
+      ```
+  - [Website Security Guide](https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Website_security) | MDN Docs
+
+    > The single most important lesson you can learn about website security is to **never trust data from the browser**. This includes, but is not limited to data in URL parameters of `GET` requests, `POST` requests, HTTP headers and cookies, and user-uploaded files. Always check and sanitize all incoming data. Always assume the worst.
+  - [Securiry Best Practices](https://expressjs.com/en/advanced/best-practice-security.html) | Express Docs
+
+      - Use [Helmet](https://helmetjs.github.io/) | Helmet.js Docs
+
+        Helmet is a collection of several smaller middleware functions that set security-related HTTP response headers.
+        ```js
+        // ...
+
+        const helmet = require('helmet')
+        app.use(helmet())
+        
+        // ...
+        ```
+- Trends
+
+  - [Progressive Web Apps](https://web.dev/explore/progressive-web-apps) | Google
+  - [Microservice architecture](https://martinfowler.com/articles/microservices.html) | Article by Martin Fowler
+
+    ![h1uop35t](https://github.com/yousefelassal/fullstackopen/assets/76617202/01330363-49f2-4658-89bc-00806b100b59)
+    - [API Gateway](https://microservices.io/patterns/apigateway) | Microservices.io
+  - Serverless
+    - [lambda](https://aws.amazon.com/lambda/) | Amazon AWS
+    - [Cloud functions](https://cloud.google.com/functions/) | Google Cloud
+    - [Azure functions](https://azure.microsoft.com/en-us/services/functions/) | Microsoft Azure
+    - [Serverless](https://serverless.com/) | Serverless Docs
