@@ -232,3 +232,26 @@
   }
   ```
     
+- [Manual Execution with `useLAzyQuery`](https://www.apollographql.com/docs/react/data/queries/#manual-execution-with-uselazyquery) | Apollo Docs
+
+  Unlike with `useQuery`, when you call `useLazyQuery`, it does not immediately execute its associated query. Instead, it returns a **query function** in its result tuple that you call whenever you're ready to execute the query.
+
+  ```js
+  import { useLazyQuery } from '@apollo/client';
+
+  function DelayedQuery() {
+    const [getDog, { loading, error, data }] = useLazyQuery(GET_DOG_PHOTO);
+  
+    if (loading) return <p>Loading ...</p>;
+    if (error) return `Error! ${error}`;
+  
+    return (
+      <div>
+        {data?.dog && <img src={data.dog.displayImage} />}
+        <button onClick={() => getDog({ variables: { breed: 'bulldog' } })}>
+          Click me!
+        </button>
+      </div>
+    );
+  }
+  ```
