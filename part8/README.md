@@ -198,3 +198,37 @@
     cache: new InMemoryCache(),
   })
   ```
+- [Queries](https://www.apollographql.com/docs/react/data/queries/) | Apollo Docs
+
+  ```js
+  import { gql, useQuery } from '@apollo/client';
+
+  const GET_DOGS = gql`
+    query GetDogs {
+      dogs {
+        id
+        breed
+      }
+    }
+  `;
+  ```
+  `useQuery` makes the query it receives as a parameter. It returns an object with multiple [fields](https://www.apollographql.com/docs/react/api/react/hooks/#result).
+  ```js
+  function Dogs({ onDogSelected }) {
+    const { loading, error, data } = useQuery(GET_DOGS);
+  
+    if (loading) return 'Loading...';
+    if (error) return `Error! ${error.message}`;
+  
+    return (
+      <select name='dog' onChange={onDogSelected}>
+        {data.dogs.map((dog) => (
+          <option key={dog.id} value={dog.breed}>
+            {dog.breed}
+          </option>
+        ))}
+      </select>
+    );
+  }
+  ```
+    
