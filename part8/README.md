@@ -189,3 +189,12 @@
   ```
 
 ### b React and GraphQL
+
+- [Client](https://www.apollographql.com/docs/react/get-started/) | Apollo Docs
+
+  ```js
+  const client = new ApolloClient({
+    uri: 'http://localhost:4000',
+    cache: new InMemoryCache(),
+  })
+  ```
