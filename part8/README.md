@@ -231,6 +231,15 @@
     );
   }
   ```
+  - [skip](https://www.apollographql.com/docs/react/data/queries/#skip)
+
+    ```js
+    const [nameToSearch, setNameToSearch] = useState(null)
+    const result = useQuery(FIND_PERSON, {
+      variables: { nameToSearch },
+      skip: !nameToSearch,
+    })
+    ```
     
 - [Manual Execution with `useLAzyQuery`](https://www.apollographql.com/docs/react/data/queries/#manual-execution-with-uselazyquery) | Apollo Docs
 
