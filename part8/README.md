@@ -348,3 +348,10 @@
     refetchQueries: [ { query: ALL_PERSONS } ]
   })
   ```
+
+  If you want to do multiple queries, you can pass multiple objects inside `refetchQueries`. This will allow you to update different parts of your app at the same time. Here is an example:
+  ```js
+  const [ createPerson ] = useMutation(CREATE_PERSON, {
+    refetchQueries: [ { query: ALL_PERSONS }, { query: OTHER_QUERY }, { query: ... } ] // pass as many queries as you need
+  })
+  ```
