@@ -241,7 +241,7 @@
     })
     ```
     
-- [Manual Execution with `useLAzyQuery`](https://www.apollographql.com/docs/react/data/queries/#manual-execution-with-uselazyquery) | Apollo Docs
+- [Manual Execution with `useLazyQuery`](https://www.apollographql.com/docs/react/data/queries/#manual-execution-with-uselazyquery) | Apollo Docs
 
   Unlike with `useQuery`, when you call `useLazyQuery`, it does not immediately execute its associated query. Instead, it returns a **query function** in its result tuple that you call whenever you're ready to execute the query.
 
@@ -260,6 +260,71 @@
         <button onClick={() => getDog({ variables: { breed: 'bulldog' } })}>
           Click me!
         </button>
+      </div>
+    );
+  }
+  ```
+
+- [Caching](https://www.apollographql.com/docs/react/caching/overview/) | Apollo Docs
+
+  Apollo Client stores the results of your GraphQL queries in a local, [normalized](https://www.apollographql.com/docs/react/caching/overview/#data-normalization), in-memory cache. This enables Apollo Client to respond almost immediately to queries for already-cached data, without even sending a network request.
+
+  For example, the _first_ time your app executes a `GetBook` query for a `Book` object with id `5`, the flow looks like this:
+  
+  ```mermaid
+  sequenceDiagram
+    Apollo Client->>InMemoryCache: GetBook(bookId: "5")
+    Note over InMemoryCache: Book:5 not found<br/>in cache
+    InMemoryCache->>GraphQL Server: Query sent to server
+    GraphQL Server->>InMemoryCache: Server responds<br/>with Book
+    Note over InMemoryCache: Book:5 is cached
+    InMemoryCache->>Apollo Client: Returns Book
+  ```
+  
+  And each _later_ time your app executes `GetBook` for that same object, the flow looks like this instead:
+  
+  ```mermaid
+  sequenceDiagram
+    Apollo Client->>InMemoryCache: GetBook(bookId: "5")
+    Note over InMemoryCache: Book:5 found<br/>in cache!
+    InMemoryCache->>Apollo Client: Returns Book
+    Note over GraphQL Server: (Server is never queried)
+  ```
+
+- [`useMutation`](https://www.apollographql.com/docs/react/api/react/hooks/#usemutation) | Apollo Docs
+
+  ```js
+  import { gql, useMutation } from '@apollo/client';
+
+  const ADD_TODO = gql`
+    mutation AddTodo($type: String!) {
+      addTodo(type: $type) {
+        id
+        type
+      }
+    }
+  `;
+  
+  function AddTodo() {
+    let input;
+    const [addTodo, { data }] = useMutation(ADD_TODO);
+  
+    return (
+      <div>
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            addTodo({ variables: { type: input.value } });
+            input.value = '';
+          }}
+        >
+          <input
+            ref={node => {
+              input = node;
+            }}
+          />
+          <button type="submit">Add Todo</button>
+        </form>
       </div>
     );
   }
