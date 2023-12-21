@@ -341,7 +341,7 @@
   });
   ```
 
-- [refetchQuries](https://www.apollographql.com/docs/react/data/refetching/) | Apollo Docs
+- [`refetchQuries`](https://www.apollographql.com/docs/react/data/refetching/) | Apollo Docs
 
   ```js
   const [ createPerson ] = useMutation(CREATE_PERSON, {
@@ -354,4 +354,16 @@
   const [ createPerson ] = useMutation(CREATE_PERSON, {
     refetchQueries: [ { query: ALL_PERSONS }, { query: OTHER_QUERY }, { query: ... } ] // pass as many queries as you need
   })
+  ```
+
+- [`onError`](https://www.apollographql.com/docs/react/api/react/hooks/#onerror) | Apollo Docs
+
+  ```js
+  const [ createPerson ] = useMutation(CREATE_PERSON, {
+    // ...
+    onError: (error) => {
+      const messages = error.graphQLErrors.map(e => e.message).join('\n')
+      // ...
+    }
+  }
   ```
