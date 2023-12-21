@@ -264,3 +264,29 @@
     );
   }
   ```
+
+- [Caching](https://www.apollographql.com/docs/react/caching/overview/) | Apollo Docs
+
+  Apollo Client stores the results of your GraphQL queries in a local, [normalized](https://www.apollographql.com/docs/react/caching/overview/#data-normalization), in-memory cache. This enables Apollo Client to respond almost immediately to queries for already-cached data, without even sending a network request.
+
+  For example, the _first_ time your app executes a `GetBook` query for a `Book` object with id `5`, the flow looks like this:
+  
+  ```mermaid
+  sequenceDiagram
+    Apollo Client->>InMemoryCache: GetBook(bookId: "5")
+    Note over InMemoryCache: Book:5 not found<br/>in cache
+    InMemoryCache->>GraphQL Server: Query sent to server
+    GraphQL Server->>InMemoryCache: Server responds<br/>with Book
+    Note over InMemoryCache: Book:5 is cached
+    InMemoryCache->>Apollo Client: Returns Book
+  ```
+  
+  And each _later_ time your app executes `GetBook` for that same object, the flow looks like this instead:
+  
+  ```mermaid
+  sequenceDiagram
+    Apollo Client->>InMemoryCache: GetBook(bookId: "5")
+    Note over InMemoryCache: Book:5 found<br/>in cache!
+    InMemoryCache->>Apollo Client: Returns Book
+    Note over GraphQL Server: (Server is never queried)
+  ```
