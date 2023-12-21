@@ -340,3 +340,11 @@
     pollInterval: 500,
   });
   ```
+
+- [refetchQuries](https://www.apollographql.com/docs/react/data/refetching/) | Apollo Docs
+
+  ```js
+  const [ createPerson ] = useMutation(CREATE_PERSON, {
+    refetchQueries: [ { query: ALL_PERSONS } ]
+  })
+  ```
