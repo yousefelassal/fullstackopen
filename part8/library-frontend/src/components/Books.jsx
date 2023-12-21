@@ -2,7 +2,9 @@ import { useQuery } from '@apollo/client'
 import { ALL_BOOKS } from '../queries'
 
 const Books = () => {
-  const { data:books, loading, error } = useQuery(ALL_BOOKS)
+  const { data:books, loading, error } = useQuery(ALL_BOOKS, {
+    pollInterval: 2000
+  })
 
   if (error) return <div>error...</div>
 
@@ -20,7 +22,7 @@ const Books = () => {
               <th>published</th>
             </tr>
             {books.allBooks.map((a) => (
-              <tr key={a.title}>
+              <tr key={a.id}>
                 <td>{a.title}</td>
                 <td>{a.author}</td>
                 <td>{a.published}</td>

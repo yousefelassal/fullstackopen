@@ -2,7 +2,9 @@ import { useQuery } from '@apollo/client'
 import { ALL_AUTHORS } from '../queries'
 
 const Authors = () => {
-    const { data:authors, loading, error } = useQuery(ALL_AUTHORS)
+    const { data:authors, loading, error } = useQuery(ALL_AUTHORS, {
+      pollInterval: 2000
+    })
 
     if (error) return <div>error...</div>
     
