@@ -334,7 +334,7 @@
 
   Polling provides near-real-time synchronization with your server by executing your query periodically at a specified interval. To enable polling for a query, pass a `pollInterval` configuration option to the `useQuery` hook with an interval in milliseconds:
 
-  ```
+  ```js
   const { loading, error, data } = useQuery(GET_DOG_PHOTO, {
     variables: { breed },
     pollInterval: 500,
