@@ -379,7 +379,7 @@
     useSWR(['query ...', variables], fetcher)
     ```
 
-      While variables can be a JavaScript object (can be nested, or an array, too), and it will not cause any unnecessary re-renders. Also, the serialization process is stable so the following keys are identical, no extra requests:
+      While `variables` can be a JavaScript object (can be nested, or an array, too), and it will not cause any unnecessary re-renders. Also, the serialization process is stable so the following keys are identical, no extra requests:
     ```js
     // Totally OK to do so, same resource!
     useSWR(['query ...', { name: 'foo', id: 'bar' }], fetcher)
