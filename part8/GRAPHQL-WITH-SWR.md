@@ -46,7 +46,7 @@ While `variables` can be a JavaScript object (can be nested, or an array, too), 
   )
   ```
 
-## Make It Reusable
+## [Make It Reusable](https://swr.vercel.app/docs/getting-started#make-it-reusable) | SWR Docs
 When building a web app, you might need to reuse the data in many places of the UI. It is incredibly easy to create reusable data hooks on top of SWR:
 
 ```js
