@@ -20,6 +20,16 @@ mutation createPerson($name: String!, $street: String!, $city: String!, $phone: 
 }
 `
 
+const ALL_PERSONS = gql`
+  query  {
+    allPersons  {
+      name
+      phone
+      id
+    }
+  }
+`
+
 const PersonForm = () => {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
@@ -27,7 +37,9 @@ const PersonForm = () => {
   const [city, setCity] = useState('')
 
 
-  const [ createPerson ] = useMutation(CREATE_PERSON)
+  const [ createPerson ] = useMutation(CREATE_PERSON, {
+    refetchQueries: [{query: ALL_PERSONS}]
+  })
 
   const submit = (event) => {
     event.preventDefault()
