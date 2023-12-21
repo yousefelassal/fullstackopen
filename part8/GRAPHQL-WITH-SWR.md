@@ -74,7 +74,7 @@ function Avatar ({ id }) {
 
 By adopting this pattern, you can forget about fetching data in the imperative way: start the request, update the loading state, and return the final result. Instead, your code is more declarative: you just need to specify what data is used by the component.
 
-## Mutation
+## [Mutation](https://swr.vercel.app/docs/mutation#revalidation) | SWR Docs
 
 Bound mutate is the short path to mutate the current key with data. Which `key` is bounded to the `key` passing to `useSWR`, and receive the `data` as the first argument.
 ```js
@@ -94,6 +94,34 @@ function Profile () {
         // NOTE: key is not required when using useSWR's mutate as it's pre-bound
         mutate({ ...data, name: newName })
       }}>Uppercase my name!</button>
+    </div>
+  )
+}
+```
+
+## [Revalidation](https://swr.vercel.app/docs/mutation#revalidation) | SWR Docs
+
+Revalidation
+When you call `mutate(key)` (or just `mutate()` with the bound mutate API) without any data, it will trigger a revalidation (mark the data as expired and trigger a refetch) for the resource. This example shows how to automatically refetch the login info (e.g. inside `<Profile/>`) when the user clicks the “Logout” button:
+
+```js
+import useSWR, { useSWRConfig } from 'swr'
+ 
+function App () {
+  const { mutate } = useSWRConfig()
+ 
+  return (
+    <div>
+      <Profile />
+      <button onClick={() => {
+        // set the cookie as expired
+        document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+ 
+        // tell all SWRs with this key to revalidate
+        mutate('/api/user')
+      }}>
+        Logout
+      </button>
     </div>
   )
 }
