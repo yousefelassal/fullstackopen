@@ -1,1 +1,3 @@
-# [Learn GraphQL](https://graphql.com/learn/what-is-graphql/) | GraphQL.com
+# [Learn GraphQL](https://graphql.com/learn) | GraphQL.com
+
+
