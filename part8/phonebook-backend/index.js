@@ -5,8 +5,8 @@ import { GraphQLError } from 'graphql'
 import mongoose from 'mongoose'
 mongoose.set('strictQuery', false)
 import Person from './models/person.js'
-
-require('dotenv').config()
+import dotenv from 'dotenv'
+dotenv.config()
 
 const MONGODB_URI = process.env.MONGODB_URI
 
