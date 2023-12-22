@@ -22,4 +22,10 @@ const schema = new mongoose.Schema({
   },
 })
 
-module.exports = mongoose.model('Person', schema)
+schema.set('toJSON', {
+    transform: (document, returnedObject) => {
+        delete returnedObject.__v
+    }
+})
+
+export default mongoose.model('Person', schema)
