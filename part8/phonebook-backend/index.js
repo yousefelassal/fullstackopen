@@ -1,6 +1,5 @@
 import { ApolloServer } from '@apollo/server'
 import { startStandaloneServer } from '@apollo/server/standalone'
-import { v1 as uuid } from 'uuid'
 import { GraphQLError } from 'graphql'
 import mongoose from 'mongoose'
 mongoose.set('strictQuery', false)
