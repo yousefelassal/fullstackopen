@@ -377,3 +377,22 @@
   | Promise | Resolvers can be asynchronous and perform async actions, such as fetching from a database or back-end API. To support this, a resolver can return a promise that resolves to any other supported return type. |
 
 - [context](https://www.apollographql.com/docs/apollo-server/data/context/) | Apollo Docs
+
+  share data throughout your server's resolvers and plugins, server calls the `context` function _once for every request_, enabling you to customize your `contextValue` with each request's details (such as HTTP headers):
+
+  ```js
+  startStandaloneServer(server, {
+    // ...
+    // return an object
+    context: async ({ req, res }) => {
+      const auth = req ? req.headers.authorization : null
+      if (auth && auth.startsWith('Bearer ')) {
+        const decodedToken = jwt.verify(
+          auth.substring(7), process.env.JWT_SECRET
+        )
+        const currentUser = await User.findById(decodedToken.id)
+        return { currentUser }
+      }
+    },
+  })
+  ```
