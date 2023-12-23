@@ -4,6 +4,8 @@ import { GraphQLError } from 'graphql'
 import mongoose from 'mongoose'
 mongoose.set('strictQuery', false)
 import Person from './models/person.js'
+import User from './models/user.js'
+import { Jwt } from 'jsonwebtoken'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -125,6 +127,38 @@ const resolvers = {
       }
       return person
     },
+    createUser: async (root, args) => {
+      const user = new User({ username: args.username })
+
+      return user.save()
+        .catch(error => {
+          throw new GraphQLError(error.message, {
+            extensions: {
+              code: 'BAD_USER_INPUT',
+              invalidArgs: args.username,
+              error
+            }
+          })
+        })
+    },
+    login: async (root, args) => {
+      const user = await User.findOne({ username: args.username })
+
+      if (!user || args.password !== 'secret') {
+        throw new GraphQLError('Wrong credentials', {
+          extensions: {
+            code: 'UNAUTHENTICATED'
+          }
+        })
+      }
+
+      const userForToken = {
+        username: user.username,
+        id: user._id
+      }
+
+      return { value: Jwt.sign(userForToken, process.env.JWT_SECRET) }
+    }
   },
 }
 
