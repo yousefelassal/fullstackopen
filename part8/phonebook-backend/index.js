@@ -35,10 +35,21 @@ const typeDefs = `
     id: ID!
   }
 
+  type User {
+    username: String!
+    friends: [Person!]!
+    id: ID!
+  }
+
+  type Token {
+    value: String!
+  }
+
   type Query {
     personCount: Int!
     allPersons(phone: YesNo): [Person!]!
     findPerson(name: String!): Person
+    me: User
   }
 
   type Mutation {
@@ -52,6 +63,13 @@ const typeDefs = `
       name: String!
       phone: String!
     ): Person
+    createUser(
+      username: String!
+    ): User
+    login(
+      username: String!
+      password: String!
+    ): Token
   }
 `
 
