@@ -11,32 +11,17 @@ require('dotenv').config()
 
 const MONGODB_URI = process.env.MONGODB_URI
 
+console.log('connecting to', MONGODB_URI)
+
 mongoose.connect(MONGODB_URI)
-    .then(() => {
-        console.log('connected to MongoDB')
-    })
-    .catch((error) => {
-        console.log('error connection to MongoDB:', error.message)
-    })
+  .then(() => {
+    console.log('connected to MongoDB')
+  })
+  .catch((error) => {
+    console.log('error connection to MongoDB:', error.message)
+  })
 
 const typeDefs = `
-  enum YesNo {
-    YES
-    NO
-  }
-
-  type Address {
-    street: String!
-    city: String! 
-  }
-
-  type Person {
-    name: String!
-    phone: String
-    address: Address!
-    id: ID!
-  }
-
   type User {
     username: String!
     friends: [Person!]!
@@ -47,11 +32,34 @@ const typeDefs = `
     value: String!
   }
 
+  type Address {
+    street: String!
+    city: String! 
+  }
+
+  enum YesNo {
+    YES
+    NO
+  }
+  
   type Query {
     personCount: Int!
     allPersons(phone: YesNo): [Person!]!
     findPerson(name: String!): Person
     me: User
+  }
+
+  type Person {
+    name: String!
+    phone: String
+    address: Address!
+    id: ID!
+  }
+
+  type Query {
+    personCount: Int!
+    allPersons: [Person!]!
+    findPerson(name: String!): Person
   }
 
   type Mutation {
@@ -61,32 +69,36 @@ const typeDefs = `
       street: String!
       city: String!
     ): Person
-    addAsFriend(
-      name: String!
-    ): User
+
     editNumber(
       name: String!
       phone: String!
     ): Person
+
     createUser(
       username: String!
     ): User
+    
     login(
       username: String!
       password: String!
-    ): Token
+    ): Token  
+    
+    addAsFriend(
+      name: String!
+    ): User
   }
 `
 
 const resolvers = {
   Query: {
     personCount: async () => Person.collection.countDocuments(),
-    allPersons: async (root, args) => {
+    allPersons: async (root, args, context) => {
       if (!args.phone) {
         return Person.find({})
       }
-
-      return Person.find({ phone: { $exists: args.phone === 'YES' } })
+  
+      return Person.find({ phone: { $exists: args.phone === 'YES'  }})
     },
     findPerson: async (root, args) => Person.findOne({ name: args.name }),
     me: (root, args, context) => {
@@ -94,22 +106,22 @@ const resolvers = {
     }
   },
   Person: {
-    address: root => {
+    address: ({ street, city }) => {
       return {
-        street: root.street,
-        city: root.city
+        street,
+        city,
       }
-    }
+    },
   },
   Mutation: {
     addPerson: async (root, args, context) => {
       const person = new Person({ ...args })
       const currentUser = context.currentUser
 
-      if(!currentUser) {
-        throw new GraphQLError('Not authenticated', {
+      if (!currentUser) {
+        throw new GraphQLError('not authenticated', {
           extensions: {
-            code: 'UNAUTHENTICATED'
+            code: 'BAD_USER_INPUT',
           }
         })
       }
@@ -119,7 +131,7 @@ const resolvers = {
         currentUser.friends = currentUser.friends.concat(person)
         await currentUser.save()
       } catch (error) {
-        throw new GraphQLError('Saving person failed', {
+        throw new GraphQLError('Saving user failed', {
           extensions: {
             code: 'BAD_USER_INPUT',
             invalidArgs: args.name,
@@ -127,26 +139,8 @@ const resolvers = {
           }
         })
       }
+  
       return person
-    },
-    addAsFriend: async (root, args, { currentUser }) => {
-      const isFriend = (person) => 
-        currentUser.friends.map(f => f._id.toString()).includes(person._id.toString())
-  
-      if (!currentUser) {
-        throw new GraphQLError('wrong credentials', {
-          extensions: { code: 'BAD_USER_INPUT' }
-        }) 
-      }
-  
-      const person = await Person.findOne({ name: args.name })
-      if ( !isFriend(person) ) {
-        currentUser.friends = currentUser.friends.concat(person)
-      }
-  
-      await currentUser.save()
-  
-      return currentUser
     },
     editNumber: async (root, args) => {
       const person = await Person.findOne({ name: args.name })
@@ -154,7 +148,7 @@ const resolvers = {
       try {
         await person.save()
       } catch (error) {
-        throw new GraphQLError('Saving person failed', {
+        throw new GraphQLError('Editing number failed', {
           extensions: {
             code: 'BAD_USER_INPUT',
             invalidArgs: args.name,
@@ -166,13 +160,13 @@ const resolvers = {
     },
     createUser: async (root, args) => {
       const user = new User({ username: args.username })
-
+  
       return user.save()
         .catch(error => {
-          throw new GraphQLError(error.message, {
+          throw new GraphQLError('Creating the user failed', {
             extensions: {
               code: 'BAD_USER_INPUT',
-              invalidArgs: args.username,
+              invalidArgs: args.name,
               error
             }
           })
@@ -180,23 +174,40 @@ const resolvers = {
     },
     login: async (root, args) => {
       const user = await User.findOne({ username: args.username })
-
-      if (!user || args.password !== 'secret') {
-        throw new GraphQLError('Wrong credentials', {
-          extensions: {
-            code: 'UNAUTHENTICATED'
-          }
-        })
+  
+      if ( !user || args.password !== 'secret' ) {
+        throw new GraphQLError('wrong credentials', {
+          extensions: { code: 'BAD_USER_INPUT' }
+        })        
       }
-
+  
       const userForToken = {
         username: user.username,
-        id: user._id
+        id: user._id,
       }
-
+  
       return { value: jwt.sign(userForToken, process.env.JWT_SECRET) }
-    }
-  },
+    },
+    addAsFriend: async (root, args, { currentUser }) => {
+      const nonFriendAlready = (person) => 
+        !currentUser.friends.map(f => f._id.toString()).includes(person._id.toString())
+  
+      if (!currentUser) {
+        throw new GraphQLError('wrong credentials', {
+          extensions: { code: 'BAD_USER_INPUT' }
+        }) 
+      }
+  
+      const person = await Person.findOne({ name: args.name })
+      if ( nonFriendAlready(person) ) {
+        currentUser.friends = currentUser.friends.concat(person)
+      }
+  
+      await currentUser.save()
+  
+      return currentUser
+    },
+  }
 }
 
 const server = new ApolloServer({
