@@ -375,3 +375,5 @@
   | type | description |
   | ---- | ----------- |
   | Promise | Resolvers can be asynchronous and perform async actions, such as fetching from a database or back-end API. To support this, a resolver can return a promise that resolves to any other supported return type. |
+
+- [context](https://www.apollographql.com/docs/apollo-server/data/context/) | Apollo Docs
