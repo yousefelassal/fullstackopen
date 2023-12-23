@@ -1,13 +1,13 @@
-import { ApolloServer } from '@apollo/server'
-import { startStandaloneServer } from '@apollo/server/standalone'
-import { GraphQLError } from 'graphql'
-import mongoose from 'mongoose'
+const { ApolloServer } = require('@apollo/server')
+const { startStandaloneServer } = require('@apollo/server/standalone')
+const { GraphQLError } = require('graphql')
+const jwt = require('jsonwebtoken')
+
+const mongoose = require('mongoose')
 mongoose.set('strictQuery', false)
-import Person from './models/person.js'
-import User from './models/user.js'
-import { Jwt } from 'jsonwebtoken'
-import dotenv from 'dotenv'
-dotenv.config()
+const Person = require('./models/person')
+const User = require('./models/user')
+require('dotenv').config()
 
 const MONGODB_URI = process.env.MONGODB_URI
 
@@ -157,7 +157,7 @@ const resolvers = {
         id: user._id
       }
 
-      return { value: Jwt.sign(userForToken, process.env.JWT_SECRET) }
+      return { value: jwt.sign(userForToken, process.env.JWT_SECRET) }
     }
   },
 }
