@@ -378,7 +378,7 @@
 
 - [context](https://www.apollographql.com/docs/apollo-server/data/context/) | Apollo Docs
 
-  share data throughout your server's resolvers and plugins, server calls the `context` function _once for every request_, enabling you to customize your `contextValue` with each request's details (such as HTTP headers):
+  share data throughout your server's resolvers and plugins as their _third parameter_, server calls the `context` function _once for every request_, enabling you to customize your `contextValue` with each request's details (such as HTTP headers):
 
   ```js
   startStandaloneServer(server, {
