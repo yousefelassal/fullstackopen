@@ -130,24 +130,22 @@ const resolvers = {
       return person
     },
     addAsFriend: async (root, args, { currentUser }) => {
-      const isFriend = (person) =>
-        currentUser.friends.map(f =>
-          f._id.toString()).includes(person._id.toString())
-      if(!currentUser) {
-        throw new GraphQLError('Not authenticated', {
-          extensions: {
-            code: 'UNAUTHENTICATED'
-          }
-        })
+      const isFriend = (person) => 
+        currentUser.friends.map(f => f._id.toString()).includes(person._id.toString())
+  
+      if (!currentUser) {
+        throw new GraphQLError('wrong credentials', {
+          extensions: { code: 'BAD_USER_INPUT' }
+        }) 
       }
-
+  
       const person = await Person.findOne({ name: args.name })
-      if(!isFriend(person)) {
+      if ( !isFriend(person) ) {
         currentUser.friends = currentUser.friends.concat(person)
       }
-
+  
       await currentUser.save()
-
+  
       return currentUser
     },
     editNumber: async (root, args) => {
