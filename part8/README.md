@@ -456,3 +456,16 @@
       instock: { $elemMatch: { qty: { $gt: 10, $lte: 20 } } }
     });
     ```
+
+- [Query Conditions](https://mongoosejs.com/docs/populate.html#query-conditions) | Mongoose Docs
+
+  What if we wanted to populate our fans array based on their age and select just their names?
+  ```js
+  await Story.
+    find().
+    populate({
+      path: 'fans',
+      match: { age: { $gte: 21 } },
+      select: 'name '
+    })
+    ```
