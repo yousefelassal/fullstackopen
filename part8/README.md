@@ -428,3 +428,13 @@
   
   Equality matches on the whole embedded/nested document require an exact match of the specified document, **including the field order**.
   
+  #### Specify a Query Condition on a Field Embedded in an Array of Documents
+  
+  If you do not know the index position of the document nested in the array, concatenate the name of the array field, with a dot (`.`) and the name of the field in the nested document.
+  
+  The following example selects all documents where the `instock` array has at least one embedded document that contains the field `qty` whose value is less than or equal to `20`:
+  ```js
+  const cursor = db.collection('inventory').find({
+    'instock.qty': { $lte: 20 }
+  });
+  ```
