@@ -417,7 +417,7 @@
   ]);
   ```
 
-  #### Query for a Document Nested in an Array
+  - #### Query for a Document Nested in an Array
   
   The following example selects all documents where an element in the instock array matches the specified document:
   ```js
@@ -428,7 +428,7 @@
   
   Equality matches on the whole embedded/nested document require an exact match of the specified document, **including the field order**.
   
-  #### Specify a Query Condition on a Field Embedded in an Array of Documents
+  - #### Specify a Query Condition on a Field Embedded in an Array of Documents
   
   If you do not know the index position of the document nested in the array, concatenate the name of the array field, with a dot (`.`) and the name of the field in the nested document.
   
@@ -439,7 +439,7 @@
   });
   ```
 
-  #### A Single Nested Document Meets Multiple Query Conditions on Nested Fields
+  - #### A Single Nested Document Meets Multiple Query Conditions on Nested Fields
   
   Use `$elemMatch` operator to specify multiple criteria on an array of embedded documents such that at least one embedded document satisfies all the specified criteria.
   
