@@ -1,6 +1,6 @@
 const { ApolloServer } = require('@apollo/server')
 const { startStandaloneServer } = require('@apollo/server/standalone')
-const { v1: uuid } = require('uuid')
+const { GraphQLError } = require('graphql')
 const mongoose = require('mongoose')
 mongoose.set('strictQuery', false)
 const Book = require('./models/book')
@@ -94,7 +94,27 @@ const resolvers = {
         return book
       }
       const book = new Book({ ...args, author })
-      await book.save()
+      try{
+        await book.save()
+      } catch (error) {
+        if(error['errors']['title']['path'] === 'title' && error['errors']['title']['kind'] === 'unique') {
+          throw new GraphQLError('Title must be unique', {
+            extensions: {
+              code: 'BAD_USER_INPUT',
+              invalidArgs: args.title,
+              error
+            }
+          })
+        } else if (error['errors']['title']['path'] === 'title' && error['errors']['title']['kind'] === 'minlength') {
+          throw new GraphQLError('Title must be at least 5 characters long', {
+            extensions: {
+              code: 'BAD_USER_INPUT',
+              invalidArgs: args.title,
+              error
+            }
+          })
+        }
+      }
       return book
     },
     editAuthor: async (root, args) => {
