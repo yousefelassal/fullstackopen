@@ -438,3 +438,21 @@
     'instock.qty': { $lte: 20 }
   });
   ```
+
+  #### A Single Nested Document Meets Multiple Query Conditions on Nested Fields
+  
+  Use `$elemMatch` operator to specify multiple criteria on an array of embedded documents such that at least one embedded document satisfies all the specified criteria.
+  
+  The following example queries for documents where the `instock` array has at least one embedded document that contains both the field `qty` equal to `5` and the field `warehouse` equal to `A`:
+  ```js
+  const cursor = db.collection('inventory').find({
+    instock: { $elemMatch: { qty: 5, warehouse: 'A' } }
+  });
+  ```
+  
+  The following example queries for documents where the `instock` array has at least one embedded document that contains the field `qty` that is greater than `10` and less than or equal to `20`:
+  ```js
+  const cursor = db.collection('inventory').find({
+    instock: { $elemMatch: { qty: { $gt: 10, $lte: 20 } } }
+  });
+  ```
