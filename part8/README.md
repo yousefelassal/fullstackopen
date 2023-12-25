@@ -399,4 +399,20 @@
 
 - [Query an Array of Documents](https://www.mongodb.com/docs/manual/tutorial/query-array-of-documents/) | MongoDB Docs
 
-  
+  insert many:
+  ```js
+  await db.collection('inventory').insertMany([
+    {
+      item: 'journal',
+      instock: [
+        { warehouse: 'A', qty: 5 },
+        { warehouse: 'C', qty: 15 }
+      ]
+    },
+    {
+      item: 'notebook',
+      instock: [{ warehouse: 'C', qty: 5 }]
+    },
+    // ...
+  ]);
+  ```
