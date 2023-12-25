@@ -76,11 +76,11 @@ const resolvers = {
         }
         return Book.find({}).populate('author')
     },
-    allAuthors: () => authors
+    allAuthors: async () => Author.find({})
   },
   Author: {
-    bookCount: (root) => {
-      return books.filter(b => b.author === root.name).length
+    bookCount: async (root) => {
+      return Book.find({ author: root.id }).countDocuments()
     }
   },
   Mutation: {
