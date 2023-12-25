@@ -399,7 +399,7 @@
 
 - [Query an Array of Documents](https://www.mongodb.com/docs/manual/tutorial/query-array-of-documents/) | MongoDB Docs
 
-  insert many:
+  inserting many documents:
   ```js
   await db.collection('inventory').insertMany([
     {
@@ -416,3 +416,5 @@
     // ...
   ]);
   ```
+
+  
