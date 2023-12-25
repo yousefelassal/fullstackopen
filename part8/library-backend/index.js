@@ -55,19 +55,26 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    bookCount: () => Book.collection.countDocuments(),
-    authorCount: () => Author.collection.countDocuments(),
-    allBooks: (root, args) => {
+    bookCount: async () => Book.collection.countDocuments(),
+    authorCount: async () => Author.collection.countDocuments(),
+    allBooks: async (root, args) => {
         if (args.author && args.genre) {
-            return books.filter(b => b.author === args.author && b.genres.includes(args.genre))
+          return Book.find({ genres: { $elemMatch: { $eq: args.genre } }})
+            .populate({
+              path: 'author',
+              match: { name: args.author }
+            })
         }
         if (args.author) {
-            return books.filter(b => b.author === args.author)
+          return Book.find({}).populate({
+              path: 'author',
+              match: { name: args.author }
+          })
         }
         if (args.genre) {
-            return books.filter(b => b.genres.includes(args.genre))
+          return Book.find({ genres: { $elemMatch: { $eq: args.genre } }})
         }
-        return books
+        return Book.find({}).populate('author')
     },
     allAuthors: () => authors
   },
