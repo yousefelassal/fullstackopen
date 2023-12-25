@@ -417,4 +417,14 @@
   ]);
   ```
 
+  #### Query for a Document Nested in an Array
+  
+  The following example selects all documents where an element in the instock array matches the specified document:
+  ```js
+  const cursor = db.collection('inventory').find({
+    instock: { warehouse: 'A', qty: 5 }
+  });
+  ```
+  
+  Equality matches on the whole embedded/nested document require an exact match of the specified document, **including the field order**.
   
