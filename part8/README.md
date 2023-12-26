@@ -548,3 +548,33 @@
   2. The second link might add an HTTP header to the outgoing operation request for authentication purposes.
   3. The final (terminating) link sends the operation to its destination (usually a GraphQL server over HTTP).
   4. The server's response is passed back up each link in reverse order, enabling links to modify the response or take other actions before the data is cached.
+
+- [Authentication Header](https://www.apollographql.com/docs/react/networking/authentication/#header) | Apollo Docs
+
+  Add an `authorization` header to every HTTP request by chaining together Apollo Links. In this example, we'll pull the login token from `localStorage` every time a request is sent:
+
+  ```js  
+  import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
+  import { setContext } from '@apollo/client/link/context';
+  
+  const httpLink = createHttpLink({
+    uri: '/graphql',
+  });
+  
+  const authLink = setContext((_, { headers }) => {
+    // get the authentication token from local storage if it exists
+    const token = localStorage.getItem('token');
+    // return the headers to the context so httpLink can read them
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : "",
+      }
+    }
+  });
+  
+  const client = new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache()
+  });
+  ```
