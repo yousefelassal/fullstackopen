@@ -600,3 +600,5 @@
     cache: new InMemoryCache()
   });
   ```
+
+- [The `update` function](https://www.apollographql.com/docs/react/data/mutations/#the-update-function) | Apollo Docs
