@@ -504,3 +504,17 @@
     client.resetStore()
   }
   ```
+
+- [`useApolloClient`](https://www.apollographql.com/docs/react/api/react/hooks/#useapolloclient) | Apollo Docs
+
+  access client inside a component
+
+  ```js
+  import { useApolloClient } from '@apollo/client';
+
+  function SomeComponent() {
+    const client = useApolloClient();
+    // `client` is now set to the `ApolloClient` instance being used by the
+    // application (that was configured using something like `ApolloProvider`)
+  }
+  ```
