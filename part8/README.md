@@ -518,3 +518,33 @@
     // application (that was configured using something like `ApolloProvider`)
   }
   ```
+
+- [Link](https://www.apollographql.com/docs/react/api/link/introduction/) | Apollo Docs
+
+  ```mermaid
+  flowchart LR
+    subgraph Apollo Client
+    operation(GraphQL operation)
+    link1(Link)
+    link2(Link)
+    link3(Terminating Link)
+    operation--"Initiated"-->link1
+    link1--down-->link2
+    link2--down-->link3
+    link3--up-->link2
+    link2--up-->link1
+    link1--"Completed"-->operation
+    end
+    server(GraphQL server)
+    link3--Request-->server
+    server--Response-->link3
+    class server secondary;
+  ```
+  Each link should represent either a self-contained modification to a GraphQL operation or a side effect (such as logging).
+  
+  In the above diagram:
+  
+  1. The first link might log the details of the operation for debugging purposes.
+  2. The second link might add an HTTP header to the outgoing operation request for authentication purposes.
+  3. The final (terminating) link sends the operation to its destination (usually a GraphQL server over HTTP).
+  4. The server's response is passed back up each link in reverse order, enabling links to modify the response or take other actions before the data is cached.
