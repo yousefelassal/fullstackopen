@@ -490,3 +490,17 @@
     }
   }, [result.data])
   ```
+
+- [Reset store on logout](https://www.apollographql.com/docs/react/networking/authentication/#reset-store-on-logout) | Apollo Docs
+
+  Since Apollo caches all of your query results, it's important to get rid of them when the login state changes.
+  
+  The most straightforward way to ensure that the UI and store state reflects the current user's permissions is to call `client.resetStore()` after your login or logout process has completed.
+
+  ```js
+  const logout = () => {
+    setToken(null)
+    localStorage.clear()
+    client.resetStore()
+  }
+  ```
