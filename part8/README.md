@@ -471,3 +471,21 @@
     ```
 
 ### d Login and updating the cache
+
+- User login
+
+  ```js
+  const [ login, result ] = useMutation(LOGIN, {
+    onError: (error) => {
+      setError(error.graphQLErrors[0].message)
+    }
+  })
+
+  useEffect(() => {
+    if ( result.data ) {
+      const token = result.data.login.value
+      setToken(token)
+      localStorage.setItem('user-token', token)
+    }
+  }, [result.data])
+  ```
