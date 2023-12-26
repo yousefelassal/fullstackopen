@@ -474,6 +474,7 @@
 
 - User login
 
+  Use of the effect hook is necessary to avoid an endless rendering loop.
   ```js
   const [ login, result ] = useMutation(LOGIN, {
     onError: (error) => {
