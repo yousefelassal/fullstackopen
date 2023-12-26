@@ -9,7 +9,7 @@ export const LOGIN = gql`
 `
 
 export const ALL_PERSONS = gql`
-query {
+query getAllPersons {
   allPersons {
     name
     phone
