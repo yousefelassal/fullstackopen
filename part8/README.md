@@ -600,3 +600,20 @@
     cache: new InMemoryCache()
   });
   ```
+
+- [The `update` function](https://www.apollographql.com/docs/react/data/mutations/#the-update-function) | Apollo Docs
+
+  When a mutation's response is insufficient to update all modified fields in your cache (such as certain list fields), you can define an update function to apply manual changes to your cached data after a mutation.
+  
+  You provide an `update` function to `useMutation`, like so:
+  ```js
+  const [ createPerson ] = useMutation(CREATE_PERSON, {
+    // ...
+    update: (cache, response) => {
+      cache.updateQuery({ query: ALL_PERSONS }, ({ allPersons }) => {
+        return {
+          allPersons: allPersons.concat(response.data.addPerson),
+        }
+      })
+    },
+  ```
