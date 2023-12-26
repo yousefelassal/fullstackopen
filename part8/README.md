@@ -549,6 +549,28 @@
   3. The final (terminating) link sends the operation to its destination (usually a GraphQL server over HTTP).
   4. The server's response is passed back up each link in reverse order, enabling links to modify the response or take other actions before the data is cached.
 
+- [Context](https://www.apollographql.com/docs/react/api/link/apollo-link-context/#overview) | Apollo Docs
+
+  setContext function accepts a function that returns either an object or a promise, which then returns an object to set the new context of a request. It receives two arguments: the GraphQL request being executed, and the previous context.
+
+  ```js
+  import { setContext } from "@apollo/client/link/context";
+
+  const setAuthorizationLink = setContext((request, previousContext) => ({
+    headers: {authorization: "1234"}
+  }));
+  
+  const asyncAuthLink = setContext(
+    request =>
+      new Promise((success, fail) => {
+        // do some async lookup here
+        setTimeout(() => {
+          success({ token: "async found token" });
+        }, 10);
+      })
+  );
+
+
 - [Authentication Header](https://www.apollographql.com/docs/react/networking/authentication/#header) | Apollo Docs
 
   Add an `authorization` header to every HTTP request by chaining together Apollo Links. In this example, we'll pull the login token from `localStorage` every time a request is sent:
