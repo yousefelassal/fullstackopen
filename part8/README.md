@@ -469,3 +469,52 @@
       select: 'name '
     })
     ```
+
+### d Login and updating the cache
+
+- User login
+
+  Use of the effect hook is necessary to avoid an endless rendering loop.
+  ```js
+  const [ login, result ] = useMutation(LOGIN, {
+    onError: (error) => {
+      setError(error.graphQLErrors[0].message)
+    }
+  })
+
+  useEffect(() => {
+    if ( result.data ) {
+      const token = result.data.login.value
+      setToken(token)
+      localStorage.setItem('user-token', token)
+    }
+  }, [result.data])
+  ```
+
+- [Reset store on logout](https://www.apollographql.com/docs/react/networking/authentication/#reset-store-on-logout) | Apollo Docs
+
+  Since Apollo caches all of your query results, it's important to get rid of them when the login state changes.
+  
+  The most straightforward way to ensure that the UI and store state reflects the current user's permissions is to call `client.resetStore()` after your login or logout process has completed.
+
+  ```js
+  const logout = () => {
+    setToken(null)
+    localStorage.clear()
+    client.resetStore()
+  }
+  ```
+
+- [`useApolloClient`](https://www.apollographql.com/docs/react/api/react/hooks/#useapolloclient) | Apollo Docs
+
+  access client inside a component
+
+  ```js
+  import { useApolloClient } from '@apollo/client';
+
+  function SomeComponent() {
+    const client = useApolloClient();
+    // `client` is now set to the `ApolloClient` instance being used by the
+    // application (that was configured using something like `ApolloProvider`)
+  }
+  ```
