@@ -96,7 +96,7 @@ const resolvers = {
           })
         }
         if (args.genre) {
-          return Book.find({ genres: { $elemMatch: { $eq: args.genre } }})
+          return Book.find({ genres: { $elemMatch: { $eq: args.genre } }}).populate('author')
         }
         return Book.find({}).populate('author')
     },
