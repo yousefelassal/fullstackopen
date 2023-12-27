@@ -3,6 +3,7 @@ import Authors from './components/Authors'
 import Books from './components/Books'
 import NewBook from './components/NewBook'
 import Login from './components/Login'
+import Recommended from './components/Recommended'
 import { useApolloClient } from "@apollo/client"
 
 import {
@@ -33,6 +34,7 @@ const App = () => {
         {token ? 
           <>
             <Link to="/add">add book</Link>
+            <Link to="/recommended">recommended</Link>
             <button onClick={logout}>logout</button>
           </>
           : <Link to="/login">login</Link>
@@ -40,10 +42,13 @@ const App = () => {
       </div>
 
       <Routes>
-        <Route path="/" element={<Authors />} />
+        <Route path="/" element={<Authors token={token} />} />
         <Route path="/books" element={<Books />} />
         {token ? 
+          <>
             <Route path="/add" element={<NewBook />} />
+            <Route path="/recommended" element={<Recommended />} />
+          </>
           : 
             <Route path="/login" element={<Login setToken={setToken} />} />
         }
