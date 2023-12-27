@@ -9,6 +9,18 @@ const Books = () => {
   if (error) return <div>error...</div>
 
   if (loading) return <div>loading...</div>
+
+  if (!books) return <div>no books...</div>
+
+  const booksGenres = books.allBooks.reduce((acc, book) => {
+    console.log(book)
+    book.genres.forEach(genre => {
+      if (!acc.includes(genre)) {
+        acc.push(genre)
+      }
+    })
+    return acc
+  }, [])
   
     return (
       <div>
@@ -30,6 +42,9 @@ const Books = () => {
             ))}
           </tbody>
         </table>
+        {booksGenres.map(genre => (
+          <button key={genre}>{genre}</button>
+        ))}
       </div>
     )
   }
