@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useQuery } from '@apollo/client'
 import { ALL_AUTHORS } from '../queries'
 import BornForm from './BornForm'
 
-const Authors = () => {
+const Authors = ({token}) => {
     const { data:authors, loading, error } = useQuery(ALL_AUTHORS, {
       pollInterval: 2000
     })
@@ -30,7 +31,7 @@ const Authors = () => {
             ))}
           </tbody>
         </table>
-        <BornForm />
+        {token ? <BornForm /> : null}
       </div>
     )
   }
