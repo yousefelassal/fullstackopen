@@ -151,6 +151,11 @@ const resolvers = {
             }
           })
         }
+        throw new GraphQLError('Adding book failed', {
+          extensions: {
+            error
+          }
+        })
       }
       return book
     },
