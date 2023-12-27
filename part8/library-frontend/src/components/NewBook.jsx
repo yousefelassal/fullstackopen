@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client'
 import { ADD_BOOK, ALL_BOOKS, ALL_AUTHORS } from '../queries'
 
 const NewBook = () => {
+  const [notification, setNotification] = useState(null)
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [published, setPublished] = useState('')
@@ -11,6 +12,18 @@ const NewBook = () => {
 
   const [addBook] = useMutation(ADD_BOOK, {
     refetchQueries: [{ query: ALL_BOOKS }, { query: ALL_AUTHORS }],
+    onError: (error) => {
+      setNotification(error.graphQLErrors[0].message)
+      setTimeout(() => {
+        setNotification(null)
+      }, 5000)
+    },
+    onCompleted: () => {
+      setNotification('Book added successfully')
+      setTimeout(() => {
+        setNotification(null)
+      }, 5000)
+    }
   })
 
   const submit = async (event) => {
@@ -68,6 +81,7 @@ const NewBook = () => {
         <div>genres: {genres.join(' ')}</div>
         <button type="submit">create book</button>
       </form>
+      {notification && <div>{notification}</div>}
     </div>
   )
 }

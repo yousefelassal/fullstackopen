@@ -11,8 +11,6 @@ const Recommended = () => {
 
     if (!books) return <div>no books...</div>
 
-    console.log(user)
-
     const favoriteGenre = user.me.favoriteGenre
 
     const favBooks = books.allBooks.filter(book => book.genres.includes(favoriteGenre))
