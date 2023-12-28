@@ -646,3 +646,10 @@
     }
   }
   ```
+
+- [Subscriptions](https://www.apollographql.com/docs/react/data/subscriptions/) | Apollo Docs
+
+  Subscriptions can maintain an active connection to your GraphQL server (most commonly via WebSocket), enabling the server to push updates to the subscription's result.
+  
+  Subscriptions are useful for notifying your client in real time about changes to back-end data, such as the creation of a new object or updates to an important field.
+
