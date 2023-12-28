@@ -684,3 +684,5 @@
   - **Small, incremental changes to large objects**. Repeatedly polling for a large object is expensive, especially when most of the object's fields rarely change. Instead, you can fetch the object's initial state with a query, and your server can proactively push updates to individual fields as they occur.
 
   - **Low-latency, real-time updates**. For example, a chat application's client wants to receive new messages as soon as they're available.
+
+- [Subscriptions in Apollo Server](https://www.apollographql.com/docs/apollo-server/data/subscriptions) | Apollo Docs
