@@ -653,6 +653,28 @@
   
   Subscriptions are useful for notifying your client in real time about changes to back-end data, such as the creation of a new object or updates to an important field.
 
+  #### Server side
+  The following `commentAdded` subscription notifies a subscribing client whenever a new comment is added to a particular blog post (specified by `postID`):
+  ```js
+  type Subscription {
+    commentAdded(postID: ID!): Comment
+  }
+  ```
+  
+  #### Client side
+  In your application's client, you define the shape of each subscription you want Apollo Client to execute, like so:
+  ```js
+  const COMMENTS_SUBSCRIPTION = gql`
+    subscription OnCommentAdded($postID: ID!) {
+      commentAdded(postID: $postID) {
+        id
+        content
+      }
+    }
+  `;
+  ```
+  When Apollo Client executes the `OnCommentAdded` subscription, it establishes a connection to your GraphQL server and listens for response data. Unlike with a query, there is no expectation that the server will immediately process and return a response. Instead, your server only pushes data to your client when a particular event occurs on your backend.
+
 - [When to use Subscriptions](https://www.apollographql.com/docs/react/data/subscriptions/#when-to-use-subscriptions) | Apollo Docs
 
   In the majority of cases, your client should not use subscriptions to stay up to date with your backend. Instead, you should _poll intermittently_ with queries, or _re-execute queries on demand_ when a user performs a relevant action (such as clicking a button).
