@@ -628,7 +628,7 @@
 - [Fragments](https://graphql.org/learn/queries/#fragments) | GraphQL Docs
 
   Fragments let you construct sets of fields, and then include them in queries where you need to. Here's an example of how you could solve the above situation using fragments:
-  ```js
+  ```gql
   {
     leftComparison: hero(episode: EMPIRE) {
       ...comparisonFields
