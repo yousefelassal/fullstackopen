@@ -646,3 +646,41 @@
     }
   }
   ```
+
+- [Subscriptions](https://www.apollographql.com/docs/react/data/subscriptions/) | Apollo Docs
+
+  Subscriptions can maintain an active connection to your GraphQL server (most commonly via WebSocket), enabling the server to push updates to the subscription's result.
+  
+  Subscriptions are useful for notifying your client in real time about changes to back-end data, such as the creation of a new object or updates to an important field.
+
+  #### Server side
+  The following `commentAdded` subscription notifies a subscribing client whenever a new comment is added to a particular blog post (specified by `postID`):
+  ```gql
+  type Subscription {
+    commentAdded(postID: ID!): Comment
+  }
+  ```
+  
+  #### Client side
+  In your application's client, you define the shape of each subscription you want Apollo Client to execute, like so:
+  ```js
+  const COMMENTS_SUBSCRIPTION = gql`
+    subscription OnCommentAdded($postID: ID!) {
+      commentAdded(postID: $postID) {
+        id
+        content
+      }
+    }
+  `;
+  ```
+  When Apollo Client executes the `OnCommentAdded` subscription, it establishes a connection to your GraphQL server and listens for response data. Unlike with a query, there is no expectation that the server will immediately process and return a response. Instead, your server only pushes data to your client when a particular event occurs on your backend.
+
+- [When to use Subscriptions](https://www.apollographql.com/docs/react/data/subscriptions/#when-to-use-subscriptions) | Apollo Docs
+
+  In the majority of cases, your client should not use subscriptions to stay up to date with your backend. Instead, you should _poll intermittently_ with queries, or _re-execute queries on demand_ when a user performs a relevant action (such as clicking a button).
+
+  #### You should use subscriptions for the following:
+
+  - **Small, incremental changes to large objects**. Repeatedly polling for a large object is expensive, especially when most of the object's fields rarely change. Instead, you can fetch the object's initial state with a query, and your server can proactively push updates to individual fields as they occur.
+
+  - **Low-latency, real-time updates**. For example, a chat application's client wants to receive new messages as soon as they're available.
