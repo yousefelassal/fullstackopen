@@ -655,7 +655,7 @@
 
   #### Server side
   The following `commentAdded` subscription notifies a subscribing client whenever a new comment is added to a particular blog post (specified by `postID`):
-  ```js
+  ```gql
   type Subscription {
     commentAdded(postID: ID!): Comment
   }
