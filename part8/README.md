@@ -746,3 +746,38 @@
     console.log(`Server is now running on http://localhost:${PORT}/graphql`);
   });
   ```
+
+- [The `PubSub` class](https://www.apollographql.com/docs/apollo-server/data/subscriptions/#the-pubsub-class) | Apollo Docs
+
+  > not recommended for production environments, use [Production `PubSub` Engine](https://www.apollographql.com/docs/apollo-server/data/subscriptions/#production-pubsub-libraries)
+
+  **publish-subscribe (pub/sub)** model to track events that update active subscriptions.
+
+  create a PubSub instance like so:
+  ```js
+  import { PubSub } from 'graphql-subscriptions';
+  
+  const pubsub = new PubSub();
+  ```
+
+  #### Publishing an event
+  You can publish an event using the publish method of a PubSub instance:
+  ```js
+  pubsub.publish('POST_CREATED', {
+    postCreated: { ... },
+  });
+  ```
+
+  #### Listening for events
+   `AsyncIterator` object listens for events that are associated with a particular label (or set of labels) and adds them to a queue for processing.
+  ```js
+  const resolvers = {
+    Subscription: {
+      postCreated: {
+        subscribe: () => pubsub.asyncIterator(['POST_CREATED']),
+      },
+    },
+    // ...other resolvers...
+  };
+  ```
+  With this subscribe function set, Apollo Server uses the payloads of `POST_CREATED` events to push updated values for the `postCreated` field.
