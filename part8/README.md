@@ -750,7 +750,8 @@
 - [The `PubSub` class](https://www.apollographql.com/docs/apollo-server/data/subscriptions/#the-pubsub-class) | Apollo Docs
 
   > **not recommended for production environments, use [Production `PubSub` Engine](https://www.apollographql.com/docs/apollo-server/data/subscriptions/#production-pubsub-libraries)**   
-  **- [graphql-mongodb-subscriptions](https://github.com/mjwheatley/graphql-mongodb-subscriptions)**
+  **- [graphql-mongodb-subscriptions](https://github.com/mjwheatley/graphql-mongodb-subscriptions)**    
+  **- [graphql-postgres-subscriptions](https://github.com/GraphQLCollege/graphql-postgres-subscriptions)**
 
   **publish-subscribe (pub/sub)** model to track events that update active subscriptions.
 
