@@ -763,9 +763,16 @@
   #### Publishing an event
   You can publish an event using the publish method of a PubSub instance:
   ```js
-  pubsub.publish('POST_CREATED', {
-    postCreated: { ... },
-  });
+  const resolvers = {
+    Mutation: {
+      createPost: async (root, args) => {
+        const post = new Post({ ...args })
+        pubsub.publish('POST_CREATED', { postCreated: post }); 
+        return post
+      },
+    },
+    // ...other resolvers...
+  };
   ```
 
   #### Listening for events
