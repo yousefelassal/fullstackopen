@@ -55,7 +55,7 @@ const resolvers = {
         })
       }
 
-    pubsub.publish('PERSON_ADDED', { personAdded: person })
+      pubsub.publish('PERSON_ADDED', { personAdded: person })
   
       return person
     },
