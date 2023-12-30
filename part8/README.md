@@ -790,3 +790,40 @@
   };
   ```
   With this subscribe function set, Apollo Server uses the payloads of `POST_CREATED` events to push updated values for the `postCreated` field.
+
+- [Subscriptions on the client]() | Apollo Docs
+
+  use the `split` function to combine the `HttpLink` and `GraphQLWsLink` Links into a single Link that uses one or the other according to the type of operation being executed.
+  
+  ```js
+  import { split, HttpLink } from '@apollo/client';
+  import { getMainDefinition } from '@apollo/client/utilities';
+  import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
+  import { createClient } from 'graphql-ws';
+  
+  const httpLink = new HttpLink({
+    uri: 'http://localhost:4000/graphql'
+  });
+  
+  const wsLink = new GraphQLWsLink(createClient({
+    url: 'ws://localhost:4000/subscriptions',
+  }));
+  
+  // The split function takes three parameters:
+  //
+  // * A function that's called for each operation to execute
+  // * The Link to use for an operation if the function returns a "truthy" value
+  // * The Link to use for an operation if the function returns a "falsy" value
+  const splitLink = split(
+    ({ query }) => {
+      const definition = getMainDefinition(query);
+      return (
+        definition.kind === 'OperationDefinition' &&
+        definition.operation === 'subscription'
+      );
+    },
+    wsLink,
+    httpLink,
+  );
+  ```
+  Using this logic, queries and mutations will use HTTP as normal, and subscriptions will use WebSocket.
