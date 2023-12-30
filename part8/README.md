@@ -927,3 +927,46 @@
     resolvers: merge(resolvers, authorResolvers, bookResolvers),
   });
   ```
+
+- [Structuring Client Queries and Mutations](https://medium.com/@peterpme/thoughts-on-structuring-your-apollo-queries-mutations-939ba4746cd8) | Medium
+
+  #### Folder Structure:
+  ```
+  /containers
+  /components
+  /utilities
+  /modals
+  /graphql
+    /queries
+    /mutations
+  ```
+
+  #### Naming Conventions:
+  Mutations will always start with an action:
+  - saveUserPushToken
+  - updateOnboardingProfile
+  - createUser
+  
+  #### Queries just describe what I’m looking for:
+  - userProfile
+  - userConnections
+  - reminders
+  
+  #### Sometimes they’ll even look like this:
+  - remindersWithNewFeatureOfSomeKind
+  - userProfileWithUserSettings
+  - userPrioritiesWithRemindersAtTheTop
+  
+  
+  #### File Structure:
+  I don’t like to keep them in the same file either because I literally spend more time scrolling than I do typing! What does each file look like? The way you’d expect:
+  ```js
+  import gql from 'graphql-tag'
+  const updateUsername = gql`
+    mutation UpdateUsername($id: ID!, $username: String!) {
+      id
+    }
+  }
+  `
+  export default updateUsername
+  ```
