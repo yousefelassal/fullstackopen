@@ -827,3 +827,24 @@
   );
   ```
   Using this logic, queries and mutations will use HTTP as normal, and subscriptions will use WebSocket.
+
+  #### Executing a subscription
+  You use Apollo Client's `useSubscription` Hook to execute a subscription from React. Like `useQuery`, `useSubscription` returns an object from Apollo Client that contains `loading`, `error`, and `data` properties you can use to render your UI.
+  ```js  
+  const COMMENTS_SUBSCRIPTION = gql`
+    subscription OnCommentAdded($postID: ID!) {
+      commentAdded(postID: $postID) {
+        id
+        content
+      }
+    }
+  `;
+  
+  function LatestComment({ postID }) {
+    const { data, loading } = useSubscription(
+      COMMENTS_SUBSCRIPTION,
+      { variables: { postID } }
+    );
+    return <h4>New comment: {!loading && data.commentAdded.content}</h4>;
+  }
+  ```
