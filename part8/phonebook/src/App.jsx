@@ -6,6 +6,7 @@ import PersonForm from './components/PersonForm'
 import PhoneForm from './components/PhoneForm'
 import LoginForm from './components/LoginForm'
 import { ALL_PERSONS, PERSON_ADDED } from './queries'
+import { updateCache } from './helper'
 
 const App = () => {
   const [token, setToken] = useState(null)
@@ -15,7 +16,9 @@ const App = () => {
 
   useSubscription(PERSON_ADDED, {
     onData: ({ data }) => {
-      console.log(data)
+      const addedPerson = data.data.personAdded
+      notify(`${addedPerson.name} added`)
+      updateCache(client.cache, { query: ALL_PERSONS } , addedPerson)
     }
   })
 
