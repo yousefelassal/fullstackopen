@@ -11,14 +11,11 @@ const App = () => {
   const [token, setToken] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
   const client = useApolloClient()
-  const result = useQuery(ALL_PERSONS, {
-    pollInterval: 2000
-  })
+  const result = useQuery(ALL_PERSONS)
 
   useSubscription(PERSON_ADDED, {
     onData: ({ data }) => {
       console.log(data)
-      window.alert(`${data.personAdded.name} added`)
     }
   })
 
