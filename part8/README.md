@@ -853,3 +853,6 @@
   - [The `fetchMore` function](https://www.apollographql.com/docs/react/pagination/core-api/#the-fetchmore-function)
 
       update a query's cached result with data returned by a _follow-up_ query. Most often, `fetchMore` is used to handle infinite-scroll pagination.
+
+- [Batching GraphQL Queries with DataLoader](https://www.petecorey.com/blog/2017/08/14/batching-graphql-queries-with-dataloader/)
+    - [DataLoader](https://github.com/graphql/dataloader) | GitHub Repo
