@@ -856,3 +856,72 @@
 
 - [Batching GraphQL Queries with DataLoader](https://www.petecorey.com/blog/2017/08/14/batching-graphql-queries-with-dataloader/)
     - [DataLoader](https://github.com/graphql/dataloader) | GitHub Repo
+
+- [Modularizing Schema](https://www.apollographql.com/blog/modularizing-your-graphql-schema-code/) | Apollo Blogs
+
+  split up the schema types and the associated resolvers into multiple files.
+
+  for the following example we can split up the query and resolvers object and put a piece of it in `author.js`, another in `book.js`, and then import them and use the `lodash.merge` function to put it all together in `schema.js`.
+  ```js
+  // author.js
+  export const typeDef = `
+    type Author {
+      id: Int!
+      firstName: String
+      lastName: String
+      books: [Book]
+    }
+  `;
+  
+  export const resolvers = {
+    Author: {
+      books: () => { ... },
+    }
+  };
+  ```
+  Here’s book.js:
+  ```
+  // book.js
+  export const typeDef = `
+    type Book {
+      title: String
+      author: Author
+    }
+  `;
+  
+  export const resolvers = {
+    Book: {
+      author: () => { ... },
+    }
+  };
+  ```
+  Then, we apply lodash.merge in schema.js to put everything together:
+  ```
+  import { merge } from 'lodash';
+  import { 
+    typeDef as Author, 
+    resolvers as authorResolvers,
+  } from './author.js';
+  import { 
+    typeDef as Book, 
+    resolvers as bookResolvers,
+  } from './book.js';
+  
+  const Query = `
+    type Query {
+      author(id: Int!): Author
+      book(id: Int!): Book
+    }
+  `;
+  
+  const resolvers = {
+    Query: { 
+      ...,
+    }
+  };
+  
+  makeExecutableSchema({
+    typeDefs: [ Query, Author, Book ],
+    resolvers: merge(resolvers, authorResolvers, bookResolvers),
+  });
+  ```
