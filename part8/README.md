@@ -863,7 +863,7 @@
 
   for the following example we can split up the query and resolvers object and put a piece of it in `author.js`, another in `book.js`, and then import them and use the `lodash.merge` function to put it all together in `schema.js`.
 
-  This is what author.js would look like:
+  This is what `author.js` would look like:
   ```js
   // author.js
   export const typeDef = `
@@ -881,7 +881,7 @@
     }
   };
   ```
-  Here’s book.js:
+  Here’s `book.js`:
   ```js
   // book.js
   export const typeDef = `
@@ -897,7 +897,7 @@
     }
   };
   ```
-  Then, we apply `lodash.merge` in schema.js to put everything together:
+  Then, we apply `lodash.merge` in `schema.js` to put everything together:
   ```js
   import { merge } from 'lodash';
   import { 
