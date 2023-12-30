@@ -848,3 +848,5 @@
     return <h4>New comment: {!loading && data.commentAdded.content}</h4>;
   }
   ```
+
+  - [Subscribing to updates for a query `subscribeToMore`](https://www.apollographql.com/docs/react/data/subscriptions/#subscribing-to-updates-for-a-query)
