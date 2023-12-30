@@ -947,12 +947,12 @@
   - updateOnboardingProfile
   - createUser
   
-  #### Queries just describe what I’m looking for:
+  Queries just describe what I’m looking for:
   - userProfile
   - userConnections
   - reminders
   
-  #### Sometimes they’ll even look like this:
+  Sometimes they’ll even look like this:
   - remindersWithNewFeatureOfSomeKind
   - userProfileWithUserSettings
   - userPrioritiesWithRemindersAtTheTop
