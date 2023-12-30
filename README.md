@@ -12,8 +12,8 @@
       <li>[X] Part 5: Testing React apps</li>
       <li>[X] Part 6: Advanced state management</li>
       <li>[X] Part 7: React router, custom hooks, styling apps with CSS and webpack</li>
-      <li>[ ] Part 8: GraphQL</li>
-      <li>Part 9: TypeScript</li>
+      <li>[X] Part 8: GraphQL</li>
+      <li>[ ] Part 9: TypeScript</li>
       <li>Part 10: React Native</li>
       <li>Part 11: CI/CD</li>
       <li>Part 12: Containers</li>
