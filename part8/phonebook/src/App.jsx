@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react'
-import { useQuery, useApolloClient } from '@apollo/client'
+import { useQuery, useApolloClient, useSubscription } from '@apollo/client'
 import Persons from './components/Persons'
 import PersonForm from './components/PersonForm'
 import PhoneForm from './components/PhoneForm'
 import LoginForm from './components/LoginForm'
-import { ALL_PERSONS } from './queries'
+import { ALL_PERSONS, PERSON_ADDED } from './queries'
 
 const App = () => {
   const [token, setToken] = useState(null)
@@ -13,6 +13,13 @@ const App = () => {
   const client = useApolloClient()
   const result = useQuery(ALL_PERSONS, {
     pollInterval: 2000
+  })
+
+  useSubscription(PERSON_ADDED, {
+    onData: ({ data }) => {
+      console.log(data)
+      window.alert(`${data.personAdded.name} added`)
+    }
   })
 
   if (!token) {
