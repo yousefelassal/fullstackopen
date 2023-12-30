@@ -850,3 +850,6 @@
   ```
 
   - [Subscribing to updates for a query `subscribeToMore`](https://www.apollographql.com/docs/react/data/subscriptions/#subscribing-to-updates-for-a-query)
+  - [The `fetchMore` function](https://www.apollographql.com/docs/react/pagination/core-api/#the-fetchmore-function)
+
+      update a query's cached result with data returned by a _follow-up_ query. Most often, `fetchMore` is used to handle infinite-scroll pagination.
