@@ -827,3 +827,29 @@
   );
   ```
   Using this logic, queries and mutations will use HTTP as normal, and subscriptions will use WebSocket.
+
+  #### Executing a subscription
+  You use Apollo Client's `useSubscription` Hook to execute a subscription from React. Like `useQuery`, `useSubscription` returns an object from Apollo Client that contains `loading`, `error`, and `data` properties you can use to render your UI.
+  ```js  
+  const COMMENTS_SUBSCRIPTION = gql`
+    subscription OnCommentAdded($postID: ID!) {
+      commentAdded(postID: $postID) {
+        id
+        content
+      }
+    }
+  `;
+  
+  function LatestComment({ postID }) {
+    const { data, loading } = useSubscription(
+      COMMENTS_SUBSCRIPTION,
+      { variables: { postID } }
+    );
+    return <h4>New comment: {!loading && data.commentAdded.content}</h4>;
+  }
+  ```
+
+  - [Subscribing to updates for a query `subscribeToMore`](https://www.apollographql.com/docs/react/data/subscriptions/#subscribing-to-updates-for-a-query)
+  - [The `fetchMore` function](https://www.apollographql.com/docs/react/pagination/core-api/#the-fetchmore-function)
+
+      update a query's cached result with data returned by a _follow-up_ query. Most often, `fetchMore` is used to handle infinite-scroll pagination.
