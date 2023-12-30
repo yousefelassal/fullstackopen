@@ -880,7 +880,7 @@
   };
   ```
   Here’s book.js:
-  ```
+  ```js
   // book.js
   export const typeDef = `
     type Book {
@@ -895,8 +895,8 @@
     }
   };
   ```
-  Then, we apply lodash.merge in schema.js to put everything together:
-  ```
+  Then, we apply `lodash.merge` in schema.js to put everything together:
+  ```js
   import { merge } from 'lodash';
   import { 
     typeDef as Author, 
