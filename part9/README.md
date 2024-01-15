@@ -39,3 +39,17 @@
   sphere = ball;
   ball = sphere;
   ```
+
+- Type inference
+
+  The TypeScript compiler can attempt to infer the type information if no type has been specified. Variables' type can be inferred based on their assigned value and their usage. The type inference takes place when initializing variables and members, setting parameter default values, and determining function return types.
+   
+   For example, consider the function `add`:
+   ```ts
+   const add = (a: number, b: number) => {
+     /* The return value is used to determine
+        the return type of the function */
+     return a + b;
+   }
+   ```
+   The type of the function's return value is inferred by retracing the code back to the return expression. The return expression performs an addition of the parameters a and b. We can see that a and b are numbers based on their types. Thus, we can infer the return value to be of type `number`.
