@@ -17,3 +17,25 @@
   
   console.log(birthdayGreeter(birthdayHero, age));
   ```
+
+- Structural typing
+  
+   TypeScript is a structurally-typed language. A structural type system means that when comparing types, TypeScript only takes into account the members on the type.
+
+  ```ts
+  // For example, these two interfaces are completely
+   // transferrable in a structural type system:
+   
+   interface Ball {
+     diameter: number;
+   }
+   interface Sphere {
+     diameter: number;
+   }
+   
+   let ball: Ball = { diameter: 10 };
+   let sphere: Sphere = { diameter: 20 };
+   
+   sphere = ball;
+   ball = sphere;
+  ```
