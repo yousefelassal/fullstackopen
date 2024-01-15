@@ -24,18 +24,18 @@
 
   ```ts
   // For example, these two interfaces are completely
-   // transferrable in a structural type system:
+  // transferrable in a structural type system:
    
-   interface Ball {
-     diameter: number;
-   }
-   interface Sphere {
-     diameter: number;
-   }
+  interface Ball {
+    diameter: number;
+  }
+  interface Sphere {
+    diameter: number;
+  }
    
-   let ball: Ball = { diameter: 10 };
-   let sphere: Sphere = { diameter: 20 };
+  let ball: Ball = { diameter: 10 };
+  let sphere: Sphere = { diameter: 20 };
    
-   sphere = ball;
-   ball = sphere;
+  sphere = ball;
+  ball = sphere;
   ```
