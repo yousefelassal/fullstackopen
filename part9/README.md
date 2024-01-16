@@ -53,3 +53,26 @@
    }
    ```
    The type of the function's return value is inferred by retracing the code back to the return expression. The return expression performs an addition of the parameters a and b. We can see that a and b are numbers based on their types. Thus, we can infer the return value to be of type `number`.
+
+
+### b First steps with TypeScript
+
+- [`tsconfig.json`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) | TypeScript Docs
+
+  specifies the root files and the compiler options required to compile the project.
+
+  Example tsconfig.json using the [include](https://www.typescriptlang.org/tsconfig#include) and [exclude](https://www.typescriptlang.org/tsconfig#exclude) properties:
+   ```json
+   {
+     "compilerOptions": {
+       "module": "system",
+       "noImplicitAny": true,
+       "removeComments": true,
+       "preserveConstEnums": true,
+       "outFile": "../../built/local/tsc.js",
+       "sourceMap": true
+     },
+     "include": ["src/**/*"],
+     "exclude": ["**/*.spec.ts"]
+   }
+   ```
