@@ -57,7 +57,7 @@
 
 ### b First steps with TypeScript
 
-- `tsconfig.json` | TypeScript Docs
+- [`tsconfig.json`](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) | TypeScript Docs
 
   specifies the root files and the compiler options required to compile the project.
 
