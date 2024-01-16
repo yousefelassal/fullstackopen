@@ -53,3 +53,7 @@
    }
    ```
    The type of the function's return value is inferred by retracing the code back to the return expression. The return expression performs an addition of the parameters a and b. We can see that a and b are numbers based on their types. Thus, we can infer the return value to be of type `number`.
+
+
+### b First steps with TypeScript
+
