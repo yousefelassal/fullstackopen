@@ -57,3 +57,22 @@
 
 ### b First steps with TypeScript
 
+- `tsconfig.json` | TypeScript Docs
+
+  specifies the root files and the compiler options required to compile the project.
+
+  Example tsconfig.json using the [include](https://www.typescriptlang.org/tsconfig#include) and [exclude](https://www.typescriptlang.org/tsconfig#exclude) properties:
+   ```json
+   {
+     "compilerOptions": {
+       "module": "system",
+       "noImplicitAny": true,
+       "removeComments": true,
+       "preserveConstEnums": true,
+       "outFile": "../../built/local/tsc.js",
+       "sourceMap": true
+     },
+     "include": ["src/**/*"],
+     "exclude": ["**/*.spec.ts"]
+   }
+   ```
