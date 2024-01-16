@@ -82,7 +82,7 @@
    a type formed from two or more other types, representing values that may be _any one_ of those types. We refer to each of these types as the union’s _members_.
 
    Let’s write a function that can operate on strings or numbers:
-   ```ta
+   ```ts
    function printId(id: number | string) {
      console.log("Your ID is: " + id);
    }
