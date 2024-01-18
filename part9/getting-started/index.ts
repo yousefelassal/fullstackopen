@@ -15,8 +15,12 @@ const calculator = (a: number, b: number, op: Operation) : number => {
   }
 }
 
+const a = Number(process.argv[2]);
+const b = Number(process.argv[3]);
+const op = process.argv[4];
+
 try {
-  console.log(calculator(1, 5 , 'divide'));
+  console.log(calculator(a, b, op as Operation));
 } catch (error: unknown) {
   let errorMessage = 'Something went wrong: '
   if (error instanceof Error) {
