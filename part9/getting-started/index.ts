@@ -1,4 +1,4 @@
-type Operation = 'multiply' | 'add' | 'divide';
+export type Operation = 'multiply' | 'add' | 'divide';
 
 
 const calculator = (a: number, b: number, op: Operation) : number => {
@@ -28,3 +28,5 @@ try {
   }
   console.log(errorMessage);
 }
+
+export default calculator;
