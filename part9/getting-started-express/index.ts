@@ -1,17 +1,19 @@
 import express from 'express';
 const app = express();
-import calculator from '../getting-started'
+import calculator from '../getting-started';
+import { Operation } from '../getting-started';
 
 app.get('/ping', (_req, res) => {
   res.send('pong');
 });
 
 app.post('/calculate', (req, res) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { value1, value2, op } = req.body;
 
-  const result = calculator(value1, value2, op);
+  const result = calculator(Number(value1), Number(value2), op as Operation);
   res.send({ result });
-})
+});
 
 const PORT = 3003;
 
