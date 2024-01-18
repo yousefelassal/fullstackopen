@@ -196,3 +196,5 @@
   const e: string[] = ['a', 'b'];
   const f: readonly string[] = ['a', 'b'];
   ```
+
+### c Typing an Express app
