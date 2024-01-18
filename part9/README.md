@@ -183,3 +183,16 @@
        </tbody>
    </table>
    </div>
+
+- [`array-simple`](https://typescript-eslint.io/rules/array-type/#array-simple) | TypeScript Eslint Docs
+
+  Use `T[]` or `readonly T[]` for simple types (i.e. types which are just primitive names or type references). Use `Array<T>` or `ReadonlyArray<T>` for all other types (union types, intersection types, object types, function types, etc).
+
+  ```ts
+  const a: Array<string | number> = ['a', 'b'];
+   const b: Array<{ prop: string }> = [{ prop: 'a' }];
+   const c: Array<() => void> = [() => {}];
+   const d: MyType[] = ['a', 'b'];
+   const e: string[] = ['a', 'b'];
+   const f: readonly string[] = ['a', 'b'];
+  ```
