@@ -190,9 +190,9 @@
 
   ```ts
   const a: Array<string | number> = ['a', 'b'];
-   const b: Array<{ prop: string }> = [{ prop: 'a' }];
-   const c: Array<() => void> = [() => {}];
-   const d: MyType[] = ['a', 'b'];
-   const e: string[] = ['a', 'b'];
-   const f: readonly string[] = ['a', 'b'];
+  const b: Array<{ prop: string }> = [{ prop: 'a' }];
+  const c: Array<() => void> = [() => {}];
+  const d: MyType[] = ['a', 'b'];
+  const e: string[] = ['a', 'b'];
+  const f: readonly string[] = ['a', 'b'];
   ```
