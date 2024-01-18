@@ -94,92 +94,92 @@
    printId({ myID: 22342 });
    ```
 - [Interfaces](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#interfaces) | TypeScript Docs
-
-An _interface declaration_ is a way to name an object type:
-
-```ts twoslash
-interface Point {
-  x: number;
-  y: number;
-}
-
-function printCoord(pt: Point) {
-  console.log("The coordinate's x value is " + pt.x);
-  console.log("The coordinate's y value is " + pt.y);
-}
-
-printCoord({ x: 100, y: 100 });
-```
-
-#### Differences Between Type Aliases and Interfaces
-
-Type aliases and interfaces are very similar, and in many cases you can choose between them freely.
-Almost all features of an `interface` are available in `type`, the key distinction is that a type cannot be re-opened to add new properties vs an interface which is always extendable.
-
-<div class='table-container'>
-<table class='full-width-table'>
-  <tbody>
-    <tr>
-      <th><code>Interface</code></th>
-      <th><code>Type</code></th>
-    </tr>
-    <tr>
-      <td>
-        <p>Extending an interface</p>
-        <code><pre>
-interface Animal {
-  name: string;
-}<br/>
-interface Bear extends Animal {
-  honey: boolean;
-}<br/>
-const bear = getBear();
-bear.name;
-bear.honey;
-        </pre></code>
-      </td>
-      <td>
-        <p>Extending a type via intersections</p>
-        <code><pre>
-type Animal = {
-  name: string;
-}<br/>
-type Bear = Animal & { 
-  honey: boolean;
-}<br/>
-const bear = getBear();
-bear.name;
-bear.honey;
-        </pre></code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>Adding new fields to an existing interface</p>
-        <code><pre>
-interface Window {
-  title: string;
-}<br/>
-interface Window {
-  ts: TypeScriptAPI;
-}<br/>
-const src = 'const a = "Hello World"';
-window.ts.transpileModule(src, {});
-        </pre></code>
-      </td>
-      <td>
-        <p>A type cannot be changed after being created</p>
-        <code><pre>
-type Window = {
-  title: string;
-}<br/>
-type Window = {
-  ts: TypeScriptAPI;
-}<br/>
-<span style="color: #A31515"> // Error: Duplicate identifier 'Window'.</span><br/>
-        </pre></code>
-      </td>
-    </tr>
-    </tbody>
-</table>
-</div>
+   
+   An _interface declaration_ is a way to name an object type:
+   
+   ```ts twoslash
+   interface Point {
+     x: number;
+     y: number;
+   }
+   
+   function printCoord(pt: Point) {
+     console.log("The coordinate's x value is " + pt.x);
+     console.log("The coordinate's y value is " + pt.y);
+   }
+   
+   printCoord({ x: 100, y: 100 });
+   ```
+   
+   #### Differences Between Type Aliases and Interfaces
+   
+   Type aliases and interfaces are very similar, and in many cases you can choose between them freely.
+   Almost all features of an `interface` are available in `type`, the key distinction is that a type cannot be re-opened to add new properties vs an interface which is always extendable.
+   
+   <div class='table-container'>
+   <table class='full-width-table'>
+     <tbody>
+       <tr>
+         <th><code>Interface</code></th>
+         <th><code>Type</code></th>
+       </tr>
+       <tr>
+         <td>
+           <p>Extending an interface</p>
+           <code><pre>
+   interface Animal {
+     name: string;
+   }<br/>
+   interface Bear extends Animal {
+     honey: boolean;
+   }<br/>
+   const bear = getBear();
+   bear.name;
+   bear.honey;
+           </pre></code>
+         </td>
+         <td>
+           <p>Extending a type via intersections</p>
+           <code><pre>
+   type Animal = {
+     name: string;
+   }<br/>
+   type Bear = Animal & { 
+     honey: boolean;
+   }<br/>
+   const bear = getBear();
+   bear.name;
+   bear.honey;
+           </pre></code>
+         </td>
+       </tr>
+       <tr>
+         <td>
+           <p>Adding new fields to an existing interface</p>
+           <code><pre>
+   interface Window {
+     title: string;
+   }<br/>
+   interface Window {
+     ts: TypeScriptAPI;
+   }<br/>
+   const src = 'const a = "Hello World"';
+   window.ts.transpileModule(src, {});
+           </pre></code>
+         </td>
+         <td>
+           <p>A type cannot be changed after being created</p>
+           <code><pre>
+   type Window = {
+     title: string;
+   }<br/>
+   type Window = {
+     ts: TypeScriptAPI;
+   }<br/>
+   <span style="color: #A31515"> // Error: Duplicate identifier 'Window'.</span><br/>
+           </pre></code>
+         </td>
+       </tr>
+       </tbody>
+   </table>
+   </div>
