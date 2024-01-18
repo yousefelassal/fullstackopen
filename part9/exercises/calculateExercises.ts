@@ -1,4 +1,4 @@
-interface ExerciseValues {
+export interface ExerciseValues {
     periodLength: number;
     trainingDays: number;
     success: boolean;
@@ -8,7 +8,7 @@ interface ExerciseValues {
     average: number;
 }
 
-interface ExerciseInput {
+export interface ExerciseInput {
     target: number;
     exerciseHours: number[];
 }
@@ -27,7 +27,7 @@ const parseExerciseArguments = (args: Array<string>): ExerciseInput => {
     }
 };
 
-const calculateExercises = (exerciseHours: number[], target: number): ExerciseValues => {
+export const calculateExercises = (exerciseHours: number[], target: number): ExerciseValues => {
     const periodLength = exerciseHours.length;
     const trainingDays = exerciseHours.filter(hours => hours > 0).length;
     const average = exerciseHours.reduce((sum, hours) => sum + hours, 0) / periodLength;
@@ -49,8 +49,8 @@ const calculateExercises = (exerciseHours: number[], target: number): ExerciseVa
 try {
     const { target, exerciseHours } = parseExerciseArguments(process.argv);
     console.log(calculateExercises(exerciseHours, target));
-} catch (e) {
-    console.log('Error, something bad happened, message: ', e.message);
+} catch (e: unknown) {
+    if (e instanceof Error) console.log('Error, something bad happened, message: ', e.message);
 }
 
 // already arguments are given through the command line

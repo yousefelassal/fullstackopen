@@ -8,7 +8,8 @@
     "bmi": "ts-node bmiCalculator.ts",
     "calcEx": "ts-node calculateExercises.ts",
     "start": "ts-node index.ts",
-    "dev": "ts-node-dev index.ts"
+    "dev": "ts-node-dev index.ts",
+    "lint": "eslint . --ext .ts"
   },
   "keywords": [],
   "author": "",
