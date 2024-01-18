@@ -54,3 +54,5 @@ try {
 }
 
 // already arguments are given through the command line
+
+export default calculateExercises;
