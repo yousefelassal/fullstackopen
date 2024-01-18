@@ -52,3 +52,5 @@ try {
 } catch (e) {
     console.log('Error, something bad happened, message: ', e.message);
 }
+
+// already arguments are given through the command line
