@@ -260,3 +260,14 @@ _.eslintrc_
   }
 }
 ```
+
+- [Optional Properties](https://www.typescriptlang.org/docs/handbook/2/objects.html#optional-properties) | TypeScript Docs
+  
+   Much of the time, we’ll find ourselves dealing with objects that _might_ have a property set. In those cases, we can mark those properties as _optional_ by adding a question mark (`?`) to the end of their names.
+   ```ts
+   interface PaintOptions {
+     shape: Shape;
+     xPos?: number;
+     yPos?: number;
+   }
+   ```
