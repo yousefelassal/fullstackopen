@@ -274,7 +274,7 @@ _.eslintrc_
 
 - [`Pick<Type, Keys>`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys) | TypeScript Docs
    
-   Constructs a type by picking the set of properties Keys (string literal or union of string literals) from Type.
+   Constructs a type by picking the set of properties `Keys` (string literal or union of string literals) from `Type`.
    
    ```ts
    interface Todo {
