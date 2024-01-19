@@ -201,7 +201,7 @@
 
 #### Setup
 
-tsconfig.json
+_tsconfig.json_
 ```json
 {
   "compilerOptions": {
