@@ -202,7 +202,7 @@
 #### Setup
 
 tsconfig.json
-```
+```json
 {
   "compilerOptions": {
     "target": "ES6",
