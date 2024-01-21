@@ -396,3 +396,57 @@ _.eslintrc_
      Right = "RIGHT",
    }
    ```
+
+#### utils (Parsing)
+
+**Type predicates**
+```ts
+const isString = (text: unknown): text is string => {
+    return typeof text === 'string' || text instanceof String;
+};
+```
+
+**Parsing value**
+```ts
+const parseName = (name: unknown): string => {
+    if (!name || !isString(name)) {
+        throw new Error('Incorrect or missing name');
+    }
+    return name;
+};
+```
+
+**Parsing enum**
+```ts
+const isGender = (param: string): param is Gender => {
+    return Object.values(Gender).map(v => v.toString()).includes(param);
+};
+
+const parseGender = (gender:unknown): Gender => {
+    if (!gender || !isString(gender) || !isGender(gender)){
+        throw Error('Incorrect or missing gender: ' + gender);
+    }
+    return gender;
+};
+```
+
+**util function**
+```ts
+const toNewEntry = (object: unknown): Entry => {
+    if (!object || typeof object !== 'object') {
+        throw new Error('Incorrect or missing data');
+    }
+
+    if ( 'name' in object && 'gender' in object) {
+        const newEntry: PatientEntry = {
+            name: parseName(object.name),
+            gender: parseGender(object.gender)
+        };
+
+        return newEntry;
+    }
+
+    throw new Error('Incorrect or missing data');
+
+};
+```
