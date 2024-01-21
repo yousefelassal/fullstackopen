@@ -462,3 +462,34 @@ const toNewEntry = (object: unknown): Entry => {
     console.log(x!.toFixed());
   }
   ```
+- [Extending Types](https://www.typescriptlang.org/docs/handbook/2/objects.html#extending-types) | TypeScript Docs
+
+   It’s pretty common to have types that might be more specific versions of other types.
+   ```ts
+   interface BasicAddress {
+     name?: string;
+     country: string;
+   }
+
+   interface AddressWithCity extends BasicAddress {
+     city: string;
+   }    
+   ```
+
+   `interface`s can also extend from multiple types.
+   ```ts
+   interface Colorful {
+     color: string;
+   }
+    
+   interface Circle {
+     radius: number;
+   }
+    
+   interface ColorfulCircle extends Colorful, Circle {}
+    
+   const cc: ColorfulCircle = {
+     color: "red",
+     radius: 42,
+   };
+   ```
