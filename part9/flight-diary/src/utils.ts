@@ -1,4 +1,4 @@
-import { NewDiaryEntry } from './types';
+import { NewDiaryEntry, Weather } from './types';
 
 const isString = (text: unknown): text is string => {
     return typeof text === 'string' || text instanceof String;
@@ -20,6 +20,17 @@ const parseDate = (date: unknown): string => {
         throw new Error('Incorrect or missing date: ' + date);
     }
     return date;
+};
+
+const isWeather = (param: string): param is Weather => {
+    return Object.values(Weather).map(v => v.toString()).includes(param);
+};
+
+const parseWeather = (weather: unknown): Weather => {
+    if (!weather || !isString(weather) || !isWeather(weather)) {
+        throw new Error('Incorrect or missing weather: ' + weather);
+    }
+    return weather;
 };
 
 const toNewDiaryEntry = (object: unknown): NewDiaryEntry => {
