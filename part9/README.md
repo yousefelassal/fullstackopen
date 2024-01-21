@@ -462,3 +462,18 @@ const toNewEntry = (object: unknown): Entry => {
     console.log(x!.toFixed());
   }
   ```
+- [Extending Types](https://www.typescriptlang.org/docs/handbook/2/objects.html#extending-types) | TypeScript Docs
+
+  It’s pretty common to have types that might be more specific versions of other types.
+  ```ts
+  interface BasicAddress {
+    name?: string;
+    country: string;
+  }
+
+  interface AddressWithCity extends BasicAddress {
+    city: string;
+   }    
+   ```
+
+   
