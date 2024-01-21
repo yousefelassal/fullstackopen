@@ -450,3 +450,5 @@ const toNewEntry = (object: unknown): Entry => {
 
 };
 ```
+
+### d React with types
