@@ -416,7 +416,7 @@ const parseName = (name: unknown): string => {
 };
 ```
 
-**Parsing enum**
+**Handling enums**
 ```ts
 const isGender = (param: string): param is Gender => {
     return Object.values(Gender).map(v => v.toString()).includes(param);
