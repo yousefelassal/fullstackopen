@@ -450,3 +450,15 @@ const toNewEntry = (object: unknown): Entry => {
 
 };
 ```
+
+### d React with types
+
+- [Non-null assertion (`!`)](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#non-null-assertion-operator-postfix-) | TypeScript Docs
+
+  TypeScript has a special syntax for removing `null` and `undefined` from a type without doing any explicit checking. Writing `!` after any expression is effectively a type assertion that the value isn’t `null` or `undefined`:
+  ```ts
+  function liveDangerously(x?: number | null) {
+    // No error
+    console.log(x!.toFixed());
+  }
+  ```
