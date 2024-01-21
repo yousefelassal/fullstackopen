@@ -509,3 +509,20 @@ const toNewEntry = (object: unknown): Entry => {
     
    type Shape = Circle | Square;
   ```
+   Once TypeScript has inferred that a variable is of union type and that each type in the union contain a certain literal attribute (in our case `kind`), we can use that as a type identifier. We can then build a `switch case` around that attribute and TypeScript will know which attributes are available within each case block:
+
+  ```ts
+  shapes.forEach(shape => {
+    switch(shape.kind) {
+      case "circle":
+        console.log(shape.radius)
+        break;
+      case "square":
+        console.log(shape.sideLength)
+        console.log(shape.radius) // Not OK
+        break;
+      default:
+        break;
+     }
+  })
+  ```
