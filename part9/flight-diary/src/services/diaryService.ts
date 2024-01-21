@@ -2,8 +2,7 @@ import diaries from '../../data/diaries';
 import {
   DiaryEntry,
   NonSensitiveDiaryEntry,
-  Weather,
-  Visibility
+  NewDiaryEntry
 } from '../types';
 
 
@@ -25,20 +24,14 @@ const findById = (id: number): DiaryEntry | undefined => {
   return entry;
 };
 
-const addDiary = (
-  date: string, weather: Weather, visibility: Visibility, comment: string
-): DiaryEntry => {
+const addDiary = ( entry: NewDiaryEntry ): DiaryEntry => {
+  const newDiaryEntry = {
+    id: Math.max(...diaries.map(d => d.id)) + 1,
+    ...entry
+  };
 
-const newDiaryEntry = {
-  id: Math.max(...diaries.map(d => d.id)) + 1,
-  date,
-  weather,
-  visibility,
-  comment,
-};
-
-diaries.push(newDiaryEntry);
-return newDiaryEntry;
+  diaries.push(newDiaryEntry);
+  return newDiaryEntry;
 };
 
 export default {
