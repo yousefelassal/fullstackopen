@@ -45,15 +45,22 @@ const parseVisibility = (visibility: unknown): Visibility => {
 };
 
 const toNewDiaryEntry = (object: unknown): NewDiaryEntry => {
- console.log(object); // now object is no longer unused
- const newEntry: NewDiaryEntry = {
-   weather: 'cloudy', // fake the return value
-   visibility: 'great',
-   date: '2022-1-1',
-   comment: 'fake news'
- };
-
- return newEntry;
+    if ( !object || typeof object !== 'object' ) {
+      throw new Error('Incorrect or missing data');
+    }
+  
+    if ('comment' in object && 'date' in object && 'weather' in object && 'visibility' in object)  {
+      const newEntry: NewDiaryEntry = {
+        weather: parseWeather(object.weather),
+        visibility: parseVisibility(object.visibility),
+        date: parseDate(object.date),
+        comment: parseComment(object.comment)
+      };
+  
+      return newEntry;
+    }
+  
+    throw new Error('Incorrect data: some fields are missing');
 };
 
 export default toNewDiaryEntry;
