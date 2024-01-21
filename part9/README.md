@@ -524,5 +524,8 @@ const toNewEntry = (object: unknown): Entry => {
       default:
         break;
      }
+
+     // can not refer to shape.radius here!
   })
   ```
+  TypeScript will only allow an operation (or attribute access) if it is valid for every member of the union.
