@@ -1,30 +1,7 @@
 import Header from "./components/Header";
 import Content from "./components/Content";
 import Total from "./components/Total";
-
-interface CoursePartBasic {
-  name: string;
-  exerciseCount: number;
-  description: string;
-  kind: "basic"
-}
-
-interface CoursePartGroup {
-  name: string;
-  exerciseCount: number;
-  groupProjectCount: number;
-  kind: "group"
-}
-
-interface CoursePartBackground {
-  name: string;
-  exerciseCount: number;
-  description: string;
-  backgroundMaterial: string;
-  kind: "background"
-}
-
-type CoursePart = CoursePartBasic | CoursePartGroup | CoursePartBackground;
+import { CoursePart } from './types';
 
 const App = () => {
   const courseName = "Half Stack application development";
