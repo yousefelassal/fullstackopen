@@ -397,7 +397,7 @@ _.eslintrc_
    }
    ```
 
-#### utils (Parsing)
+## utils (Parsing)
 
 **Type predicates**
 ```ts
