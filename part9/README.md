@@ -323,3 +323,25 @@ _.eslintrc_
      // 'a' is of type 'unknown'.
    }
    ```
+
+- [Type predicates](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates) | TypeScript Docs
+
+  To define a user-defined type guard, we simply need to define a function whose return type is a type predicate:
+   ```ts
+   function isFish(pet: Fish | Bird): pet is Fish {
+     return (pet as Fish).swim !== undefined;
+   }
+   ```
+   `pet is Fish` is our type predicate in this example. A predicate takes the form `parameterName is Type`, where `parameterName` must be the name of a parameter from the current function signature.
+   
+   Any time `isFish` is called with some variable, TypeScript will _narrow_ that variable to that specific type if the original type is compatible.
+   ```ts
+   // Both calls to 'swim' and 'fly' are now okay.
+   let pet = getSmallPet();
+    
+   if (isFish(pet)) {
+     pet.swim();
+   } else {
+     pet.fly();
+   }
+   ```
