@@ -493,3 +493,19 @@ const toNewEntry = (object: unknown): Entry => {
      radius: 42,
    };
    ```
+- [Discriminated Unions](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#discriminated-unions) | TypeScript Docs
+
+  union type is narrowed based on literal attribute value.
+  ```ts
+  interface Circle {
+     kind: "circle";
+     radius: number;
+   }
+    
+   interface Square {
+     kind: "square";
+     sideLength: number;
+   }
+    
+   type Shape = Circle | Square;
+  ```
