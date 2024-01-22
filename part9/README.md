@@ -397,7 +397,7 @@ _.eslintrc_
    }
    ```
 
-## utils (Parsing)
+## Type Narrowing (& Parsing)
 
 **Type predicates**
 ```ts
@@ -493,3 +493,81 @@ const toNewEntry = (object: unknown): Entry => {
      radius: 42,
    };
    ```
+- [Discriminated Unions](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#discriminated-unions) | TypeScript Docs
+
+  union type is narrowed based on literal attribute value.
+  ```ts
+  interface Circle {
+     kind: "circle";
+     radius: number;
+   }
+    
+   interface Square {
+     kind: "square";
+     sideLength: number;
+   }
+    
+   type Shape = Circle | Square;
+  ```
+   Once TypeScript has inferred that a variable is of union type and that each type in the union contain a certain literal attribute (in our case `kind`), we can use that as a type identifier. We can then build a `switch case` around that attribute and TypeScript will know which attributes are available within each case block:
+
+  ```ts
+  shapes.forEach(shape => {
+    switch(shape.kind) {
+      case "circle":
+        console.log(shape.radius)
+        break;
+      case "square":
+        console.log(shape.sideLength)
+        console.log(shape.radius) // Not OK
+        break;
+      default:
+        break;
+     }
+
+     // can not refer to shape.radius here!
+  })
+  ```
+  TypeScript will only allow an operation (or attribute access) if it is valid for every member of the union.
+
+- [Exhaustive Checking](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#exhaustiveness-checking) | TypeScript Docs
+
+  The `never` type is assignable to every type; however, no type is assignable to `never` (except `never` itself). This means you can use narrowing and rely on never turning up to do exhaustive checking in a `switch` statement.
+   
+   For example, adding a `default` to our switch tries to assign the shape to `never` will not raise an error when every possible case has been handled.
+
+  A straightforward version of the function could look like this:
+   ```ts
+   /**
+    * Helper function for exhaustive type checking
+    */
+   const assertNever = (value: never): never => {
+     throw new Error(
+       `Unhandled discriminated union member: ${JSON.stringify(value)}`
+     );
+   };
+   ```
+
+   Adding a new member to the Shape union, will cause a TypeScript error:
+   ```ts
+   interface Triangle {
+     kind: "triangle";
+     sideLength: number;
+   }
+    
+   type Shape = Circle | Square | Triangle;
+    
+   function getArea(shape: Shape) {
+     switch (shape.kind) {
+       case "circle":
+         return Math.PI * shape.radius ** 2;
+       case "square":
+         return shape.sideLength ** 2;
+       default:
+         default:
+           return assertNever(shape);
+   // Type 'Triangle' is not assignable to type 'never'.
+     }
+   }
+   ```
+   The error tells us that we are using a variable somewhere where it should never be used. This tells us that something needs to be fixed.
