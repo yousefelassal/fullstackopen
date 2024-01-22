@@ -529,3 +529,44 @@ const toNewEntry = (object: unknown): Entry => {
   })
   ```
   TypeScript will only allow an operation (or attribute access) if it is valid for every member of the union.
+
+- [Exhaustive Checking](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#exhaustiveness-checking) | TypeScript Docs
+
+  The `never` type is assignable to every type; however, no type is assignable to `never` (except `never` itself). This means you can use narrowing and rely on never turning up to do exhaustive checking in a `switch` statement.
+   
+   For example, adding a `default` to our switch tries to assign the shape to `never` will not raise an error when every possible case has been handled.
+
+  A straightforward version of the function could look like this:
+   ```ts
+   /**
+    * Helper function for exhaustive type checking
+    */
+   const assertNever = (value: never): never => {
+     throw new Error(
+       `Unhandled discriminated union member: ${JSON.stringify(value)}`
+     );
+   };
+   ```
+
+   Adding a new member to the Shape union, will cause a TypeScript error:
+   ```ts
+   interface Triangle {
+     kind: "triangle";
+     sideLength: number;
+   }
+    
+   type Shape = Circle | Square | Triangle;
+    
+   function getArea(shape: Shape) {
+     switch (shape.kind) {
+       case "circle":
+         return Math.PI * shape.radius ** 2;
+       case "square":
+         return shape.sideLength ** 2;
+       default:
+         default:
+           return assertNever(shape);
+   // Type 'Triangle' is not assignable to type 'never'.
+     }
+   }
+   ```
