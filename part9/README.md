@@ -588,3 +588,5 @@ const toNewEntry = (object: unknown): Entry => {
    // later...
    setUser(newUser);
    ```
+
+### e Grande finale: Patientor
