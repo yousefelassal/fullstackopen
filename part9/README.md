@@ -571,3 +571,20 @@ const toNewEntry = (object: unknown): Entry => {
    }
    ```
    The error tells us that we are using a variable somewhere where it should never be used. This tells us that something needs to be fixed.
+
+- [`useState` Type inferenc](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/hooks/#usestate) | React TypeScript Cheatsheet
+
+  Type inference works very well for simple values:
+   ```tsx
+   const [state, setState] = useState(false);
+   // `state` is inferred to be a boolean
+   // `setState` only takes booleans
+   ```
+
+   However, many hooks are initialized with null-ish default values, and you may wonder how to provide types. Explicitly declare the type, and use a union type:
+   ```tsx
+   const [user, setUser] = useState<User | null>(null);
+   
+   // later...
+   setUser(newUser);
+   ```
