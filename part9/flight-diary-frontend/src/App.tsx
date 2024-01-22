@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import service from "./service"
-import { DiaryEntry, NewDiaryEntry } from '../../flight-diary/src/types'
+import { DiaryEntry } from '../../flight-diary/src/types'
 
 const App = () => {
   const [diaries, setDiaries] = useState<DiaryEntry[]>([]);
@@ -8,6 +8,7 @@ const App = () => {
   const [visibility, setVisibility] = useState('')
   const [weather, setWeather] = useState('')
   const [comment, setComment] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     service
@@ -34,10 +35,17 @@ const App = () => {
         setWeather('')
         setComment('')
       })
+      .catch(error => {
+        setErrorMessage(error)
+        setTimeout(() => {
+          setErrorMessage('')
+        }, 5000)
+      })
   }
   
   return (
     <div>
+      {errorMessage && <p style={{color:"red"}}>{errorMessage}</p>}
       <h2>Add new entry</h2>
       <form onSubmit={addDiary}>
         <div style={{
