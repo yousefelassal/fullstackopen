@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import service from "./service"
-import { DiaryEntry } from '../../flight-diary/src/types'
+import { DiaryEntry, NewDiaryEntry, Visibility, Weather } from '../../flight-diary/src/types'
 
 const App = () => {
   const [diaries, setDiaries] = useState<DiaryEntry[]>([]);
   const [date, setDate] = useState('')
-  const [visibility, setVisibility] = useState('')
-  const [weather, setWeather] = useState('')
+  const [visibility, setVisibility] = useState<Visibility | null>(null)
+  const [weather, setWeather] = useState<Weather | null>(null)
   const [comment, setComment] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -20,7 +20,14 @@ const App = () => {
 
   const addDiary = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const newDiary = {
+    if(!date || !visibility || !weather || !comment) {
+      setErrorMessage('Please fill all the fields')
+      setTimeout(() => {
+        setErrorMessage('')
+      }, 5000)
+      return
+    }
+    const newDiary: NewDiaryEntry = {
       date: date,
       visibility: visibility,
       weather: weather,
@@ -31,8 +38,8 @@ const App = () => {
       .then(data => {
         setDiaries(diaries.concat(data))
         setDate('')
-        setVisibility('')
-        setWeather('')
+        setVisibility(null)
+        setWeather(null)
         setComment('')
       })
       .catch(error => {
@@ -42,6 +49,9 @@ const App = () => {
         }, 5000)
       })
   }
+
+  const weathers = Object.values(Weather)
+  const visibilities = Object.values(Visibility)
   
   return (
     <div>
@@ -58,11 +68,21 @@ const App = () => {
         </label>
         <label>
           visibility
-          <input type="text" value={visibility} onChange={(e) => setVisibility(e.target.value)} />
+          {visibilities.map(visibility => (
+            <React.Fragment key={visibility}>
+              <input type="radio" name="visibility" value={visibility} onChange={() => setVisibility(visibility)} />
+              {visibility}
+            </React.Fragment>
+          ))}
         </label>
         <label>
           weather
-          <input type="text" value={weather} onChange={(e) => setWeather(e.target.value)} />
+          {weathers.map(weather => (
+            <React.Fragment key={weather}>
+              <input type="radio" name="weather" value={weather} onChange={() => setWeather(weather)} />
+              {weather}
+            </React.Fragment>
+          ))}
         </label>
         <label>
           comment
