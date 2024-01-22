@@ -1,12 +1,11 @@
-interface coursePart {
-    name: string;
-    exerciseCount: number;
-}
+import Part from "./Part";
+import { CoursePart } from "../types";
 
-export default function Content({courseParts}:{courseParts:coursePart[]}) {
+export default function Content({courseParts}:{courseParts:CoursePart[]}) {
+
   return (
     <div>
-        {courseParts.map((part, i) => <p key={i}>{part.name} {part.exerciseCount}</p>)}
+      {courseParts.map((part) => <Part key={part.name} part={part} />)}
     </div>
   )
 }

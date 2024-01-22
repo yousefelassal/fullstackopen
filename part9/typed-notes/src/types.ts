@@ -1,22 +1,29 @@
 interface CoursePartBase {
-    name: string;
-    exerciseCount: number;
-  }
+  name: string;
+  exerciseCount: number;
+}
+
+interface CoursePartBaseWithDescription extends CoursePartBase {
+  description: string;
+}
   
-  interface CoursePartBasic extends CoursePartBase {
-    description: string;
-    kind: "basic"
-  }
+interface CoursePartBasic extends CoursePartBaseWithDescription {
+  kind: "basic"
+}
   
-  interface CoursePartGroup extends CoursePartBase {
-    groupProjectCount: number;
-    kind: "group"
-  }
+interface CoursePartGroup extends CoursePartBase {
+  groupProjectCount: number;
+  kind: "group"
+}
   
-  interface CoursePartBackground extends CoursePartBase {
-    description: string;
-    backgroundMaterial: string;
-    kind: "background"
-  }
+interface CoursePartBackground extends CoursePartBaseWithDescription {
+  backgroundMaterial: string;
+  kind: "background"
+}
+
+interface CoursePartSpecial extends CoursePartBaseWithDescription {
+  kind: "special";
+  requirements: string[];
+}
   
-  export type CoursePart = CoursePartBasic | CoursePartGroup | CoursePartBackground;
+export type CoursePart = CoursePartBasic | CoursePartGroup | CoursePartBackground | CoursePartSpecial;
