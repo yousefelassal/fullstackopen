@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 interface Note {
   id: number;
@@ -7,9 +8,15 @@ interface Note {
 
 const App = () => {
   const [newNote, setNewNote] = useState('');
-  const [notes, setNotes] = useState<Note[]>([
-    {id: 1, content: 'HTML is easy'},
-  ]);
+  const [notes, setNotes] = useState<Note[]>([]);
+
+  useEffect(() => {
+    axios
+      .get<Note[]>('http://localhost:3001/notes')
+      .then(response => {
+        setNotes(response.data);
+      })
+  })
 
   const noteCreation = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
