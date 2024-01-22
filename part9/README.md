@@ -570,3 +570,4 @@ const toNewEntry = (object: unknown): Entry => {
      }
    }
    ```
+   The error tells us that we are using a variable somewhere where it should never be used. This tells us that something needs to be fixed.
