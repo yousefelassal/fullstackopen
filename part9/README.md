@@ -590,3 +590,15 @@ const toNewEntry = (object: unknown): Entry => {
    ```
 
 ### e Grande finale: Patientor
+
+To keep the TypeScript compiler happy, the props should be typed as follows:
+```ts
+interface Props {
+  patients : Patient[]
+  setPatients: React.Dispatch<React.SetStateAction<Patient[]>>
+}
+
+const PatientListPage = ({ patients, setPatients } : Props ) => { 
+  // ...
+}
+```
