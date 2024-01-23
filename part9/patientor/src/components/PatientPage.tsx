@@ -4,6 +4,7 @@ import axios from "axios";
 import { apiBaseUrl } from "../constants";
 import { Patient } from "../../../patientor-backend/src/types";
 import { Male, Female } from "@mui/icons-material";
+import Diagnoses from "./Diagnoses";
 
 const PatientPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -44,7 +45,9 @@ const PatientPage = () => {
                     <p>{entry.date} {entry.description}</p>
                     <ul>
                       {entry.diagnosisCodes?.map(code => (
-                        <li key={code}>{code}</li>
+                        <li key={code}>
+                          {code} <Diagnoses code={code}/>
+                        </li>
                       ))}
                     </ul>
                   </div>
