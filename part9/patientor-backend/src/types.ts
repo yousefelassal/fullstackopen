@@ -19,7 +19,22 @@ interface HealthCheckEntry extends BaseEntry {
     healthCheckRating: HealthCheckRating;
 }
 
+interface OccupationalHealthcareEntry extends BaseEntry {
+    type: "OccupationalHealthcare";
+    employerName: string;
+    sickLeave?: {
+        startDate: string;
+        endDate: string;
+    };
+}
 
+interface HospitalEntry extends BaseEntry {
+    type: "Hospital";
+    discharge: {
+        date: string;
+        criteria: string;
+    };
+}
 
 export enum Gender {
     Male = 'male',
@@ -48,6 +63,6 @@ export type Entry =
   | OccupationalHealthcareEntry
   | HealthCheckEntry;
 
-export type NonSensitivePatient = Omit<Patient, 'ssn' | 'entries'>;
+export type NonSensitivePatient = Omit<Patient, 'ssn'>;
 
 export type PatientEntry = Omit<Patient, 'id'>;

@@ -11,12 +11,13 @@ const getPatient = (id:string): Patient | undefined => {
 };
 
 const getNonSensitivePatients = (): NonSensitivePatient[] => {
-    return data.map(({ id, name, dateOfBirth, gender, occupation }) => ({
+    return data.map(({ id, name, dateOfBirth, gender, occupation, entries }) => ({
         id,
         name,
         dateOfBirth,
         gender,
-        occupation
+        occupation,
+        entries
     }));
 };
 
