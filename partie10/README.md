@@ -34,3 +34,5 @@ Eslint configs
   | `<TextInput>`             | `<EditText>`   | `<UITextField>`  | `<input type="text">`   | Allows the user to enter text                                                                         |
   - [All Core Components and APIs](https://reactnative.dev/docs/components-and-apis)
   - [Community Components - Native Directory](https://reactnative.dev/docs/components-and-apis)
+    
+  ![diagram_react-native-components_dark](https://github.com/yousefelassal/fullstackopen/assets/76617202/79ff26ce-e3b1-409d-9608-e8dba0c044ac)
