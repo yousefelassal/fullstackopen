@@ -32,4 +32,5 @@ Eslint configs
   | `<Image>`                 | `<ImageView>`  | `<UIImageView>`  | `<img>`                 | Displays different types of images                                                                    |
   | `<ScrollView>`            | `<ScrollView>` | `<UIScrollView>` | `<div>`                 | A generic scrolling container that can contain multiple components and views                          |
   | `<TextInput>`             | `<EditText>`   | `<UITextField>`  | `<input type="text">`   | Allows the user to enter text                                                                         |
-  - [All Components and APIs](https://reactnative.dev/docs/components-and-apis)
+  - [All Core Components and APIs](https://reactnative.dev/docs/components-and-apis)
+  - [Community Components - Native Directory](https://reactnative.dev/docs/components-and-apis)
