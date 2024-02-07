@@ -78,6 +78,8 @@ Eslint configs
   ```
   To render multiple columns, use the `numColumns` prop. Using this approach instead of a `flexWrap` layout can prevent conflicts with the item height logic.
 
+  ---
+
   Example with `extraData`:
   ```jsx
   const Item = ({item, onPress, backgroundColor, textColor}) => (
