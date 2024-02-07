@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { Text, StyleSheet, View } from 'react-native';
 import RepositoryList from './RepoList';
+import MainText from './FancyText';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,6 +17,7 @@ const Main = () => {
     <View style={styles.container}>
       <Text>Rate Repository Application</Text>
       <RepositoryList />
+      <MainText />
       <StatusBar style="auto" />
     </View>
   );
