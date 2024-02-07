@@ -39,7 +39,7 @@ Eslint configs
 
 - [FlatList](https://reactnative.dev/docs/flatlist) | React Native Docs
 
-  #### [FlashList](https://shopify.github.io/flash-list/) | Spotify Performant Alternative
+  #### [FlashList](https://shopify.github.io/flash-list/) | Shopify Performant Alternative
 
   Example:
   ```jsx
