@@ -1,6 +1,5 @@
 import { FlatList, View, StyleSheet } from 'react-native';
 import RepoItem from './RepoItem';
-import { FlashList } from '@shopify/flash-list'
 
 const styles = StyleSheet.create({
   separator: {
@@ -59,12 +58,11 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
   return (
-    <FlashList
+    <FlatList
       data={repositories}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => <RepoItem repo={item} />}
       keyExtractor={item => item.id}
-      estimatedItemSize={20}
     />
   );
 };
