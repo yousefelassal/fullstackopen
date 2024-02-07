@@ -121,3 +121,83 @@ Eslint configs
   ```
   - By passing `extraData={selectedId}` to FlatList we make sure FlatList itself will re-render when the state changes. Without setting this prop, FlatList would not know it needs to re-render any items because it is a PureComponent and the prop comparison will not show any changes.
   - `keyExtractor` tells the list to use the ids for the react keys instead of the default key property.
+
+- [StyleSheet](https://reactnative.dev/docs/stylesheet) | React Native Docs
+
+  an abstraction similar to CSS StyleSheets
+
+  ```jsx
+  import React from 'react';
+  import {StyleSheet, Text, View} from 'react-native';
+  
+  const App = () => (
+    <View style={styles.container}>
+      <Text style={styles.title}>React Native</Text>
+    </View>
+  );
+  
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      padding: 24,
+      backgroundColor: '#eaeaea',
+    },
+    title: {
+      marginTop: 16,
+      paddingVertical: 8,
+      borderWidth: 4,
+      borderColor: '#20232a',
+      borderRadius: 6,
+      backgroundColor: '#61dafb',
+      color: '#20232a',
+      textAlign: 'center',
+      fontSize: 30,
+      fontWeight: 'bold',
+    },
+  });
+  
+  export default App;
+  ```
+  - [React Native Styling Cheat Sheet](https://github.com/vhpoet/react-native-styling-cheat-sheet) | GitHub Repo README
+
+  ---
+  
+  `style` prop also accepts an array of objects. In the case of an array, the objects are merged from left to right so that latter-style properties take precedence.
+  ```jsx
+  const styles = StyleSheet.create({
+    text: {
+      color: 'grey',
+      fontSize: 14,
+    },
+    blueText: {
+      color: 'blue',
+    },
+    bigText: {
+      fontSize: 24,
+      fontWeight: '700',
+    },
+  });
+  
+  const FancyText = ({ isBlue, isBig, children }) => {
+    const textStyles = [
+      styles.text,
+      isBlue && styles.blueText,
+      isBig && styles.bigText,
+    ];
+  
+    return <Text style={textStyles}>{children}</Text>;
+  };
+  
+  const Main = () => {
+    return (
+      <>
+        <FancyText>Simple text</FancyText>
+        <FancyText isBlue>Blue text</FancyText>
+        <FancyText isBig>Big text</FancyText>
+        <FancyText isBig isBlue>
+          Big blue text
+        </FancyText>
+      </>
+    );
+  };
+  ```
