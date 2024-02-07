@@ -159,3 +159,45 @@ Eslint configs
   export default App;
   ```
   - [React Native Styling Cheat Sheet](https://github.com/vhpoet/react-native-styling-cheat-sheet) | GitHub Repo README
+
+  ---
+  
+  `style` prop also accepts an array of objects. In the case of an array, the objects are merged from left to right so that latter-style properties take precedence.
+  ```jsx
+  const styles = StyleSheet.create({
+    text: {
+      color: 'grey',
+      fontSize: 14,
+    },
+    blueText: {
+      color: 'blue',
+    },
+    bigText: {
+      fontSize: 24,
+      fontWeight: '700',
+    },
+  });
+  
+  const FancyText = ({ isBlue, isBig, children }) => {
+    const textStyles = [
+      styles.text,
+      isBlue && styles.blueText,
+      isBig && styles.bigText,
+    ];
+  
+    return <Text style={textStyles}>{children}</Text>;
+  };
+  
+  const Main = () => {
+    return (
+      <>
+        <FancyText>Simple text</FancyText>
+        <FancyText isBlue>Blue text</FancyText>
+        <FancyText isBig>Big text</FancyText>
+        <FancyText isBig isBlue>
+          Big blue text
+        </FancyText>
+      </>
+    );
+  };
+  ```
