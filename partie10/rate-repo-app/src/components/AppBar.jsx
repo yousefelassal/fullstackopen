@@ -1,4 +1,4 @@
-import { View, Pressable, StyleSheet } from 'react-native';
+import { View, Pressable, StyleSheet, Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 const styles = StyleSheet.create({
@@ -9,16 +9,19 @@ const styles = StyleSheet.create({
   },
   tab: {
     padding: 10,
-    paddingVertical: 15,
-    fontSize: 20,
+    paddingVertical: 20,
+  },
+  text: {
     color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
   }
 });
 
 const AppBar = () => {
   return <View style={styles.container}>
     <Pressable style={styles.tab}>
-        Repositories
+        <Text style={styles.text}>Repositories</Text>
     </Pressable>
   </View>;
 };

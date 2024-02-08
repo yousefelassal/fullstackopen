@@ -8,17 +8,15 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     flexShrink: 1,
+    backgroundColor: '#e1e4e8',
   },
-  listContainer: {
-    padding: 10,
-  }
 });
 
 const Main = () => {
   return (
     <View style={styles.container}>
       <AppBar />
-      <View style={styles.listContainer}>
+      <View>
         <RepositoryList />
       </View>
       <StatusBar style="auto" />

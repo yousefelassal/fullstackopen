@@ -1,31 +1,84 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet, Image } from 'react-native'
+import Text from './Text'
+import theme from '../theme'
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexGrow: 1,
-        borderWidth: 1,
-        borderColor: 'black',
-        borderRadius: 5,
-        padding: 10,
-        gap: 2,
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-    },
+  container: {
+    padding: 10,
+    backgroundColor: 'white'
+  },
+  title: {
+    fontWeight: 'bold'
+  },
+  image: {
+    width: 50,
+    height: 50,
+    borderRadius: 5
+  },
+  flexContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 20
+  },
+  flexColumn: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 5,
+    alignItems: 'flex-start'
+  },
+  lang: {
+    backgroundColor: theme.colors.primary,
+    color: 'white',
+    padding: 5,
+    borderRadius: 5,
+    alignSelf: 'flex-start'
+  },
+  flexAround: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 10
+  },
+  flexColumnGap:{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 2,
+    alignItems: 'center'
+  }
 })
 
 export default function RepoItem({ repo }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{repo.fullName}</Text>
-      <Text>{repo.description}</Text>
-      <Text>{repo.language}</Text>
-      <Text>{repo.stargazersCount}</Text>
-      <Text>{repo.forksCount}</Text>
-      <Text>{repo.reviewCount}</Text>
-      <Text>{repo.ratingAverage}</Text>
+      <View style={styles.flexContainer}>
+        <Image
+          style={styles.image}
+          source={{ uri: repo.ownerAvatarUrl }}
+        />
+        <View style={styles.flexColumn}>
+          <Text fontSize="subheading" fontWeight="bold">{repo.fullName}</Text>
+          <Text color="textSecondary" style={{marginLeft: -4}}> {repo.description}</Text>
+          <Text style={styles.lang}>{repo.language}</Text>
+        </View>
+      </View>
+      <View style={styles.flexAround}>
+        <View style={styles.flexColumnGap}>
+          <Text fontWeight="bold">{repo.stargazersCount}</Text>
+          <Text color="textSecondary">Stars</Text>
+        </View>
+        <View style={styles.flexColumnGap}>
+          <Text fontWeight="bold">{repo.forksCount}</Text>
+          <Text color="textSecondary">Forks</Text>
+        </View>
+        <View style={styles.flexColumnGap}>
+          <Text fontWeight="bold">{repo.reviewCount}</Text>
+          <Text color="textSecondary">Reviews</Text>
+        </View>
+        <View style={styles.flexColumnGap}>
+          <Text fontWeight="bold">{repo.ratingAverage}</Text>
+          <Text color="textSecondary">Rating</Text>
+        </View>
+      </View>
     </View>
   )
 }
