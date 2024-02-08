@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import RepositoryList from './RepoList';
 import Text from './Text';
@@ -19,7 +18,6 @@ const Main = () => {
       <View>
         <RepositoryList />
       </View>
-      <StatusBar style="auto" />
     </View>
   );
 };
