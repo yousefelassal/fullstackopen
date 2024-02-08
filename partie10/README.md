@@ -325,7 +325,7 @@ Eslint configs
   ```
   - [field object](https://formik.org/docs/api/useField#fieldinputpropsvalue): contains the value of the field
   - [meta object](https://formik.org/docs/api/useField#fieldmetapropsvalue): contains field meta information such as a possible error message
-  - [helpers object](https://formik.org/docs/api/useField#fieldhelperprops): contains different actions for changing the state of the field such as the setValue function. 
+  - [helpers object](https://formik.org/docs/api/useField#fieldhelperprops): contains different actions for changing the state of the field such as the `setValue` function. 
 
 - [`<Field />`](https://formik.org/docs/api/field) | Formik Docs
 
