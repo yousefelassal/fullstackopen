@@ -221,3 +221,22 @@ Eslint configs
   - [Expo Router](https://docs.expo.dev/router/create-pages/) | Expo Docs
 
     file based routing similar to nextjs
+    
+- [`<Link>` Native](https://reactrouter.com/en/main/components/link-native) | React Router Docs
+
+  renders a [`TouchableHighlight`](https://reactnative.dev/docs/touchablehighlight). To override default styling and behaviour.
+
+  ```jsx
+  import { Link } from "react-router-native";
+
+  function Home() {
+    return (
+      <View>
+        <Text>Welcome!</Text>
+        <Link to="/profile">
+          <Text>Visit your profile</Text>
+        </Link>
+      </View>
+    );
+  }
+  ```
