@@ -202,6 +202,29 @@ Eslint configs
   };
   ```
 
+- [ScrollView](https://reactnative.dev/docs/scrollview) | React Native Docs
+
+  ```jsx
+  const App = () => {
+    return (
+      <SafeAreaView style={styles.container}>
+        <ScrollView horizontal style={styles.scrollView}>
+          <Text style={styles.text}>
+            Lorem ipsum
+          </Text>
+          <Text style={styles.text}>
+            Lorem ipsum
+          </Text>
+          <Text style={styles.text}>
+            Lorem ipsum
+          </Text>
+        </ScrollView>
+      </SafeAreaView>
+    );
+  };
+  ```
+
+#### Routing
 - [NativeRouter](https://reactrouter.com/en/main/router-components/native-router) | React Router Docs
 
   React Router but Native
@@ -220,3 +243,22 @@ Eslint configs
   - [Expo Router](https://docs.expo.dev/router/create-pages/) | Expo Docs
 
     file based routing similar to nextjs
+    
+- [`<Link>` Native](https://reactrouter.com/en/main/components/link-native) | React Router Docs
+
+  renders a [`TouchableHighlight`](https://reactnative.dev/docs/touchablehighlight). To override default styling and behaviour.
+
+  ```jsx
+  import { Link } from "react-router-native";
+
+  function Home() {
+    return (
+      <View>
+        <Text>Welcome!</Text>
+        <Link to="/profile">
+          <Text>Visit your profile</Text>
+        </Link>
+      </View>
+    );
+  }
+  ```
