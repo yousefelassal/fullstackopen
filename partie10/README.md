@@ -201,3 +201,22 @@ Eslint configs
     );
   };
   ```
+
+- [NativeRouter](https://reactrouter.com/en/main/router-components/native-router) | React Router Docs
+
+  React Router but Native
+  ```jsx
+  import { NativeRouter } from "react-router-native";
+
+  function App() {
+    return (
+      <NativeRouter>
+        {/* The rest of your app goes here */}
+      </NativeRouter>
+    );
+  }
+  ```
+
+  - [Expo Router](https://docs.expo.dev/router/create-pages/) | Expo Docs
+
+    file based routing similar to nextjs
