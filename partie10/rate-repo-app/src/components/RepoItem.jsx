@@ -48,6 +48,12 @@ const styles = StyleSheet.create({
 })
 
 export default function RepoItem({ repo }) {
+  const roundNumber = (number) => {
+    if (number >= 1000) {
+      return (number / 1000).toFixed(1) + 'k'
+    }
+    return number
+  }
   return (
     <View style={styles.container}>
       <View style={styles.flexContainer}>
@@ -63,11 +69,11 @@ export default function RepoItem({ repo }) {
       </View>
       <View style={styles.flexAround}>
         <View style={styles.flexColumnGap}>
-          <Text fontWeight="bold">{repo.stargazersCount}</Text>
+          <Text fontWeight="bold">{roundNumber(repo.stargazersCount)}</Text>
           <Text color="textSecondary">Stars</Text>
         </View>
         <View style={styles.flexColumnGap}>
-          <Text fontWeight="bold">{repo.forksCount}</Text>
+          <Text fontWeight="bold">{roundNumber(repo.forksCount)}</Text>
           <Text color="textSecondary">Forks</Text>
         </View>
         <View style={styles.flexColumnGap}>
