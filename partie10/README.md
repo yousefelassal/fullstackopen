@@ -323,3 +323,16 @@ Eslint configs
     );
   };
   ```
+
+- [`<Field />`](https://formik.org/docs/api/field) | Formik Docs
+
+  ```jsx
+  <Form>
+     <Field type="email" name="email" placeholder="Email" />
+     <Field as="select" name="color">
+       <option value="red">Red</option>
+       <option value="green">Green</option>
+       <option value="blue">Blue</option>
+     </Field>
+  </Form>
+  ```
