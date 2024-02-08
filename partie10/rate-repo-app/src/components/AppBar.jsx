@@ -28,9 +28,6 @@ const AppBar = () => {
       <Link to="/signin" style={styles.tab}>
         <Text style={styles.text}>Sign in</Text>
       </Link>
-      <Link to="/bmi" style={styles.tab}>
-        <Text style={styles.text}>BMI</Text>
-      </Link>
     </ScrollView>
   </View>;
 };
