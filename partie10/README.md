@@ -202,6 +202,28 @@ Eslint configs
   };
   ```
 
+- [ScrollView](https://reactnative.dev/docs/scrollview) | React Native Docs
+
+  ```jsx
+  const App = () => {
+    return (
+      <SafeAreaView style={styles.container}>
+        <ScrollView horizontal style={styles.scrollView}>
+          <Text style={styles.text}>
+            Lorem ipsum
+          </Text>
+          <Text style={styles.text}>
+            Lorem ipsum
+          </Text>
+          <Text style={styles.text}>
+            Lorem ipsum
+          </Text>
+        </ScrollView>
+      </SafeAreaView>
+    );
+  };
+  ```
+
 #### Routing
 - [NativeRouter](https://reactrouter.com/en/main/router-components/native-router) | React Router Docs
 
