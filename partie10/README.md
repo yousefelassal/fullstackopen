@@ -356,3 +356,9 @@ Eslint configs
       .required('Height is required'),
   });
   ```
+  which could be passed to a `<Formik />` component as a prop
+  ```jsx
+  <Formik validationSchema={validationSchema}>
+      // ...
+  </Formik>
+  ```
