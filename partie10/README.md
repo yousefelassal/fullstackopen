@@ -340,3 +340,5 @@ Eslint configs
   </Form>
   ```
 #### Form Validation
+- [yup](https://github.com/jquense/yup)
+- [zod](https://zod.dev/)
