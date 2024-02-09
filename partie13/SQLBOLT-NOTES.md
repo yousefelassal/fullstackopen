@@ -143,3 +143,19 @@ ORDER BY column, … ASC/DESC
 LIMIT num_limit OFFSET num_offset;
 ```
 The `INNER JOIN` is a process that matches rows from the first table and the second table which have the same key to create a result row with the combined columns from both tables.
+
+---
+
+Select query with LEFT/RIGHT/FULL JOINs on multiple tables
+```sql
+SELECT column, another_column, …
+FROM mytable
+INNER/LEFT/RIGHT/FULL JOIN another_table 
+    ON mytable.id = another_table.matching_id
+WHERE condition(s)
+ORDER BY column, … ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+```
+- `LEFT JOIN` simply includes rows from A regardless of whether a matching row is found in B.
+- `RIGHT JOIN` is the same, but reversed, keeping rows in B regardless of whether a match is found in A.
+- `FULL JOIN` simply means that rows from both tables are kept, regardless of whether a matching row exists in the other table.
