@@ -108,3 +108,13 @@ SELECT DISTINCT column, another_column, …
 FROM mytable
 WHERE condition(s);
 ```
+
+---
+
+Select query with ordered results
+```sql
+SELECT column, another_column, …
+FROM mytable
+WHERE condition(s)
+ORDER BY column ASC/DESC;
+```
