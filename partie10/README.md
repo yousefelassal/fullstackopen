@@ -391,6 +391,7 @@ Eslint configs
   ```
   - `select()` | React Native Docs
 
+    Returns the most fitting value for the platform you are currently running on.
     ```jsx
     import {Platform, StyleSheet} from 'react-native';
 
