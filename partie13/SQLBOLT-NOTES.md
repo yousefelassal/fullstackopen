@@ -129,3 +129,17 @@ WHERE condition(s)
 ORDER BY column ASC/DESC
 LIMIT num_limit OFFSET num_offset;
 ```
+
+## Multi-table queries with JOINs
+
+Select query with INNER JOIN on multiple tables
+```sql
+SELECT column, another_table_column, …
+FROM mytable
+INNER JOIN another_table 
+    ON mytable.id = another_table.id
+WHERE condition(s)
+ORDER BY column, … ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+```
+The `INNER JOIN` is a process that matches rows from the first table and the second table which have the same key to create a result row with the combined columns from both tables.
