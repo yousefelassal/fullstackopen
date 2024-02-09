@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
     borderWidth: 1,
     borderRadius: 5,
-    padding: 10,
+    padding: 15,
     color: 'grey'
   },
 });
