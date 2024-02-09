@@ -434,3 +434,5 @@ Eslint configs
   };
   ```
   Now, the Android bundle of the application will have the component defined in the _Button.android.jsx_ whereas the iOS bundle the one defined in the _Button.ios.jsx_ file.
+
+### c Communicating with server
