@@ -423,14 +423,14 @@ Eslint configs
     <MyComponent />;
     ```
 
-However, a more sophisticated method for implementing and importing platform-specific components (or any other piece of code) is to use the _.ios.jsx_ and _.android.jsx_ file extensions.
-
-We can for example have files _Button.ios.jsx_ and _Button.android.jsx_ which we can import like this:
-```jsx
-import Button from './Button';
-
-const PlatformSpecificButton = () => {
-  return <Button />;
-};
-```
-Now, the Android bundle of the application will have the component defined in the _Button.android.jsx_ whereas the iOS bundle the one defined in the _Button.ios.jsx_ file.
+  However, a more sophisticated method for implementing and importing platform-specific components (or any other piece of code) is to use the _.ios.jsx_ and _.android.jsx_ file extensions.
+  
+  We can for example have files _Button.ios.jsx_ and _Button.android.jsx_ which we can import like this:
+  ```jsx
+  import Button from './Button';
+  
+  const PlatformSpecificButton = () => {
+    return <Button />;
+  };
+  ```
+  Now, the Android bundle of the application will have the component defined in the _Button.android.jsx_ whereas the iOS bundle the one defined in the _Button.ios.jsx_ file.
