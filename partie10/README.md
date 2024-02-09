@@ -434,3 +434,12 @@ Eslint configs
   };
   ```
   Now, the Android bundle of the application will have the component defined in the _Button.android.jsx_ whereas the iOS bundle the one defined in the _Button.ios.jsx_ file.
+
+### c Communicating with server
+- [Pagination](https://graphql.org/learn/pagination/) | GraphQL Docs
+
+  There are a number of ways we could do pagination:
+
+  - We could do something like `friends(first:2 offset:2)` to ask for the next two in the list.
+  - We could do something like `friends(first:2 after:$friendId)`, to ask for the next two after the last friend we fetched.
+  - We could do something like `friends(first:2 after:$friendCursor)`, where we get a cursor from the last item and use that to paginate.
