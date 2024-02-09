@@ -3,10 +3,12 @@ import { Platform, Text, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   text: {
-    color: Platform.OS === 'android' ? 'green' 
-        : Platform.OS === 'ios' ? 'blue' 
-        : Platform.OS === 'web' ? 'lightblue'
-        : 'black'
+    color: Platform.select({
+        android: 'green',
+        ios: 'blue',
+        web: 'darkorange',
+        default: 'black'
+    }),
   },
 });
 
