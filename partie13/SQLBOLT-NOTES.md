@@ -102,7 +102,7 @@ SQL supports a number of useful operators to do things like case-insensitive str
 
 ## Filtering and sorting Query results
 
-Select query with unique results
+Select query with **unique** results
 ```sql
 SELECT DISTINCT column, another_column, …
 FROM mytable
@@ -111,7 +111,7 @@ WHERE condition(s);
 
 ---
 
-Select query with ordered results
+Select query with **ordered** results
 ```sql
 SELECT column, another_column, …
 FROM mytable
@@ -121,7 +121,7 @@ ORDER BY column ASC/DESC;
 
 ---
 
-Select query with limited rows
+Select query with **limited** rows
 ```sql
 SELECT column, another_column, …
 FROM mytable
