@@ -362,3 +362,13 @@ Eslint configs
       // ...
   </Formik>
   ```
+#### Platform-specific code
+
+We can access the user's platform through the `Platform.OS` constant
+```jsx
+import { Platform, Text } from 'react-native';
+
+const WhatIsMyPlatform = () => {
+  return <Text style={styles.text}>Your platform is: {Platform.OS}</Text>;
+};
+```
