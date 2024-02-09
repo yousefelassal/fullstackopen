@@ -366,9 +366,24 @@ Eslint configs
 
 We can access the user's platform through the `Platform.OS` constant
 ```jsx
-import { Platform, Text } from 'react-native';
+import { Platform } from 'react-native';
 
 const WhatIsMyPlatform = () => {
-  return <Text style={styles.text}>Your platform is: {Platform.OS}</Text>;
+  return (
+    <ScrollView>
+      <Text>OS</Text>
+      <Text style={styles.value}>{Platform.OS}</Text>
+      <Text>OS Version</Text>
+      <Text style={styles.value}>{Platform.Version}</Text>
+      <Text>isTV</Text>
+      <Text style={styles.value}>{Platform.isTV.toString()}</Text>
+      {Platform.OS === 'ios' && (
+        <>
+          <Text>isPad</Text>
+          <Text style={styles.value}>{Platform.isPad.toString()}</Text>
+        </>
+      )}
+    </ScrollView>
+  )
 };
 ```
