@@ -422,3 +422,4 @@ Eslint configs
     
     <MyComponent />;
     ```
+    However, a more sophisticated method for implementing and importing platform-specific components (or any other piece of code) is to use the _.ios.jsx_ and _.android.jsx_ file extensions.
