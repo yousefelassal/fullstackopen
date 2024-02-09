@@ -101,3 +101,10 @@ SQL supports a number of useful operators to do things like case-insensitive str
 </table>
 
 ## Filtering and sorting Query results
+
+Select query with unique results
+```sql
+SELECT DISTINCT column, another_column, …
+FROM mytable
+WHERE condition(s);
+```
