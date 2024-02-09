@@ -340,3 +340,25 @@ Eslint configs
   </Form>
   ```
 #### Form Validation
+- [yup](https://github.com/jquense/yup)
+- [zod](https://zod.dev/)
+
+  Example:
+  ```jsx
+  const validationSchema = yup.object().shape({
+    mass: yup
+      .number()
+      .min(1, 'Weight must be greater or equal to 1')
+      .required('Weight is required'),
+    height: yup
+      .number()
+      .min(0.5, 'Height must be greater or equal to 0.5')
+      .required('Height is required'),
+  });
+  ```
+  which could be passed to a `<Formik />` component as a prop
+  ```jsx
+  <Formik validationSchema={validationSchema}>
+      // ...
+  </Formik>
+  ```
