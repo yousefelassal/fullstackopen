@@ -389,3 +389,26 @@ Eslint configs
     )
   };
   ```
+  - `select()` | React Native Docs
+
+    ```jsx
+    import {Platform, StyleSheet} from 'react-native';
+
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        ...Platform.select({
+          android: {
+            backgroundColor: 'green',
+          },
+          ios: {
+            backgroundColor: 'red',
+          },
+          default: {
+            // other platforms, web for example
+            backgroundColor: 'blue',
+          },
+        }),
+      },
+    });
+    ```
