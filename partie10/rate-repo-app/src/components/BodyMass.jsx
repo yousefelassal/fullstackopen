@@ -14,7 +14,6 @@ const getBodyMassIndex = (mass, height) => {
 const BodyMassIndexForm = ({ onSubmit }) => {
   return (
     <View>
-
       <FormikTextInput name="mass" placeholder="Weight (kg)" />
       <FormikTextInput name="height" placeholder="Height (m)" />
       <Pressable onPress={onSubmit}>
