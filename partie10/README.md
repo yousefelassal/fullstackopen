@@ -413,3 +413,12 @@ Eslint configs
       },
     });
     ```
+    We can even use the Platform.select method to require a platform-specific component:
+    ```jsx
+    const MyComponent = Platform.select({
+      ios: () => require('./MyIOSComponent'),
+      android: () => require('./MyAndroidComponent'),
+    })();
+    
+    <MyComponent />;
+    ```
