@@ -1,4 +1,4 @@
-### Queries with constraints
+## Queries with constraints
 
 ```sql
 SELECT column, another_column, …
@@ -99,3 +99,5 @@ SQL supports a number of useful operators to do things like case-insensitive str
         </tr>
     </tbody>
 </table>
+
+## Filtering and sorting Query results
