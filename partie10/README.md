@@ -389,3 +389,48 @@ Eslint configs
     )
   };
   ```
+  - `select()` | React Native Docs
+
+    Returns the most fitting value for the platform you are currently running on.
+    ```jsx
+    import {Platform, StyleSheet} from 'react-native';
+
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        ...Platform.select({
+          android: {
+            backgroundColor: 'green',
+          },
+          ios: {
+            backgroundColor: 'red',
+          },
+          default: {
+            // other platforms, web for example
+            backgroundColor: 'blue',
+          },
+        }),
+      },
+    });
+    ```
+    We can even use the Platform.select method to require a platform-specific component:
+    ```jsx
+    const MyComponent = Platform.select({
+      ios: () => require('./MyIOSComponent'),
+      android: () => require('./MyAndroidComponent'),
+    })();
+    
+    <MyComponent />;
+    ```
+
+  However, a more sophisticated method for implementing and importing platform-specific components (or any other piece of code) is to use the _.ios.jsx_ and _.android.jsx_ file extensions.
+  
+  We can for example have files _Button.ios.jsx_ and _Button.android.jsx_ which we can import like this:
+  ```jsx
+  import Button from './Button';
+  
+  const PlatformSpecificButton = () => {
+    return <Button />;
+  };
+  ```
+  Now, the Android bundle of the application will have the component defined in the _Button.android.jsx_ whereas the iOS bundle the one defined in the _Button.ios.jsx_ file.
