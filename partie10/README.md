@@ -584,7 +584,7 @@ The first option is fairly decent, however, if components `B` and `C` are not re
   };
   ```
   Storing object value
-  ```
+  ```js
   const storeData = async (value) => {
     try {
       const jsonValue = JSON.stringify(value);
@@ -612,7 +612,7 @@ The first option is fairly decent, however, if components `B` and `C` are not re
   };
   ```
   Reading object value
-  ```
+  ```js
   const getData = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem('my-key');
