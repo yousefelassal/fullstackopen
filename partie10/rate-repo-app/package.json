@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.9.4",
+    "@expo/metro-config": "^0.4.0",
     "@expo/webpack-config": "~19.0.1",
     "@shopify/flash-list": "1.6.3",
     "expo": "~50.0.6",
