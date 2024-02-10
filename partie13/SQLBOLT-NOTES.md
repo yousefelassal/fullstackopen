@@ -159,3 +159,5 @@ LIMIT num_limit OFFSET num_offset;
 - `LEFT JOIN` simply includes rows from A regardless of whether a matching row is found in B.
 - `RIGHT JOIN` is the same, but reversed, keeping rows in B regardless of whether a match is found in A.
 - `FULL JOIN` simply means that rows from both tables are kept, regardless of whether a matching row exists in the other table.
+
+## Queries with expressions
