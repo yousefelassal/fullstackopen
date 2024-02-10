@@ -565,3 +565,60 @@ The first option is fairly decent, however, if components `B` and `C` are not re
   </tr>
   </tbody>
   </table>
+
+#### Storing data in the user's device
+
+- [AsyncStorage](https://react-native-async-storage.github.io/async-storage/docs/usage) | AsyncStorage Docs
+
+  **Storing data**
+  `setItem()` is used both to add new data item (when no data for given key exists), and to modify existing item (when previous data for given key exists).
+  
+  Storing string value
+  ```js
+  const storeData = async (value) => {
+    try {
+      await AsyncStorage.setItem('my-key', value);
+    } catch (e) {
+      // saving error
+    }
+  };
+  ```
+  Storing object value
+  ```
+  const storeData = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem('my-key', jsonValue);
+    } catch (e) {
+      // saving error
+    }
+  };
+  ```
+  
+  **Reading data**
+  `getItem` returns a promise that either resolves to stored value when data is found for given key, or returns null otherwise.
+  
+  Reading string value
+  ```js
+  const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('my-key');
+      if (value !== null) {
+        // value previously stored
+      }
+    } catch (e) {
+      // error reading value
+    }
+  };
+  ```
+  Reading object value
+  ```
+  const getData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem('my-key');
+      return jsonValue != null ? JSON.parse(jsonValue) : null;
+    } catch (e) {
+      // error reading value
+    }
+  };
+  ```
