@@ -161,3 +161,12 @@ LIMIT num_limit OFFSET num_offset;
 - `FULL JOIN` simply means that rows from both tables are kept, regardless of whether a matching row exists in the other table.
 
 ## Queries with expressions
+
+expressions can use mathematical and string functions along with basic arithmetic to transform values when the query is executed, as shown in this physics example.
+
+Example query with expressions
+```sql
+SELECT particle_speed / 2.0 AS half_particle_speed
+FROM physics_data
+WHERE ABS(particle_position) * 10.0 > 500;
+```
