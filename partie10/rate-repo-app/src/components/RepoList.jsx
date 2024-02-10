@@ -12,7 +12,9 @@ const styles = StyleSheet.create({
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
-  const { data, loading, error } = useQuery(GET_REPOSITORIES)
+  const { data, loading, error } = useQuery(GET_REPOSITORIES, {
+    fetchPolicy: 'cache-and-network',
+  });
 
   if (error) {
     return <View><Text>Error: {error.message}</Text></View>
