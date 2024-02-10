@@ -443,3 +443,25 @@ Eslint configs
   - We could do something like `friends(first:2 offset:2)` to ask for the next two in the list.
   - We could do something like `friends(first:2 after:$friendId)`, to ask for the next two after the last friend we fetched.
   - We could do something like `friends(first:2 after:$friendCursor)`, where we get a cursor from the last item and use that to paginate.
+
+#### Evolving the structure
+Once our application grows larger there might be times when certain files grow too large to manage. For example, we have component `A` which renders the components `B` and `C`. All these components are defined in a file _A.jsx_ in a components directory. We would like to extract components `B` and `C` into their own files _B.jsx_ and _C.jsx_ without major refactors. We have two options:
+
+Create files _B.jsx_ and _C.jsx_ in the components directory. This results in the following structure:
+```
+components/
+  A.jsx
+  B.jsx
+  C.jsx
+  ...
+```
+Create a directory `A` in the components directory and create files _B.jsx_ and _C.jsx_ there. To avoid breaking components that import the _A.jsx_ file, move the _A.jsx_ file to the `A` directory and rename it to _index.jsx_. This results in the following structure:
+```
+components/
+  A/
+    B.jsx
+    C.jsx
+    index.jsx
+  ...
+```
+The first option is fairly decent, however, if components `B` and `C` are not reusable outside the component `A`, it is useless to bloat the components directory by adding them as separate files. The second option is quite modular and doesn't break any imports because importing a path such as _./A_ will match both _A.jsx_ and _A/index.jsx_.
