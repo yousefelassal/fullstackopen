@@ -3,8 +3,10 @@ import { ApolloProvider } from '@apollo/client';
 import { StatusBar } from 'expo-status-bar';
 import Main from './src/components/Main';
 import createApolloClient from './src/utils/apolloClient';
+import AuthStorage from './src/utils/authStorage';
 
-const apolloClient = createApolloClient();
+const authStorage = new AuthStorage();
+const apolloClient = createApolloClient(authStorage);
 
 const App = () => {
   return (
