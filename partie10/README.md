@@ -571,6 +571,7 @@ The first option is fairly decent, however, if components `B` and `C` are not re
 - [AsyncStorage](https://react-native-async-storage.github.io/async-storage/docs/usage) | AsyncStorage Docs
 
   **Storing data**
+  
   `setItem()` is used both to add new data item (when no data for given key exists), and to modify existing item (when previous data for given key exists).
   
   Storing string value
@@ -596,6 +597,7 @@ The first option is fairly decent, however, if components `B` and `C` are not re
   ```
   
   **Reading data**
+  
   `getItem` returns a promise that either resolves to stored value when data is found for given key, or returns null otherwise.
   
   Reading string value
