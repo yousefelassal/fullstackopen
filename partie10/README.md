@@ -624,3 +624,4 @@ The first option is fairly decent, however, if components `B` and `C` are not re
     }
   };
   ```
+### d Testing and extending our application
