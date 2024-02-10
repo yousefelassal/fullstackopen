@@ -170,3 +170,15 @@ SELECT particle_speed / 2.0 AS half_particle_speed
 FROM physics_data
 WHERE ABS(particle_position) * 10.0 > 500;
 ```
+
+---
+
+In addition to expressions, regular columns and even tables can also have aliases to make them easier to reference in the output and as a part of simplifying more complex queries.
+
+Example query with both column and table name aliases
+```sql
+SELECT column AS better_column_name, …
+FROM a_long_widgets_table_name AS mywidgets
+INNER JOIN widget_sales
+  ON mywidgets.id = widget_sales.widget_id;
+```
