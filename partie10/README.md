@@ -443,3 +443,125 @@ Eslint configs
   - We could do something like `friends(first:2 offset:2)` to ask for the next two in the list.
   - We could do something like `friends(first:2 after:$friendId)`, to ask for the next two after the last friend we fetched.
   - We could do something like `friends(first:2 after:$friendCursor)`, where we get a cursor from the last item and use that to paginate.
+
+#### Evolving the structure
+Once our application grows larger there might be times when certain files grow too large to manage. For example, we have component `A` which renders the components `B` and `C`. All these components are defined in a file _A.jsx_ in a components directory. We would like to extract components `B` and `C` into their own files _B.jsx_ and _C.jsx_ without major refactors. We have two options:
+
+Create files _B.jsx_ and _C.jsx_ in the components directory. This results in the following structure:
+```
+components/
+  A.jsx
+  B.jsx
+  C.jsx
+  ...
+```
+Create a directory `A` in the components directory and create files _B.jsx_ and _C.jsx_ there. To avoid breaking components that import the _A.jsx_ file, move the _A.jsx_ file to the `A` directory and rename it to _index.jsx_. This results in the following structure:
+```
+components/
+  A/
+    B.jsx
+    C.jsx
+    index.jsx
+  ...
+```
+The first option is fairly decent, however, if components `B` and `C` are not reusable outside the component `A`, it is useless to bloat the components directory by adding them as separate files. The second option is quite modular and doesn't break any imports because importing a path such as _./A_ will match both _A.jsx_ and _A/index.jsx_.
+
+- [fetchPolicy](https://www.apollographql.com/docs/react/data/queries/#supported-fetch-policies) | Apollo Docs
+
+  <table class="field-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+  <tr>
+  <td>
+  
+  ###### `cache-first`
+  
+  </td>
+  <td>
+  
+  Apollo Client first executes the query against the cache. If _all_ requested data is present in the cache, that data is returned. Otherwise, Apollo Client executes the query against your GraphQL server and returns that data after caching it.
+  
+  Prioritizes minimizing the number of network requests sent by your application.
+  
+  This is the default fetch policy.
+  
+  </td>
+  </tr>
+  
+  <tr>
+  <td>
+  
+  ###### `cache-only`
+  
+  </td>
+  <td>
+  
+  Apollo Client executes the query _only_ against the cache. It never queries your server in this case.
+  
+  A `cache-only` query throws an error if the cache does not contain data for all requested fields.
+  
+  </td>
+  </tr>
+  
+  <tr>
+  <td>
+  
+  ###### `cache-and-network`
+  
+  </td>
+  <td>
+  
+  Apollo Client executes the full query against both the cache _and_ your GraphQL server. The query automatically updates if the result of the server-side query modifies cached fields.
+  
+  Provides a fast response while also helping to keep cached data consistent with server data.
+  
+  </td>
+  </tr>
+  
+  <tr>
+  <td>
+  
+  ###### `network-only`
+  
+  </td>
+  <td>
+  
+  Apollo Client executes the full query against your GraphQL server, _without_ first checking the cache. The query's result _is_ stored in the cache.
+  
+  Prioritizes consistency with server data, but can't provide a near-instantaneous response when cached data is available.
+  
+  </td>
+  </tr>
+  
+  <tr>
+  <td>
+  
+  ###### `no-cache`
+  
+  </td>
+  <td>
+  
+  Similar to `network-only`, except the query's result _is not_ stored in the cache.
+  
+  </td>
+  </tr>
+  
+  <tr>
+  <td>
+  
+  ###### `standby`
+  
+  </td>
+  <td>
+  
+  Uses the same logic as `cache-first`, except this query does _not_ automatically update when underlying field values change. You can still _manually_ update this query with `refetch` and `updateQueries`.
+  
+  </td>
+  </tr>
+  </tbody>
+  </table>
