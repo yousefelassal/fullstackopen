@@ -159,3 +159,26 @@ LIMIT num_limit OFFSET num_offset;
 - `LEFT JOIN` simply includes rows from A regardless of whether a matching row is found in B.
 - `RIGHT JOIN` is the same, but reversed, keeping rows in B regardless of whether a match is found in A.
 - `FULL JOIN` simply means that rows from both tables are kept, regardless of whether a matching row exists in the other table.
+
+## Queries with expressions
+
+expressions can use mathematical and string functions along with basic arithmetic to transform values when the query is executed, as shown in this physics example.
+
+Example query with expressions
+```sql
+SELECT particle_speed / 2.0 AS half_particle_speed
+FROM physics_data
+WHERE ABS(particle_position) * 10.0 > 500;
+```
+
+---
+
+In addition to expressions, regular columns and even tables can also have aliases to make them easier to reference in the output and as a part of simplifying more complex queries.
+
+Example query with both column and table name aliases
+```sql
+SELECT column AS better_column_name, …
+FROM a_long_widgets_table_name AS mywidgets
+INNER JOIN widget_sales
+  ON mywidgets.id = widget_sales.widget_id;
+```
