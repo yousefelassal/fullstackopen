@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     gap: 5,
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    flex: 1
   },
   lang: {
     backgroundColor: theme.colors.primary,
@@ -60,6 +61,12 @@ const styles = StyleSheet.create({
   buttonLabel: {
     color: 'white',
     fontWeight: 'bold'
+  },
+  description: {
+    marginLeft: -4,
+    flex: 1,
+    flexWrap: 'wrap',
+    flexDirection: 'row'
   }
 })
 
@@ -88,7 +95,10 @@ export default function RepoItem({ repo, singleView = false }) {
     }, [repo.url]);
 
     return (
-      <View style={styles.container}>
+      <View style={{
+        ...styles.container,
+        marginBottom: 10
+      }}>
         <View style={styles.flexContainer}>
           <Image
             style={styles.image}
@@ -96,7 +106,7 @@ export default function RepoItem({ repo, singleView = false }) {
           />
           <View style={styles.flexColumn}>
             <Text fontSize="subheading" fontWeight="bold">{repo.fullName}</Text>
-            <Text color="textSecondary" style={{marginLeft: -4}}> {repo.description}</Text>
+            <Text color="textSecondary" style={styles.description}> {repo.description}</Text>
             <Text style={styles.lang}>{repo.language}</Text>
           </View>
         </View>

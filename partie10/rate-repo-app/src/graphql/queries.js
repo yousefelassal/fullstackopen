@@ -35,3 +35,25 @@ query repo($id: ID!) {
 
 ${REPOSITORY_BASE_FIELDS}
 `;
+
+export const GET_REVIEWS = gql`
+query repo($id: ID!) {
+  repository(id: $id) {
+    id
+    reviews {
+      edges {
+        node {
+          id
+          text
+          rating
+          createdAt
+          user {
+            id
+            username
+          }
+        }
+      }
+    }
+  }
+}
+`;
