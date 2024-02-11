@@ -5,6 +5,7 @@ import AppBar from './AppBar';
 import SignIn from './SignIn';
 import BodyMassIndexCalculator from './BodyMass';
 import WhatIsMyPlatform from './WhatIsMyPlatform';
+import RepoPage from './RepoPage';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,6 +23,7 @@ const Main = () => {
         <Route path="/" element={<RepositoryList />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/bmi" element={<BodyMassIndexCalculator />} />
+        <Route path="/:id" element={<RepoPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <WhatIsMyPlatform />
