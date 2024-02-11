@@ -2,6 +2,7 @@ import { FlatList, View, StyleSheet, Text } from 'react-native';
 import RepoItem from './RepoItem';
 import { useQuery } from '@apollo/client';
 import { GET_REPOSITORIES } from '../graphql/queries';
+import Loader from './Loader';
 
 const styles = StyleSheet.create({
   separator: {
@@ -21,7 +22,11 @@ const RepositoryList = () => {
   }
 
   if (loading) {
-    return <View><Text>Loading...</Text></View>
+    return (
+      <View style={{ gap: 10 }}>
+        {Array.from({ length: 10 }).map((_, i) => <Loader key={i} />)}
+      </View>
+    )
   }
 
   const repositoryNodes = data
