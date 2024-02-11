@@ -646,4 +646,10 @@ The first option is fairly decent, however, if components `B` and `C` are not re
     return <Button title={children} onPress={handlePress} />;
   };
   ```
-- [Linking](https://docs.expo.dev/versions/latest/sdk/linking/) | Expo Docs
+- [Linking](https://docs.expo.dev/guides/linking/) | Expo Docs
+
+  ```jsx
+  import * as Linking from 'expo-linking';
+  
+  Linking.openURL('https://expo.dev');
+  ```
