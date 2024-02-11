@@ -4,6 +4,7 @@ import ReviewItem from './ReviewItem'
 import { useParams } from 'react-router-native'
 import { useQuery } from '@apollo/client'
 import { GET_REPOSITORY, GET_REVIEWS } from '../graphql/queries'
+import Loader from './Loader'
 
 export default function RepoPage() {
   const { id } = useParams()
@@ -19,7 +20,7 @@ export default function RepoPage() {
   const reviews = reviewData ? reviewData.repository.reviews.edges.map(edge => edge.node) : []
 
   if (loading) {
-    return <Text>Loading...</Text>
+    return <Loader />
   }
 
   if (error) {
