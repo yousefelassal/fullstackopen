@@ -627,7 +627,7 @@ The first option is fairly decent, however, if components `B` and `C` are not re
 ### d Testing and extending our application
 
 #### Linking
-- [Linking] | React Native Docs
+- [Linking](https://reactnative.dev/docs/linking) | React Native Docs
 
   ```jsx
   const OpenURLButton = ({url, children}) => {
@@ -646,3 +646,4 @@ The first option is fairly decent, however, if components `B` and `C` are not re
     return <Button title={children} onPress={handlePress} />;
   };
   ```
+- [Linking](https://docs.expo.dev/versions/latest/sdk/linking/) | Expo Docs
