@@ -626,7 +626,6 @@ The first option is fairly decent, however, if components `B` and `C` are not re
   ```
 ### d Testing and extending our application
 
-#### Linking
 - [Linking](https://reactnative.dev/docs/linking) | React Native Docs
 
   ```jsx
@@ -652,4 +651,16 @@ The first option is fairly decent, however, if components `B` and `C` are not re
   import * as Linking from 'expo-linking';
   
   Linking.openURL('https://expo.dev');
+  ```
+
+- [Matching Fields](https://github.com/jaredpalmer/formik/issues/90#issuecomment-354873201) | Formik GitHub Issue
+
+  using [`oneOf`](https://github.com/jquense/yup#schemaoneofarrayofvalues-arrayany-message-string--function-schema-alias-equals) and [`ref`](https://github.com/jquense/yup#refpath-string-options--contextprefix-string--ref) methods
+  ```jsx
+  validationSchema: Yup.object({
+    password: Yup.string().required('Password is required'),
+    passwordConfirm: Yup.string()
+       .oneOf([Yup.ref('password'), null])
+       .required('Password confirm is required')
+  })
   ```
