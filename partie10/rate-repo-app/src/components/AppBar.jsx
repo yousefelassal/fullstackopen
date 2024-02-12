@@ -52,9 +52,14 @@ const AppBar = () => {
           </Pressable>
         </>
         ) : (
+          <>
           <Link to="/signin" style={styles.tab}>
             <Text style={styles.text}>Sign in</Text>
           </Link>
+          <Link to="/signup" style={styles.tab}>
+            <Text style={styles.text}>Sign up</Text>
+          </Link>
+          </>
         )}
       <Link to="/bmi" style={styles.tab}>
         <Text style={styles.text}>BMI</Text>
