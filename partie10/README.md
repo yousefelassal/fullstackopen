@@ -672,18 +672,15 @@ The first option is fairly decent, however, if components `B` and `C` are not re
   import { Picker } from '@react-native-picker/picker';
   
   const OrderPicker = () => {
-    const [order, setOrder] = useState({
-        orderBy: 'CREATED_AT',
-        orderDirection: 'DESC'
-    })
+    const [order, setOrder] = useState('CREATED_AT')
     return (
       <Picker
           selectedValue={order}
           onValueChange={(itemValue, itemIndex) => setOrder(itemValue)}
       >
-          <Picker.Item label="Latest repositories" value={{orderBy: 'CREATED_AT', orderDirection: 'DESC'}} />
-          <Picker.Item label="Highest rated repositories" value={{orderBy: 'RATING_AVERAGE', orderDirection: 'DESC'}} />
-          <Picker.Item label="Lowest rated repositories" value={{orderBy: 'RATING_AVERAGE', orderDirection: 'ASC'}} />
+          <Picker.Item label="Latest repositories" value="CREATED_AT" />
+          <Picker.Item label="Highest rated repositories" value="HIGHEST_RATED" />
+          <Picker.Item label="Lowest rated repositories" value="LOWEST_RATED" />
       </Picker>
     )
   }
