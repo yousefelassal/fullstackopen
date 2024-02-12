@@ -5,7 +5,8 @@ import ReviewItem from './ReviewItem'
 
 export default function MyReviews() {
   const {data, loading, error} = useQuery(GET_CURRENT_USER, {
-    variables: { includeReviews: true }
+    variables: { includeReviews: true },
+    fetchPolicy: 'cache-and-network'
   })
 
   const reviews = data?.me?.reviews?.edges.map(edge => edge.node) || []
@@ -19,6 +20,7 @@ export default function MyReviews() {
           data={reviews}
           renderItem={({ item }) => <ReviewItem review={item} myReviews={true} />}
           keyExtractor={item => item.id}
+          ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
         />
     </View>
   )
