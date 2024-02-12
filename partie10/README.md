@@ -687,3 +687,18 @@ The first option is fairly decent, however, if components `B` and `C` are not re
   
   export default OrderPicker
   ```
+
+- [`@include`](https://graphql.org/learn/queries/#directives) | GraphQL Docs
+
+  `@include(if: Boolean)` Only include this field in the result if the argument is true.
+
+  ```gql
+  query Hero($episode: Episode, $withFriends: Boolean = false) {
+    hero(episode: $episode) {
+      name
+      friends @include(if: $withFriends) {
+        name
+      }
+    }
+  }
+  ```
