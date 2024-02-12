@@ -6,6 +6,7 @@ import SignIn from './SignIn';
 import BodyMassIndexCalculator from './BodyMass';
 import WhatIsMyPlatform from './WhatIsMyPlatform';
 import RepoPage from './RepoPage';
+import ReviewForm from './ReviewForm';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,6 +24,7 @@ const Main = () => {
         <Route path="/" element={<RepositoryList />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/bmi" element={<BodyMassIndexCalculator />} />
+        <Route path="/form" element={<ReviewForm />} />
         <Route path="/:id" element={<RepoPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
