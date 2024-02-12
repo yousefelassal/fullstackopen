@@ -1,5 +1,9 @@
 import { gql } from '@apollo/client';
-import { USER_BASE_FIELDS, REPOSITORY_BASE_FIELDS } from './fragments';
+import {
+  USER_BASE_FIELDS,
+  REPOSITORY_BASE_FIELDS,
+  REVIEW_BASE_FIELDS
+} from './fragments';
 
 export const GET_REPOSITORIES = gql`
   query repos ($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection, $searchKeyword: String) {
@@ -16,13 +20,21 @@ ${REPOSITORY_BASE_FIELDS}
 `;
 
 export const GET_CURRENT_USER = gql`
-query {
+query getCurrentUser($includeReviews: Boolean = false) {
     me {
       ...userBaseFields
+      reviews @include(if: $includeReviews) {
+        edges {
+          node {
+            ...reviewBaseFields
+          }
+        }
+      }
     }
   }
 
   ${USER_BASE_FIELDS}
+  ${REVIEW_BASE_FIELDS}
 `;
 
 export const GET_REPOSITORY = gql`
@@ -43,17 +55,12 @@ query repo($id: ID!) {
     reviews {
       edges {
         node {
-          id
-          text
-          rating
-          createdAt
-          user {
-            id
-            username
-          }
+          ...reviewBaseFields
         }
       }
     }
   }
 }
+
+${REVIEW_BASE_FIELDS}
 `;

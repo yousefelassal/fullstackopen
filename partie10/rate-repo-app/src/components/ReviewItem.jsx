@@ -2,14 +2,16 @@ import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import theme from '../theme'
 
-const ReviewItem = ({ review }) => {
+const ReviewItem = ({ review, myReviews = false }) => {
   return (
     <View style={styles.container}>
       <View style={styles.rating}>
         <Text style={styles.ratingText}>{review.rating}</Text>
       </View>
       <View style={styles.flexColumn}>
-        <Text style={styles.title}>{review.user.username}</Text>
+        <Text style={styles.title}>
+          {myReviews ? review.repository.fullName : review.user.username}
+        </Text>
         <Text style={styles.date}>{new Date(review.createdAt).toLocaleDateString()}</Text>
         <Text>{review.text}</Text>
       </View>

@@ -8,6 +8,7 @@ import WhatIsMyPlatform from './WhatIsMyPlatform';
 import RepoPage from './RepoPage';
 import ReviewForm from './ReviewForm';
 import SignUp from './SignUp';
+import MyReviews from './MyReviews';
 
 const styles = StyleSheet.create({
   container: {
@@ -27,6 +28,7 @@ const Main = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/bmi" element={<BodyMassIndexCalculator />} />
         <Route path="/form" element={<ReviewForm />} />
+        <Route path="/myreviews" element={<MyReviews />} />
         <Route path="/:id" element={<RepoPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

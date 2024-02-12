@@ -21,3 +21,20 @@ export const REPOSITORY_BASE_FIELDS = gql`
     ownerAvatarUrl
   }
 `;
+
+export const REVIEW_BASE_FIELDS = gql`
+  fragment reviewBaseFields on Review {
+    id
+    text
+    rating
+    createdAt
+    repositoryId
+    repository {
+      fullName
+    }
+    user {
+      id
+      username
+    }
+  }
+`;
