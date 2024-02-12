@@ -664,3 +664,26 @@ The first option is fairly decent, however, if components `B` and `C` are not re
        .required('Password confirm is required')
   })
   ```
+
+- [Native Picker](https://github.com/react-native-picker/picker) | react-native-picker
+
+  ```jsx
+  import { useState } from 'react';
+  import { Picker } from '@react-native-picker/picker';
+  
+  const OrderPicker = () => {
+    const [order, setOrder] = useState('CREATED_AT')
+    return (
+      <Picker
+          selectedValue={order}
+          onValueChange={(itemValue, itemIndex) => setOrder(itemValue)}
+      >
+          <Picker.Item label="Latest repositories" value="CREATED_AT" />
+          <Picker.Item label="Highest rated repositories" value="HIGHEST_RATED" />
+          <Picker.Item label="Lowest rated repositories" value="LOWEST_RATED" />
+      </Picker>
+    )
+  }
+  
+  export default OrderPicker
+  ```
