@@ -230,3 +230,17 @@ WHERE constraint_expression;
         </tr>
     </tbody>
 </table>
+
+---
+
+**Grouped aggregate functions**
+
+
+Select query with aggregate functions over groups
+```sql
+SELECT AGG_FUNC(column_or_expression) AS aggregate_description, …
+FROM mytable
+WHERE constraint_expression
+GROUP BY column;
+```
+The `GROUP BY` clause works by grouping rows that have the same value in the column specified.
