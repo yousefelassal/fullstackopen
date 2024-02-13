@@ -795,3 +795,23 @@ The first option is fairly decent, however, if components `B` and `C` are not re
     },
   });
   ```
+- [`onEndReached` Rendering](https://stackoverflow.com/a/58681751) | StackOverFlow Answer
+
+  wrapping the Flatlist with a View of fixed `height` and `flex:1`
+  ```jsx
+  import { View, Dimensions, FlatList } from 'react-native'
+
+  const Main = () => {
+    const { height } = Dimensions.get('window')
+    return (
+      <View style={{flex: 1, height: height}}>
+        <FlatList
+          data={...}
+          // ...
+          onEndReached={...}
+          onEndReachedThreshold={0.5}
+        />
+      </View>
+    )
+  }
+  ```
