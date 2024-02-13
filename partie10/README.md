@@ -782,4 +782,16 @@ The first option is fairly decent, however, if components `B` and `C` are not re
   ```
 - [Relay-style pagination](https://www.apollographql.com/docs/react/pagination/cursor-based/#relay-style-cursor-pagination) | Apollo Docs
 
-  
+  ```js
+  import { relayStylePagination } from "@apollo/client/utilities";
+
+  const cache = new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          comments: relayStylePagination(),
+        },
+      },
+    },
+  });
+  ```
