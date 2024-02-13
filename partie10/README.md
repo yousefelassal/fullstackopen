@@ -767,3 +767,7 @@ The first option is fairly decent, however, if components `B` and `C` are not re
   - Pagination is done with the after argument to `friends`. We passed in a cursor, so we asked for the server to return friends after that cursor.
   - For each edge in the connection, we asked for a cursor. This cursor is an opaque string, and is precisely what we would pass to the `after` arg to paginate starting after this edge.
   - We asked for `hasNextPage`; that will tell us if there are more edges available, or if we’ve reached the end of this connection.
+
+- [Pagintation with Relative Cursor](https://shopify.engineering/pagination-relative-cursors) | Shopify Engineering
+
+  
