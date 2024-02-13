@@ -25,6 +25,7 @@ export const GET_REPOSITORIES = gql`
       node {
         ...repositoryBaseFields
       }
+      cursor
     }
     pageInfo {
       hasNextPage
@@ -68,14 +69,26 @@ ${REPOSITORY_BASE_FIELDS}
 `;
 
 export const GET_REVIEWS = gql`
-query repo($id: ID!) {
+query repo(
+  $id: ID!
+  $first: Int
+  $after: String
+) {
   repository(id: $id) {
     id
-    reviews {
+    reviews(first: $first, after: $after) {
+      totalCount
       edges {
         node {
           ...reviewBaseFields
         }
+        cursor
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+        startCursor
+        hasPreviousPage
       }
     }
   }

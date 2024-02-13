@@ -13,9 +13,27 @@ export default function RepoPage() {
     variables: { id }
   })
 
-  const { data: reviewData } = useQuery(GET_REVIEWS, {
-    variables: { id }
+  const { data: reviewData, loading:reviewLoading, fetchMore } = useQuery(GET_REVIEWS, {
+    variables: {
+      id,
+      first: 3
+    }
   })
+
+  const onEndReach = () => {
+    const canFetchMore = !reviewLoading && reviewData?.repository.reviews.pageInfo.hasNextPage
+
+    if (!canFetchMore) {
+      return
+    }
+
+    fetchMore({
+      variables: {
+        after: reviewData.repository.reviews.pageInfo.endCursor,
+        first: 3
+      }
+    })
+  }
 
   const reviews = reviewData ? reviewData.repository.reviews.edges.map(edge => edge.node) : []
 
@@ -34,6 +52,8 @@ export default function RepoPage() {
         renderItem={({ item }) => <ReviewItem review={item} />}
         ItemSeparatorComponent={() => <View style={styles.seperator} />}
         ListHeaderComponent={() => <RepoItem repo={data.repository} singleView />}
+        onEndReached={onEndReach}
+        onEndReachedThreshold={0.5}
     />
   )
 }
