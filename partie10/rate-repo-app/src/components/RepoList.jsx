@@ -1,7 +1,6 @@
 import { FlatList, View, StyleSheet, Text } from 'react-native';
+import useRepositories from '../hooks/useRepositories';
 import RepoItem from './RepoItem';
-import { useQuery } from '@apollo/client';
-import { GET_REPOSITORIES } from '../graphql/queries';
 import Loader from './Loader';
 import OrderPicker from './OrderPicker';
 import { useState } from 'react';
@@ -27,21 +26,20 @@ const RepositoryList = () => {
   : order === 'LOWEST_RATED' ? {orderBy: 'RATING_AVERAGE', orderDirection: 'ASC'}
   : null
 
-  const { data, loading, error } = useQuery(GET_REPOSITORIES, {
-    variables: {
-      ...pickerVariables,
-      searchKeyword: search
-    },
-    fetchPolicy: 'cache-and-network',
+  const { repositories, fetchMore, loading, error } = useRepositories({
+    ...pickerVariables,
+    searchKeyword: search,
+    first: 3,
   });
 
-  const repositoryNodes = data
-    ? data.repositories.edges.map(edge => edge.node)
+  const repositoryNodes = repositories
+    ? repositories.edges.map(edge => edge.node)
     : [];
 
   const onEndReach = () => {
     console.log('You have reached the end of the list');
-  }
+    fetchMore();
+  };
 
   return (
     <>
