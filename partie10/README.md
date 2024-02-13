@@ -770,4 +770,13 @@ The first option is fairly decent, however, if components `B` and `C` are not re
 
 - [Pagintation with Relative Cursor](https://shopify.engineering/pagination-relative-cursors) | Shopify Engineering
 
-  
+  Relative cursor pagination remembers where you were so that each request after the first continues from where the previous request left off.
+
+  The easiest way to do this is remembering the id of the last record from the last page you’ve seen and continuing from that record, but it requires the results to be sorted by id. With a last id of 67890 this would looks like:
+  ```sql
+  SELECT *
+  FROM `products`
+  WHERE `products`.`id` > 67890
+  ORDER BY `products`.`id` ASC
+  LIMIT 100
+  ```
