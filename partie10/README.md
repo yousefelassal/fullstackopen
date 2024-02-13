@@ -702,3 +702,116 @@ The first option is fairly decent, however, if components `B` and `C` are not re
     }
   }
   ```
+
+#### Cursor-based pagination & infinite scrolling
+
+- [Connection Model](https://graphql.org/learn/pagination/#complete-connection-model) | GraphQL Docs
+
+  - The ability to paginate through the list.
+  - The ability to ask for information about the connection itself, like `totalCount` or `pageInfo`.
+  - The ability to ask for information about the edge itself, like `cursor` or `friendshipTime`.
+  - The ability to change how our backend does pagination, since the user just uses opaque cursors.
+
+
+  ```gql
+  {
+    hero {
+      name
+      friendsConnection(first: 2, after: "Y3Vyc29yMQ==") {
+        totalCount
+        edges {
+          node {
+            name
+          }
+          cursor
+        }
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
+      }
+    }
+  }
+  ```
+
+- [GraphQL Cursor Connections Specification](https://relay.dev/graphql/connections.htm) | Relay Docs
+
+  In the query, the connection model provides a standard mechanism for slicing and paginating the result set.
+  
+  In the response, the connection model provides a standard way of providing cursors, and a way of telling the client when more results are available.
+  
+  An example of all four of those is the following query:
+  ```gql
+  {
+    user {
+      id
+      name
+      friends(first: 10, after: "opaqueCursor") {
+        edges {
+          cursor
+          node {
+            id
+            name
+          }
+        }
+        pageInfo {
+          hasNextPage
+        }
+      }
+    }
+  }
+  ```
+  In this case, `friends` is a connection. That query demonstrates the four features described above:
+
+  - Slicing is done with the `first` argument to `friends`. This asks for the connection to return 10 friends.
+  - Pagination is done with the after argument to `friends`. We passed in a cursor, so we asked for the server to return friends after that cursor.
+  - For each edge in the connection, we asked for a cursor. This cursor is an opaque string, and is precisely what we would pass to the `after` arg to paginate starting after this edge.
+  - We asked for `hasNextPage`; that will tell us if there are more edges available, or if we’ve reached the end of this connection.
+
+- [Pagintation with Relative Cursor](https://shopify.engineering/pagination-relative-cursors) | Shopify Engineering
+
+  Relative cursor pagination remembers where you were so that each request after the first continues from where the previous request left off.
+
+  The easiest way to do this is remembering the id of the last record from the last page you’ve seen and continuing from that record, but it requires the results to be sorted by id. With a last id of 67890 this would looks like:
+  ```sql
+  SELECT *
+  FROM `products`
+  WHERE `products`.`id` > 67890
+  ORDER BY `products`.`id` ASC
+  LIMIT 100
+  ```
+- [Relay-style pagination](https://www.apollographql.com/docs/react/pagination/cursor-based/#relay-style-cursor-pagination) | Apollo Docs
+
+  ```js
+  import { relayStylePagination } from "@apollo/client/utilities";
+
+  const cache = new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          comments: relayStylePagination(),
+        },
+      },
+    },
+  });
+  ```
+- [`onEndReached` Rendering](https://stackoverflow.com/a/58681751) | StackOverFlow Answer
+
+  wrapping the Flatlist with a View of fixed `height` and `flex:1`
+  ```jsx
+  import { View, Dimensions, FlatList } from 'react-native'
+
+  const Main = () => {
+    const { height } = Dimensions.get('window')
+    return (
+      <View style={{flex: 1, height: height}}>
+        <FlatList
+          data={...}
+          // ...
+          onEndReached={...}
+          onEndReachedThreshold={0.5}
+        />
+      </View>
+    )
+  }
+  ```
