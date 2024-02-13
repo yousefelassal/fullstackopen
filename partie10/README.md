@@ -780,3 +780,6 @@ The first option is fairly decent, however, if components `B` and `C` are not re
   ORDER BY `products`.`id` ASC
   LIMIT 100
   ```
+- [Relay-style pagination](https://www.apollographql.com/docs/react/pagination/cursor-based/#relay-style-cursor-pagination) | Apollo Docs
+
+  
