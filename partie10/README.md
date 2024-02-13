@@ -735,4 +735,35 @@ The first option is fairly decent, however, if components `B` and `C` are not re
   ```
 
 - [GraphQL Cursor Connections Specification](https://relay.dev/graphql/connections.htm) | Relay Docs
+
+  In the query, the connection model provides a standard mechanism for slicing and paginating the result set.
   
+  In the response, the connection model provides a standard way of providing cursors, and a way of telling the client when more results are available.
+  
+  An example of all four of those is the following query:
+  ```gql
+  {
+    user {
+      id
+      name
+      friends(first: 10, after: "opaqueCursor") {
+        edges {
+          cursor
+          node {
+            id
+            name
+          }
+        }
+        pageInfo {
+          hasNextPage
+        }
+      }
+    }
+  }
+  ```
+  In this case, `friends` is a connection. That query demonstrates the four features described above:
+
+  - Slicing is done with the `first` argument to `friends`. This asks for the connection to return 10 friends.
+  - Pagination is done with the after argument to `friends`. We passed in a cursor, so we asked for the server to return friends after that cursor.
+  - For each edge in the connection, we asked for a cursor. This cursor is an opaque string, and is precisely what we would pass to the `after` arg to paginate starting after this edge.
+  - We asked for `hasNextPage`; that will tell us if there are more edges available, or if we’ve reached the end of this connection.
