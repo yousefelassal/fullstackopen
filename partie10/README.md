@@ -705,5 +705,33 @@ The first option is fairly decent, however, if components `B` and `C` are not re
 
 #### Cursor-based pagination & infinite scrolling
 
+- [Connection Model](https://graphql.org/learn/pagination/#complete-connection-model) | GraphQL Docs
+
+  - The ability to paginate through the list.
+  - The ability to ask for information about the connection itself, like `totalCount` or `pageInfo`.
+  - The ability to ask for information about the edge itself, like `cursor` or `friendshipTime`.
+  - The ability to change how our backend does pagination, since the user just uses opaque cursors.
+ 
+  ```gql
+  {
+    hero {
+      name
+      friendsConnection(first: 2, after: "Y3Vyc29yMQ==") {
+        totalCount
+        edges {
+          node {
+            name
+          }
+          cursor
+        }
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
+      }
+    }
+  }
+  ```
+
 - [GraphQL Cursor Connections Specification](https://relay.dev/graphql/connections.htm) | Relay Docs
   
