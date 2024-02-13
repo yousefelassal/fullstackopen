@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { Dimensions, StyleSheet, View } from 'react-native';
 import { Route, Routes, Navigate } from 'react-router-native';
 import RepositoryList from './RepoList';
 import AppBar from './AppBar';
@@ -19,8 +19,12 @@ const styles = StyleSheet.create({
 });
 
 const Main = () => {
+  const { height } = Dimensions.get('window');
   return (
-    <View style={styles.container}>
+    <View style={{
+      ...styles.container,
+      height,
+    }}>
       <AppBar />
       <Routes>
         <Route path="/" element={<RepositoryList />} />
