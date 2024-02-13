@@ -184,3 +184,10 @@ INNER JOIN widget_sales
 ```
 
 ## Queries with aggregates
+
+Select query with aggregate functions over all rows
+```sql
+SELECT AGG_FUNC(column_or_expression) AS aggregate_description, …
+FROM mytable
+WHERE constraint_expression;
+```
