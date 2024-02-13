@@ -702,3 +702,5 @@ The first option is fairly decent, however, if components `B` and `C` are not re
     }
   }
   ```
+
+#### Cursor-based pagination & infinite scrolling
