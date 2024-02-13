@@ -191,3 +191,42 @@ SELECT AGG_FUNC(column_or_expression) AS aggregate_description, …
 FROM mytable
 WHERE constraint_expression;
 ```
+
+**Common aggregate functions**
+
+<table class="table table-striped table-condensed">
+        <tbody><tr>
+            <td style="width: 20%">Function</td>
+            <td class="unhighlight">Description</td>
+        </tr>
+        <tr>
+            <td><strong>COUNT(</strong>*<strong>)</strong>, <strong>COUNT(</strong><span style="font-style: italic">column</span><strong>)</strong></td>
+            <td>A common function used to counts the number of rows in the group if no column name is specified. 
+                Otherwise, count the number of rows in the group with non-NULL values in the specified column.</td>
+        </tr>
+        <tr>
+            <td><strong>MIN(</strong><span style="font-style: italic">column</span><strong>)</strong></td>
+            <td>Finds the smallest numerical value in the specified column for all rows in the group.</td>
+        </tr>
+        <tr>
+            <td><strong>MAX(</strong><span style="font-style: italic">column</span><strong>)</strong></td>
+            <td>Finds the largest numerical value in the specified column for all rows in the group.</td>
+        </tr>
+        <tr>
+            <td><strong>AVG(</strong><span style="font-style: italic">column</span>)<strong></strong></td>
+            <td>Finds the average numerical value in the specified column for all rows in the group.</td>
+        </tr>
+        <tr>
+            <td><strong>SUM(</strong><span style="font-style: italic">column</span><strong>)</strong></td>
+            <td>Finds the sum of all numerical values in the specified column for the rows in the group.</td>
+        </tr>
+        <tr>
+            <td colspan="2">Docs:
+                <a href="https://dev.mysql.com/doc/refman/5.6/en/group-by-functions.html" title="MySQL Aggregate Functions">MySQL</a>,
+                <a href="http://www.postgresql.org/docs/9.4/static/functions-aggregate.html" title="Postgres Aggregate Functions">Postgres</a>,
+                <a href="http://www.sqlite.org/lang_aggfunc.html" title="SQLite Aggregate Functions">SQLite</a>,
+                <a href="https://msdn.microsoft.com/en-us/library/ms173454.aspx" title="Microsoft SQL Server Aggregate Functions">Microsoft SQL Server</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
