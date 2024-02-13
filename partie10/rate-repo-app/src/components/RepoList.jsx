@@ -39,6 +39,10 @@ const RepositoryList = () => {
     ? data.repositories.edges.map(edge => edge.node)
     : [];
 
+  const onEndReach = () => {
+    console.log('You have reached the end of the list');
+  }
+
   return (
     <>
     <Searchbar value={value} setValue={setValue} />
@@ -55,6 +59,8 @@ const RepositoryList = () => {
       renderItem={({ item }) => <RepoItem repo={item} />}
       keyExtractor={item => item.id}
       ListHeaderComponent={() => <OrderPicker order={order} setOrder={setOrder} /> }
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
     />
     }
     </>
