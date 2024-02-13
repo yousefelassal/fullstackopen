@@ -6,12 +6,31 @@ import {
 } from './fragments';
 
 export const GET_REPOSITORIES = gql`
-  query repos ($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection, $searchKeyword: String) {
-  repositories(orderBy: $orderBy, orderDirection: $orderDirection, searchKeyword: $searchKeyword){
+  query repos (
+    $orderBy: AllRepositoriesOrderBy,
+    $orderDirection: OrderDirection,
+    $searchKeyword: String,
+    $first: Int,
+    $after: String
+  ) {
+  repositories(
+    orderBy: $orderBy,
+    orderDirection: $orderDirection,
+    searchKeyword: $searchKeyword,
+    first: $first,
+    after: $after
+  ){
+    totalCount
     edges {
       node {
         ...repositoryBaseFields
       }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+      startCursor
+      hasPreviousPage
     }
   }
 }
