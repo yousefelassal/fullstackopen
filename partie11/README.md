@@ -33,3 +33,10 @@
   Rename the current branch to `＜branch＞`.
 
 - [Continuous Integration](https://www.martinfowler.com/articles/continuousIntegration.html) | Martin Fowler Articles
+- [Continuous integration vs. delivery vs. deployment](https://www.atlassian.com/continuous-delivery/principles/continuous-integration-vs-delivery-vs-deployment) | Atlassian
+
+  **Continuous integration**
+
+  Developers practicing continuous integration merge their changes back to the main branch as often as possible.
+  
+  The developer's changes are validated by creating a build and running automated tests against the build.
