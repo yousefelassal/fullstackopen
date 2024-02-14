@@ -31,3 +31,5 @@
   git branch -m <branch>
   ```
   Rename the current branch to `＜branch＞`.
+
+- [Continuous Integration](https://www.martinfowler.com/articles/continuousIntegration.html) | Martin Fowler Articles
