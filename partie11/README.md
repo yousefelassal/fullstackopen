@@ -35,11 +35,12 @@
 - [Continuous Integration](https://www.martinfowler.com/articles/continuousIntegration.html) | Martin Fowler Articles
 - [Continuous integration vs. delivery vs. deployment](https://www.atlassian.com/continuous-delivery/principles/continuous-integration-vs-delivery-vs-deployment) | Atlassian
 
-  **Continuous integration**
-
+  #### Continuous integration
   Developers practicing continuous integration merge their changes back to the main branch as often as possible.
   The developer's changes are validated by creating a build and running automated tests against the build.
 
-  **Continuous delivery**
-  
-  An extension of continuous integration since it automatically deploys all code changes to a testing and/or production environment after the build stage. 
+  #### Continuous delivery
+  An extension of continuous integration since it automatically deploys all code changes to a testing and/or production environment after the build stage.
+
+  #### Continuous deployment
+  Continuous deployment goes one step further than continuous delivery. With this practice, every change that passes all stages of your production pipeline is released to your customers. There's no human intervention, and only a failed test will prevent a new change to be deployed to production.
