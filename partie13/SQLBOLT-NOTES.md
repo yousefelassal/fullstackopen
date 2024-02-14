@@ -248,7 +248,7 @@ The `GROUP BY` clause works by grouping rows that have the same value in the col
 ---
 
 Select query with `HAVING` constraint
-```
+```sql
 SELECT group_by_column, AGG_FUNC(column_expression) AS aggregate_result_alias, …
 FROM mytable
 WHERE condition
