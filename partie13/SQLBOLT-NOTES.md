@@ -244,3 +244,14 @@ WHERE constraint_expression
 GROUP BY column;
 ```
 The `GROUP BY` clause works by grouping rows that have the same value in the column specified.
+
+---
+
+Select query with `HAVING` constraint
+```
+SELECT group_by_column, AGG_FUNC(column_expression) AS aggregate_result_alias, …
+FROM mytable
+WHERE condition
+GROUP BY column
+HAVING group_condition;
+```
