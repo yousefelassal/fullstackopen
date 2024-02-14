@@ -38,5 +38,8 @@
   **Continuous integration**
 
   Developers practicing continuous integration merge their changes back to the main branch as often as possible.
-  
   The developer's changes are validated by creating a build and running automated tests against the build.
+
+  **Continuous delivery**
+  
+  An extension of continuous integration since it automatically deploys all code changes to a testing and/or production environment after the build stage. 
