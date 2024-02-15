@@ -4,7 +4,7 @@ which could be integrated into the build process to automatically check code dur
 For testing, JUnit is widely used for writing and running unit tests, in addition to Mockito which is used
 for mocking dependencies. Another popular tool is Selenium which is used for automated browser testing.
 
-Besided Jenkins and GitHub Actions, other alternative for CI setup include GitLab CI/CD which I would assume
+Besides Jenkins and GitHub Actions, other alternative for CI setup include GitLab CI/CD which I would assume
 is very similar to GitHub actions, Travis CI, CricleCI, all of which offer similar functionalities for the 
 automated pipeline but varies in their pricing and integration options.
 
