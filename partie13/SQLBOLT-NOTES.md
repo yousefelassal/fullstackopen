@@ -182,3 +182,91 @@ FROM a_long_widgets_table_name AS mywidgets
 INNER JOIN widget_sales
   ON mywidgets.id = widget_sales.widget_id;
 ```
+
+## Queries with aggregates
+
+Select query with aggregate functions over all rows
+```sql
+SELECT AGG_FUNC(column_or_expression) AS aggregate_description, …
+FROM mytable
+WHERE constraint_expression;
+```
+
+**Common aggregate functions**
+
+<table class="table table-striped table-condensed">
+        <tbody><tr>
+            <td style="width: 20%">Function</td>
+            <td class="unhighlight">Description</td>
+        </tr>
+        <tr>
+            <td><strong>COUNT(</strong>*<strong>)</strong>, <strong>COUNT(</strong><span style="font-style: italic">column</span><strong>)</strong></td>
+            <td>A common function used to counts the number of rows in the group if no column name is specified. 
+                Otherwise, count the number of rows in the group with non-NULL values in the specified column.</td>
+        </tr>
+        <tr>
+            <td><strong>MIN(</strong><span style="font-style: italic">column</span><strong>)</strong></td>
+            <td>Finds the smallest numerical value in the specified column for all rows in the group.</td>
+        </tr>
+        <tr>
+            <td><strong>MAX(</strong><span style="font-style: italic">column</span><strong>)</strong></td>
+            <td>Finds the largest numerical value in the specified column for all rows in the group.</td>
+        </tr>
+        <tr>
+            <td><strong>AVG(</strong><span style="font-style: italic">column</span>)<strong></strong></td>
+            <td>Finds the average numerical value in the specified column for all rows in the group.</td>
+        </tr>
+        <tr>
+            <td><strong>SUM(</strong><span style="font-style: italic">column</span><strong>)</strong></td>
+            <td>Finds the sum of all numerical values in the specified column for the rows in the group.</td>
+        </tr>
+        <tr>
+            <td colspan="2">Docs:
+                <a href="https://dev.mysql.com/doc/refman/5.6/en/group-by-functions.html" title="MySQL Aggregate Functions">MySQL</a>,
+                <a href="http://www.postgresql.org/docs/9.4/static/functions-aggregate.html" title="Postgres Aggregate Functions">Postgres</a>,
+                <a href="http://www.sqlite.org/lang_aggfunc.html" title="SQLite Aggregate Functions">SQLite</a>,
+                <a href="https://msdn.microsoft.com/en-us/library/ms173454.aspx" title="Microsoft SQL Server Aggregate Functions">Microsoft SQL Server</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+---
+
+**Grouped aggregate functions**
+
+
+Select query with aggregate functions over groups
+```sql
+SELECT AGG_FUNC(column_or_expression) AS aggregate_description, …
+FROM mytable
+WHERE constraint_expression
+GROUP BY column;
+```
+The `GROUP BY` clause works by grouping rows that have the same value in the column specified.
+
+---
+
+Select query with `HAVING` constraint
+```sql
+SELECT group_by_column, AGG_FUNC(column_expression) AS aggregate_result_alias, …
+FROM mytable
+WHERE condition
+GROUP BY column
+HAVING group_condition;
+```
+
+## Order of execution of a Query
+
+Complete SELECT query
+```sql
+SELECT DISTINCT column, AGG_FUNC(column_or_expression), …
+FROM mytable
+    JOIN another_table
+      ON mytable.column = another_table.column
+    WHERE constraint_expression
+    GROUP BY column
+    HAVING constraint_expression
+    ORDER BY column ASC/DESC
+    LIMIT count OFFSET COUNT;
+```
