@@ -70,6 +70,14 @@
   # both modified: <some-file>
   ```
   
+  edit the file(s) to liking. Once happy with the result, stage the file(s) in the usual fashion and let `git rebase` do the rest:
+  ```bash
+  git add <some-file>
+  git rebase --continue
+  ```
+  And that’s all there is to it. Git will move on to the next commit and repeat the process for any other commits that generate conflicts.
   
-
-  
+  If you get to this point and realize and you have no idea what’s going on, don’t panic. Just execute the following command and you’ll be right back to where you started:
+  ```bash
+  git rebase --abort
+  ```
