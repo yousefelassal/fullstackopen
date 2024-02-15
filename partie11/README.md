@@ -46,3 +46,16 @@
   Continuous deployment goes one step further than continuous delivery. With this practice, every change that passes all stages of your production pipeline is released to your customers. There's no human intervention, and only a failed test will prevent a new change to be deployed to production.
 
   ![ci cd asset updates  007](https://github.com/yousefelassal/fullstackopen/assets/76617202/6905fbcb-75ae-41b4-b45b-8f03da127d59)
+
+- [Git Workflows](https://www.atlassian.com/git/tutorials/comparing-workflows) | Atlassian
+
+  #### Rebasing
+  ```bash
+  git pull --rebase origin main
+  ```
+  The `--rebase` option tells Git to move all commits to the tip of the `main` branch after synchronising it with the changes from the central repository.
+
+  
+  
+
+  
