@@ -91,3 +91,22 @@
   - _workflow_ is triggered when an event occurs in your repository, such as a pull request being opened or an issue being created.
   - Your workflow contains one or more _jobs_ which can run in sequential order or in parallel.
   - Each job will run inside its own virtual machine _runner_, or inside a container, and has one or more steps that either run a script that you define or run an _action_.
+
+  Example:
+  ```yaml
+  name: learn-github-actions
+  run-name: ${{ github.actor }} is learning GitHub Actions
+  on: [push]
+  jobs:
+    check-bats-version:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-node@v3
+          with:
+            node-version: '14'
+        - run: npm install -g bats
+        - run: bats -v
+  ```
+
+  
