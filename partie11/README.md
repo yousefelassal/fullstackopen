@@ -87,3 +87,7 @@
 - [Understanding GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) | GitHub Docs
 
   ![xa9cnqtt](https://github.com/yousefelassal/fullstackopen/assets/76617202/2fac3bc9-57fd-431d-9000-c9576845608e)
+
+  - _workflow_ is triggered when an event occurs in your repository, such as a pull request being opened or an issue being created.
+  - Your workflow contains one or more _jobs_ which can run in sequential order or in parallel.
+  - Each job will run inside its own virtual machine _runner_, or inside a container, and has one or more steps that either run a script that you define or run an _action_.
