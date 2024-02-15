@@ -55,6 +55,20 @@
   ```
   The `--rebase` option tells Git to move all commits to the tip of the `main` branch after synchronising it with the changes from the central repository.
 
+  #### Resolving a merge conflict
+  Git will pause the rebase at the current commit and output the following message, along with some relevant instructions:
+  ```bash
+  CONFLICT (content): Merge conflict in <some-file>
+  ```
+
+  run a `git status` to see where the problem is. Conflicted files will appear in the Unmerged paths section:
+  ```bash
+  # Unmerged paths:
+  # (use "git reset HEAD <some-file>..." to unstage)
+  # (use "git add/rm <some-file>..." as appropriate to mark resolution)
+  #
+  # both modified: <some-file>
+  ```
   
   
 
