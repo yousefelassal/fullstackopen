@@ -81,3 +81,33 @@
   ```bash
   git rebase --abort
   ```
+
+### b Getting started with GitHub Actions
+
+- [Understanding GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) | GitHub Docs
+
+  ![xa9cnqtt](https://github.com/yousefelassal/fullstackopen/assets/76617202/2fac3bc9-57fd-431d-9000-c9576845608e)
+
+  - _workflow_ is triggered when an event occurs in your repository, such as a pull request being opened or an issue being created.
+  - Your workflow contains one or more _jobs_ which can run in sequential order or in parallel.
+  - Each job will run inside its own virtual machine _runner_, or inside a container, and has one or more steps that either run a script that you define or run an _action_.
+
+  Example:
+  ```yaml
+  name: learn-github-actions
+  run-name: ${{ github.actor }} is learning GitHub Actions
+  on: [push]
+  jobs:
+    check-bats-version:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-node@v3
+          with:
+            node-version: '14'
+        - run: npm install -g bats
+        - run: bats -v
+  ```
+  ![hddtyzsf](https://github.com/yousefelassal/fullstackopen/assets/76617202/27acd106-4ba6-4131-96d4-a21148aa3a59)
+
+  
