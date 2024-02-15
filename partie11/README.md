@@ -85,3 +85,5 @@
 ### b Getting started with GitHub Actions
 
 - [Understanding GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) | GitHub Docs
+
+  ![xa9cnqtt](https://github.com/yousefelassal/fullstackopen/assets/76617202/2fac3bc9-57fd-431d-9000-c9576845608e)
