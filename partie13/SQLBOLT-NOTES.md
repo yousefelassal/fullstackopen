@@ -270,3 +270,5 @@ FROM mytable
     ORDER BY column ASC/DESC
     LIMIT count OFFSET COUNT;
 ```
+
+## Inserting rows
