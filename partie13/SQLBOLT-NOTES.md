@@ -311,3 +311,5 @@ Delete statement with condition
 DELETE FROM mytable
 WHERE condition;
 ```
+
+## Creating tables
