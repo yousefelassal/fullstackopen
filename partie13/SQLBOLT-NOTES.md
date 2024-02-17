@@ -371,3 +371,47 @@ CREATE TABLE IF NOT EXISTS mytable (
         </tr>
     </tbody>
 </table>
+
+### Table constraints
+
+<table class="table table-striped table-condensed">
+        <tbody><tr>
+            <td style="width: 30%">Constraint</td>
+            <td class="unhighlight">Description</td>
+        </tr>
+        <tr>
+            <td><code>PRIMARY KEY</code></td>
+            <td>This means that the values in this column are unique, and each value can be used to 
+                identify a single row in this table.</td>
+        </tr>
+        <tr>
+            <td><code>AUTOINCREMENT</code></td>
+            <td>For integer values, this means that the value is automatically filled in and incremented 
+                with each row insertion.  Not supported in all databases.</td>
+        </tr>
+        <tr>
+            <td><code>UNIQUE</code></td>
+            <td>This means that the values in this column have to be unique, so you can't insert another 
+                row with the same value in this column as another row in the table.  Differs from the
+                `PRIMARY KEY` in that it doesn't have to be a key for a row in the table.</td>
+        </tr>
+        <tr>
+            <td><code>NOT NULL</code></td>
+            <td>This means that the inserted value can not be `NULL`.</td>
+        </tr>
+        <tr>
+            <td><code>CHECK (expression)</code></td>
+            <td>This allows you to run a more complex expression to test whether the values inserted 
+                are valid. For example, you can check that values are positive, or greater than a specific 
+                size, or start with a certain prefix, etc.</td>
+        </tr>
+        <tr>
+            <td><code>FOREIGN KEY</code></td>
+            <td>This is a consistency check which ensures that each value in this column corresponds to 
+                another value in a column in another table.<br><br>
+                For example, if there are two tables, one listing all Employees by ID,
+                and another listing their payroll information, the `FOREIGN KEY` can ensure that every 
+                row in the payroll table corresponds to a valid employee in the master Employee list.</td>
+        </tr>
+    </tbody>
+</table>
