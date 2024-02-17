@@ -111,4 +111,4 @@
   ![hddtyzsf](https://github.com/yousefelassal/fullstackopen/assets/76617202/27acd106-4ba6-4131-96d4-a21148aa3a59)
 
   
-- [YAML Syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) | Anisble Docs
+- [YAML Syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) | Ansible Docs
