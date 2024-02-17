@@ -112,3 +112,44 @@
 
   
 - [YAML Syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) | Ansible Docs
+
+  nearly every YAML file starts with a list. Each item in the list is a list of key/value pairs, commonly called a “hash” or a “dictionary”.
+
+  All members of a list are lines beginning at the same indentation level starting with a "- " (a dash and a space):
+  ```yaml
+  ---
+  # A list of tasty fruits
+  - Apple
+  - Orange
+  - Strawberry
+  - Mango
+  ...
+  ```
+
+  A dictionary is represented in a simple key: value form (the colon must be followed by a space):
+  ```yaml
+  # An employee record
+  martin:
+    name: Martin D'vloper
+    job: Developer
+    skill: Elite
+  ```
+  
+  More complicated data structures are possible, such as lists of dictionaries, dictionaries whose values are lists or a mix of both:
+  ```yaml
+  # Employee records
+  - martin:
+      name: Martin D'vloper
+      job: Developer
+      skills:
+        - python
+        - perl
+        - pascal
+  - tabitha:
+      name: Tabitha Bitumen
+      job: Developer
+      skills:
+        - lisp
+        - fortran
+        - erlang
+  ```
