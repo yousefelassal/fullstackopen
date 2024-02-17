@@ -441,3 +441,5 @@ Altering table **name**
 ALTER TABLE mytable
 RENAME TO new_table_name;
 ```
+
+## Dropping tables
