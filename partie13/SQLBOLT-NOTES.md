@@ -418,3 +418,10 @@ CREATE TABLE IF NOT EXISTS mytable (
 
 
 ## Altering tables
+
+Altering table to add new column(s)
+```sql
+ALTER TABLE mytable
+ADD column DataType OptionalTableConstraint 
+    DEFAULT default_value;
+```
