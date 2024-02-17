@@ -272,6 +272,7 @@ FROM mytable
 ```
 
 ## Inserting rows
+**`INSERT`** statement, which declares which **table** to write _into_, the _columns_ of data that we are filling, and one or more _rows_ of data to insert.
 
 Insert statement with values **for all columns**
 ```sql
