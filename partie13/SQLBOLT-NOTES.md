@@ -433,3 +433,11 @@ Altering table to remove** column(s)**
 ALTER TABLE mytable
 DROP column_to_be_deleted;
 ```
+
+---
+
+Altering table **name**
+```sql
+ALTER TABLE mytable
+RENAME TO new_table_name;
+```
