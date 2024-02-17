@@ -443,3 +443,8 @@ RENAME TO new_table_name;
 ```
 
 ## Dropping tables
+
+Drop table statement
+```sql
+DROP TABLE IF EXISTS mytable;
+```
