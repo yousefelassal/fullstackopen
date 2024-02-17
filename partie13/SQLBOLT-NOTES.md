@@ -419,9 +419,17 @@ CREATE TABLE IF NOT EXISTS mytable (
 
 ## Altering tables
 
-Altering table to add new column(s)
+Altering table to **add new column(s)**
 ```sql
 ALTER TABLE mytable
 ADD column DataType OptionalTableConstraint 
     DEFAULT default_value;
+```
+
+---
+
+Altering table to remove** column(s)**
+```sql
+ALTER TABLE mytable
+DROP column_to_be_deleted;
 ```
