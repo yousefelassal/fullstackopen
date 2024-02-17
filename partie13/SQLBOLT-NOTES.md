@@ -272,3 +272,11 @@ FROM mytable
 ```
 
 ## Inserting rows
+
+Insert statement with values for all columns
+```sql
+INSERT INTO mytable
+VALUES (value_or_expr, another_value_or_expr, …),
+       (value_or_expr_2, another_value_or_expr_2, …),
+       …;
+```
