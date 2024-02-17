@@ -313,3 +313,12 @@ WHERE condition;
 ```
 
 ## Creating tables
+
+Create table statement w/ optional table constraint and default value
+```sql
+CREATE TABLE IF NOT EXISTS mytable (
+    column DataType TableConstraint DEFAULT default_value,
+    another_column DataType TableConstraint DEFAULT default_value,
+    …
+);
+```
