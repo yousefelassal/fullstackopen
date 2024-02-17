@@ -160,6 +160,14 @@
   The `schedule` event allows you to trigger a workflow at a scheduled time.
   
   Cron syntax has five fields separated by a space, and each field represents a unit of time.
+
+  This example triggers the workflow every day at 5:30 and 17:30 UTC:
+  ```yml
+  on:
+    schedule:
+      # * is a special character in YAML so you have to quote this string
+      - cron:  '30 5,17 * * *'
+  ```
   
   ```text
   ┌───────────── minute (0 - 59)
