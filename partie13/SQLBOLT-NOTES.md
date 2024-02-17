@@ -292,3 +292,6 @@ VALUES (value_or_expr, another_value_or_expr, …),
       (value_or_expr_2, another_value_or_expr_2, …),
       …;
 ```
+
+## Updating rows
+
