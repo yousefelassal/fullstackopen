@@ -414,4 +414,7 @@ CREATE TABLE IF NOT EXISTS mytable (
                 row in the payroll table corresponds to a valid employee in the master Employee list.</td>
         </tr>
     </tbody>
+
+
+## Altering tables
 </table>
