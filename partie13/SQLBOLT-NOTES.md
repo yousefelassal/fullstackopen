@@ -303,3 +303,11 @@ SET column = value_or_expr,
     …
 WHERE condition;
 ```
+
+## Deleting rows
+
+Delete statement with condition
+```sql
+DELETE FROM mytable
+WHERE condition;
+```
