@@ -322,3 +322,52 @@ CREATE TABLE IF NOT EXISTS mytable (
     …
 );
 ```
+
+### Table data types
+
+<table class="table table-striped table-condensed">
+        <tbody><tr>
+            <td style="width: 30%">Data type</td>
+            <td class="unhighlight">Description</td>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code>, <code>BOOLEAN</code></td>
+            <td>The integer datatypes can store whole integer values like the count of a number or an 
+                age.  In some implementations, the boolean value is just represented as an integer value
+                of just 0 or 1.</td>
+        </tr>
+        <tr>
+            <td><code>FLOAT</code>, <code>DOUBLE</code>, <code>REAL</code></td>
+            <td>The floating point datatypes can store more precise numerical data like measurements 
+                or fractional values.  Different types can be used depending on the floating point 
+                precision required for that value.</td>
+        </tr>
+        <tr>
+            <td><code>CHARACTER(num_chars)</code>, <code>VARCHAR(num_chars)</code>, <code>TEXT</code></td>
+            <td><p>The text based datatypes can store strings and text in all sorts of locales.  The distinction
+                between the various types generally amount to underlaying efficiency of the database when working
+                with these columns.</p>
+                <p>Both the CHARACTER and VARCHAR (variable character) types are specified with
+                the max number of characters that they can store (longer values may be truncated), so can be more
+                efficient to store and query with big tables.</p></td>
+        </tr>
+        <tr>
+            <td><code>DATE</code>, <code>DATETIME</code></td>
+            <td>SQL can also store date and time stamps to keep track of time series and event data.  They can be
+                tricky to work with especially when manipulating data across timezones.</td>
+        </tr>
+        <tr>
+            <td><code>BLOB</code></td>
+            <td>Finally, SQL can store binary data in blobs right in the database.  These values are often opaque
+                to the database, so you usually have to store them with the right metadata to requery them.</td>
+        </tr>
+        <tr>
+            <td colspan="2">Docs:
+                <a href="http://dev.mysql.com/doc/refman/5.6/en/data-types.html" title="MySQL Data Types">MySQL</a>,
+                <a href="http://www.postgresql.org/docs/9.4/static/datatype.html" title="Postgres Data Types">Postgres</a>,
+                <a href="https://www.sqlite.org/datatype3.html" title="SQLite Data Types">SQLite</a>,
+                <a href="https://msdn.microsoft.com/en-us/library/ms187752.aspx" title="Microsoft SQL Server Data Types">Microsoft SQL Server</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
