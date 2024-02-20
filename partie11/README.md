@@ -192,3 +192,21 @@
   
   
   You can use [crontab guru](https://crontab.guru/) to help generate your cron syntax and confirm what time it will run. To help you get started, there is also a list of [crontab guru examples](https://crontab.guru/examples.html).
+
+- [`uses`](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsuses) | GitHub Docs
+
+  a reusable unit of code, either JavaScript files or Docker containers.
+
+  ```yml
+  steps:
+  # Reference a specific commit
+  - uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3
+  # Reference the major version of a release
+  - uses: actions/checkout@v4
+  # Reference a specific version
+  - uses: actions/checkout@v4.2.0
+  # Uses the default branch of a public repository
+  - uses: actions/heroku@main
+  # Uses a specific version tag of a public repository
+  - uses: actions/aws@v2.0.1
+  ```
