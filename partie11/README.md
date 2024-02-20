@@ -224,3 +224,18 @@
             node-version: '20'
   ```
   After the environment has been set up we can run all the scripts from `package.json` like we would on our own machine. 
+
+- [`cypress.io/github-action`](https://github.com/cypress-io/github-action) | Cypress GitHub Action Repo
+
+  ```yml
+  - name: e2e tests
+      uses: cypress-io/github-action@v5
+      with:
+        command: npm run test:e2e
+        start: npm run start-prod
+        wait-on: http://localhost:5000
+  ```
+
+  - [`command`](https://github.com/cypress-io/github-action#custom-test-command): specifies how to run Cypress tests
+  - [`start`](https://github.com/cypress-io/github-action#start-server): gives npm script that starts the server
+  - [`wait-on`](https://github.com/cypress-io/github-action#wait-on): says that before the tests are run, the server should have started on url _http://localhost:5000_.
