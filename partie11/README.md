@@ -199,14 +199,27 @@
 
   ```yml
   steps:
-  # Reference a specific commit
-  - uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3
-  # Reference the major version of a release
-  - uses: actions/checkout@v4
-  # Reference a specific version
-  - uses: actions/checkout@v4.2.0
-  # Uses the default branch of a public repository
-  - uses: actions/heroku@main
-  # Uses a specific version tag of a public repository
-  - uses: actions/aws@v2.0.1
+    # Reference a specific commit
+    - uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3
+    # Reference the major version of a release
+    - uses: actions/checkout@v4
+    # Reference a specific version
+    - uses: actions/checkout@v4.2.0
+    # Uses the default branch of a public repository
+    - uses: actions/heroku@main
+    # Uses a specific version tag of a public repository
+    - uses: actions/aws@v2.0.1
+  ```
+- [`with](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepswith) | GitHub Docs
+
+  A map of the input parameters defined by the action. Each input parameter is a key/value pair.
+
+  ```yml
+  jobs:
+    my_first_job:
+      steps:
+        - name: Setup node
+          uses: actions/setup-node@v4
+          with:
+            node-version: '20'
   ```
