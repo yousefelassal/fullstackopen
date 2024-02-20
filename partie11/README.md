@@ -223,3 +223,4 @@
           with:
             node-version: '20'
   ```
+  After the environment has been set up we can run all the scripts from `package.json` like we would on our own machine. 
