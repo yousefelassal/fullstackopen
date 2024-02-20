@@ -210,7 +210,7 @@
     # Uses a specific version tag of a public repository
     - uses: actions/aws@v2.0.1
   ```
-- [`with](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepswith) | GitHub Docs
+- [`with`](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepswith) | GitHub Docs
 
   A map of the input parameters defined by the action. Each input parameter is a key/value pair.
 
