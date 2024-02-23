@@ -245,3 +245,19 @@
 - [UNIX File Permissions](https://www.guru99.com/file-permissions.html) | Guru99
 - [Zero Downtime Deploys](https://docs.render.com/deploys#zero-downtime-deploys) | Render Docs
 - [HTTP Check](https://fly.io/docs/reference/configuration/#http_service-checks) | Fly.io Docs
+
+using a shell command for running several commands in the build or start command:
+
+Create eg. a file _build_step.sh_ with the following content:
+```bash
+#!/bin/bash
+
+echo "Build script"
+npm install
+npm run build
+```
+
+```bash
+$ ./build_step.sh
+Build script
+```
