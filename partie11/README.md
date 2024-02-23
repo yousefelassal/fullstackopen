@@ -289,3 +289,5 @@ Build script
           run: |
             curl "$deploy_url"
   ```
+- [Zero Downtime Deploys](https://docs.render.com/deploys#zero-downtime-deploys) | Render Docs
+- [HTTP Check](https://fly.io/docs/reference/configuration/#http_service-checks) | Fly.io Docs
