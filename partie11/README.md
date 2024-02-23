@@ -241,3 +241,5 @@
   - [`wait-on`](https://github.com/cypress-io/github-action#wait-on): says that before the tests are run, the server should have started on url _http://localhost:5000_.
 
 ### c Deployment
+
+- [UNIX File Permissions](https://www.guru99.com/file-permissions.html) | Guru99
