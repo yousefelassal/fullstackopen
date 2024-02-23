@@ -262,3 +262,32 @@ $ ./build_step.sh
 Build script
 ```
 - [Deploy hook](https://docs.render.com/deploy-hooks) | Render Docs
+
+  trigger an on-demand deploy with a single HTTP request.
+
+  ```yml
+  # .github/workflows/ci.yml
+  
+  on:
+    pull_request:
+    push:
+      branches: [main]
+  
+  jobs:
+    ci:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - name: Test
+          run: |
+            npm install
+            npm run test
+  
+        - name: Deploy
+          # Only run this step if the branch is main
+          if: github.ref == 'refs/heads/main'
+          env:
+            deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+          run: |
+            curl "$deploy_url"
+  ```
