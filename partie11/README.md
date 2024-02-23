@@ -243,3 +243,4 @@
 ### c Deployment
 
 - [UNIX File Permissions](https://www.guru99.com/file-permissions.html) | Guru99
+- [Zero Downtime Deploys](https://docs.render.com/deploys#zero-downtime-deploys) | Render Docs
