@@ -239,3 +239,5 @@
   - [`command`](https://github.com/cypress-io/github-action#custom-test-command): specifies how to run Cypress tests
   - [`start`](https://github.com/cypress-io/github-action#start-server): gives npm script that starts the server
   - [`wait-on`](https://github.com/cypress-io/github-action#wait-on): says that before the tests are run, the server should have started on url _http://localhost:5000_.
+
+### c Deployment
