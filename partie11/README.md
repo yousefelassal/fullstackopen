@@ -300,3 +300,10 @@ Build script
 ### d Keeping green
 
 - [`pull_request` workflow trigger](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request) | GitHub Docs
+
+  ```yml
+  on:
+    pull_request:
+      branches: [main]
+      types: [opened, synchronize]
+  ```
