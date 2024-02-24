@@ -301,6 +301,7 @@ Build script
 
 - [`pull_request` workflow trigger](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request) | GitHub Docs
 
+  By default, a workflow only runs when a `pull_request` event's activity type is `opened`, `synchronize`, or `reopened`. 
   ```yml
   on:
     pull_request:
