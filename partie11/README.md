@@ -308,4 +308,43 @@ Build script
       branches: [main]
       types: [opened, synchronize]
   ```
-- [`if` workflow](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsif) | GitHub Docs
+- [`if` job](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsif) | GitHub Docs
+
+  #### Example: Using contexts
+  This step only runs when the event type is a `pull_request` and the event action is unassigned.
+  ```yml
+  steps:
+    - name: My first step
+      if: ${{ github.event_name == 'pull_request' && github.event.action == 'unassigned' }}
+      run: echo This event is a pull request that had an assignee removed.
+  ```
+  
+  #### Example: Using status check functions
+  The my backup step only runs when the previous step of a job fails.
+  ```yml
+  steps:
+    - name: My first step
+      uses: octo-org/action-name@main
+    - name: My backup step
+      if: ${{ failure() }}
+      uses: actions/heroku@1.0.0
+  ```
+  
+  #### Example: Using secrets
+  Secrets cannot be directly referenced in `if:` conditionals. Instead, consider setting secrets as job-level environment variables, then referencing the environment variables to conditionally run steps in the job.
+  
+  If a secret has not been set, the return value of an expression referencing the secret (such as `${{ secrets.SuperSecret }}` in the example) will be an empty string.
+  ```yml
+  name: Run a step if a secret has been set
+  on: push
+  jobs:
+    my-jobname:
+      runs-on: ubuntu-latest
+      env:
+        super_secret: ${{ secrets.SuperSecret }}
+      steps:
+        - if: ${{ env.super_secret != '' }}
+          run: echo 'This step will only run if the secret has a value set.'
+        - if: ${{ env.super_secret == '' }}
+          run: echo 'This step will only run if the secret does not have a value set.'
+  ```
