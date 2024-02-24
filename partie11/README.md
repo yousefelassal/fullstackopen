@@ -298,3 +298,5 @@ Build script
 - [HTTP Check](https://fly.io/docs/reference/configuration/#http_service-checks) | Fly.io Docs
 
 ### d Keeping green
+
+- [`pull_request` workflow trigger](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request) | GitHub Docs
