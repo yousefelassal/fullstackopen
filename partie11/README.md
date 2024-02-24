@@ -348,3 +348,6 @@ Build script
         - if: ${{ env.super_secret == '' }}
           run: echo 'This step will only run if the secret does not have a value set.'
   ```
+- [`github` Context](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context) | GitHub Docs
+
+  
