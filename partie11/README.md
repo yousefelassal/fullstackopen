@@ -361,3 +361,8 @@ Build script
 - [`git tag`](https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag) | Atlassian Tuts
 
   Tags are ref's that point to specific points in Git history. Tagging is generally used to capture a point in history that is used for a marked version release (i.e. v1.0.1).
+
+  Git supports two different types of tags, _annotated_ and _lightweight_ tags.
+
+  - Annotated tags store extra meta data such as: the tagger name, email, and date.
+  - Lightweight tags are essentially 'bookmarks' to a commit, they are just a name and a pointer to a commit, useful for creating quick links to relevant commits.
