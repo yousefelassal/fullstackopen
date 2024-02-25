@@ -359,3 +359,5 @@ Build script
   3. **PATCH** version when you make backward compatible bug fixes
 
 - [`git tag`](https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag) | Atlassian Tuts
+
+  Tags are ref's that point to specific points in Git history. Tagging is generally used to capture a point in history that is used for a marked version release (i.e. v1.0.1).
