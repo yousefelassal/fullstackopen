@@ -357,3 +357,5 @@ Build script
   1. **MAJOR** version when you make incompatible API changes
   2. **MINOR** version when you add functionality in a backward compatible manner
   3. **PATCH** version when you make backward compatible bug fixes
+
+- [`git tag`](https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag) | Atlassian Tuts
