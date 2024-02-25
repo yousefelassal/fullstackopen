@@ -365,6 +365,7 @@ Build script
   Git supports two different types of tags, _annotated_ and _lightweight_ tags.
 
   - Annotated tags store extra meta data such as: the tagger name, email, and date.
+    
     ```bash
     git tag -a v1.4
     ```
@@ -373,4 +374,5 @@ Build script
     git tag -a v1.4 -m "my version 1.4"
     ```
     This is a convenience method similar to `git commit -m` that will immediately create a new tag and forgo opening the local text editor in favor of saving the message passed in with the `-m` option.
+    
   - Lightweight tags are essentially 'bookmarks' to a commit, they are just a name and a pointer to a commit, useful for creating quick links to relevant commits.
