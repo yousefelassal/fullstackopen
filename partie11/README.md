@@ -352,7 +352,7 @@ Build script
 
 - [Semantic Versioning](https://semver.org/) | Semver
 
-  a version is in the form `{major}.{minor}.{patch}`
+    a version would take the form `{major}.{minor}.{patch}`
 
   1. **MAJOR** version when you make incompatible API changes
   2. **MINOR** version when you add functionality in a backward compatible manner
