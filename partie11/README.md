@@ -350,4 +350,10 @@ Build script
   ```
 - [`github` Context](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context) | GitHub Docs
 
-  
+- [Semantic Versioning](https://semver.org/) | Semver
+
+  a version is in the form `{major}.{minor}.{patch}`
+
+  1. **MAJOR** version when you make incompatible API changes
+  2. **MINOR** version when you add functionality in a backward compatible manner
+  3. **MAJOR** version when you make incompatible API changes
