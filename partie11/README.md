@@ -420,3 +420,5 @@ Build script
   
   #### Example of join
   `join(github.event.issue.labels.*.name, ', ')` may return 'bug, help wanted'
+
+### e Expanding Further
