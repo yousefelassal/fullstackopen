@@ -270,3 +270,181 @@ FROM mytable
     ORDER BY column ASC/DESC
     LIMIT count OFFSET COUNT;
 ```
+
+## Inserting rows
+**`INSERT`** statement, which declares which **table** to write _into_, the _columns_ of data that we are filling, and one or more _rows_ of data to insert.
+
+Insert statement with values **for all columns**
+```sql
+INSERT INTO mytable
+VALUES (value_or_expr, another_value_or_expr, …),
+       (value_or_expr_2, another_value_or_expr_2, …),
+       …;
+```
+
+---
+
+Insert statement with **specific columns**
+```sql
+INSERT INTO mytable
+(column, another_column, …)
+VALUES (value_or_expr, another_value_or_expr, …),
+      (value_or_expr_2, another_value_or_expr_2, …),
+      …;
+```
+
+## Updating rows
+
+Update statement with values
+```sql
+UPDATE mytable
+SET column = value_or_expr, 
+    other_column = another_value_or_expr, 
+    …
+WHERE condition;
+```
+
+## Deleting rows
+
+Delete statement with condition
+```sql
+DELETE FROM mytable
+WHERE condition;
+```
+
+## Creating tables
+
+Create table statement w/ optional table constraint and default value
+```sql
+CREATE TABLE IF NOT EXISTS mytable (
+    column DataType TableConstraint DEFAULT default_value,
+    another_column DataType TableConstraint DEFAULT default_value,
+    …
+);
+```
+
+### Table data types
+
+<table class="table table-striped table-condensed">
+        <tbody><tr>
+            <td style="width: 30%">Data type</td>
+            <td class="unhighlight">Description</td>
+        </tr>
+        <tr>
+            <td><code>INTEGER</code>, <code>BOOLEAN</code></td>
+            <td>The integer datatypes can store whole integer values like the count of a number or an 
+                age.  In some implementations, the boolean value is just represented as an integer value
+                of just 0 or 1.</td>
+        </tr>
+        <tr>
+            <td><code>FLOAT</code>, <code>DOUBLE</code>, <code>REAL</code></td>
+            <td>The floating point datatypes can store more precise numerical data like measurements 
+                or fractional values.  Different types can be used depending on the floating point 
+                precision required for that value.</td>
+        </tr>
+        <tr>
+            <td><code>CHARACTER(num_chars)</code>, <code>VARCHAR(num_chars)</code>, <code>TEXT</code></td>
+            <td><p>The text based datatypes can store strings and text in all sorts of locales.  The distinction
+                between the various types generally amount to underlaying efficiency of the database when working
+                with these columns.</p>
+                <p>Both the CHARACTER and VARCHAR (variable character) types are specified with
+                the max number of characters that they can store (longer values may be truncated), so can be more
+                efficient to store and query with big tables.</p></td>
+        </tr>
+        <tr>
+            <td><code>DATE</code>, <code>DATETIME</code></td>
+            <td>SQL can also store date and time stamps to keep track of time series and event data.  They can be
+                tricky to work with especially when manipulating data across timezones.</td>
+        </tr>
+        <tr>
+            <td><code>BLOB</code></td>
+            <td>Finally, SQL can store binary data in blobs right in the database.  These values are often opaque
+                to the database, so you usually have to store them with the right metadata to requery them.</td>
+        </tr>
+        <tr>
+            <td colspan="2">Docs:
+                <a href="http://dev.mysql.com/doc/refman/5.6/en/data-types.html" title="MySQL Data Types">MySQL</a>,
+                <a href="http://www.postgresql.org/docs/9.4/static/datatype.html" title="Postgres Data Types">Postgres</a>,
+                <a href="https://www.sqlite.org/datatype3.html" title="SQLite Data Types">SQLite</a>,
+                <a href="https://msdn.microsoft.com/en-us/library/ms187752.aspx" title="Microsoft SQL Server Data Types">Microsoft SQL Server</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+### Table constraints
+
+<table class="table table-striped table-condensed">
+        <tbody><tr>
+            <td style="width: 30%">Constraint</td>
+            <td class="unhighlight">Description</td>
+        </tr>
+        <tr>
+            <td><code>PRIMARY KEY</code></td>
+            <td>This means that the values in this column are unique, and each value can be used to 
+                identify a single row in this table.</td>
+        </tr>
+        <tr>
+            <td><code>AUTOINCREMENT</code></td>
+            <td>For integer values, this means that the value is automatically filled in and incremented 
+                with each row insertion.  Not supported in all databases.</td>
+        </tr>
+        <tr>
+            <td><code>UNIQUE</code></td>
+            <td>This means that the values in this column have to be unique, so you can't insert another 
+                row with the same value in this column as another row in the table.  Differs from the
+                `PRIMARY KEY` in that it doesn't have to be a key for a row in the table.</td>
+        </tr>
+        <tr>
+            <td><code>NOT NULL</code></td>
+            <td>This means that the inserted value can not be `NULL`.</td>
+        </tr>
+        <tr>
+            <td><code>CHECK (expression)</code></td>
+            <td>This allows you to run a more complex expression to test whether the values inserted 
+                are valid. For example, you can check that values are positive, or greater than a specific 
+                size, or start with a certain prefix, etc.</td>
+        </tr>
+        <tr>
+            <td><code>FOREIGN KEY</code></td>
+            <td>This is a consistency check which ensures that each value in this column corresponds to 
+                another value in a column in another table.<br><br>
+                For example, if there are two tables, one listing all Employees by ID,
+                and another listing their payroll information, the `FOREIGN KEY` can ensure that every 
+                row in the payroll table corresponds to a valid employee in the master Employee list.</td>
+        </tr>
+    </tbody>
+</table>
+
+
+## Altering tables
+
+Altering table to **add new column(s)**
+```sql
+ALTER TABLE mytable
+ADD column DataType OptionalTableConstraint 
+    DEFAULT default_value;
+```
+
+---
+
+Altering table to remove** column(s)**
+```sql
+ALTER TABLE mytable
+DROP column_to_be_deleted;
+```
+
+---
+
+Altering table **name**
+```sql
+ALTER TABLE mytable
+RENAME TO new_table_name;
+```
+
+## Dropping tables
+
+Drop table statement
+```sql
+DROP TABLE IF EXISTS mytable;
+```
