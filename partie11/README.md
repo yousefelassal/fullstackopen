@@ -422,3 +422,14 @@ Build script
   `join(github.event.issue.labels.*.name, ', ')` may return 'bug, help wanted'
 
 ### e Expanding Further
+
+- [Status check](https://docs.github.com/en/actions/learn-github-actions/expressions#status-check-functions) | GitHub Docs
+
+  #### `success`
+  Returns `true` when all previous steps have succeeded.
+  ```yml
+  steps:
+    ...
+    - name: The job has succeeded
+      if: ${{ success() }}
+  ```
