@@ -1,0 +1,220 @@
+name: Deployment pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+jobs:
+    deployment_pipeline:
+        runs-on: ubuntu-20.04
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+            - name: Install dependencies
+              run: npm install
+            - name: Check style
+              run: npm run lint
+            - name: Build
+              run: npm run build
+            - name: Test
+              run: npm test
+            - name: e2e tests
+              uses: cypress-io/github-action@v5
+              with:
+                command: npm run test:e2e
+                start: npm run start-prod
+                wait-on: http://localhost:5000
+            - name: Trigger deployment
+              env:
+                deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+              if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ''), '#skip') }}
+              run: |
+                curl "$deploy_url"
+            - name: Send slack success notification
+              if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ''), '#skip') && success()}}
+              id: slack-success
+              uses: slackapi/slack-github-action@v1.25.0
+              with:
+                payload: |
+                  {
+                    "blocks": [
+                      {
+                        "type": "header",
+                        "text": {
+                          "type": "plain_text",
+                          "text": "Build result: Success! :)",
+                          "emoji": true
+                        }
+                      },
+                      {
+                        "type": "section",
+                        "text": {
+                          "type": "mrkdwn",
+                          "text": "Job: `deployment_pipeline`"
+                        },
+                        "accessory": {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "View Commit",
+                            "emoji": true
+                          },
+                          "value": "click_me_123",
+                          "url": "${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+                          "action_id": "button-action"
+                        }
+                      },
+                      {
+                        "type": "context",
+                        "elements": [
+                          {
+                            "type": "image",
+                            "image_url": "${{ github.event.sender.avatar_url }}",
+                            "alt_text": "images"
+                          },
+                          {
+                            "type": "mrkdwn",
+                            "text": "Author: *${{ github.event.head_commit.author.username }}*"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "rich_text",
+                        "elements": [
+                          {
+                            "type": "rich_text_section",
+                            "elements": [
+                              {
+                                "type": "emoji",
+                                "name": "white_check_mark"
+                              },
+                              {
+                                "type": "text",
+                                "text": " "
+                              },
+                              {
+                                "type": "emoji",
+                                "name": "white_check_mark"
+                              },
+                              {
+                                "type": "text",
+                                "text": " "
+                              },
+                              {
+                                "type": "emoji",
+                                "name": "white_check_mark"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+              env:
+                SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+                SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOk
+            - name: Send slack notification
+              if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ''), '#skip') && !success()}}
+              id: slack
+              uses: slackapi/slack-github-action@v1.25.0
+              with:
+                payload: |
+                  {
+                    "blocks": [
+                      {
+                        "type": "header",
+                        "text": {
+                          "type": "plain_text",
+                          "text": "Build result: ${{ job.status }} :(",
+                          "emoji": true
+                        }
+                      },
+                      {
+                        "type": "section",
+                        "text": {
+                          "type": "mrkdwn",
+                          "text": "Job: `deployment_pipeline`"
+                        },
+                        "accessory": {
+                          "type": "button",
+                          "text": {
+                            "type": "plain_text",
+                            "text": "View Commit",
+                            "emoji": true
+                          },
+                          "value": "click_me_123",
+                          "url": "${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+                          "action_id": "button-action"
+                        }
+                      },
+                      {
+                        "type": "context",
+                        "elements": [
+                          {
+                            "type": "image",
+                            "image_url": "${{ github.event.sender.avatar_url }}",
+                            "alt_text": "images"
+                          },
+                          {
+                            "type": "mrkdwn",
+                            "text": "Author: *${{ github.event.head_commit.author.username }}*"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "rich_text",
+                        "elements": [
+                          {
+                            "type": "rich_text_section",
+                            "elements": [
+                              {
+                                "type": "emoji",
+                                "name": "x"
+                              },
+                              {
+                                "type": "text",
+                                "text": " "
+                              },
+                              {
+                                "type": "emoji",
+                                "name": "x"
+                              },
+                              {
+                                "type": "text",
+                                "text": " "
+                              },
+                              {
+                                "type": "emoji",
+                                "name": "x"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+              env:
+                SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+                SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOk
+    
+    tag_release:
+      needs: [deployment_pipeline]
+      runs-on: ubuntu-20.04
+      permissions:
+        contents: write
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+        - name: Bumb version and push tag
+          if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ''), '#skip')}}
+          env: 
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            DEFAULT_BUMP: 'patch'
+          uses: anothrNick/github-tag-action@1.67.0
