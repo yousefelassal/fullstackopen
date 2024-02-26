@@ -381,3 +381,25 @@ Build script
     git tag v1.4-lw
     ```
     Lightweight tags create a new tag checksum and store it in the .git/ directory of the project's repo.
+
+- [Creating dependent jobs](https://docs.github.com/en/actions/using-workflows/about-workflows#creating-dependent-jobs) | GitHub Docs
+
+  By default, the jobs in your workflow all run in parallel at the same time. If you have a job that must only run after another job has completed, you can use the `needs` keyword to create this dependency.
+
+  ```yml
+  jobs:
+    setup:
+      runs-on: ubuntu-latest
+      steps:
+        - run: ./setup_server.sh
+    build:
+      needs: setup
+      runs-on: ubuntu-latest
+      steps:
+        - run: ./build_server.sh
+    test:
+      needs: build
+      runs-on: ubuntu-latest
+      steps:
+        - run: ./test_server.sh
+  ```
