@@ -413,3 +413,10 @@ Build script
   
   #### Example using an object filter
   `contains(github.event.issue.labels.*.name, 'bug')` returns `true` if the issue related to the event has a label "bug".
+
+- [`join( array, optionalSeparator )`](https://docs.github.com/en/actions/learn-github-actions/expressions#join) | GitHub Docs
+
+  The value for `array` can be an array or a string. All values in array are concatenated into a string. If you provide `optionalSeparator`, it is inserted between the concatenated values. Otherwise, the default separator `,` is used.
+  
+  #### Example of join
+  `join(github.event.issue.labels.*.name, ', ')` may return 'bug, help wanted'
