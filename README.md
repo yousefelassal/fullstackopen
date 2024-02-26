@@ -15,8 +15,8 @@
       <li>[X] Part 8: GraphQL</li>
       <li>[X] Part 9: TypeScript</li>
       <li>[X] Part 10: React Native</li>
-      <li>[ ] Part 11: CI/CD</li>
-      <li>Part 12: Containers</li>
+      <li>[X] Part 11: CI/CD</li>
+      <li>[ ] Part 12: Containers</li>
       <li>Part 13: Using relational databases</li>
     </ul>
   </div>
