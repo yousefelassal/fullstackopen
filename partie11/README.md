@@ -446,3 +446,36 @@ Build script
 - [Interactive Messaging](https://api.slack.com/messaging/interactivity) | Slack API
 - [Building with Block Kit](https://api.slack.com/block-kit/building) | Slack API
 - [Slack Block Kit Builder](https://api.slack.com/tools/block-kit-builder) | Slack API
+- [slack-send](https://github.com/marketplace/actions/slack-send) | GitHub Action
+
+  #### Setup
+  1. [Create a Slack App](https://api.slack.com/apps) for your workspace (alternatively use an existing app you have already created and installed).
+  2. Add the [incoming-webhook](https://api.slack.com/scopes/incoming-webhook) bot scope under **OAuth & Permissions**.
+  3. Install the app to your workspace (you will select a channel to notify).
+  4. Activate and create a new webhook under **Incoming Webhooks**.
+  5. Copy the Webhook URL from the Webhook you just generated add it as a secret in your repo settings named `SLACK_WEBHOOK_URL`.
+
+  #### Usage
+  ```yml
+  - name: Send custom JSON data to Slack workflow
+    id: slack
+    uses: slackapi/slack-github-action@v1.25.0
+    with:
+      # For posting a rich message using Block Kit
+      payload: |
+        {
+          "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+          "blocks": [
+            {
+              "type": "section",
+              "text": {
+                "type": "mrkdwn",
+                "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+              }
+            }
+          ]
+        }
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+  ```
