@@ -403,3 +403,13 @@ Build script
       steps:
         - run: ./test_server.sh
   ```
+
+- [`contains( search, item )`](https://docs.github.com/en/actions/learn-github-actions/expressions#contains) | GitHub Docs
+
+  Returns `true` if `search` contains `item`. If `search` is an array, this function returns `true` if the `item` is an element in the array. If `search` is a string, this function returns `true` if the `item` is a substring of `search`. This function is not case sensitive.
+  
+  #### Example using a string
+  `contains('Hello world', 'llo')` returns `true`.
+  
+  #### Example using an object filter
+  `contains(github.event.issue.labels.*.name, 'bug')` returns `true` if the issue related to the event has a label "bug".
