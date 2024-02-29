@@ -58,3 +58,26 @@
   user@hal9000:~/example$ head -n 1 example.txt
   i am
   ```
+
+  ---
+
+  #### grep (search globally for a regular expression and print)
+  filter out specific lines from a file based on some criteria. By default grep returns all the lines which contain the exact string given as an argument.
+  ```bash
+  user@hal9000:~/example$ cat diary.txt
+  October 6th
+  
+  Dear diary,
+  
+  I can't wait to tell you all my secrets. 
+  
+  Today was a good day. I was appointed the secretary of my student association.
+  
+  I won't be secretive, I'm so happy!
+  
+  I'll write again soon.
+  user@hal9000:~/example$ grep "secret" diary.txt 
+  I can't wait to tell you all my secrets. 
+  Today was a good day. I was appointed the secretary of my student association.
+  I won't be secretive, I'm so happy!
+  ```
