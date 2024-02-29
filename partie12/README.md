@@ -8,6 +8,8 @@
   ```
   copies the file `example.txt` as a file called `example2.txt` in the current folder.
 
+  ---
+
   #### `mv` (move)
   ```bash
   mv exmple.txt example.txt
@@ -22,14 +24,22 @@
   ```
   renames the file `exmple.txt` from the current folder to `example.txt` and moves it to the home folder.
 
+  ---
+
   #### `rm` (remove)
   ```bash
   rm example.txt
   ```
   deletes `example.txt`
 
+  ---
+
   #### Wild Cards
   ```bash
   mv *.txt example/
   ```
   moves all the files in the current directory ending with `.txt` to a folder caller example
+
+  ---
+
+  
