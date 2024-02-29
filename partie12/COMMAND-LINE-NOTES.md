@@ -90,3 +90,18 @@
   ```
 
   Large outputs should be written to files in order to access them fully. This can be done with the operator >, which takes the name of the file to be written as an argument. For example ls > listing.txt moves the file listing to a file called “listing.txt”, creating the file if it doesn’t already exist.
+
+  ```bash
+  user@hal9000:~/example$ ls 
+  Applications	Library		      Pictures	      kissakuvia
+  Desktop		    Linus_Torvalds	Public          script.sh
+  Documents	    Movies	        Downloads	Music
+  user@hal9000:~/example$ ls | grep Do
+  Documents
+  Downloads
+  user@hal9000:~/example$ ls > listing.txt
+  user@hal9000:~/example$ grep Do listing.txt 
+  Documents
+  Downloads
+  user@hal9000:~/example$
+  ```
