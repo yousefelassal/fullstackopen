@@ -81,3 +81,12 @@
   Today was a good day. I was appointed the secretary of my student association.
   I won't be secretive, I'm so happy!
   ```
+
+  The true power of tools like `grep` comes out when it is paired with other commands. The output of another command can be passed on to another command with the operator `|`, usually called _the pipe_. With the pipe you can do more complicated operations which require several programs with just one line.
+  ```bash
+  user@hal9000:~/example$ ls
+  example.txt note2.txt note.txt
+  user@hal9000:~/example$ ls | grep note
+  note2.txt
+  note.txt
+  ```
