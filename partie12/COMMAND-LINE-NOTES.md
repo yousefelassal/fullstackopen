@@ -1,5 +1,11 @@
 # [The Command Line](https://tkt-lapio.github.io/command-line/)
 
+  ### `mkdir` (make directory)
+  ```bash
+  mkdir -p test/example
+  ```
+  `-p` will recursively create any missing folders in the path you provide.
+  
   ### `cp` (copy)
   ```bash
   cp example.txt example2.txt
