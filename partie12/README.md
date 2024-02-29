@@ -27,3 +27,9 @@
   rm example.txt
   ```
   deletes `example.txt`
+
+  #### Wild Cards
+  ```bash
+  mv *.txt example/
+  ```
+  moves all the files in the current directory ending with `.txt` to a folder caller example
