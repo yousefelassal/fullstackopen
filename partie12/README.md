@@ -2,7 +2,7 @@
 
 - [The Command Line](https://tkt-lapio.github.io/command-line/) | FSO
 
-  #### `cp` (**c**o**p**y)
+  #### `cp` (copy)
   ```bash
   cp example.txt example2.txt
   ```
@@ -50,3 +50,11 @@
   the example file
   ```
   prints out the contents of a text file
+
+  Using `head` or `tail` one can print only a specific amount of lines from the beginning or end of a file. The amount of lines printed is given to a parameter for the flag `-n`.
+  ```bash  
+  user@hal9000:~/example$ tail -n 1 example.txt
+  the example file
+  user@hal9000:~/example$ head -n 1 example.txt
+  i am
+  ```
