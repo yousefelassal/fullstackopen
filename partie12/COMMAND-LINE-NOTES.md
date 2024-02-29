@@ -105,3 +105,8 @@
   Downloads
   user@hal9000:~/example$
   ```
+  The operator `>` overwrites the contents of the file with the given text and `>>` appends them to a new line, not affecting the old contents.
+
+  ---
+
+  
