@@ -2,7 +2,7 @@
 
 - [The Command Line](https://tkt-lapio.github.io/command-line/) | FSO
 
-  #### `cp`
+  #### `cp` (**c**o**p**y)
   ```
   cp example.txt example2.txt
   ```
