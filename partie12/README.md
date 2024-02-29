@@ -90,3 +90,5 @@
   note2.txt
   note.txt
   ```
+
+  Large outputs should be written to files in order to access them fully. This can be done with the operator >, which takes the name of the file to be written as an argument. For example ls > listing.txt moves the file listing to a file called “listing.txt”, creating the file if it doesn’t already exist.
