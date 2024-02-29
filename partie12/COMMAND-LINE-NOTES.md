@@ -5,6 +5,8 @@
   mkdir -p test/example
   ```
   `-p` will recursively create any missing folders in the path you provide.
+
+  ---
   
   ### `cp` (copy)
   ```bash
