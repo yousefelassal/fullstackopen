@@ -21,3 +21,9 @@
   mv exmple.txt ~/example.txt
   ```
   renames the file `exmple.txt` from the current folder to `example.txt` and moves it to the home folder.
+
+  #### `rm` (remove)
+  ```bash
+  rm example.txt
+  ```
+  deletes `example.txt`
