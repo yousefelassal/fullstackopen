@@ -117,4 +117,9 @@
 
   ---
 
-  
+  ### vim
+  ```bash
+  vim example.txt
+  ```
+  edit file with insert mode, 
+  `:wq` write and quit
