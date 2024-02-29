@@ -42,4 +42,11 @@
 
   ---
 
-  
+  #### `cat`
+  ```bash
+  user@hal9000:~/esimerkki$ cat example.txt
+  i am 
+  inside
+  the example file
+  ```
+  prints out the contents of a text file
