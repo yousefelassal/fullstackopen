@@ -48,6 +48,14 @@
 
   ---
 
+  ### `du` (disk usage)
+  ```sh
+  du -h *
+  ```
+  displays the size of each file in the dir in a human readable way `-h`
+
+  ---
+
   ### `cat`
   ```bash
   user@hal9000:~/esimerkki$ cat example.txt
