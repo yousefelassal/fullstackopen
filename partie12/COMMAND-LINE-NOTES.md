@@ -1,5 +1,13 @@
 # [The Command Line](https://tkt-lapio.github.io/command-line/)
 
+  ### `mkdir` (make directory)
+  ```bash
+  mkdir -p test/example
+  ```
+  `-p` will recursively create any missing folders in the path you provide.
+
+  ---
+  
   ### `cp` (copy)
   ```bash
   cp example.txt example2.txt
@@ -90,3 +98,132 @@
   ```
 
   Large outputs should be written to files in order to access them fully. This can be done with the operator >, which takes the name of the file to be written as an argument. For example ls > listing.txt moves the file listing to a file called “listing.txt”, creating the file if it doesn’t already exist.
+
+  ```bash
+  user@hal9000:~/example$ ls 
+  Applications	Library		      Pictures	      kissakuvia
+  Desktop		    Linus_Torvalds	Public          script.sh
+  Documents	    Movies	        Downloads	Music
+  user@hal9000:~/example$ ls | grep Do
+  Documents
+  Downloads
+  user@hal9000:~/example$ ls > listing.txt
+  user@hal9000:~/example$ grep Do listing.txt 
+  Documents
+  Downloads
+  user@hal9000:~/example$
+  ```
+  The operator `>` overwrites the contents of the file with the given text and `>>` appends them to a new line, not affecting the old contents.
+
+  ---
+
+  ### Permissions
+
+  The permissions and ownerships of a file can be seen with the flag `-l` of the command `ls`.
+  ```
+  user@hal9000:~/example$ ls -l
+  total 8
+  -rw-r--r-- 1 user user 16 Jun 31 21:41 example.txt
+  -rwxr--r-- 1 user user 0 Jun 14 17:25 notes.txt
+  -r--r--r-- 1 user user 0 Jun 3 23:13 article.txt
+  drwx------ 2 user user 130 Jun 14 17:54 diart
+  ```
+  The first letter is either `-` or `d`, which tells if the resource is a file `-` or a directory `d`. There are also other types of files, but these are the most common. The following nine symbols are reserved for the permissions themselves. The permissions are always marked in the same order: read (r), write (w) and execute (x). The first three symbols describe the permissions of the owner. If there is a dash `-` at the place of a specific permission, the permission is missing, i.e. it has not been given.
+  <div align="center">
+    
+  ![permission-exp](https://github.com/yousefelassal/fullstackopen/assets/76617202/8daabe7e-8194-427e-b4ae-83d673a4a614)
+
+  </div>
+
+  #### `chmod` (change mode).
+  alter permissions.
+
+  The symbols desribing the permissions is built using the following components:
+  
+  - `r` = read permission
+  - `w` = write permission
+  - `x` = execute permission
+  - `u` = owner of the file
+  - `g` = users belonging to the group of the file
+  - `o` = all other users
+  If the recipient of permissions is not defined, the permissions are given to all user groups (owner, group and others).
+  
+  The dash symbol `-` removes a permission and the plus sign `+` gives a permission.
+  
+  ```
+  chmod u+x example.txt
+  ```
+  gives the owner of the file execute permission.
+  
+  ```
+  chmod o-w example.txt
+  ```
+  removes other users the write permission.
+  
+  ```
+  chmod go+r example.txt
+  ```
+  gives the group of the file and other users the permission to read the file.
+  
+  ```
+  user@hal9000:~/example$ chmod -r example.txt
+  user@hal9000:~/example$ cat example.txt
+  cat: example.txt: Permission denied
+  user@hal9000:~/example$ chmod +r example.txt
+  user@hal9000:~/example$ cat example.txt
+  paras
+  example
+  user@hal9000:~/example$ chmod o+w example.txt
+  user@hal9000:~/example$ ls -l
+  total 8
+  -rw-r--rw- 1 user user 16 Jun 31 21:41 example.txt
+  -rw-r--r-- 1 user user 0 Jun 14 17:25 note2.txt
+  -rw-r--r-- 1 user user 0 Jun 3 23:13 note.txt
+  drw-r--r-- 1 user user 130 Jun 14 17:54 diary
+  ```
+
+  ---
+
+  - `watch`: repeat a command in certain intervals
+  - `&&` tai `;`: chain several commands
+  - `alias`: define an alias for a command. For example you can define a shorter version for a long and complicated command.
+  - `&`: ending a command with this will make sure the command line will not be locked as the process will be moved to the background
+  - `history`: view your command history
+  - `Ctrl` + `r`: find commands you have run previously
+
+  ---
+
+  ### vim
+  ```bash
+  vim example.txt
+  ```
+  edit file with insert mode, 
+  `:wq` write and quit
+
+  #### Opening Multiple Windows
+  launch Vim on split horizontal and vertical windows with the `-o` and `-O` options, respectively.
+  ```
+  vim -o2 example.txt example2.txt
+  ```
+
+  **Switching Focus**: Press `Ctrl` + `W` followed by either `h`, `j`, `k`, or `l` to switch focus between the split screens.
+
+  ```
+  vim -O *
+  ```
+  opens all files in the current dir in vertical screens.
+
+  The most basic motion unit is moving one character left, down, up, and right.
+  ```
+  h   Left
+  j   Down                  k
+                          h   l
+  k   Up                    j
+  l   Right
+  ```
+
+  ```
+  w     Move forward to the beginning of the next word
+  e     Move forward one word to the end of the next word
+  b     Move backward to beginning of the previous word
+  ```
