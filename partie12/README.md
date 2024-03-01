@@ -18,3 +18,4 @@ container run IMAGE-NAME
 ```
 
 An image name is in the following format: `registry/organisation/image:tag`
+
