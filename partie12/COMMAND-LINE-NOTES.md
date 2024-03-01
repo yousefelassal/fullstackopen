@@ -124,6 +124,12 @@
   edit file with insert mode, 
   `:wq` write and quit
 
+  #### Opening Multiple Windows
+  launch Vim on split horizontal and vertical windows with the `-o` and `-O` options, respectively.
+  ```
+  vim -o2 example.txt example2.txt
+  ```
+
   The most basic motion unit is moving one character left, down, up, and right.
   ```
   h   Left
