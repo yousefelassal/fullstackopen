@@ -117,6 +117,24 @@
 
   ---
 
+  ### Permissions
+
+  The permissions and ownerships of a file can be seen with the flag `-l` of the command `ls`.
+  ```
+  user@hal9000:~/example$ ls -l
+  total 8
+  -rw-r--r-- 1 user user 16 Jun 31 21:41 example.txt
+  -rwxr--r-- 1 user user 0 Jun 14 17:25 notes.txt
+  -r--r--r-- 1 user user 0 Jun 3 23:13 article.txt
+  drwx------ 2 user user 130 Jun 14 17:54 diart
+  ```
+  The first letter is either `-` or `d`, which tells if the resource is a file `-` or a directory `d`. There are also other types of files, but these are the most common. The following nine symbols are reserved for the permissions themselves. The permissions are always marked in the same order: read (r), write (w) and execute (x). The first three symbols describe the permissions of the owner. If there is a dash `-` at the place of a specific permission, the permission is missing, i.e. it has not been given.
+  
+  ![permission-exp](https://github.com/yousefelassal/fullstackopen/assets/76617202/8daabe7e-8194-427e-b4ae-83d673a4a614)
+
+  
+  ---
+
   ### vim
   ```bash
   vim example.txt
