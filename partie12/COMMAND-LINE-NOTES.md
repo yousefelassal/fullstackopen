@@ -123,3 +123,11 @@
   ```
   edit file with insert mode, 
   `:wq` write and quit
+
+  ```
+  h   Left
+  j   Down                  k
+                          h   l
+  k   Up                    j
+  l   Right
+  ```
