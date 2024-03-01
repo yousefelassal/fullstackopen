@@ -124,10 +124,11 @@
   edit file with insert mode, 
   `:wq` write and quit
 
-  ```
-  h   Left
-  j   Down                  k
-                          h   l
-  k   Up                    j
-  l   Right
-  ```
+  - The most basic motion unit is moving one character left, down, up, and right.
+    ```
+    h   Left
+    j   Down                  k
+                            h   l
+    k   Up                    j
+    l   Right
+    ```
