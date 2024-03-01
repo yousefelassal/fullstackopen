@@ -12,7 +12,9 @@ Cooking metaphor:
 - Image is pre-cooked, frozen treat.
 - Container is the delicious treat.
 
+to tell Docker to create a container from an image. 
 ```
 container run IMAGE-NAME
 ```
-tells Docker to create a container from an image. 
+
+An image name is in the following format: `registry/organisation/image:tag`
