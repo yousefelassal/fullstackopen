@@ -130,6 +130,13 @@
   vim -o2 example.txt example2.txt
   ```
 
+  **Switching Focus**: Press `Ctrl` + `W` followed by either `h`, `j`, `k`, or `l` to switch focus between the split screens.
+
+  ```
+  vim -O *
+  ```
+  opens all files in the current dir in vertical screens.
+
   The most basic motion unit is moving one character left, down, up, and right.
   ```
   h   Left
