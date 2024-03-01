@@ -132,3 +132,9 @@
   k   Up                    j
   l   Right
   ```
+
+  ```
+  w     Move forward to the beginning of the next word
+  e     Move forward one word to the end of the next word
+  b     Move backward to beginning of the previous word
+  ```
