@@ -129,8 +129,11 @@
   drwx------ 2 user user 130 Jun 14 17:54 diart
   ```
   The first letter is either `-` or `d`, which tells if the resource is a file `-` or a directory `d`. There are also other types of files, but these are the most common. The following nine symbols are reserved for the permissions themselves. The permissions are always marked in the same order: read (r), write (w) and execute (x). The first three symbols describe the permissions of the owner. If there is a dash `-` at the place of a specific permission, the permission is missing, i.e. it has not been given.
-  
+  <div align="center">
+    
   ![permission-exp](https://github.com/yousefelassal/fullstackopen/assets/76617202/8daabe7e-8194-427e-b4ae-83d673a4a614)
+
+  </div>
 
   
   ---
