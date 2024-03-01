@@ -11,3 +11,8 @@ Cooking metaphor:
 
 - Image is pre-cooked, frozen treat.
 - Container is the delicious treat.
+
+```
+container run IMAGE-NAME
+```
+tells Docker to create a container from an image. 
