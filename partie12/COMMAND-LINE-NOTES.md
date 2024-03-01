@@ -135,7 +135,53 @@
 
   </div>
 
+  #### `chmod` (change mode).
+  alter permissions.
+
+  The symbols desribing the permissions is built using the following components:
   
+  - `r` = read permission
+  - `w` = write permission
+  - `x` = execute permission
+  - `u` = owner of the file
+  - `g` = users belonging to the group of the file
+  - `o` = all other users
+  If the recipient of permissions is not defined, the permissions are given to all user groups (owner, group and others).
+  
+  The dash symbol `-` removes a permission and the plus sign `+` gives a permission.
+  
+  ```
+  chmod u+x example.txt
+  ```
+  gives the owner of the file execute permission.
+  
+  ```
+  chmod o-w example.txt
+  ```
+  removes other users the write permission.
+  
+  ```
+  chmod go+r example.txt
+  ```
+  gives the group of the file and other users the permission to read the file.
+  
+  ```
+  user@hal9000:~/example$ chmod -r example.txt
+  user@hal9000:~/example$ cat example.txt
+  cat: example.txt: Permission denied
+  user@hal9000:~/example$ chmod +r example.txt
+  user@hal9000:~/example$ cat example.txt
+  paras
+  example
+  user@hal9000:~/example$ chmod o+w example.txt
+  user@hal9000:~/example$ ls -l
+  total 8
+  -rw-r--rw- 1 user user 16 Jun 31 21:41 example.txt
+  -rw-r--r-- 1 user user 0 Jun 14 17:25 note2.txt
+  -rw-r--r-- 1 user user 0 Jun 3 23:13 note.txt
+  drw-r--r-- 1 user user 130 Jun 14 17:54 diary
+  ```
+
   ---
 
   ### vim
