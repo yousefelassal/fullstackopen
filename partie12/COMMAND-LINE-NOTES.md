@@ -245,3 +245,17 @@
   - `{string}`: The replacement text.
   - `[flags]`: Optional. Flags modify the behavior (e.g., g for global replacement).
   - `[count]`: Optional. A positive integer that multiplies the command (useful for multiple replacements).
+
+  #### selecting text
+  - `v` (lower case v) begins regular Visual mode, and works similar to selecting text with a mouse. Use `h` and `l` to expand the selection left and right to include more words, and use `j` and `k` to expand the selection to the lines below and above.
+  - `V` (upper case v) begins linewise visual mode. This selects entire lines of text at a time. Use `j` and `k` to expand the selection up and down.
+  - `Ctrl`+`v`(lower case v) enters block visual mode. This selects text in a block format, allowing you to select parts of multiple lines without including the entire line. Use `hjkl` as usual.
+
+  Once you have selected the text you want, you can use all sorts of commands on them. Some of the more useful ones are:
+  
+  - `Esc`ape visual mode
+  - `d`elete the text
+  - `y`ank (copy) the text
+  - `p`aste your clipboard onto the text, replacing it
+  - `c`hange the text, which deletes it and sets your cursor for typing
+  - `r`eplace the text with the next character you type
