@@ -235,3 +235,13 @@
   e     Move forward one word to the end of the next word
   b     Move backward to beginning of the previous word
   ```
+  #### Basic Find and Replace:
+  The general form of the substitute command is as follows:
+  ```vim
+  :[range]s/{pattern}/{string}/[flags] [count]
+  ```
+  - `[range]`: Optional. Specifies the range of lines where the search and replace should occur. If omitted, it operates only on the current line.
+  - `{pattern}`: The text you want to search for.
+  - `{string}`: The replacement text.
+  - `[flags]`: Optional. Flags modify the behavior (e.g., g for global replacement).
+  - `[count]`: Optional. A positive integer that multiplies the command (useful for multiple replacements).
