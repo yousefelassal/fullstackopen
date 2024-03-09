@@ -33,6 +33,8 @@ b8548b9faec3   ubuntu    "bash"    3 minutes ago    Exited (0) 6 seconds ago    
 ```
 > `docker container ls` has also a shorter form `docker ps`
 
+---
+
 force stop container
 ```bash
 docker kill CONTAINER-ID-OR-CONTAINER-NAME
@@ -45,8 +47,17 @@ create a new image from the container.
   docker commit CONTAINER-ID-OR-CONTAINER-NAME NEW-IMAGE-NAME
   ```
 
+---
+
 `container run` accepts `--name` flag that we can use to give a name for the container.
   ```bash
   $ docker container run -it --name hello-node node:21 bash
   ```
   will create a new node image
+
+---
+
+`container cp` command to copy file from your own machine to the container.
+```bash
+$ docker container cp ./index.js hello-node:/usr/src/app/index.js
+```
