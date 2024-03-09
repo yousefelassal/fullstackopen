@@ -39,3 +39,8 @@ docker kill CONTAINER-ID-OR-CONTAINER-NAME
 ```
 
 - installing [nodesource](https://github.com/nodesource/distributions)
+
+create a new image from the container. The command
+```bash
+docker commit CONTAINER-ID-OR-CONTAINER-NAME NEW-IMAGE-NAME
+```
