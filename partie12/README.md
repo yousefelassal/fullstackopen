@@ -32,3 +32,8 @@ CONTAINER ID   IMAGE     COMMAND   CREATED          STATUS                      
 b8548b9faec3   ubuntu    "bash"    3 minutes ago    Exited (0) 6 seconds ago          hopeful_clarkecopy
 ```
 > `docker container ls` has also a shorter form `docker ps`
+
+force stop container
+```bash
+docker kill CONTAINER-ID-OR-CONTAINER-NAME
+```
