@@ -37,3 +37,5 @@ force stop container
 ```bash
 docker kill CONTAINER-ID-OR-CONTAINER-NAME
 ```
+
+- installing [nodesource](https://github.com/nodesource/distributions)
