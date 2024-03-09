@@ -41,12 +41,12 @@ docker kill CONTAINER-ID-OR-CONTAINER-NAME
 - installing [nodesource](https://github.com/nodesource/distributions)
 
 create a new image from the container.
-```bash
-docker commit CONTAINER-ID-OR-CONTAINER-NAME NEW-IMAGE-NAME
-```
+  ```bash
+  docker commit CONTAINER-ID-OR-CONTAINER-NAME NEW-IMAGE-NAME
+  ```
 
 `container run` accepts `--name` flag that we can use to give a name for the container.
-```bash
-$ docker container run -it --name hello-node node:21 bash
-```
-will create a new node image
+  ```bash
+  $ docker container run -it --name hello-node node:21 bash
+  ```
+  will create a new node image
