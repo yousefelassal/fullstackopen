@@ -61,3 +61,5 @@ create a new image from the container.
 ```bash
 $ docker container cp ./index.js hello-node:/usr/src/app/index.js
 ```
+
+### b Building and configuring environments
