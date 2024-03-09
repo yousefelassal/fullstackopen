@@ -1,0 +1,6 @@
+docker start -i dazzling_galileo
+apt-get update
+apt-get -y install vim
+vim usr/src/app/index.js
+:wq
+quit
