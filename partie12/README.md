@@ -71,3 +71,16 @@ $ docker container cp ./index.js hello-node:/usr/src/app/index.js
 ```
 
 ### b Building and configuring environments
+
+#### Dockerfile
+Dockerfile is a simple text file that contains all of the instructions for creating an image.
+
+```Dockerfile
+FROM node:21
+
+WORKDIR /usr/src/app
+
+COPY ./index.js ./index.js
+
+CMD node index.js
+```
