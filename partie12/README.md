@@ -96,3 +96,10 @@ CMD node index.js
 $ docker build -t fs-hello-world . 
 [+] Building 3.9s (8/8) FINISHED
 ```
+
+---
+
+```bash
+docker run -p 3123:3000 express-server
+```
+The `-p` flag will inform Docker that a port from the host machine should be opened and directed to a port in the container. The format for is `-p host-port:application-port`.
