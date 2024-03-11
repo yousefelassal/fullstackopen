@@ -1,0 +1,15 @@
+Script started on 2024-03-11 12:48:02+02:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="124" LINES="31"]
+[?2004h]0;yousef@DESKTOP-IS5HK0B: ~/fullstackopen[01;32myousef@DESKTOP-IS5HK0B[00m:[01;34m~/fullstackopen[00m$ exitcat typescript ls[Kcat typescript exit[K[Kdockr[Ker run -it ubuntu bash
+[?2004l[?2004h]0;root@3833a66e565b: /root@3833a66e565b:/# mkdir /usr/src/app -p
+[?2004l[?2004h]0;root@3833a66e565b: /root@3833a66e565b:/# touch /usr/src/app/index.js
+[?2004l[?2004h]0;root@3833a66e565b: /root@3833a66e565b:/# [Kexit
+[?2004lexit
+[?2004h]0;yousef@DESKTOP-IS5HK0B: ~/fullstackopen[01;32myousef@DESKTOP-IS5HK0B[00m:[01;34m~/fullstackopen[00m$ cat typescript | exercise12_2.txt[C[C[C[C[C[C[C[C[C[C[C[C[1P exercise12_2.txt> exercise12_2.txt[C
+[?2004l[?2004h]0;yousef@DESKTOP-IS5HK0B: ~/fullstackopen[01;32myousef@DESKTOP-IS5HK0B[00m:[01;34m~/fullstackopen[00m$ ls
+[?2004lREADME.md         [0m[01;34mpart0[0m  [01;34mpart2[0m  [01;34mpart4[0m  [01;34mpart6[0m  [01;34mpart8[0m  [01;34mpartie10[0m  [01;34mpartie12[0m  typescript
+exercise12_2.txt  [01;34mpart1[0m  [01;34mpart3[0m  [01;34mpart5[0m  [01;34mpart7[0m  [01;34mpart9[0m  [01;34mpartie11[0m  [01;34mpartie13[0m
+[?2004h]0;yousef@DESKTOP-IS5HK0B: ~/fullstackopen[01;32myousef@DESKTOP-IS5HK0B[00m:[01;34m~/fullstackopen[00m$ cat exercise12_2.txt 
+[?2004l[?2004h]0;yousef@DESKTOP-IS5HK0B: ~/fullstackopen[01;32myousef@DESKTOP-IS5HK0B[00m:[01;34m~/fullstackopen[00m$ exit
+[?2004lexit
+
+Script done on 2024-03-11 12:49:45+02:00 [COMMAND_EXIT_CODE="0"]
