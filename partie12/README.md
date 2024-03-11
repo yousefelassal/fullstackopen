@@ -87,11 +87,11 @@ CMD node index.js
 - `FROM` instruction will tell Docker that the base for the image should be `node:21`.
 - `COPY` instruction will copy the file _index.js_ from the host machine to the file with the same name in the image.
 - `CMD` instruction tells what happens when `docker run` is used.
-- `WORKDIR` instruction was slipped in to ensure we don't interfere with the contents of the image. It will guarantee all of the following commands will have _/usr/src/app_ set as the working directory. If the directory doesn't exist in the base image, it will be automatically created.
+- `WORKDIR` ensures we don't interfere with the contents of the image. It will guarantee all of the following commands will have _/usr/src/app_ set as the working directory. If the directory doesn't exist in the base image, it will be automatically created.
 
 ---
 
-`docker build` to build an image based on the Dockerfile. Let's spice up the command with one additional flag: `-t`, this will help us name the image:
+`docker build` to build an image based on the Dockerfile. flag: `-t`, this will help us name the image:
 ```bash
 $ docker build -t fs-hello-world . 
 [+] Building 3.9s (8/8) FINISHED
