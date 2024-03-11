@@ -84,3 +84,7 @@ COPY ./index.js ./index.js
 
 CMD node index.js
 ```
+- `FROM` instruction will tell Docker that the base for the image should be `node:21`.
+- `COPY` instruction will copy the file _index.js_ from the host machine to the file with the same name in the image.
+- `CMD` instruction tells what happens when `docker run` is used.
+- `WORKDIR` instruction was slipped in to ensure we don't interfere with the contents of the image. It will guarantee all of the following commands will have _/usr/src/app_ set as the working directory. If the directory doesn't exist in the base image, it will be automatically created.
