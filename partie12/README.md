@@ -35,6 +35,14 @@ b8548b9faec3   ubuntu    "bash"    3 minutes ago    Exited (0) 6 seconds ago    
 
 ---
 
+start a container
+```bash
+docker start -i hopeful_clarkecopy
+```
+`-i` will start the container in interactive mode
+
+---
+
 force stop container
 ```bash
 docker kill CONTAINER-ID-OR-CONTAINER-NAME
