@@ -112,3 +112,5 @@ The `-p` flag will inform Docker that a port from the host machine should be ope
 - `install` may install a different version of a dependency if you have `^` or `~` in the version of the dependency.
 - `ci` will delete the _node_modules_ folder before installing anything.
 - `ci` will follow the _package-lock.json_ and does not alter any files.
+
+we can use `npm ci --omit=dev` to not waste time installing development dependencies.
