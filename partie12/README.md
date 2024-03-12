@@ -116,3 +116,22 @@ The `-p` flag will inform Docker that a port from the host machine should be ope
 we can use `npm ci --omit=dev` to not waste time installing development dependencies.
 
 - [best practices for Node/Express containerization](https://snyk.io/blog/10-best-practices-to-containerize-nodejs-web-applications-with-docker/) 
+
+---
+
+#### [Docker compose](https://docs.docker.com/compose/)
+```yml
+version: '3.8'            # Version 3.8 is quite new and should work
+
+services:
+  app:                    # The name of the service, can be anything
+    image: express-server # Declares which image to use
+    build: .              # Declares where to build if image is not found
+    ports:                # Declares the ports to publish
+      - 3000:3000
+```
+
+- build and run the application `docker compose up`.
+- if we want to rebuild the images `docker compose up --build` .
+- run the application in the background with docker compose up `-d (-d for detached)`
+- close it with `docker compose down`.
