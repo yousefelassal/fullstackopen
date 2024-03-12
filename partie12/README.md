@@ -114,3 +114,5 @@ The `-p` flag will inform Docker that a port from the host machine should be ope
 - `ci` will follow the _package-lock.json_ and does not alter any files.
 
 we can use `npm ci --omit=dev` to not waste time installing development dependencies.
+
+- [best practices for Node/Express containerization](https://snyk.io/blog/10-best-practices-to-containerize-nodejs-web-applications-with-docker/) 
