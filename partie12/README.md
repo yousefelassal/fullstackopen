@@ -103,3 +103,12 @@ $ docker build -t fs-hello-world .
 docker run -p 3123:3000 express-server
 ```
 The `-p` flag will inform Docker that a port from the host machine should be opened and directed to a port in the container. The format for is `-p host-port:application-port`.
+
+---
+
+#### Differences between `npm ci` and `npm install`:
+
+- `install` may update the _package-lock.json_.
+- `install` may install a different version of a dependency if you have `^` or `~` in the version of the dependency.
+- `ci` will delete the _node_modules_ folder before installing anything.
+- `ci` will follow the _package-lock.json_ and does not alter any files.
