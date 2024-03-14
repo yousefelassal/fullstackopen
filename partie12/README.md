@@ -181,6 +181,20 @@ docker compose -f docker-compose.dev.yml logs -f
 
 Bind mount is the act of binding a file (or directory) on the host machine to a file (or directory) in the container. A bind mount is done by adding a `-v` flag with container run. The syntax is `-v FILE-IN-HOST:FILE-IN-CONTAINER`
 
+```yml
+  mongo:
+    image: mongo
+    ports:
+     - 3456:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: the_database
+    volumes: 
+      - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+```
+
+The result of the bind mount is that the file _mongo-init.js_ in the mongo folder of the host machine is the same as the _mongo-init.js_ file in the container's _/docker-entrypoint-initdb.d_ directory. **Changes to either file will be available in the other**. We don't need to make any changes during runtime. But this will be the key to software development in containers.
 ---
 
 #### [Volumes](https://docs.docker.com/storage/volumes/)
