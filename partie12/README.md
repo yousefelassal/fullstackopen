@@ -177,6 +177,12 @@ docker compose -f docker-compose.dev.yml logs -f
 
 ---
 
+#### [Bind mounts](https://docs.docker.com/storage/bind-mounts/)
+
+Bind mount is the act of binding a file (or directory) on the host machine to a file (or directory) in the container. A bind mount is done by adding a `-v` flag with container run. The syntax is `-v FILE-IN-HOST:FILE-IN-CONTAINER`
+
+---
+
 #### [Volumes](https://docs.docker.com/storage/volumes/)
 
 ![qou9xu7r](https://github.com/yousefelassal/fullstackopen/assets/76617202/e0a142a4-0651-465c-84d1-d6d218816eaa)
