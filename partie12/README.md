@@ -195,6 +195,7 @@ Bind mount is the act of binding a file (or directory) on the host machine to a 
 ```
 
 The result of the bind mount is that the file _mongo-init.js_ in the mongo folder of the host machine is the same as the _mongo-init.js_ file in the container's _/docker-entrypoint-initdb.d_ directory. **Changes to either file will be available in the other**. We don't need to make any changes during runtime. But this will be the key to software development in containers.
+
 ---
 
 #### [Volumes](https://docs.docker.com/storage/volumes/)
