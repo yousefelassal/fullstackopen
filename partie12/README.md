@@ -170,3 +170,7 @@ docker compose -f docker-compose.dev.yml up
 docker compose -f docker-compose.dev.yml up -d
 ```
 
+`-f` will ensure we follow the output logs.
+```bash
+docker compose -f docker-compose.dev.yml logs -f
+```
