@@ -165,3 +165,8 @@ The last environment variable `MONGO_INITDB_DATABASE` will tell MongoDB to creat
 docker compose -f docker-compose.dev.yml up
 ```
 
+`-d` flag will run it in the background.
+```docker
+docker compose -f docker-compose.dev.yml up -d
+```
+
