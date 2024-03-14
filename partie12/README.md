@@ -166,7 +166,7 @@ docker compose -f docker-compose.dev.yml up
 ```
 
 `-d` flag will run it in the background.
-```docker
+```bash
 docker compose -f docker-compose.dev.yml up -d
 ```
 
