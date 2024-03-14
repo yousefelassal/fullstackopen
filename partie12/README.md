@@ -157,3 +157,11 @@ services:
 > These variables, used in conjunction, create a new user and set that user's password. This user is created in the admin authentication database and given the role of root, which is a "superuser" role.
 
 The last environment variable `MONGO_INITDB_DATABASE` will tell MongoDB to create a database with that name.
+
+---
+
+`-f` flag will specify a _file_ to run the Docker Compose command with e.g.
+```bash
+docker compose -f docker-compose.dev.yml up
+```
+
