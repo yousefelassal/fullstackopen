@@ -135,3 +135,25 @@ services:
 - if we want to rebuild the images `docker compose up --build` .
 - run the application in the background with docker compose up `-d (-d for detached)`
 - close it with `docker compose down`.
+
+---
+
+#### [MongoDB Image](https://hub.docker.com/_/mongo)
+
+```yml
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo
+    ports:
+      - 3456:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: the_database
+```
+
+> These variables, used in conjunction, create a new user and set that user's password. This user is created in the admin authentication database and given the role of root, which is a "superuser" role.
+
+The last environment variable `MONGO_INITDB_DATABASE` will tell MongoDB to create a database with that name.
