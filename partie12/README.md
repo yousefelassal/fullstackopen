@@ -344,7 +344,7 @@ console.log(bike);
 
 ---
 
-#### [redis-cli](https://redis.io/docs/connect/cli/) | Redis Docs
+#### [`redis-cli`](https://redis.io/docs/connect/cli/) | Redis Docs
 access it with docker
 ```bash
 docker exec -it CONTAINER-NAME bash
@@ -352,3 +352,8 @@ docker exec -it CONTAINER-NAME bash
 root@aykalam0777:/data# redis-cli
 ```
 
+##### [`KEYS`](https://redis.io/commands/keys/)
+```redis
+KEYS *
+```
+return all keys
