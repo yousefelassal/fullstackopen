@@ -341,3 +341,14 @@ console.log(bike);
 //   price: '4972'
 // }
 ```
+
+---
+
+#### [redis-cli](https://redis.io/docs/connect/cli/) | Redis Docs
+access it with docker
+```bash
+docker exec -it CONTAINER-NAME bash
+
+root@aykalam0777:/data# redis-cli
+```
+
