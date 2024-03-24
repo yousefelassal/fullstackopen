@@ -297,3 +297,15 @@ client.on('error', err => console.log('Redis Client Error', err));
 
 await client.connect();
 ```
+
+#### Store and retrieve data
+Redis stands for Remote Dictionary Server. You can use the same data types as in your local programming environment but on the server side within Redis.
+
+Similar to byte arrays, Redis strings store sequences of bytes, including text, serialized objects, counter values, and binary arrays. The following example shows you how to set and get a string value:
+
+```js
+await client.set('bike:1', 'Process 134');
+const value = await client.get('bike:1');
+console.log(value);
+// returns 'Process 134'
+```
