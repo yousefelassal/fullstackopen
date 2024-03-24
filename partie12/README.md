@@ -354,12 +354,18 @@ root@aykalam0777:/data# redis-cli
 
 ##### [`KEYS`](https://redis.io/commands/keys/)
 ```redis
-KEYS *
-
-"key"
-"key"
+redis> MSET firstname Jack lastname Stuntman age 35
+"OK"
+redis> KEYS *name*
+1) "lastname"
+2) "firstname"
+redis> KEYS a??
+1) "age"
+redis> KEYS *
+1) "age"
+2) "lastname"
+3) "firstname"
 ```
-return all keys
 
 ##### [`GET`](https://redis.io/commands/get/)
 ```redis
