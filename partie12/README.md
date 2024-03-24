@@ -263,3 +263,16 @@ CONTAINER ID   IMAGE     COMMAND  PORTS                  NAMES
 $ docker exec -it wonderful_ramanujan bash
 root@7edcb36aff08:/#
 ```
+
+---
+
+#### [Nginx](https://www.nginx.com/)
+create container in dispatch mode and expose port 8080
+```bash
+docker container run -d -p 8080:80 nginx
+```
+
+exec inside the running container and open bash, the html is serverd inside `/usr/share/nginx/html/`
+```bash
+root@7edcb36aff08:/ cd /usr/share/nginx/html/
+```
