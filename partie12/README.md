@@ -276,3 +276,16 @@ exec inside the running container and open bash, the html is serverd inside `/us
 ```bash
 root@7edcb36aff08:/ cd /usr/share/nginx/html/
 ```
+
+---
+
+#### [Redis](https://redis.io/docs/get-started/data-store/) | Redis Docs
+##### [Redis Image](https://hub.docker.com/_/redis) | Redis Docker Hub
+```yml
+services:
+  redis:
+    image: redis
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - ./redis_data:/data
+```
