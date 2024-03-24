@@ -301,11 +301,43 @@ await client.connect();
 #### Store and retrieve data
 Redis stands for Remote Dictionary Server. You can use the same data types as in your local programming environment but on the server side within Redis.
 
-Similar to byte arrays, Redis strings store sequences of bytes, including text, serialized objects, counter values, and binary arrays. The following example shows you how to set and get a string value:
 
 ```js
 await client.set('bike:1', 'Process 134');
 const value = await client.get('bike:1');
 console.log(value);
 // returns 'Process 134'
+```
+
+Hashes:
+
+```js
+const fieldsAdded = await client.hSet(
+    'bike:1',
+    {
+        model: 'Deimos',
+        brand: 'Ergonom',
+        type: 'Enduro bikes',
+        price: 4972,
+    },
+)
+console.log(`Number of fields were added: ${fieldsAdded}`);
+// Number of fields were added: 4
+
+const model = await client.hGet('bike:1', 'model');
+console.log(`Model: ${model}`);
+// Model: Deimos
+
+const price = await client.hGet('bike:1', 'price');
+console.log(`Price: ${price}`);
+// Price: 4972
+
+const bike = await client.hGetAll('bike:1');
+console.log(bike);
+// {
+//   model: 'Deimos',
+//   brand: 'Ergonom',
+//   type: 'Enduro bikes',
+//   price: '4972'
+// }
 ```
