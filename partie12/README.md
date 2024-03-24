@@ -386,3 +386,13 @@ redis> SET mykey "Hello"
 redis> GET mykey
 "Hello"
 ```
+
+##### [`DEL`](https://redis.io/commands/del/)
+```redis
+redis> SET key1 "Hello"
+"OK"
+redis> SET key2 "World"
+"OK"
+redis> DEL key1 key2 key3
+(integer) 2
+```
