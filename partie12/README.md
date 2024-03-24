@@ -249,3 +249,15 @@ $ docker volume inspect todo-backend_mongo_data
     }
 ]
 ```
+
+#### [`docker exec`](https://docs.docker.com/reference/cli/docker/container/exec/) | Docker Docs
+It can be used to jump right into a container when it's running.
+
+```bash
+$ docker container ls
+CONTAINER ID   IMAGE     COMMAND  PORTS                  NAMES
+7edcb36aff08   nginx     ...      0.0.0.0:8080->80/tcp   wonderful_ramanujan
+
+$ docker exec -it wonderful_ramanujan bash
+root@7edcb36aff08:/#
+```
