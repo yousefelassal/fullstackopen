@@ -355,5 +355,18 @@ root@aykalam0777:/data# redis-cli
 ##### [`KEYS`](https://redis.io/commands/keys/)
 ```redis
 KEYS *
+
+"key"
+"key"
 ```
 return all keys
+
+##### [`GET`](https://redis.io/commands/get/)
+```redis
+redis> GET nonexisting
+(nil)
+redis> SET mykey "Hello"
+"OK"
+redis> GET mykey
+"Hello"
+```
