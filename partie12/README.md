@@ -367,6 +367,16 @@ redis> KEYS *
 3) "firstname"
 ```
 
+##### [`SET`](https://redis.io/commands/set/)
+```redis
+redis> SET mykey "Hello"
+"OK"
+redis> GET mykey
+"Hello"
+redis> SET anotherkey "will expire in a minute" EX 60
+"OK"
+```
+
 ##### [`GET`](https://redis.io/commands/get/)
 ```redis
 redis> GET nonexisting
