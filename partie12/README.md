@@ -352,7 +352,6 @@ the_database> db.todos.insertOne({text:'Increase the number of tools in my toolb
 }
 ```
 
-
 ---
 
 #### [Redis](https://redis.io/docs/get-started/data-store/) | Redis Docs
