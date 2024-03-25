@@ -403,7 +403,7 @@ redis> DEL key1 key2 key3
 The `CMD` instruction sets the command to be executed when running a container from an image.
 
 You can specify `CMD` instructions using shell or exec forms:
-```
+```Dockerfile
 CMD ["executable","param1","param2"] (exec form)
 CMD ["param1","param2"] (exec form, as default parameters to ENTRYPOINT)
 CMD command param1 param2 (shell form)
@@ -414,7 +414,7 @@ There can only be one `CMD` instruction in a Dockerfile. If you list more than o
 
 #### [Shell and exec form](https://docs.docker.com/reference/dockerfile/#shell-and-exec-form)
 The `RUN`, `CMD`, and `ENTRYPOINT` instructions all have two possible forms:
-```
+```Dockerfile
 INSTRUCTION ["executable","param1","param2"] (exec form)
 INSTRUCTION command param1 param2 (shell form)
 ```
