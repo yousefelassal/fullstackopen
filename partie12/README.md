@@ -295,6 +295,15 @@ services:
       - ./mongo_data:/data/db
 ```
 
+##### auth
+```bash
+docker exec -it CONTAINER-NAME bash
+
+root@aykalam0777:/# mongosh "mongodb://host" --username root
+Enter password: *******
+```
+
+
 ---
 
 #### [Redis](https://redis.io/docs/get-started/data-store/) | Redis Docs
