@@ -421,3 +421,30 @@ INSTRUCTION command param1 param2 (shell form)
 The exec form makes it possible to avoid shell string munging, and to invoke commands using a specific command shell, or any other executable. It uses a JSON array syntax, where each element in the array is a command, flag, or argument.
 
 The shell form is more relaxed, and emphasizes ease of use, flexibility, and readability. The shell form automatically uses a command shell, whereas the exec form does not.
+
+---
+
+#### [Multi-stage build](https://docs.docker.com/build/building/multi-stage/) | Docker Docs
+split the build process into many separate stages, where it is possible to limit what parts of the image files are moved between the stages.
+
+```Dockerfile
+# The first FROM is now a stage called build-stage
+
+FROM node:20 AS build-stage
+WORKDIR /usr/src/app
+
+COPY . .
+
+RUN npm ci
+
+RUN npm run build
+
+# This is a new stage, everything before this is gone, except the files we want to COPY
+
+FROM nginx:1.25-alpine
+# COPY the directory build from build-stage to /usr/share/nginx/html
+# The target location here was found from the Docker hub page
+
+COPY --from=build-stage /usr/src/app/dist /usr/share/nginx/html
+```
+ 
