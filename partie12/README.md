@@ -299,8 +299,57 @@ services:
 ```bash
 docker exec -it CONTAINER-NAME bash
 
-root@aykalam0777:/# mongosh "mongodb://host" --username root
+root@aykalam0777:/ mongosh "mongodb://host" --username root
 Enter password: *******
+```
+Flags `-u root -p example` should work
+
+##### Commands
+
+When you have connected to the Mongo cli you can ask it to show dbs inside:
+```bash
+> show dbs
+admin         0.000GB
+config         0.000GB
+local         0.000GB
+the_database  0.000GBc
+```
+
+To access the correct database:
+```bash
+> use the_database
+```
+
+And finally to find out the collections:
+```bash
+> show collections
+todos
+```
+
+We can now access the data in those collections:
+```bash
+> db.todos.find({})
+[
+  {
+    _id: ObjectId("633c270ba211aa5f7931f078"),
+    text: 'Write code',
+    done: false
+  },
+  {
+    _id: ObjectId("633c270ba211aa5f7931f079"),
+    text: 'Learn about containers',
+    done: false
+  }
+]
+```
+
+We can insert a single document into a collection:
+```bash
+the_database> db.todos.insertOne({text:'Increase the number of tools in my toolbelt',done:false})
+{
+  acknowledged: true,
+  insertedId: ObjectId('66002a9301707b3e7ff8ec7c')
+}
 ```
 
 
