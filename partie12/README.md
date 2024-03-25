@@ -409,3 +409,15 @@ CMD ["param1","param2"] (exec form, as default parameters to ENTRYPOINT)
 CMD command param1 param2 (shell form)
 ```
 There can only be one `CMD` instruction in a Dockerfile. If you list more than one `CMD`, only the last one takes effect.
+
+---
+
+#### [Shell and exec form](https://docs.docker.com/reference/dockerfile/#shell-and-exec-form)
+The `RUN`, `CMD`, and `ENTRYPOINT` instructions all have two possible forms:
+```
+INSTRUCTION ["executable","param1","param2"] (exec form)
+INSTRUCTION command param1 param2 (shell form)
+```
+The exec form makes it possible to avoid shell string munging, and to invoke commands using a specific command shell, or any other executable. It uses a JSON array syntax, where each element in the array is a command, flag, or argument.
+
+The shell form is more relaxed, and emphasizes ease of use, flexibility, and readability. The shell form automatically uses a command shell, whereas the exec form does not.
