@@ -279,12 +279,32 @@ root@7edcb36aff08:/ cd /usr/share/nginx/html/
 
 ---
 
+#### [Mongo CLI](https://www.mongodb.com/docs/mongocli/stable/) | MongoDB Docs
+##### [Mongo Image](https://hub.docker.com/_/mongo/) | Mongo Docker Hub
+```yml
+services:
+  mongo:
+    ports:
+      - 3456:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: the_database
+    volumes:
+      - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - ./mongo_data:/data/db
+```
+
+---
+
 #### [Redis](https://redis.io/docs/get-started/data-store/) | Redis Docs
 ##### [Redis Image](https://hub.docker.com/_/redis) | Redis Docker Hub
 ```yml
 services:
   redis:
     image: redis
+    ports:
+      - 6379:6379
     command: ["redis-server", "--appendonly", "yes"]
     volumes:
       - ./redis_data:/data
