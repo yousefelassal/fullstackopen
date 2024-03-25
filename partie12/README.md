@@ -398,3 +398,14 @@ redis> DEL key1 key2 key3
 ```
 
 ### c Basics of Orchestration
+
+#### [`CMD`](https://docs.docker.com/reference/dockerfile/#cmd) | Docker Docs
+The `CMD` instruction sets the command to be executed when running a container from an image.
+
+You can specify `CMD` instructions using shell or exec forms:
+```
+CMD ["executable","param1","param2"] (exec form)
+CMD ["param1","param2"] (exec form, as default parameters to ENTRYPOINT)
+CMD command param1 param2 (shell form)
+```
+There can only be one `CMD` instruction in a Dockerfile. If you list more than one `CMD`, only the last one takes effect.
