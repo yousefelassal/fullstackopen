@@ -17,7 +17,7 @@
       <li>[X] Part 10: React Native</li>
       <li>[X] Part 11: CI/CD</li>
       <li>[ ] Part 12: Containers</li>
-      <li>Part 13: Using relational databases</li>
+      <li>[ ] Part 13: Using relational databases</li>
     </ul>
   </div>
 </div>
