@@ -51,6 +51,7 @@
     {
       // Other model options go here
       sequelize, // We need to pass the connection instance
+      underscore: true, // table names are derived from model names as plural snake_case versions
       modelName: 'User', // We need to choose the model name
     },
   );
