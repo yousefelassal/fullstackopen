@@ -56,3 +56,15 @@
     },
   );
   ```
+
+  ##### [Naming policy](https://sequelize.org/docs/v6/other-topics/naming-strategies/#the-underscored-option)
+  Sequelize provides the underscored option for a model. When true, this option will set the field option on all attributes to the snake_case version of its name.
+  ```js
+  Note.init({
+    // ...
+    creationYear: {
+      type: DataTypes.INTEGER,
+    },
+  })
+  ```
+  The name of the corresponding column in the database would be _creation_year_. In code, reference to the column is always in the same format as in the model, i.e. in "camel case" format.
