@@ -1,6 +1,6 @@
 ### a Using relational databases with Sequelize
 
-- [psql](https://www.postgresql.org/docs/current/app-psql.html)
+- [psql](https://www.postgresql.org/docs/current/app-psql.html) | Postgres Docs
 
   `\d` tells the content of the databases
   ```bash
@@ -24,3 +24,7 @@
     2 | MongoDB is webscale                 | f         |      
   (2 rows)
   ```
+
+- [Sequelize](https://sequelize.org/docs/v6/) | Sequelize Docs
+
+  
