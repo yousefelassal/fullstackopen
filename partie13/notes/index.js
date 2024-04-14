@@ -29,6 +29,11 @@ Note.init({
   modelName: 'note'
 })
 
+// app.get('/api/notes', async (req, res) => {
+//   const notes = await sequelize.query("SELECT * FROM notes", { type: QueryTypes.SELECT })
+//   res.json(notes)
+// })
+
 app.get('/api/notes', async (req, res) => {
   const notes = await Note.findAll()
   res.json(notes)
