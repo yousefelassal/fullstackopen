@@ -71,4 +71,10 @@
 
   #### [Model Querying](https://sequelize.org/docs/v6/core-concepts/model-querying-basics/)
 
+  ##### Simple INSERT queries
+  ```js
+  // Create a new user
+  const jane = await User.create({ firstName: 'Jane', lastName: 'Doe' });
+  ```
   
+  The `Model.create()` method is a shorthand for building an unsaved instance with `Model.build()` and saving the instance with `instance.save()`.
