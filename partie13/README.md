@@ -79,6 +79,18 @@
   
   The `Model.create()` method is a shorthand for building an unsaved instance with `Model.build()` and saving the instance with `instance.save()`.
 
+  it is also possible to save to a database using the _build_ method first to create a Model-object from the desired data, and then calling the _save_ method on it:
+  ```js
+  const note = Note.build(req.body)
+  await note.save()copy
+  ```
+  Calling the _build_ method does not save the object in the database yet, so it is still possible to edit the object before the actual save event:
+  ```js
+  const note = Note.build(req.body)
+  note.important = true
+  await note.save()
+  ```
+  
   ##### Simple SELECT queries
   ```js
   const users = await User.findAll();
