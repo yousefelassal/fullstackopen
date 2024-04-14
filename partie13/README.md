@@ -68,3 +68,112 @@
   })
   ```
   The name of the corresponding column in the database would be _creation_year_. In code, reference to the column is always in the same format as in the model, i.e. in "camel case" format.
+
+  #### [Model Querying](https://sequelize.org/docs/v6/core-concepts/model-querying-basics/)
+
+  ##### Simple INSERT queries
+  ```js
+  // Create a new user
+  const jane = await User.create({ firstName: 'Jane', lastName: 'Doe' });
+  ```
+  
+  The `Model.create()` method is a shorthand for building an unsaved instance with `Model.build()` and saving the instance with `instance.save()`.
+
+  it is also possible to save to a database using the _build_ method first to create a Model-object from the desired data, and then calling the _save_ method on it:
+  ```js
+  const note = Note.build(req.body)
+  await note.save()copy
+  ```
+  Calling the _build_ method does not save the object in the database yet, so it is still possible to edit the object before the actual save event:
+  ```js
+  const note = Note.build(req.body)
+  note.important = true
+  await note.save()
+  ```
+  
+  ##### Simple SELECT queries
+  ```js
+  const users = await User.findAll();
+  ```
+  ```sql
+  SELECT * FROM ...
+  ```
+  
+  ###### Specifying attributes for SELECT queries
+  To select only some attributes, you can use the attributes option:
+  ```js
+  Model.findAll({
+    attributes: ['foo', 'bar'],
+  });
+  ```
+  ```sql
+  SELECT foo, bar FROM ...
+  ```
+  
+  ###### You can use sequelize.fn to do aggregations:
+  ```sql
+  Model.findAll({
+    attributes: ['foo', [sequelize.fn('COUNT', sequelize.col('hats')), 'n_hats'], 'bar'],
+  });
+  ```
+  ```sql
+  SELECT foo, COUNT(hats) AS n_hats, bar FROM ...
+  ```
+
+  ###### remove a selected few attributes:
+  ```js
+  Model.findAll({
+    attributes: { exclude: ['baz'] },
+  });
+  ```
+  ```sql
+  -- Assuming all columns are 'id', 'foo', 'bar', 'baz' and 'qux'
+  SELECT id, foo, bar, qux FROM ...
+  ```
+  #### Applying WHERE clauses
+  ```js
+  Post.findAll({
+    where: {
+      authorId: 2,
+    },
+  });
+  ```
+  ```sql
+  SELECT * FROM post WHERE authorId = 2;
+  ```
+  
+  Multiple checks can be passed:
+  ```js
+  Post.findAll({
+    where: {
+      authorId: 12,
+      status: 'active',
+    },
+  });
+  ```
+  ```sql
+  SELECT * FROM post WHERE authorId = 12 AND status = 'active';
+  ```
+
+  #### Simple UPDATE queries
+  ```js
+  // Change everyone without a last name to "Doe"
+  await User.update(
+    { lastName: 'Doe' },
+    {
+      where: {
+        lastName: null,
+      },
+    },
+  );
+  ```
+  
+  #### Simple DELETE queries
+  ```js
+  // Delete everyone named "Jane"
+  await User.destroy({
+    where: {
+      firstName: 'Jane',
+    },
+  });
+  ```
