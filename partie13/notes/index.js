@@ -2,6 +2,7 @@ require('dotenv').config()
 const { Sequelize, Model, DataTypes } = require('sequelize')
 const express = require('express')
 const app = express()
+app.use(express.json())
 
 const sequelize = new Sequelize(process.env.DATABASE_URL)
 
@@ -42,8 +43,13 @@ app.get('/api/notes', async (req, res) => {
 })
 
 app.post('/api/notes', async (req, res) => {
-  const note = await Note.create(req.body)
-  res.json(note)
+  console.log(req.body)
+  try {
+    const note = await Note.create(req.body)
+    res.json(note)
+  } catch(e) {
+    res.status(400).json({ error: e.message })
+  }
 })
 
 app.listen(3000, () => {
