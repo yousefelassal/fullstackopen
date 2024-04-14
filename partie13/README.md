@@ -118,3 +118,27 @@
   -- Assuming all columns are 'id', 'foo', 'bar', 'baz' and 'qux'
   SELECT id, foo, bar, qux FROM ...
   ```
+  #### Applying WHERE clauses
+  ```js
+  Post.findAll({
+    where: {
+      authorId: 2,
+    },
+  });
+  ```
+  ```sql
+  SELECT * FROM post WHERE authorId = 2;
+  ```
+  
+  Multiple checks can be passed:
+  ```js
+  Post.findAll({
+    where: {
+      authorId: 12,
+      status: 'active',
+    },
+  });
+  ```
+  ```sql
+  SELECT * FROM post WHERE authorId = 12 AND status = 'active';
+  ```
