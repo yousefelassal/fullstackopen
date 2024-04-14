@@ -68,3 +68,7 @@
   })
   ```
   The name of the corresponding column in the database would be _creation_year_. In code, reference to the column is always in the same format as in the model, i.e. in "camel case" format.
+
+  #### [Model Querying](https://sequelize.org/docs/v6/core-concepts/model-querying-basics/)
+
+  
