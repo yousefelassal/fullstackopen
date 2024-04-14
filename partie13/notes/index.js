@@ -40,6 +40,11 @@ app.get('/api/notes', async (req, res) => {
   res.json(notes)
 })
 
+app.post('/api/notes', async (req, res) => {
+  const note = await Note.create(req.body)
+  res.json(note)
+})
+
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000')
 })
