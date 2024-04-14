@@ -142,3 +142,26 @@
   ```sql
   SELECT * FROM post WHERE authorId = 12 AND status = 'active';
   ```
+
+  #### Simple UPDATE queries
+  ```js
+  // Change everyone without a last name to "Doe"
+  await User.update(
+    { lastName: 'Doe' },
+    {
+      where: {
+        lastName: null,
+      },
+    },
+  );
+  ```
+  
+  #### Simple DELETE queries
+  ```js
+  // Delete everyone named "Jane"
+  await User.destroy({
+    where: {
+      firstName: 'Jane',
+    },
+  });
+  ```
