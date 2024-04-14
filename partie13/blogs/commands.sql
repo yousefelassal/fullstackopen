@@ -7,5 +7,5 @@ CREATE TABLE blogs (
 );
 
 INSERT INTO blogs (author, url, title) 
-VALUES ('Albert Camus', 'https://www.amazon.com/Stranger-Albert-Camus/dp/0679720200', 'Albert Camus'), 
-       ('George Orwell', 'https://www.amazon.com/1984-George-Orwell/dp/1443434973', '1984');
+VALUES ('Example Author', 'https://example.com', 'Example Title 1'), 
+       ('Example Author', 'https://example.com', 'Example Title 2');
