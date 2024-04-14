@@ -29,6 +29,7 @@ Note.init({
   modelName: 'note'
 })
 
+// we could just write regular SQL queries
 // app.get('/api/notes', async (req, res) => {
 //   const notes = await sequelize.query("SELECT * FROM notes", { type: QueryTypes.SELECT })
 //   res.json(notes)
