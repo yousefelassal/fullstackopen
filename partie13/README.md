@@ -78,3 +78,43 @@
   ```
   
   The `Model.create()` method is a shorthand for building an unsaved instance with `Model.build()` and saving the instance with `instance.save()`.
+
+  ##### Simple SELECT queries
+  ```js
+  const users = await User.findAll();
+  ```
+  ```sql
+  SELECT * FROM ...
+  ```
+  
+  ###### Specifying attributes for SELECT queries
+  To select only some attributes, you can use the attributes option:
+  ```js
+  Model.findAll({
+    attributes: ['foo', 'bar'],
+  });
+  ```
+  ```sql
+  SELECT foo, bar FROM ...
+  ```
+  
+  ###### You can use sequelize.fn to do aggregations:
+  ```sql
+  Model.findAll({
+    attributes: ['foo', [sequelize.fn('COUNT', sequelize.col('hats')), 'n_hats'], 'bar'],
+  });
+  ```
+  ```sql
+  SELECT foo, COUNT(hats) AS n_hats, bar FROM ...
+  ```
+
+  ###### remove a selected few attributes:
+  ```js
+  Model.findAll({
+    attributes: { exclude: ['baz'] },
+  });
+  ```
+  ```sql
+  -- Assuming all columns are 'id', 'foo', 'bar', 'baz' and 'qux'
+  SELECT id, foo, bar, qux FROM ...
+  ```
