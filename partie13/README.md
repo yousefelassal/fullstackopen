@@ -261,3 +261,18 @@
     console.log(count);
     console.log(rows);
     ```
+
+### b Join tables and queries
+
+##### Application structuring
+```
+index.js
+util
+  config.js
+  db.js
+models
+  index.js
+  note.js
+controllers
+  notes.js
+```
