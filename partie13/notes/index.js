@@ -41,7 +41,7 @@ Note.sync()
 
 app.get('/api/notes', async (req, res) => {
   const notes = await Note.findAll()
-  console.log(notes.map(n=>n.toJSON()))
+  // console.log(notes.map(n=>n.toJSON()))
   console.log(JSON.stringify(notes, null, 2))
   res.json(notes)
 })
