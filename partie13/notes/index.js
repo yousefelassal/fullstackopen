@@ -63,6 +63,20 @@ app.get('/api/notes/:id', async (req, res) => {
   }
 })
 
+app.put('/api/notes/:id', async (req, res) => {
+  try {
+    const note = await Note.findByPk(req.params.id)
+    if (note) {
+      await note.update(req.body)
+      res.json(note)
+    } else {
+      res.status(404).end()
+    }
+  } catch(e) {
+    res.status(400).json({ error: e.message })
+  }
+})
+
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000')
 })
