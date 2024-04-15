@@ -183,6 +183,7 @@
   - `User.sync()` - This creates the table if it doesn't exist (and does nothing if it already exists)
   - `User.sync({ force: true })` - This creates the table, dropping it first if it already existed
   - `User.sync({ alter: true })` - This checks what is the current state of the table in the database (which columns it has, what are their data types, etc), and then performs the necessary changes in the table to make it match the model.
+  
   Example:
   ```js
   await User.sync({ force: true });
@@ -196,3 +197,67 @@
   console.log('All models were synchronized successfully.');
   ```
   
+
+- [Model Query]() | Sequelize Docs
+
+  #### `findByPk`
+  The `findByPk` method obtains only a single entry from the table, using the provided _primary key_.
+  ```js
+  const project = await Project.findByPk(123);
+  if (project === null) {
+    console.log('Not found!');
+  } else {
+    console.log(project instanceof Project); // true
+    // Its primary key is 123
+  }
+  ```
+  
+  #### `findOne`
+  The `findOne` method obtains the _first entry_ it finds (that fulfills the optional query options, if provided).
+  ```js
+  const project = await Project.findOne({ where: { title: 'My Title' } });
+  if (project === null) {
+    console.log('Not found!');
+  } else {
+    console.log(project instanceof Project); // true
+    console.log(project.title); // 'My Title'
+  }
+  ```
+  
+  #### `findOrCreate`
+  The method `findOrCreate` will create an entry in the table unless it can find one fulfilling the query options. In both cases, it will return an instance (either the found instance or the created instance) and a boolean indicating whether that instance was created or already existed.
+  
+  The `where` option is considered for finding the entry, and the `defaults` option is used to define what must be created in case nothing was found. If the defaults do not contain values for every column, Sequelize will take the values given to where (if present).
+  
+  Let's assume we have an empty database with a User model which has a username and a job.
+  ```js
+  const [user, created] = await User.findOrCreate({
+    where: { username: 'sdepold' },
+    defaults: {
+      job: 'Technical Lead JavaScript',
+    },
+  });
+  console.log(user.username); // 'sdepold'
+  console.log(user.job); // This may or may not be 'Technical Lead JavaScript'
+  console.log(created); // The boolean indicating whether this instance was just created
+  if (created) {
+    console.log(user.job); // This will certainly be 'Technical Lead JavaScript'
+  }
+  ```
+  
+  #### `findAndCountAll`
+  The `findAndCountAll` method is a convenience method that combines `findAll` and `count`. This is useful when dealing with queries related to pagination where you want to retrieve data with a `limit` and `offset` but also need to know the total number of records that match the query.
+  
+    ```js
+    const { count, rows } = await Project.findAndCountAll({
+      where: {
+        title: {
+          [Op.like]: 'foo%',
+        },
+      },
+      offset: 10,
+      limit: 2,
+    });
+    console.log(count);
+    console.log(rows);
+    ```
