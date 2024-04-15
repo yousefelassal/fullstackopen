@@ -248,16 +248,16 @@
   #### `findAndCountAll`
   The `findAndCountAll` method is a convenience method that combines `findAll` and `count`. This is useful when dealing with queries related to pagination where you want to retrieve data with a `limit` and `offset` but also need to know the total number of records that match the query.
   
- ```js
-  const { count, rows } = await Project.findAndCountAll({
-    where: {
-      title: {
-        [Op.like]: 'foo%',
+    ```js
+    const { count, rows } = await Project.findAndCountAll({
+      where: {
+        title: {
+          [Op.like]: 'foo%',
+        },
       },
-    },
-    offset: 10,
-    limit: 2,
-  });
-  console.log(count);
-  console.log(rows);
-  ```
+      offset: 10,
+      limit: 2,
+    });
+    console.log(count);
+    console.log(rows);
+    ```
