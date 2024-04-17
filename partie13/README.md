@@ -276,3 +276,14 @@ models
 controllers
   notes.js
 ```
+
+- [One-To-Many Relationships](https://sequelize.org/docs/v6/core-concepts/assocs/#one-to-many-relationships) | Sequelize Docs
+
+  each note is associated with the user who created it. a foreign key is needed in the notes table.
+  ```js
+  User.hasMany(Note)
+  Note.belongsTo(User)
+  Note.sync({ alter: true })
+  User.sync({ alter: true })
+  ```
+  the `sync` option will match the changes made to the model definitions in the database.
