@@ -287,3 +287,47 @@ controllers
   User.sync({ alter: true })
   ```
   the `sync` option will match the changes made to the model definitions in the database.
+
+- [`include`](https://sequelize.org/docs/v6/core-concepts/assocs/#eager-loading-example) | Sequelize Docs
+
+  ```js
+  const awesomeCaptain = await Captain.findOne({
+    where: {
+      name: 'Jack Sparrow',
+    },
+    include: Ship,
+  });
+  // Now the ship comes with it
+  console.log('Name:', awesomeCaptain.name);
+  console.log('Skill Level:', awesomeCaptain.skillLevel);
+  console.log('Ship Name:', awesomeCaptain.ship.name);
+  console.log('Amount of Sails:', awesomeCaptain.ship.amountOfSails);
+  ```
+
+#### Proper insertion of notes
+  ```js  
+  const tokenExtractor = (req, res, next) => {
+    const authorization = req.get('authorization')
+    if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+      try {
+        req.decodedToken = jwt.verify(authorization.substring(7), SECRET)
+      } catch{
+        return res.status(401).json({ error: 'token invalid' })
+      }
+    }  else {
+      return res.status(401).json({ error: 'token missing' })
+    }
+    next()
+  }
+  
+  router.post('/', tokenExtractor, async (req, res) => {
+    try {
+      const user = await User.findByPk(req.decodedToken.id)
+      const note = await Note.create({...req.body, userId: user.id, date: new Date()})
+      res.json(note)
+    } catch(error) {
+      return res.status(400).json({ error })
+    }
+  })
+  ```
+  The token is retrieved from the request headers, decoded and placed in the _req_ object by the _tokenExtractor_ middleware. When creating a note, a _date_ field is also given indicating the time it was created.
