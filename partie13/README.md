@@ -303,3 +303,31 @@ controllers
   console.log('Ship Name:', awesomeCaptain.ship.name);
   console.log('Amount of Sails:', awesomeCaptain.ship.amountOfSails);
   ```
+
+#### Proper insertion of notes
+  ```js  
+  const tokenExtractor = (req, res, next) => {
+    const authorization = req.get('authorization')
+    if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+      try {
+        req.decodedToken = jwt.verify(authorization.substring(7), SECRET)
+      } catch{
+        return res.status(401).json({ error: 'token invalid' })
+      }
+    }  else {
+      return res.status(401).json({ error: 'token missing' })
+    }
+    next()
+  }
+  
+  router.post('/', tokenExtractor, async (req, res) => {
+    try {
+      const user = await User.findByPk(req.decodedToken.id)
+      const note = await Note.create({...req.body, userId: user.id, date: new Date()})
+      res.json(note)
+    } catch(error) {
+      return res.status(400).json({ error })
+    }
+  })
+  ```
+  The token is retrieved from the request headers, decoded and placed in the _req_ object by the _tokenExtractor_ middleware. When creating a note, a date field is also given indicating the time it was created.
