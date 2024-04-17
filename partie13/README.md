@@ -330,4 +330,4 @@ controllers
     }
   })
   ```
-  The token is retrieved from the request headers, decoded and placed in the _req_ object by the _tokenExtractor_ middleware. When creating a note, a date field is also given indicating the time it was created.
+  The token is retrieved from the request headers, decoded and placed in the _req_ object by the _tokenExtractor_ middleware. When creating a note, a _date_ field is also given indicating the time it was created.
