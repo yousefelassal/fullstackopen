@@ -287,3 +287,19 @@ controllers
   User.sync({ alter: true })
   ```
   the `sync` option will match the changes made to the model definitions in the database.
+
+- [`include`](https://sequelize.org/docs/v6/core-concepts/assocs/#eager-loading-example) | Sequelize Docs
+
+  ```js
+  const awesomeCaptain = await Captain.findOne({
+    where: {
+      name: 'Jack Sparrow',
+    },
+    include: Ship,
+  });
+  // Now the ship comes with it
+  console.log('Name:', awesomeCaptain.name);
+  console.log('Skill Level:', awesomeCaptain.skillLevel);
+  console.log('Ship Name:', awesomeCaptain.ship.name);
+  console.log('Amount of Sails:', awesomeCaptain.ship.amountOfSails);
+  ```
