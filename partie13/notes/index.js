@@ -1,7 +1,11 @@
 const express = require('express')
 const cors = require('cors')
+const morgan = require('morgan')
+
 const app = express()
 app.use(cors())
+app.use(express.json())
+app.use(morgan('dev'))
 
 const { PORT } = require('./util/config')
 const { connectToDatabase } = require('./util/db')
@@ -9,8 +13,6 @@ const { connectToDatabase } = require('./util/db')
 const notesRouter = require('./controllers/notes')
 const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
-
-app.use(express.json())
 
 app.use('/api/notes', notesRouter)
 app.use('/api/users', usersRouter)
