@@ -29,6 +29,12 @@ router.post('/', async (req, res) => {
 
     res.json(user)
   } catch(error) {
+    if (error.name === 'SequelizeUniqueConstraintError') {
+      return res.status(400).json({ Error: 'Username already exists' })
+    }
+    if (error.name === 'SequelizeValidationError') {
+      return res.status(400).json({ Error: error.errors.map(e => e.message)})
+    }
     return res.status(400).json({ error })
   }
 })
