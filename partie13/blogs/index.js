@@ -1,6 +1,8 @@
 const express = require('express');
+const cors = require('cors');
 require('express-async-errors');
 const app = express()
+app.use(cors())
 
 const { PORT } = require('./util/config')
 const { connectToDatabase } = require('./util/db')
