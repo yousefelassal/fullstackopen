@@ -446,3 +446,31 @@ controllers
     }
   });
   ```
+- [query-parameter](https://expressjs.com/en/5x/api.html#req.query) | Express Docs
+
+  querying database `WHERE` `req.query`
+  ```js
+  router.get('/', async (req, res) => {
+    const where = {}
+  
+    if (req.query.important) {
+      where.important = req.query.important === "true"
+    }
+  
+    if (req.query.search) {
+      where.content = {
+        [Op.iLike]: `${req.query.search}%`
+      }
+    }
+  
+    const notes = await Note.findAll({
+      attributes: { exclude: ['userId'] },
+      include: {
+        model: User,
+        attributes: ['name']
+      },
+      where
+    })
+    res.json(notes)
+  })
+  ```
