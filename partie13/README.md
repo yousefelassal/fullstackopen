@@ -505,6 +505,16 @@ controllers
   });
   ```
 
+- [Grouping](https://sequelize.org/docs/v6/core-concepts/model-querying-basics/#grouping) | Sequelize Docs
+
+  The syntax for grouping and ordering are equal, except that grouping does not accept a direction as last argument of the array
+  
+  You can also pass a string directly to group, which will be included directly (verbatim) into the generated SQL. Use with caution and don't use with user generated content.
+  ```js
+  Project.findAll({ group: 'name' });
+  // yields 'GROUP BY name'
+  ```
+
   
 - [query-parameter](https://expressjs.com/en/5x/api.html#req.query) | Express Docs
 
