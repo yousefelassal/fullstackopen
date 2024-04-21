@@ -22,7 +22,10 @@ router.get('/', async (req, res) => {
       attributes: ['name']
     },
     where: {
-      important
+      important,
+      content: {
+        [Op.iLike]: `${req.query.search}%` || ''
+      }
     }
   })
   res.json(notes)
