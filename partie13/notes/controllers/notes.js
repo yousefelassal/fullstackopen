@@ -8,11 +8,16 @@ const { Note } = require('../models')
 const { User } = require('../models')
 
 router.get('/', async (req, res) => {
-  let important = {
-    [Op.in]: [true, false]
-  }
+  const where = {}
+
   if (req.query.important) {
-    important = req.query.important === 'true'
+    where.important = req.query.important === "true"
+  }
+
+  if (req.query.search) {
+    where.content = {
+      [Op.iLike]: `${req.query.search}%`
+    }
   }
 
   const notes = await Note.findAll({
@@ -21,12 +26,7 @@ router.get('/', async (req, res) => {
       model: User,
       attributes: ['name']
     },
-    where: {
-      important,
-      content: {
-        [Op.iLike]: `${req.query.search}%` || ''
-      }
-    }
+    where
   })
   res.json(notes)
 })
