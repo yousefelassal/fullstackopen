@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 
   if (req.query.search) {
     where.content = {
-      [Op.iLike]: `${req.query.search}%`
+      [Op.iLike]: `%${req.query.search}%`
     }
   }
 
