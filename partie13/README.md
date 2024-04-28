@@ -544,3 +544,5 @@ controllers
     res.json(notes)
   })
   ```
+
+### c Migrations, many-to-many relationships
