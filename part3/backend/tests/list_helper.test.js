@@ -87,3 +87,28 @@ describe('total likes', () => {
     assert.strictEqual(result, 36);
   });
 });
+
+describe('favorite blog', () => {
+  test('of a list of blogs is the one with most likes', () => {
+    const result = listHelper.favoriteBlog(blogs);
+    const expected = {
+      _id: '5a422b3a1b54a676234d17f9',
+      title: 'Canonical string reduction',
+      author: 'Edsger W. Dijkstra',
+      url: 'http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html',
+      likes: 12,
+      __v: 0,
+    };
+    assert.deepStrictEqual(result, expected);
+  });
+
+  test('of an empty list is null', () => {
+    const result = listHelper.favoriteBlog([]);
+    assert.strictEqual(result, null);
+  });
+
+  test('of a list with one blog is that blog', () => {
+    const result = listHelper.favoriteBlog([blogs[0]]);
+    assert.deepStrictEqual(result, blogs[0]);
+  });
+});
