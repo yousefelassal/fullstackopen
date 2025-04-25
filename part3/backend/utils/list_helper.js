@@ -48,8 +48,9 @@ const favoriteBlog = (blogs) => {
 
 /**
  * @typedef {{ _id: string; title: string; author: string; url: string; likes: number; __V: number }} Blog
+ * @typedef {{ author: string; blogs: number }} MostBlogs
  * @param {Blog[]} blogs - The blogs to process.
- * @returns {Blog|null} - The blog with the most likes, or null if no blogs are provided.
+ * @returns {MostBlogs|null} - The blog with the most likes, or null if no blogs are provided.
  * @description Finds the blog with the most likes from an array of blogs.
  */
 const mostBlogs = (blogs) => {
@@ -69,8 +70,9 @@ const mostBlogs = (blogs) => {
 
 /**
  * @typedef {{ _id: string; title: string; author: string; url: string; likes: number; __V: number }} Blog
+ * @typedef {{ author: string; likes: number }} MostLikes
  * @param {Blog[]} blogs - The blogs to process.
- * @returns {{ author: string; likes: number }|null} - The author with the most likes, or null if no blogs are provided.
+ * @returns {MostLikes|null} - The author with the most likes, or null if no blogs are provided.
  * @description Finds the author with the most likes from an array of blogs.
  */
 const mostLikes = (blogs) => {
