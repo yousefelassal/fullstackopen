@@ -112,3 +112,43 @@ describe('favorite blog', () => {
     assert.deepStrictEqual(result, blogs[0]);
   });
 });
+
+describe('most blogs', () => {
+  test('of a list of blogs is the author with most blogs', () => {
+    const result = listHelper.mostBlogs(blogs);
+    const expected = {
+      author: 'Robert C. Martin',
+      blogs: 3,
+    };
+    assert.deepStrictEqual(result, expected);
+  });
+
+  test('of an empty list is null', () => {
+    const result = listHelper.mostBlogs([]);
+    assert.strictEqual(result, null);
+  });
+
+  test('of a list with one blog is that blog', () => {
+    const result = listHelper.mostBlogs([blogs[0]]);
+    const expected = {
+      author: 'Michael Chan',
+      blogs: 1,
+    };
+    assert.deepStrictEqual(result, expected);
+  });
+});
+
+describe('most likes', () => {
+  test('of a list of blogs is the author with most likes', () => {
+    const result = listHelper.mostLikes(blogs);
+    const expected = {
+      author: 'Edsger W. Dijkstra',
+      likes: 17,
+    };
+    assert.deepStrictEqual(result, expected);
+  });
+  test('of an empty list is null', () => {
+    const result = listHelper.mostLikes([]);
+    assert.strictEqual(result, null);
+  });
+});
